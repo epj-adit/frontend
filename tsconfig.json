@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "removeComments": false,
+    "noEmitHelpers": true,
+    "sourceMap": true,
+    "types": ["node"]
+  },
+  "include": [
+    "src/*.ts",
+    "node_modules/@types/**/index.d.ts"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false
+}

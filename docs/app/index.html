@@ -1,0 +1,225 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>angular2-webpack-boilerplate</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">angular2-webpack-boilerplate</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> angular2-webpack-boilerplate</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="an-angular-2-webpack-boilerplate-with-examples">An Angular 2 + Webpack boilerplate with examples</h1>
+				<p>Angular 2 application with some examples (currently only HTTP service and component). Please, feel free to create issues and PRs.</p>
+				<p>Templates and stylesheets are embedded into JS bundle with help of <a href="https://github.com/TheLarkInn/angular2-template-loader">angular2-template-loader</a>. SASS/SCSS is used for styling. </p>
+				<p><code>index.html</code> is generated using <a href="https://github.com/ampedandwired/html-webpack-plugin">html-webpack-plugin</a>.</p>
+				<p>Hot module replacement is not provided here. Possibly I&#39;ll add it later. Same goes for service workers.</p>
+				<h3 id="installation">Installation</h3>
+				<p>Clone repository and run <code>npm install</code>.</p>
+				<p>Run <code>npm start</code> and point your browser to <code>http://localhost:9045/</code>.</p>
+				<h3 id="testing">Testing</h3>
+				<p>Use <code>npm test</code> to run test suite. <a href="https://github.com/karma-runner/karma">Karma</a> is used as test runner, <a href="https://github.com/jasmine/jasmine">Jasmine</a> - as testing framework. Code coverage reports are generated using <a href="https://github.com/gotwarlost/istanbul">istanbul</a> and <a href="https://github.com/SitePen/remap-istanbul">remap-istanbul</a> (this provides possibility to map back to TypeScript).</p>
+				<p>Use <code>npm lint</code> to check TypeScript files (via <a href="https://github.com/palantir/tslint">tslint</a>) and SASS stylesheets (via <a href="https://github.com/sasstools/sass-lint">sass-lint</a>). <a href="https://github.com/mgechev/codelyzer">Codelyzer</a> helps to keep code close to <a href="https://angular.io/styleguide">Angular 2 Style Guide</a>.</p>
+				<p>You won&#39;t find end-to-end tests in this project (usually people use Protractor for this purpose). I believe that E2E/QA testing should be written in a separate project/repository, especially if you are working on projects with microservice architecture.</p>
+				<h3 id="building-bundle-s-">Building bundle(s)</h3>
+				<p>Use <code>npm run build</code> and you will get JS bundles, their maps and <code>index.html</code> in <code>dist</code> directory.</p>
+				<p>To build for production, use <code>NODE_ENV=production npm run build</code> (webpack configuration is chosen according to this environment variable).</p>
+				<h3 id="documentation">Documentation</h3>
+				<p>Run <code>npm run docs</code> to generate documentation for TypeScript (<a href="https://github.com/TypeStrong/typedoc">typedoc</a> is used for that) and SASS stylesheets (done with <a href="https://github.com/kss-node/kss-node">kss-node</a>).</p>
+				<h3 id="dev-notes">Dev notes</h3>
+				<ul>
+					<li><p>Upgrade to <code>istanbul-instrumenter-loader@1.2.0</code> breaks code coverage</p>
+					</li>
+					<li><p>Upgrade to <code>remap-istanbul@0.8.*</code> leads to error in their binary (<code>SyntaxError: Block-scoped declarations (let, const, function, class) not yet supported outside strict mode</code>).</p>
+					</li>
+				</ul>
+				<h2 id="todos">TODOs</h2>
+				<ul>
+					<li><p>Examples</p>
+						<ul>
+							<li>Typeahead with throttle/distinct</li>
+							<li>Pipe</li>
+							<li>AuthGuard in router</li>
+							<li>Forms</li>
+							<li>Input and Output</li>
+							<li>rxjs-based WebSocket</li>
+						</ul>
+					</li>
+					<li><p>Comments on tests</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class="label tsd-is-external">
+						<span>Internals</span>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_main_.html">"main"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_polyfills_.html">"polyfills"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_vendor_.html">"vendor"</a>
+					</li>
+					<li class="label tsd-is-external">
+						<span>Externals</span>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_app_app_component_.html">"app/app.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_app_app_module_.html">"app/app.module"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_app_app_routing_.html">"app/app.routing"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_app_article_article_list_component_.html">"app/article/article-<wbr>list.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_app_article_article_component_.html">"app/article/article.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_app_article_article_model_.html">"app/article/article.model"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_app_article_article_service_.html">"app/article/article.service"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
