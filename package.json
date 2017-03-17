@@ -57,8 +57,10 @@
     "angular-in-memory-web-api": "0.2.4",
     "angular2-template-loader": "0.6.0",
     "codelyzer": "2.0.0-beta.4",
+    "copy-webpack-plugin": "^4.0.1",
     "core-js": "2.4.1",
     "es6-shim": "0.35.3",
+    "file-loader": "^0.10.1",
     "flexboxgrid-sass": "8.0.5",
     "html-loader": "0.4.4",
     "html-webpack-plugin": "2.26.0",
@@ -96,5 +98,6 @@
     "webpack-dev-server": "1.16.2",
     "webpack-md5-hash": "0.0.5",
     "zone.js": "0.7.6"
-  }
+  },
+  "dependencies": {}
 }
