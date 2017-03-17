@@ -1,0 +1,74 @@
+@import "~normalize-scss/sass/normalize";
+@import "_variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: $font;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.container {
+  @include flex(column, flex-start, stretch);
+}
+
+header {
+  @include flex(row, space-between, center);
+  flex: 1 0 10%;
+  background-color: $maincolor;
+  height: 50px;
+  padding: 5px;
+  position: fixed;
+  //top: 0;
+  z-index: 2;
+  width: 100%;
+  @include shadow();
+  nav {
+    height: auto;
+    margin-right: 1em;
+  }
+  nav > ul > li {
+    list-style-type: none;
+    a {
+      color: white;
+      text-decoration: none;
+      &:visited {
+        color: black;
+      }
+      &:hover {
+        color: $highlightcolor;
+      }
+    }
+  }
+}
+
+main {
+  @include flex(row, space-around);
+  background-color: $secondarycolor;
+  flex: 1 1 100%;
+  padding-top: 50px;
+  .content {
+    @include shadow();
+    flex: 0 1 65%;
+    background-color: white;
+    overflow: auto;
+    padding: 1em;
+  }
+}
+
+h1 {
+  color: $highlightcolor;
+}
+
+#logo {
+  height: 40px;
+}
+
+footer {
+  flex: 1 1 10%;
+  z-index: 2;
+  background-color: $maincolor;
+  border-top: 1px solid black;
+}
+
