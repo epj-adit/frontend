@@ -1,6 +1,7 @@
 $maincolor: #A0A0A0;
 $secondarycolor: #f2f2f2;
 $highlightcolor: #ED1C24;
+$footercolor: #263238;
 $font: "Segoe UI", sans-serif;
 
 @mixin flex($direction: row, $justify: flex-start, $align: flex-start){
@@ -16,3 +17,17 @@ $font: "Segoe UI", sans-serif;
   -webkit-box-shadow: $horizontal $vertical $blur $spread rgba(0, 0, 0, .25);
   box-shadow: $horizontal $vertical $blur $spread rgba(0, 0, 0, .25);
 }
+
+
+@mixin gradient($color1: rgb(255,255,255), $color2: rgb(242,242,242), $direction: top){
+  background: $color1;
+  background: -moz-linear-gradient($direction,  $color1 47%, $color2 100%);
+  background: -webkit-linear-gradient($direction,  $color1 47%,$color2 100%);
+  @if $direction == top {
+    background: linear-gradient(to bottom, $color1 47%,$color2 100%);
+  } @else {
+    background: linear-gradient(135deg,  $color1 47%,$color2 100%);
+  }
+}
+
+
