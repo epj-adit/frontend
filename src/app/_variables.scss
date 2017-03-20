@@ -1,2 +1,33 @@
-$heading-color: #333;
-$heading-highlight-color: #fa2800;
+$maincolor: #A0A0A0;
+$secondarycolor: #f2f2f2;
+$highlightcolor: #ED1C24;
+$footercolor: #263238;
+$font: "Segoe UI", sans-serif;
+
+@mixin flex($direction: row, $justify: flex-start, $align: flex-start){
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin shadow($horizontal: 0, $vertical: 2px, $blur: 5px, $spread: 0){
+  -moz-box-shadow: $horizontal $vertical $blur $spread rgba(0, 0, 0,0.25);
+  -webkit-box-shadow: $horizontal $vertical $blur $spread rgba(0, 0, 0, .25);
+  box-shadow: $horizontal $vertical $blur $spread rgba(0, 0, 0, .25);
+}
+
+
+@mixin gradient($color1: rgb(255,255,255), $color2: rgb(242,242,242), $direction: top){
+  background: $color1;
+  background: -moz-linear-gradient($direction,  $color1 47%, $color2 100%);
+  background: -webkit-linear-gradient($direction,  $color1 47%,$color2 100%);
+  @if $direction == top {
+    background: linear-gradient(to bottom, $color1 47%,$color2 100%);
+  } @else {
+    background: linear-gradient(135deg,  $color1 47%,$color2 100%);
+  }
+}
+
+

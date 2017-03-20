@@ -1,25 +1,9 @@
 {
-  "name": "angular2-webpack-boilerplate",
-  "version": "0.0.1",
-  "description": "A boilerplate for Angular 2 and Webpack",
-  "keywords": [
-    "angular2",
-    "webpack",
-    "typescript",
-    "rxjs",
-    "boilerplate",
-    "starter"
-  ],
-  "author": "Valentin Nazarov <rusarmy@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kozlice/angular2-webpack-boilerplate.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kozlice/angular2-webpack-boilerplate/issues"
-  },
-  "homepage": "https://github.com/kozlice/angular2-webpack-boilerplate",
+  "name": "adit",
+  "version": "1.0.0",
+  "description": "Inserate Platform für die HSR",
+  "author": "adit-Team",
+  "license": "",
   "directories": {
     "test": "tests"
   },

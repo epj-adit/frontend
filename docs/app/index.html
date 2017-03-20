@@ -64,45 +64,6 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="an-angular-2-webpack-boilerplate-with-examples">An Angular 2 + Webpack boilerplate with examples</h1>
-				<p>Angular 2 application with some examples (currently only HTTP service and component). Please, feel free to create issues and PRs.</p>
-				<p>Templates and stylesheets are embedded into JS bundle with help of <a href="https://github.com/TheLarkInn/angular2-template-loader">angular2-template-loader</a>. SASS/SCSS is used for styling. </p>
-				<p><code>index.html</code> is generated using <a href="https://github.com/ampedandwired/html-webpack-plugin">html-webpack-plugin</a>.</p>
-				<p>Hot module replacement is not provided here. Possibly I&#39;ll add it later. Same goes for service workers.</p>
-				<h3 id="installation">Installation</h3>
-				<p>Clone repository and run <code>npm install</code>.</p>
-				<p>Run <code>npm start</code> and point your browser to <code>http://localhost:9045/</code>.</p>
-				<h3 id="testing">Testing</h3>
-				<p>Use <code>npm test</code> to run test suite. <a href="https://github.com/karma-runner/karma">Karma</a> is used as test runner, <a href="https://github.com/jasmine/jasmine">Jasmine</a> - as testing framework. Code coverage reports are generated using <a href="https://github.com/gotwarlost/istanbul">istanbul</a> and <a href="https://github.com/SitePen/remap-istanbul">remap-istanbul</a> (this provides possibility to map back to TypeScript).</p>
-				<p>Use <code>npm lint</code> to check TypeScript files (via <a href="https://github.com/palantir/tslint">tslint</a>) and SASS stylesheets (via <a href="https://github.com/sasstools/sass-lint">sass-lint</a>). <a href="https://github.com/mgechev/codelyzer">Codelyzer</a> helps to keep code close to <a href="https://angular.io/styleguide">Angular 2 Style Guide</a>.</p>
-				<p>You won&#39;t find end-to-end tests in this project (usually people use Protractor for this purpose). I believe that E2E/QA testing should be written in a separate project/repository, especially if you are working on projects with microservice architecture.</p>
-				<h3 id="building-bundle-s-">Building bundle(s)</h3>
-				<p>Use <code>npm run build</code> and you will get JS bundles, their maps and <code>index.html</code> in <code>dist</code> directory.</p>
-				<p>To build for production, use <code>NODE_ENV=production npm run build</code> (webpack configuration is chosen according to this environment variable).</p>
-				<h3 id="documentation">Documentation</h3>
-				<p>Run <code>npm run docs</code> to generate documentation for TypeScript (<a href="https://github.com/TypeStrong/typedoc">typedoc</a> is used for that) and SASS stylesheets (done with <a href="https://github.com/kss-node/kss-node">kss-node</a>).</p>
-				<h3 id="dev-notes">Dev notes</h3>
-				<ul>
-					<li><p>Upgrade to <code>istanbul-instrumenter-loader@1.2.0</code> breaks code coverage</p>
-					</li>
-					<li><p>Upgrade to <code>remap-istanbul@0.8.*</code> leads to error in their binary (<code>SyntaxError: Block-scoped declarations (let, const, function, class) not yet supported outside strict mode</code>).</p>
-					</li>
-				</ul>
-				<h2 id="todos">TODOs</h2>
-				<ul>
-					<li><p>Examples</p>
-						<ul>
-							<li>Typeahead with throttle/distinct</li>
-							<li>Pipe</li>
-							<li>AuthGuard in router</li>
-							<li>Forms</li>
-							<li>Input and Output</li>
-							<li>rxjs-based WebSocket</li>
-						</ul>
-					</li>
-					<li><p>Comments on tests</p>
-					</li>
-				</ul>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
