@@ -2,6 +2,7 @@ import {AdvertisementState} from './advertisementState';
 import {Tag} from './tag';
 import {User} from './user';
 import {Category} from './category';
+import {Media} from './media';
 
 export class Advertisement {
     title: String;
@@ -13,4 +14,5 @@ export class Advertisement {
     tags: Tag[];
     advertiser: User;
     category: Category;
+    media: Media[]
 }

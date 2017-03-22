@@ -1,7 +1,7 @@
 import {Category} from './category';
 import {User} from './user';
 
-export class subscription {
+export class Subscription {
     interval: number;
     lastUpdated: Date;
     category: Category;

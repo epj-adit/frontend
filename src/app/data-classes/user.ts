@@ -1,4 +1,5 @@
 import {Role} from './role';
+import {Subscription} from './subscription';
 
 export class User {
     username: string;
@@ -11,4 +12,5 @@ export class User {
     created: Date;
     updated: Date;
     role: Role;
+    subscriptions: Subscription[];
 }
