@@ -5,7 +5,7 @@ import {User} from './user';
 export class Message {
     text: string;
     created: Date;
-    status: MessageState;
+    messageState: MessageState;
     advertisement: Advertisement;
     sender: User;
     recipient: User;

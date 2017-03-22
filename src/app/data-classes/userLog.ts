@@ -1,5 +1,5 @@
 export class UserLog {
     ip: string;
-    timestamp: Date;
+    created: Date;
     action: string;
 }
