@@ -6,8 +6,6 @@ import { FormsModule } from '@angular/forms';
 
 import { routing, appRoutingProviders }  from './app.routing';
 import { AppComponent } from './app.component';
-import { ArticleComponent } from './article/article.component';
-import { ArticleListComponent } from './article/article-list.component';
 
 @NgModule({
     imports: [
@@ -18,9 +16,7 @@ import { ArticleListComponent } from './article/article-list.component';
         routing
     ],
     declarations: [
-        AppComponent,
-        ArticleListComponent,
-        ArticleComponent
+        AppComponent
     ],
     providers: [appRoutingProviders],
     bootstrap: [AppComponent]

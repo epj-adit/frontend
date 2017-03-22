@@ -1,12 +1,11 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ArticleComponent } from './article/article.component';
-import { ArticleListComponent } from './article/article-list.component';
+//import { ArticleComponent } from './article/article.component';
+
 
 const appRoutes: Routes = [
-    { path: 'articles/:id', component: ArticleComponent },
-    { path: '', component: ArticleListComponent },
+  //  { path: 'articles/:id', component: ArticleComponent },
 ];
 
 export const appRoutingProviders: any[] = [];
