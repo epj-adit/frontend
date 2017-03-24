@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {Http}       from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Http }       from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 
-import {Advertisement}           from '../data-classes/advertisement';
+import { Advertisement }           from '../data-classes/advertisement';
 
 @Injectable()
 export class AdvertisementSearchService {

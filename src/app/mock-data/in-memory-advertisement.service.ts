@@ -1,7 +1,7 @@
 // Simulate the behavior of a RESTy web api backed by the simple in-memory data store
 // provided by the injected InMemoryDataService service.
 
-import {InMemoryDbService} from 'angular-in-memory-web-api';
+import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 export class InMemoryAdvertisementService implements InMemoryDbService {
     createDb() {
@@ -33,6 +33,6 @@ export class InMemoryAdvertisementService implements InMemoryDbService {
                 media: []
             },
         ];
-        return {advertisements};
+        return { advertisements };
     }
 }

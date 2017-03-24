@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import {Advertisement} from '../data-classes/advertisement';
-import {AdvertisementService} from '../advertisements/advertisement.service';
+import { Advertisement } from '../data-classes/advertisement';
+import { AdvertisementService } from '../advertisements/advertisement.service';
 
 @Component({
     selector: 'advertisements',
