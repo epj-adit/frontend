@@ -9,7 +9,7 @@ config.devtool = 'inline-source-map';
 
 config.output = {
     path: './dist',
-    publicPath: 'http://localhost:9045/',
+    publicPath: '/',
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
     sourceMapFilename: '[name].map'

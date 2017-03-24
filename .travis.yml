@@ -1,0 +1,27 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+script:
+  # Testing
+  - make tests
+  - make coverage
+  - make upload-coverage
+  # Building
+  - make build
+
+deploy:
+  # Production
+  - provider: script
+    script: make deploy-live
+    skip_cleanup: true
+    on:
+      branch: master
+      tags: true
+  # Development
+  - provider: script
+    script: make deploy-develop
+    skip_cleanup: true
+    on:
+      branch: develop

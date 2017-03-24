@@ -11,6 +11,7 @@
     "lint": "npm run lint:ts && npm run lint:sass",
     "lint:ts": "tslint **/*.ts --exclude node_modules",
     "lint:sass": "sass-lint",
+    "alltests": "npm run pretest && npm run test && npm run posttest",
     "pretest": "rimraf ./coverage && npm run lint",
     "test": "karma start",
     "posttest": "npm run coverage",
