@@ -5,9 +5,7 @@ services:
 
 script:
   # Testing
-  - make tests
-  - make coverage
-  - make upload-coverage
+  - make tests coverage upload-coverage
   # Building
   - make build
 

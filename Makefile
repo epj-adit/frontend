@@ -1,3 +1,4 @@
+# External Variables: SONAR_TOKEN, DOCKER_USERNAME, DOCKER_PASSWORD
 .SILENT:
 
 DOCKER_RUN=docker run -ti --rm --name "engineering-projekt-client-testing" --env NODE_ENV \
@@ -24,27 +25,25 @@ tests: install
 	@echo "===================================================================="
 	@echo "Executeing tests"
 	@echo "===================================================================="
-	# maybe need workaroud, see: https://github.com/karma-runner/karma-chrome-launcher/issues/34
-	#pkill chrome # kill chrome everytime
 	NODE_ENV=test $(DOCKER_RUN) npm run alltests
 
-tests-sonarqube: install
+upload-coverage:
 	@echo "===================================================================="
-	@echo "TODO: Tests for Sonarqube"
+	@echo "Upload Coverage results to Sonarqube"
 	@echo "===================================================================="
-
-	@echo "TODO: Run all tests for sonarqube"
-	# TODO: Work with resulting coverage file
+	sonar-scanner -Dsonar.login=$(SONAR_TOKEN) -Dsonar.branch=$(BRANCH)
 
 build: install
-	@echo "Build the Application"
+	@echo "===================================================================="
+	@echo "Building application and container"
+	@echo "===================================================================="
 	NODE_ENV=prod $(DOCKER_RUN) npm run build
 	docker build -f ci/production/Dockerfile \
 		-t "fabianhauser/engineering-projekt-client" ./
 
 build-container-testing:
 	@echo "===================================================================="
-	@echo "Build testing docker container"
+	@echo "Building testing docker container"
 	@echo "===================================================================="
 	docker build -f ci/testing/Dockerfile \
 		-t "fabianhauser/engineering-projekt-client-testing" ./
@@ -57,11 +56,10 @@ deploy-develop: CONTAINER_SUFFIX=-develop
 deploy-develop: deploy
 
 deploy:
-	[ "$(DEPLOY_SYSTEM)" == "" ] && (echo This target may not be called directly. >&2; false) || true
+	[ "$(DEPLOY_SYSTEM)" != "" ] || (echo "This target may not be called directly." >&2; false)
 	@echo "===================================================================="
 	@echo "Deploy to the $(DEPLOY_SYSTEM) system"
 	@echo "===================================================================="
-
 	docker tag fabianhauser/engineering-projekt-client fabianhauser/engineering-projekt-client$(CONTAINER_SUFFIX):$(VERSION)
 	docker tag fabianhauser/engineering-projekt-client fabianhauser/engineering-projekt-client$(CONTAINER_SUFFIX)
 	docker login -u="$(DOCKER_USERNAME)" -p="$(DOCKER_PASSWORD)"
