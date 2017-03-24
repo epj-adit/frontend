@@ -19,7 +19,7 @@ import {Advertisement} from '../data-classes/advertisement';
     providers: [AdvertisementSearchService]
 })
 export class AdvertisementSearchComponent implements OnInit {
-    advertisement: Observable<Advertisement[]>;
+    advertisements: Observable<Advertisement[]>;
     private searchTerms = new Subject<string>();
 
     constructor(private advertisementSearchService: AdvertisementSearchService,
@@ -32,7 +32,7 @@ export class AdvertisementSearchComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.advertisement = this.searchTerms
+        this.advertisements = this.searchTerms
             .debounceTime(300)        // wait 300ms after each keystroke before considering the term
             .distinctUntilChanged()   // ignore if next search term is same as previous
             .switchMap(term => term   // switch to new observable each time the term changes
