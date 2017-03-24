@@ -49,18 +49,21 @@ build-container-testing:
 	docker build -f ci/testing/Dockerfile \
 		-t "fabianhauser/engineering-projekt-client-testing" ./
 
-deploy-live:
-	@echo "===================================================================="
-	@echo "TODO: Deploy to the live system"
-	@echo "===================================================================="
-	docker tag fabianhauser/engineering-projekt-client fabianhauser/engineering-projekt-client:$(VERSION)
-	docker tag fabianhauser/engineering-projekt-client fabianhauser/engineering-projekt-client
-	docker login -u="$(DOCKER_USERNAME)" -p="$(DOCKER_PASSWORD)"
-	docker push fabianhauser/engineering-projekt-client
-	# Domain: adit.qo.is
+deploy-live: DEPLOY_SYSTEM=live
+deploy-live: deploy
 
-deploy-develop:
+deploy-develop: DEPLOY_SYSTEM=develop
+deploy-develop: CONTAINER_SUFFIX=-develop
+deploy-develop: deploy
+
+deploy:
+	[ "$(DEPLOY_SYSTEM)" == "" ] && (echo This target may not be called directly. >&2; false) || true
 	@echo "===================================================================="
-	@echo "TODO: Deploy to the develop system"
+	@echo "Deploy to the $(DEPLOY_SYSTEM) system"
 	@echo "===================================================================="
-	# Domain develop.adit.qo.is
+
+	docker tag fabianhauser/engineering-projekt-client fabianhauser/engineering-projekt-client$(CONTAINER_SUFFIX):$(VERSION)
+	docker tag fabianhauser/engineering-projekt-client fabianhauser/engineering-projekt-client$(CONTAINER_SUFFIX)
+	docker login -u="$(DOCKER_USERNAME)" -p="$(DOCKER_PASSWORD)"
+	docker push fabianhauser/engineering-projekt-client$(CONTAINER_SUFFIX)
+
