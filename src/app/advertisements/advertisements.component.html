@@ -1,0 +1,13 @@
+<h3>Advertisements</h3>
+
+<ul class="advertisements">
+	<li *ngFor="let advertisement of advertisements">
+		<span>{{advertisement.media}}</span>
+		<span>{{advertisement.title}}</span>
+		<span>{{advertisement.description}}</span>
+		<ul class="tags">
+			<li *ngFor="let tag of advertisement.tags">{{tag.name}}
+			</li>
+		</ul>
+	</li>
+</ul>

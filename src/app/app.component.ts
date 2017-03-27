@@ -1,6 +1,7 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 
-
+import { Advertisement } from './data-classes/advertisement';
+import { AdvertisementService } from './advertisements/advertisement.service';
 /**
  * Styles required here are common for all components (SASS/SCSS versions of normalize.css and flexboxgrid),
  * so encapsulation is not used. Other components have their styles scoped with `ViewEncapsulation.Emulated`.
@@ -12,6 +13,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
     encapsulation: ViewEncapsulation.None,
     providers: []
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+    advertisements: Advertisement[] = [];
 
+    constructor(private advertisementService: AdvertisementService) { }
+
+    ngOnInit(): void {
+        this.advertisementService.getAdvertisements()
+            .then(advertisements => this.advertisements = advertisements);
+    }
 }
