@@ -4,13 +4,14 @@
 		<nav>
 			<ul>
 				<li>
-					<a [routerLink]="['/']" routerLinkActive="active">{{ "appNothingLink" | translate }}</a>
+					<a [routerLink]="['/']" routerLinkActive="active">{{ "APP.appNothingLink" | translate }}</a>
 				</li>
 			</ul>
 		</nav>
 	</header>
 	<main>
 		<div class="content">
+			<p>{{ "APP.welcome" | translate }}</p>
 			<advertisement-search></advertisement-search>
 			<advertisements></advertisements>
 			<router-outlet></router-outlet>

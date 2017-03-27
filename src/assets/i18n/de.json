@@ -1,3 +1,6 @@
 {
-  "appNothingLink": "Nichts"
+  "APP": {
+    "appNothingLink": "Nichts",
+    "welcome" : "Willkommen"
+  }
 }
