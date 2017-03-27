@@ -2,5 +2,11 @@
   "APP": {
     "appNothingLink": "Nothing",
     "welcome": "Welcome"
+  },
+  "ADVERTISEMENT": {
+    "title": "Advertisements"
+  },
+  "ADVERTISEMENTSEARCH": {
+    "title": "Advertisement Search"
   }
 }
