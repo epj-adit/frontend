@@ -4,7 +4,7 @@
 		<nav>
 			<ul>
 				<li>
-					<a [routerLink]="['/']" routerLinkActive="active">None</a>
+					<a [routerLink]="['/']" routerLinkActive="active">{{ "appNothingLink" | translate }}</a>
 				</li>
 			</ul>
 		</nav>
@@ -14,7 +14,17 @@
 			<advertisement-search></advertisement-search>
 			<advertisements></advertisements>
 			<router-outlet></router-outlet>
-			<footer>©adit</footer>
+			<footer>
+				<span>©adit</span>
+				<nav>
+					<ul>
+						<li>
+							<a (click)="changeLang('en')">EN</a>
+							<a (click)="changeLang('de')">DE</a>
+						</li>
+					</ul>
+				</nav>
+			</footer>
 		</div>
 
 	</main>
