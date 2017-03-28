@@ -4,22 +4,20 @@ services:
   - docker
 
 script:
-  # Testing
-  - make tests coverage upload-coverage
-  # Building
+  - make tests coverage
   - make build
 
 deploy:
   # Production
   - provider: script
-    script: make deploy-live
+    script: make upload-coverage deploy-live
     skip_cleanup: true
     on:
       branch: master
       tags: true
   # Development
   - provider: script
-    script: make deploy-develop
+    script: make upload-coverage deploy-develop
     skip_cleanup: true
     on:
       branch: develop

@@ -31,7 +31,7 @@ upload-coverage:
 	@echo "===================================================================="
 	@echo "Upload Coverage results to Sonarqube"
 	@echo "===================================================================="
-	sonar-scanner -Dsonar.login=$(SONAR_KEY) -Dsonar.branch=$(BRANCH)
+	$(DOCKER_RUN) /opt/sonar-scanner/bin/sonar-scanner -X -Dsonar.login=$(SONAR_KEY) -Dsonar.branch=$(BRANCH)
 
 build: install
 	@echo "===================================================================="
