@@ -13,7 +13,7 @@
     "lint:sass": "sass-lint",
     "alltests": "npm run pretest && npm run test && npm run posttest",
     "pretest": "rimraf ./coverage && npm run lint",
-    "test": "karma start",
+    "test": "karma start --no-fail-on-empty-test-suite",
     "posttest": "npm run coverage",
     "coverage": "npm run coverage:remap && npm run coverage:report",
     "coverage:remap": "remap-istanbul -i coverage/coverage.json -o coverage/coverage.json -t json -e node_modules,tests,karma.entry.ts",
