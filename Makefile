@@ -60,8 +60,13 @@ deploy:
 	@echo "===================================================================="
 	@echo "Deploy to the $(DEPLOY_SYSTEM) system"
 	@echo "===================================================================="
+	@Echo Push docker image with new tags
 	docker tag fabianhauser/engineering-projekt-client fabianhauser/engineering-projekt-client$(CONTAINER_SUFFIX):$(VERSION)
 	docker tag fabianhauser/engineering-projekt-client fabianhauser/engineering-projekt-client$(CONTAINER_SUFFIX)
 	docker login -u="$(DOCKER_USERNAME)" -p="$(DOCKER_PASSWORD)"
 	docker push fabianhauser/engineering-projekt-client$(CONTAINER_SUFFIX)
 
+	@echo "Trigger container pull on server"
+	echo ${SSH_KEY} | base64 -d > id_ed25519
+	ssh -i id_ed25519 rollator-epj-client$(CONTAINER_SUFFIX)@adit.qo.is
+	rm id_ed25519
