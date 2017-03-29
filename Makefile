@@ -67,6 +67,8 @@ deploy:
 	docker push fabianhauser/engineering-projekt-client$(CONTAINER_SUFFIX)
 
 	@echo "Trigger container pull on server"
-	echo ${SSH_KEY} | base64 -d > id_ed25519
-	ssh -o "StrictHostKeyChecking no" -i id_ed25519 rollator-epj-client$(CONTAINER_SUFFIX)@adit.qo.is
+	echo ${SSH_KEY} | base64 -d > id_ed25519 && chmod 700 id_ed25519
+	@echo "Execute ssh trigger..."
+	ssh -o "StrictHostKeyChecking no" -q -i id_ed25519 rollator-epj-client$(CONTAINER_SUFFIX)@adit.qo.is
+	@echo "done."
 	rm id_ed25519
