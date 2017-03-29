@@ -10,14 +10,16 @@ script:
 deploy:
   # Production
   - provider: script
-    script: make upload-coverage deploy-live
+    # upload-coverage
+    script: make deploy-live
     skip_cleanup: true
     on:
       branch: master
       tags: true
   # Development
   - provider: script
-    script: make upload-coverage deploy-develop
+    # upload-coverage
+    script: make deploy-develop
     skip_cleanup: true
     on:
       branch: develop
