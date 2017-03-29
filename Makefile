@@ -2,7 +2,8 @@
 .SILENT:
 
 DOCKER_RUN=docker run -ti --rm --name "engineering-projekt-client-testing" --env NODE_ENV \
-		   --volume "$(shell pwd):/home/node/project" fabianhauser/engineering-projekt-client-testing
+		   --volume "$(shell pwd)/.npm:/home/node/.npm" --volume "$(shell pwd):/home/node/project" \
+		   fabianhauser/engineering-projekt-client-testing
 
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 VERSION=$(shell ./ci/version.bash)

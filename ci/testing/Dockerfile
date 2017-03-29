@@ -25,4 +25,5 @@ RUN /bin/bash -c 'echo "export PATH=/home/node/project/node_modules/.bin:/opt/so
 USER node
 
 VOLUME [ "/home/node/project" ]
+VOLUME [ "/home/node/.npm" ]
 WORKDIR /home/node/project
