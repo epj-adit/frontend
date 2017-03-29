@@ -26,17 +26,18 @@ header {
     height: auto;
     margin-right: 1em;
   }
-  nav > ul > li {
-    list-style-type: none;
-    a {
-      color: white;
-      text-decoration: none;
-      &:visited {
-        color: black;
-      }
-      &:hover {
-        color: $highlightcolor;
-      }
+}
+
+nav > ul > li {
+  list-style-type: none;
+  a {
+    color: white;
+    text-decoration: none;
+    &:visited {
+      color: black;
+    }
+    &:hover {
+      color: $highlightcolor;
     }
   }
 }

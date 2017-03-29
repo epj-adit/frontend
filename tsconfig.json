@@ -9,10 +9,9 @@
     "removeComments": false,
     "noEmitHelpers": true,
     "sourceMap": true
-   // "types": ["node", "lodash"]
   },
   "include": [
-    "src/*.ts",
+    "src/**/*.ts",
     "node_modules/@types/**/index.d.ts"
   ],
   "compileOnSave": false,

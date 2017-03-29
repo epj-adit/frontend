@@ -5,6 +5,7 @@ import {Category} from './category';
 import {Media} from './media';
 
 export class Advertisement {
+    id: number;
     title: String;
     price: number;
     description: String;

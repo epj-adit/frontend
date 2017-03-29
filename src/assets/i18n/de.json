@@ -1,0 +1,12 @@
+{
+  "APP": {
+    "appNothingLink": "Nichts",
+    "welcome" : "Willkommen"
+  },
+  "ADVERTISEMENT": {
+    "title": "Inserate"
+  },
+  "ADVERTISEMENTSEARCH": {
+    "title": "Inserat Suche"
+  }
+}
