@@ -36,6 +36,8 @@
     "@angular/platform-browser": "2.4.4",
     "@angular/platform-browser-dynamic": "2.4.4",
     "@angular/router": "3.4.4",
+    "@ngx-translate/core": "^6.0.1",
+    "@ngx-translate/http-loader": "0.0.3",
     "@types/core-js": "0.9.35",
     "@types/jasmine": "2.5.41",
     "@types/lodash": "4.14.50",
@@ -85,7 +87,5 @@
     "zone.js": "0.7.6"
   },
   "dependencies": {
-    "@ngx-translate/core": "^6.0.1",
-    "@ngx-translate/http-loader": "0.0.3"
   }
 }
