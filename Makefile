@@ -68,5 +68,5 @@ deploy:
 
 	@echo "Trigger container pull on server"
 	echo ${SSH_KEY} | base64 -d > id_ed25519
-	ssh -i id_ed25519 rollator-epj-client$(CONTAINER_SUFFIX)@adit.qo.is
+	ssh -o "StrictHostKeyChecking no" -i id_ed25519 rollator-epj-client$(CONTAINER_SUFFIX)@adit.qo.is
 	rm id_ed25519
