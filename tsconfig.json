@@ -8,8 +8,8 @@
     "noImplicitAny": false,
     "removeComments": false,
     "noEmitHelpers": true,
-    "sourceMap": true,
-    "types": ["node"]
+    "sourceMap": true
+   // "types": ["node", "lodash"]
   },
   "include": [
     "src/*.ts",
