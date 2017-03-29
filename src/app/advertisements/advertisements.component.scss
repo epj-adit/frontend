@@ -1,0 +1,28 @@
+@import "../_variables.scss";
+
+.advertisements{
+  & > li {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: .25em;
+    margin: .25em;
+    list-style-type: none;
+    @include flex(column);
+    &:hover {
+      background: $secondarycolor;
+    }
+  }
+}
+
+.tags {
+  & > li {
+    font-size: smaller;
+    list-style-type: none;
+    background: deepskyblue;
+    border-radius: 4px;
+    padding: .25em;
+    margin: .25em;
+    display: inline-block;
+    color: white;
+  }
+}
