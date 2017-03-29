@@ -60,7 +60,7 @@ deploy:
 	@echo "===================================================================="
 	@echo "Deploy to the $(DEPLOY_SYSTEM) system"
 	@echo "===================================================================="
-	@Echo Push docker image with new tags
+	@echo Push docker image with new tags
 	docker tag fabianhauser/engineering-projekt-client fabianhauser/engineering-projekt-client$(CONTAINER_SUFFIX):$(VERSION)
 	docker tag fabianhauser/engineering-projekt-client fabianhauser/engineering-projekt-client$(CONTAINER_SUFFIX)
 	docker login -u="$(DOCKER_USERNAME)" -p="$(DOCKER_PASSWORD)"
