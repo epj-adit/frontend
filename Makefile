@@ -1,4 +1,4 @@
-# External Variables: SONAR_TOKEN, DOCKER_USERNAME, DOCKER_PASSWORD
+# External Variables: SSH_KEY, SONAR_KEY, DOCKER_USERNAME, DOCKER_PASSWORD
 .SILENT:
 
 DOCKER_RUN=docker run -ti --rm --name "engineering-projekt-client-testing" --env NODE_ENV \
