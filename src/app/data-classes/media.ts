@@ -1,5 +1,5 @@
 export class Media {
-    id: number;
-    filename: string;
-    description: string;
+  id: number;
+  filename: string;
+  description: string;
 }

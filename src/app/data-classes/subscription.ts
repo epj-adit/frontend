@@ -1,10 +1,10 @@
-import {Category} from './category';
-import {User} from './user';
+import { Category } from './category';
+import { User } from './user';
 
 export class Subscription {
-    id: number;
-    interval: number;
-    lastUpdated: Date;
-    category: Category;
-    user: User;
+  id: number;
+  interval: number;
+  lastUpdated: Date;
+  category: Category;
+  user: User;
 }
