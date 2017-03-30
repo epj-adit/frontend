@@ -14,12 +14,12 @@ html, body {
 
 .container {
   @include flex(column, flex-start, stretch);
-  height: 100%;
+  min-height: 100vh;
 }
 
 header {
   @include flex(row, space-between, center);
-  flex: 1 0 10%;
+  flex: 0 0 10%;
   @include gradient($maincolor, rgb(193,193,193), -45deg);
   height: 50px;
   padding: 5px;
@@ -49,16 +49,12 @@ nav > ul > li {
 
 main {
   @include flex(row, space-around);
-  @include gradient(rgb(230,230,230),$secondarycolor, top);
-  flex: 1 1 100%;
+  flex: 1;
   padding-top: 50px;
   .content {
-    @include shadow();
     flex: 0 1 100%;
     background-color: white;
     padding: 1rem;
-
-    height: 100%;
   }
 }
 
@@ -84,11 +80,9 @@ footer {
 @media (min-width: 700px){
   main {
     @include flex(row, space-around);
-    @include gradient(rgb(230,230,230),$secondarycolor, top);
     flex: 1 1 100%;
     padding-top: 50px;
     .content {
-      @include shadow();
       flex: 0 1 65%;
       background-color: white;
       padding: 1rem;
