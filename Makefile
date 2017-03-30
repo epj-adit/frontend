@@ -2,7 +2,8 @@
 .SILENT:
 
 DOCKER_RUN=docker run -ti --rm --name "engineering-projekt-client-testing" --env NODE_ENV \
-		   --volume "$(shell pwd):/home/node/project" fabianhauser/engineering-projekt-client-testing
+		   --volume "$(shell pwd)/.npm:/home/node/.npm" --volume "$(shell pwd):/home/node/project" \
+		   fabianhauser/engineering-projekt-client-testing
 
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 VERSION=$(shell ./ci/version.bash)
@@ -60,13 +61,15 @@ deploy:
 	@echo "===================================================================="
 	@echo "Deploy to the $(DEPLOY_SYSTEM) system"
 	@echo "===================================================================="
-	@Echo Push docker image with new tags
+	@echo Push docker image with new tags
 	docker tag fabianhauser/engineering-projekt-client fabianhauser/engineering-projekt-client$(CONTAINER_SUFFIX):$(VERSION)
 	docker tag fabianhauser/engineering-projekt-client fabianhauser/engineering-projekt-client$(CONTAINER_SUFFIX)
 	docker login -u="$(DOCKER_USERNAME)" -p="$(DOCKER_PASSWORD)"
 	docker push fabianhauser/engineering-projekt-client$(CONTAINER_SUFFIX)
 
 	@echo "Trigger container pull on server"
-	echo ${SSH_KEY} | base64 -d > id_ed25519
-	ssh -i id_ed25519 rollator-epj-client$(CONTAINER_SUFFIX)@adit.qo.is
+	echo ${SSH_KEY} | base64 -d > id_ed25519 && chmod 700 id_ed25519
+	@echo "Execute ssh trigger..."
+	ssh -o "StrictHostKeyChecking no" -q -i id_ed25519 rollator-epj-client$(CONTAINER_SUFFIX)@adit.qo.is
+	@echo "done."
 	rm id_ed25519
