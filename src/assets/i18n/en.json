@@ -1,6 +1,7 @@
 {
   "APP": {
-    "appNothingLink": "Nothing",
+    "searchLink": "Search",
+    "advertisementsLink": "Advertisements",
     "welcome": "Welcome"
   },
   "ADVERTISEMENT": {

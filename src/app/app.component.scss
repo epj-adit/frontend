@@ -35,6 +35,8 @@ header {
 
 nav > ul > li {
   list-style-type: none;
+  display: inline;
+  padding: 0 0.5em;
   a {
     color: white;
     text-decoration: none;
@@ -87,13 +89,5 @@ footer {
       background-color: white;
       padding: 1rem;
     }
-  }
-  footer {
-    height: 5em;
-    padding: 1em;
-    background-color: $footercolor;
-    color: white;
-    font-size: small;
-    border-top: 1px solid $maincolor;
   }
 }

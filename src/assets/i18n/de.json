@@ -1,7 +1,8 @@
 {
   "APP": {
-    "appNothingLink": "Nichts",
-    "welcome" : "Willkommen"
+    "searchLink": "Suche",
+    "advertisementsLink": "Inserate",
+    "welcome": "Willkommen"
   },
   "ADVERTISEMENT": {
     "title": "Inserate"

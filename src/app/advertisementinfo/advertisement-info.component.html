@@ -1,0 +1,11 @@
+<div>
+	<div class="ad-content">
+		<h4>{{advertisement?.title}}</h4>
+		<p>{{advertisement?.description}}</p>
+	</div>
+	<div class="media">
+		<span *ngFor="let med of advertisement?.media">
+			<img [src]="getMedia(med)" width="30em"/>
+		</span>
+	</div>
+</div>

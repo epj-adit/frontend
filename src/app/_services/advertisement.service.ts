@@ -24,5 +24,10 @@ export class AdvertisementService {
         return Promise.reject(error.message || error);
     }
 
-    // TODO: getSingleAd, create, update, delete
+    getAdvertisement(id: number): Promise<Advertisement> {
+        return this.getAdvertisements()
+          .then(advertisements => advertisements.find(advertisement => advertisement.id === id));
+    }
+
+    // TODO: create, update, delete
 }

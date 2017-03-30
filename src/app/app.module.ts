@@ -13,6 +13,8 @@ import { AdvertisementService } from './_services/advertisement.service';
 import { AppComponent } from './app.component';
 import { AdvertisementSearchComponent } from './search/advertisement-search.component';
 import { AdvertisementComponent } from './advertisements/advertisements.component';
+import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-info.component';
+
 
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http);
@@ -37,7 +39,8 @@ export function HttpLoaderFactory(http: Http) {
   declarations: [
     AppComponent,
     AdvertisementSearchComponent,
-    AdvertisementComponent
+    AdvertisementComponent,
+    AdvertisementInfoComponent
   ],
   providers: [appRoutingProviders, AdvertisementService],
   bootstrap: [AppComponent]

@@ -46,4 +46,9 @@ export class AdvertisementSearchComponent implements OnInit {
         return Observable.of<Advertisement[]>([]);
       });
   }
+
+  gotoInfo(advertisement: Advertisement): void {
+    let link = ['/advertisement', advertisement.id];
+    this.router.navigate(link);
+  }
 }

@@ -4,18 +4,17 @@
 		<nav>
 			<ul>
 				<li>
-					<a [routerLink]="['/']" routerLinkActive="active">{{ "APP.appNothingLink" | translate }}</a>
+					<a [routerLink]="['/search']" routerLinkActive="active">{{ "APP.searchLink" | translate }}</a>
+				</li>
+				<li>
+					<a [routerLink]="['/advertisements']" routerLinkActive="active">{{ "APP.advertisementsLink" | translate }}</a>
 				</li>
 			</ul>
 		</nav>
 	</header>
 	<main>
 		<div class="content">
-			<p>{{ "APP.welcome" | translate }}</p>
-			<adit-advertisementsearch></adit-advertisementsearch>
-			<adit-advertisements></adit-advertisements>
 			<router-outlet></router-outlet>
-
 		</div>
 
 	</main>
@@ -25,6 +24,8 @@
 			<ul>
 				<li>
 					<a (click)="changeLang('en')">EN</a>
+				</li>
+				<li>
 					<a (click)="changeLang('de')">DE</a>
 				</li>
 			</ul>

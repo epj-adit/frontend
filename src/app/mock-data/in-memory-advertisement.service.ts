@@ -17,7 +17,11 @@ export class InMemoryAdvertisementService implements InMemoryDbService {
                 tags: [{id: 20, name: "Informatik"}, {id: 21, name:"Bsys"}],
                 advertiser: 1,
                 category: null,
-                media: []
+                media: [{
+                    id: 100,
+                    filename: "test",
+                    desciption: "blubb"
+                }]
             },
             {
                 id: 11,
