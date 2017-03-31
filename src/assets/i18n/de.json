@@ -2,6 +2,7 @@
   "APP": {
     "searchLink": "Suche",
     "advertisementsLink": "Inserate",
+    "advertisementLink": "Inserat erstellen",
     "welcome": "Willkommen"
   },
   "ADVERTISEMENT": {

@@ -4,10 +4,22 @@
 		<nav>
 			<ul>
 				<li>
-					<a [routerLink]="['/search']" routerLinkActive="active"><fa [name]="'search'"></fa>{{ "APP.searchLink" | translate }}</a>
+					<a [routerLink]="['/search']" routerLinkActive="active">
+						<fa [name]="'search'"></fa>
+						{{ "APP.searchLink" | translate }}
+					</a>
 				</li>
 				<li>
-					<a [routerLink]="['/advertisements']" routerLinkActive="active"><fa [name]="'files-o'"></fa>{{ "APP.advertisementsLink" | translate }}</a>
+					<a [routerLink]="['/advertisements']" routerLinkActive="active">
+						<fa [name]="'files-o'"></fa>
+						{{ "APP.advertisementsLink" | translate }}
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/advertisement']" routerLinkActive="active">
+						<fa [name]="'plus-square-o'"></fa>
+						{{ "APP.advertisementLink" | translate }}
+					</a>
 				</li>
 			</ul>
 		</nav>

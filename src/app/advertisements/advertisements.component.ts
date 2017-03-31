@@ -9,7 +9,7 @@ import { AdvertisementService } from '../_services/advertisement.service';
   templateUrl: './advertisements.component.html',
   styleUrls: ['./advertisements.component.scss']
 })
-export class AdvertisementComponent implements OnInit {
+export class AdvertisementsComponent implements OnInit {
   advertisements: Advertisement[];
 
   constructor(private router: Router,
@@ -21,7 +21,7 @@ export class AdvertisementComponent implements OnInit {
   }
 
   gotoInfo(advertisement: Advertisement): void {
-    let link = ['/advertisement', advertisement.id];
+    let link = ['/advertisementinfo', advertisement.id];
     this.router.navigate(link);
   }
 

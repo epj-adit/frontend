@@ -14,8 +14,9 @@ import { AdvertisementService } from './_services/advertisement.service';
 
 import { AppComponent } from './app.component';
 import { AdvertisementSearchComponent } from './search/advertisement-search.component';
-import { AdvertisementComponent } from './advertisements/advertisements.component';
+import { AdvertisementsComponent } from './advertisements/advertisements.component';
 import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-info.component';
+import { AdvertisementComponent } from './advertisement/advertisement.component';
 
 
 export function HttpLoaderFactory(http: Http) {
@@ -43,6 +44,7 @@ export function HttpLoaderFactory(http: Http) {
     AppComponent,
     AdvertisementSearchComponent,
     AdvertisementComponent,
+    AdvertisementsComponent,
     AdvertisementInfoComponent
   ],
   providers: [appRoutingProviders, AdvertisementService],

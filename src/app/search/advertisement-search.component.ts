@@ -48,7 +48,7 @@ export class AdvertisementSearchComponent implements OnInit {
   }
 
   gotoInfo(advertisement: Advertisement): void {
-    let link = ['/advertisement', advertisement.id];
+    let link = ['/advertisementinfo', advertisement.id];
     this.router.navigate(link);
   }
 }

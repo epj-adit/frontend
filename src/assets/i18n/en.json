@@ -2,6 +2,7 @@
   "APP": {
     "searchLink": "Search",
     "advertisementsLink": "Advertisements",
+    "advertisementLink": "create Advertisement",
     "welcome": "Welcome"
   },
   "ADVERTISEMENT": {
