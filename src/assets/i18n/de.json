@@ -14,5 +14,13 @@
   "ADINFO": {
     "privateMessagingLink": "Private Nachricht",
     "emailLink": "E-Mail"
+  },
+  "AD": {
+    "title": "Inserat erfassen",
+    "titleField": "Titel",
+    "category": "Kategorie",
+    "tags": "Tags",
+    "description": "Beschreibung",
+    "price": "Preis"
   }
 }

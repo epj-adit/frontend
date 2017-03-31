@@ -6,14 +6,25 @@ import { Media } from './media';
 
 export class Advertisement {
   id: number;
-  title: String;
+  title: string;
   price: number;
-  description: String;
+  description: string;
   advertisementState: AdvertisementState;
   created: Date;
   updated: Date;
   tags: Tag[];
   advertiser: User;
   category: Category;
-  media: Media[]
+  media: Media[];
+
+  //TODO: add advertiser, created, updated
+  constructor(id: number, title: string, price: number, description: string, category: Category, tags: Tag[], media?: Media[]) {
+      this.id = id;
+      this.title = title;
+      this.price = price;
+      this.description = description;
+      this.tags = tags;
+      this.media = media;
+      this.category = category;
+  }
 }

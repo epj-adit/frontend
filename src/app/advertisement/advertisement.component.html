@@ -1,0 +1,34 @@
+<div class="container">
+	{{diagnostic}}
+	<h2>{{ "AD.title" | translate }}</h2>
+	<form>
+		<div class="form-group">
+			<label for="title">{{ "AD.titleField" | translate }}</label>
+			<input type="text" class="form-control" id="title" required
+				   [(ngModel)]="model.title" name="title">
+		</div>
+		<div class="form-group">
+			<label for="category">{{ "AD.category" | translate }}</label>
+			<select class="form-control" id="category" required
+					[(ngModel)]="model.category" name="category">
+				<option *ngFor="let cat of category" [value]="cat">{{cat}}</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="description">{{ "AD.description" | translate }}</label>
+			<input type="text" class="form-control" id="description" required
+				   [(ngModel)]="model.description" name="description">
+		</div>
+		<div class="form-group">
+			<label for="price">{{ "AD.price" | translate }}</label>
+			<input type="text" class="form-control" id="price" required
+				   [(ngModel)]="model.price" name="price">
+		</div>
+		<div class="form-group">
+			<span *ngFor="let tag of tags" class="tag">{{tag.name}}</span>
+			<label for="tags">{{ "AD.tags" | translate }}</label>
+			<input type="text" class="form-control" id="tags" required #tag (keyup.enter)="addTag(tag.value)">
+		</div>
+		<button type="submit" class="btn btn-success">Submit</button>
+	</form>
+</div>

@@ -14,5 +14,13 @@
   "ADINFO": {
     "privateMessagingLink": "Private Message",
     "emailLink": "e-Mail"
+  },
+  "AD": {
+    "title": "create Advertisement",
+    "titleField": "Title",
+    "category": "Category",
+    "tags": "Tags",
+    "description": "Description",
+    "price": "Price"
   }
 }
