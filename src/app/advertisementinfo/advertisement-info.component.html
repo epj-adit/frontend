@@ -1,19 +1,21 @@
-<div>
-	<div class="ad-content">
-		<h4>{{advertisement?.title}}</h4>
-		<p>{{advertisement?.description}}</p>
+<div class="ad-info">
+	<div class="ad-title">
+		<h3>{{advertisement?.title}}</h3>
 		<span>{{advertisement?.price}}</span>
+	</div>
+	<div class="ad-content">
+		<p>{{advertisement?.description}}</p>
 	</div>
 	<div class="ad-tags">
 		<span *ngFor="let tag of advertisement?.tags">{{tag?.name}}</span>
 	</div>
 	<div class="ad-media">
 		<span *ngFor="let med of advertisement?.media">
-			<img [src]="getMedia(med)" width="30em"/>
+			<img [src]="getMedia(med)" alt="{{med.description}}"/>
 		</span>
 	</div>
 	<div class="ad-buttons">
-		<button>{{ "ADINFO.privateMessagingLink" | translate }}</button>
-		<button>{{ "ADINFO.emailLink" | translate }}</button>
+		<a>{{ "ADINFO.privateMessagingLink" | translate }}</a>
+		<a>{{ "ADINFO.emailLink" | translate }}</a>
 	</div>
 </div>

@@ -10,7 +10,7 @@ export class InMemoryAdvertisementService implements InMemoryDbService {
                 id: 10,
                 title: "Bsys Buch",
                 price: 1,
-                description: "Bsys Buch von E. Glatz für Bsys1&2",
+                description: "Bsys Buch von E. Glatz für Bsys1&2. Auflage 3, 2015",
                 advertisementState: null,
                 created: Date.now(),
                 updated: Date.now(),
@@ -19,6 +19,10 @@ export class InMemoryAdvertisementService implements InMemoryDbService {
                 category: null,
                 media: [{
                     id: 100,
+                    filename: "test",
+                    desciption: "blubb"
+                }, {
+                    id: 101,
                     filename: "test",
                     desciption: "blubb"
                 }]

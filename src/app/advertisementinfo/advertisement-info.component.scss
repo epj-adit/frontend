@@ -1,0 +1,48 @@
+@import "../_variables.scss";
+
+.ad-info {
+  border: 1px solid black;
+  border-radius: 1em;
+  padding: 1em;
+
+}
+
+.ad-buttons > a {
+  padding: 0.25em;
+  border: 1px solid $maincolor;
+  border-radius: 0.2em;
+  cursor: pointer;
+  color: #333;
+  &:hover {
+    background-color: $secondarycolor;
+    @include shadow();
+  }
+}
+
+.ad-title {
+  @include flex(row, space-between);
+  padding-bottom: 1em;
+}
+
+.ad-tags {
+  margin: 2em 0;
+  & > span {
+    background-color: #d9534f;
+    border-radius: 0.25em;
+    color: white;
+    padding: .2em .6em .3em;
+    margin: 0 0.5em 0 0;
+    font-weight: bold;
+    font-size: 75%;
+  }
+}
+
+.ad-media > span {
+  & > img {
+    max-width: 4em;
+    border: 1px solid $secondarycolor;
+    border-radius: 5px;
+    margin-bottom: 1em;
+    padding: 0.5em;
+  }
+}
