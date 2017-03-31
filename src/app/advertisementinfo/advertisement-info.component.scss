@@ -27,7 +27,7 @@
 .ad-tags {
   margin: 2em 0;
   & > span {
-    @extend .tag;
+    @include tag();
   }
 }
 

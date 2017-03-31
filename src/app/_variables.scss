@@ -30,7 +30,7 @@ $font: "Segoe UI", sans-serif;
   }
 }
 
-.tag {
+@mixin tag() {
   background-color: $highlightcolor;
   border-radius: 0.25em;
   color: white;

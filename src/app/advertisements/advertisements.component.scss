@@ -27,5 +27,5 @@
 .tags > li {
   list-style-type: none;
   display: inline-block;
-  @extend .tag;
+  @include tag();
 }
