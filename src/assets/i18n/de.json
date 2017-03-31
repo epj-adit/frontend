@@ -9,5 +9,9 @@
   },
   "ADVERTISEMENTSEARCH": {
     "title": "Inserat Suche"
+  },
+  "ADINFO": {
+    "privateMessagingLink": "Private Nachricht",
+    "emailLink": "E-Mail"
   }
 }

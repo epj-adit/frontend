@@ -2,10 +2,18 @@
 	<div class="ad-content">
 		<h4>{{advertisement?.title}}</h4>
 		<p>{{advertisement?.description}}</p>
+		<span>{{advertisement?.price}}</span>
 	</div>
-	<div class="media">
+	<div class="ad-tags">
+		<span *ngFor="let tag of advertisement?.tags">{{tag?.name}}</span>
+	</div>
+	<div class="ad-media">
 		<span *ngFor="let med of advertisement?.media">
 			<img [src]="getMedia(med)" width="30em"/>
 		</span>
+	</div>
+	<div class="ad-buttons">
+		<button>{{ "ADINFO.privateMessagingLink" | translate }}</button>
+		<button>{{ "ADINFO.emailLink" | translate }}</button>
 	</div>
 </div>
