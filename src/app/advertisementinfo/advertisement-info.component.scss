@@ -27,13 +27,7 @@
 .ad-tags {
   margin: 2em 0;
   & > span {
-    background-color: #d9534f;
-    border-radius: 0.25em;
-    color: white;
-    padding: .2em .6em .3em;
-    margin: 0 0.5em 0 0;
-    font-weight: bold;
-    font-size: 75%;
+    @extend .tag;
   }
 }
 

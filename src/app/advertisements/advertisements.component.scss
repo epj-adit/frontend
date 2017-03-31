@@ -1,28 +1,31 @@
 @import "../_variables.scss";
 
-.advertisements{
+.advertisements {
+  cursor: pointer;
   & > li {
-    border: 1px solid black;
-    border-radius: 4px;
-    padding: .25em;
-    margin: .25em;
     list-style-type: none;
-    @include flex(column);
-    &:hover {
-      background: $secondarycolor;
-    }
   }
 }
 
-.tags {
-  & > li {
-    font-size: smaller;
-    list-style-type: none;
-    background: deepskyblue;
-    border-radius: 4px;
-    padding: .25em;
-    margin: .25em;
-    display: inline-block;
-    color: white;
+.advertisement {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 0.5em;
+  margin: .25em;
+  @include flex(column);
+  &:hover {
+    background: $secondarycolor;
   }
+  & > h4 {
+    margin-bottom: 0.5em;
+  }
+  & > .tags {
+    margin-top: 0.5em;
+  }
+}
+
+.tags > li {
+  list-style-type: none;
+  display: inline-block;
+  @extend .tag;
 }

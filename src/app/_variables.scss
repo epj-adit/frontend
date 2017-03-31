@@ -1,6 +1,6 @@
 $maincolor: #A0A0A0;
 $secondarycolor: #f2f2f2;
-$highlightcolor: #ED1C24;
+$highlightcolor: #d9534f;
 $footercolor: #263238;
 $font: "Segoe UI", sans-serif;
 
@@ -28,6 +28,16 @@ $font: "Segoe UI", sans-serif;
   } @else {
     background: linear-gradient(135deg,  $color1 47%,$color2 100%);
   }
+}
+
+.tag {
+  background-color: $highlightcolor;
+  border-radius: 0.25em;
+  color: white;
+  padding: .2em .6em .3em;
+  margin: 0 0.5em 0 0;
+  font-weight: bold;
+  font-size: 75%;
 }
 
 

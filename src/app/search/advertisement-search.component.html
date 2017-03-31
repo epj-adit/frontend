@@ -1,5 +1,5 @@
 <div id="search-component">
-	<h3>{{"ADVERTISEMENTSEARCH.title" | translate}}</h3>
+	<h2>{{"ADVERTISEMENTSEARCH.title" | translate}}</h2>
 	<input #searchBox id="search-box" (keyup)="search(searchBox.value)"/>
 	<div>
 		<div *ngFor="let advertisement of advertisements | async"

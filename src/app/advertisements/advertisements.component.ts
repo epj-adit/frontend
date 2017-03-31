@@ -20,6 +20,11 @@ export class AdvertisementComponent implements OnInit {
     this.advertisementService.getAdvertisements().then(advertisements => this.advertisements = advertisements);
   }
 
+  gotoInfo(advertisement: Advertisement): void {
+    let link = ['/advertisement', advertisement.id];
+    this.router.navigate(link);
+  }
+
   ngOnInit(): void {
     this.getAdvertisements();
   }
