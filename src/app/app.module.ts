@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
+
 
 import { routing, appRoutingProviders }  from './app.routing';
 import { InMemoryAdvertisementService } from './mock-data/in-memory-advertisement.service';
@@ -26,6 +28,7 @@ export function HttpLoaderFactory(http: Http) {
     FormsModule,
     HttpModule,
     JsonpModule,
+    Angular2FontawesomeModule,
     InMemoryWebApiModule.forRoot(InMemoryAdvertisementService, {passThruUnknownUrl: true}),
     TranslateModule.forRoot({
       loader: {

@@ -1,12 +1,13 @@
 <div class="ad-info">
 	<div class="ad-title">
 		<h3>{{advertisement?.title}}</h3>
-		<span>{{advertisement?.price}}</span>
+		<span><fa [name]="'tags'"></fa>{{advertisement?.price}}</span>
 	</div>
 	<div class="ad-content">
 		<p>{{advertisement?.description}}</p>
 	</div>
 	<div class="ad-tags">
+		<fa [name]="'hashtag'"></fa>
 		<span *ngFor="let tag of advertisement?.tags">{{tag?.name}}</span>
 	</div>
 	<div class="ad-media">
