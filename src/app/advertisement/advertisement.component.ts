@@ -12,8 +12,10 @@ import { Tag } from "../data-classes/tag";
   providers: [AdvertisementService]
 })
 export class AdvertisementComponent {
+  // TODO:read av. categories from DB
   category = ['Bücher', 'WG-Zimmer', 'Jobs'];
   tags: Tag[] = [];
+  tagValue: string = '';
 
   model = new Advertisement(1, "My Ad", 1, "My Description", new Category(this.category[0]), this.tags);
 
@@ -23,8 +25,9 @@ export class AdvertisementComponent {
     this.submitted = true;
   }
 
-  addTag(tag: string){
-    this.tags.push(new Tag(tag));
+  addTag(){
+    this.tags.push(new Tag(this.tagValue));
+    this.tagValue = '';
   }
 
   // TODO: Remove this when we're done

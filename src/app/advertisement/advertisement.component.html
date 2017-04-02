@@ -24,11 +24,12 @@
 			<input type="text" class="form-control" id="price" required
 				   [(ngModel)]="model.price" name="price">
 		</div>
+		<span *ngFor="let tag of tags" class="tag">{{tag.name}}</span>
 		<div class="form-group">
-			<span *ngFor="let tag of tags" class="tag">{{tag.name}}</span>
 			<label for="tags">{{ "AD.tags" | translate }}</label>
-			<input type="text" class="form-control" id="tags" required #tag (keyup.enter)="addTag(tag.value)">
+			<input type="text" class="form-control" id="tags"
+				   [(ngModel)]="tagValue" name="tags" (keyup.enter)="addTag()">
 		</div>
-		<button type="submit" class="btn btn-success">Submit</button>
+		<button type="submit" class="submit">Submit</button>
 	</form>
 </div>
