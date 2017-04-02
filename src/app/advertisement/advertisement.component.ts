@@ -17,7 +17,7 @@ export class AdvertisementComponent {
   tags: Tag[] = [];
   tagValue: string = '';
 
-  model = new Advertisement(1, "My Ad", 1, "My Description", new Category(this.category[0]), this.tags);
+  model = new Advertisement(1, "", null, "", null, this.tags);
 
   submitted = false;
 
@@ -25,7 +25,7 @@ export class AdvertisementComponent {
     this.submitted = true;
   }
 
-  addTag(){
+  addTag(): void{
     this.tags.push(new Tag(this.tagValue));
     this.tagValue = '';
   }

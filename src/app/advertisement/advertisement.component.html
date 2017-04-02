@@ -1,7 +1,8 @@
 <div class="container">
 	{{diagnostic}}
 	<h2>{{ "AD.title" | translate }}</h2>
-	<form>
+	<form (ngSubmit)="onSubmit()" #adForm="ngForm">
+		<!-- TODO: add custom error messages https://angular.io/docs/ts/latest/guide/forms.html -->
 		<div class="form-group">
 			<label for="title">{{ "AD.titleField" | translate }}</label>
 			<input type="text" class="form-control" id="title" required
@@ -30,6 +31,6 @@
 			<input type="text" class="form-control" id="tags"
 				   [(ngModel)]="tagValue" name="tags" (keyup.enter)="addTag()">
 		</div>
-		<button type="submit" class="submit">Submit</button>
+		<button type="submit" class="submit" [disabled]="!adForm.form.valid">Submit</button>
 	</form>
 </div>
