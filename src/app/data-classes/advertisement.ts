@@ -17,7 +17,7 @@ export class Advertisement {
   category: Category;
   media: Media[];
 
-  //TODO: add advertiser, created, updated
+  // TODO: add advertiser, created, updated
   constructor(id: number, title: string, price: number, description: string, category: Category, tags: Tag[], media?: Media[]) {
       this.id = id;
       this.title = title;
@@ -26,5 +26,8 @@ export class Advertisement {
       this.tags = tags;
       this.media = media;
       this.category = category;
+      this.advertiser = null;
+      this.created = new Date(Date.now());
+      this.updated = new Date(Date.now());
   }
 }

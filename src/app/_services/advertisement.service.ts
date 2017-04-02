@@ -4,30 +4,52 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Advertisement } from '../data-classes/advertisement';
+import { Category } from "../data-classes/category";
+import { Media } from "../data-classes/media";
+import { Tag } from "../data-classes/tag";
 
 @Injectable()
 export class AdvertisementService {
-    private advertisementsUrl = 'api/advertisements';  // URL to web api
-    private headers = new Headers({'Content-Type': 'application/json'});
+  private advertisementsUrl = 'api/advertisements';  // URL to web api
+  private headers = new Headers({'Content-Type': 'application/json'});
 
-    constructor(private http: Http) { }
+  constructor(private http: Http) {
+  }
 
-    getAdvertisements(): Promise<Advertisement[]> {
-        return this.http.get(this.advertisementsUrl)
-            .toPromise()
-            .then(response => response.json().data as Advertisement[])
-            .catch(this.handleError);
-    }
+  getAdvertisements(): Promise<Advertisement[]> {
+    return this.http.get(this.advertisementsUrl)
+      .toPromise()
+      .then(response => response.json().data as Advertisement[])
+      .catch(this.handleError);
+  }
 
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
-    }
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
+  }
 
-    getAdvertisement(id: number): Promise<Advertisement> {
-        return this.getAdvertisements()
-          .then(advertisements => advertisements.find(advertisement => advertisement.id === id));
-    }
+  getAdvertisement(id: number): Promise<Advertisement> {
+    return this.getAdvertisements()
+      .then(advertisements => advertisements.find(advertisement => advertisement.id === id));
+  }
 
-    // TODO: create, update, delete
+  // TODO: add advertiser, created, updated
+  create(advertisement: Advertisement): Promise<Advertisement> {
+    let media = advertisement.media ? advertisement.media : [];
+    return this.http
+      .post(this.advertisementsUrl, JSON.stringify({
+        id: advertisement.id,
+        title: advertisement.title,
+        price: advertisement.price,
+        description: advertisement.description,
+        category: advertisement.category,
+        tags: advertisement.tags,
+        media: media
+      }), {headers: this.headers})
+      .toPromise()
+      .then(res => res.json().data)
+      .catch(this.handleError);
+  }
+
+  // TODO: update, delete
 }

@@ -1,5 +1,4 @@
 <div class="container">
-	{{diagnostic}}
 	<h2>{{ "AD.title" | translate }}</h2>
 	<form (ngSubmit)="onSubmit()" #adForm="ngForm">
 		<!-- TODO: add custom error messages https://angular.io/docs/ts/latest/guide/forms.html -->
@@ -23,14 +22,16 @@
 		<div class="form-group">
 			<label for="price">{{ "AD.price" | translate }}</label>
 			<input type="text" class="form-control" id="price" required
-				   [(ngModel)]="model.price" name="price">
+				   [(ngModel)]="model.price" name="price"
+				   [pattern]="pricePattern">
 		</div>
 		<span *ngFor="let tag of tags" class="tag">{{tag.name}}</span>
 		<div class="form-group">
 			<label for="tags">{{ "AD.tags" | translate }}</label>
 			<input type="text" class="form-control" id="tags"
-				   [(ngModel)]="tagValue" name="tags" (keyup.enter)="addTag()">
+				   [(ngModel)]="tagValue" name="tags" (keyup)="addTag()">
 		</div>
 		<button type="submit" class="submit" [disabled]="!adForm.form.valid">Submit</button>
+		{{isSubmitted}}
 	</form>
 </div>

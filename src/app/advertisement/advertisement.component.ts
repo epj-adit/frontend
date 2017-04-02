@@ -1,21 +1,24 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { AdvertisementService } from '../_services/advertisement.service';
 import { Advertisement } from "../data-classes/advertisement";
-import { Category } from "../data-classes/category";
 import { Tag } from "../data-classes/tag";
 
 @Component({
   selector: 'adit-advertisement',
   templateUrl: './advertisement.component.html',
-  styleUrls: ['./advertisement.component.scss'],
-  providers: [AdvertisementService]
+  styleUrls: ['./advertisement.component.scss']
 })
 export class AdvertisementComponent {
-  // TODO:read av. categories from DB
+  constructor(private advertisementService: AdvertisementService) {
+  }
+
+  // TODO:read av.avaiable categories from DB
   category = ['Bücher', 'WG-Zimmer', 'Jobs'];
   tags: Tag[] = [];
   tagValue: string = '';
+  pricePattern = '[0-9]+(.[0-9]{2})?';
+  isSubmitted = '';
 
   model = new Advertisement(1, "", null, "", null, this.tags);
 
@@ -23,15 +26,15 @@ export class AdvertisementComponent {
 
   onSubmit() {
     this.submitted = true;
+    this.advertisementService.create(this.model)
+      .then(ad => this.isSubmitted = "Your ad '"+ad.title + "' has been submitted");
   }
 
   addTag(): void{
-    this.tags.push(new Tag(this.tagValue));
-    this.tagValue = '';
-  }
-
-  // TODO: Remove this when we're done
-  get diagnostic() {
-    return JSON.stringify(this.model);
+    let pattern = new RegExp('[a-zA-Z\\-_\d]+;');
+    if (pattern.test(this.tagValue)){
+      this.tags.push(new Tag(this.tagValue.substring(0,this.tagValue.length-1)));
+      this.tagValue = '';
+    }
   }
 }
