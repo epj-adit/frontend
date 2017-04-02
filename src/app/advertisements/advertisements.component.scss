@@ -8,8 +8,7 @@
 }
 
 .advertisement {
-  border: 1px solid black;
-  border-radius: 4px;
+  @include border(black);
   padding: 0.5em;
   margin: .25em;
   @include flex(column);

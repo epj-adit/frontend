@@ -1,0 +1,25 @@
+@import "../_variables.scss";
+
+.tag {
+  @include tag();
+}
+
+form{
+  @include flex(column);
+}
+
+input {
+  box-shadow: none;
+  @include border();
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.submit {
+  @include buttonLink();
+}

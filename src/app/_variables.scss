@@ -30,9 +30,18 @@ $font: "Segoe UI", sans-serif;
   }
 }
 
+
+@mixin border($color:$maincolor,$width:1px, $radius: 4px){
+  border: $width solid $color;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+
 @mixin tag() {
   background-color: $highlightcolor;
-  border-radius: 0.25em;
+  @include border(white, 0, 0.25em);
   color: white;
   padding: .2em .6em .3em;
   margin: 0 0.5em 0 0;
@@ -40,4 +49,14 @@ $font: "Segoe UI", sans-serif;
   font-size: 75%;
 }
 
-
+@mixin buttonLink() {
+  padding: 0.25em;
+  border: 1px solid $maincolor;
+  border-radius: 0.2em;
+  cursor: pointer;
+  color: #333;
+  &:hover {
+    background-color: $secondarycolor;
+    @include shadow();
+  }
+}

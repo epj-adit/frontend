@@ -8,15 +8,7 @@
 }
 
 .ad-buttons > a {
-  padding: 0.25em;
-  border: 1px solid $maincolor;
-  border-radius: 0.2em;
-  cursor: pointer;
-  color: #333;
-  &:hover {
-    background-color: $secondarycolor;
-    @include shadow();
-  }
+  @include buttonLink;
 }
 
 .ad-title {
@@ -34,8 +26,7 @@
 .ad-media > span {
   & > img {
     max-width: 4em;
-    border: 1px solid $secondarycolor;
-    border-radius: 5px;
+    @include border($maincolor);
     margin-bottom: 1em;
     padding: 0.5em;
   }
