@@ -53,10 +53,20 @@ $font: "Segoe UI", sans-serif;
   padding: 0.25em;
   border: 1px solid $maincolor;
   border-radius: 0.2em;
-  cursor: pointer;
   color: #333;
   &:hover {
     background-color: $secondarycolor;
+    cursor: pointer;
     @include shadow();
+  }
+}
+
+@mixin buttonDisabled(){
+  color: grey;
+  background: lightgrey;
+  &:hover {
+    cursor: not-allowed;
+    color: grey;
+    background: lightgrey;
   }
 }
