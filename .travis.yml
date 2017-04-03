@@ -5,6 +5,7 @@ services:
 cache:
   directories:
     - .npm
+    - node_modules
 
 script:
   - make tests coverage
