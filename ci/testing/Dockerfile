@@ -9,6 +9,7 @@ ENV NODE_ENV=$NODE_ENV
 
 ENV DISPLAY :99.0
 ENV CHROME_BIN /usr/bin/google-chrome
+ENV PATH="/home/node/project/node_modules/.bin:/opt/sonar-scanner/bin:${PATH}"
 
 RUN curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
@@ -19,8 +20,6 @@ RUN cd /opt && wget --quiet https://sonarsource.bintray.com/Distribution/sonar-s
     && unzip sonar-scanner-cli-${SONAR_VERSION}-linux.zip && rm sonar-scanner-cli-${SONAR_VERSION}-linux.zip && mv sonar-scanner-${SONAR_VERSION}-linux sonar-scanner
 
 RUN yarn global add @angular/cli@$NG_CLI_VERSION && rm -rf $(yarn cache dir)
-
-RUN /bin/bash -c 'echo "export PATH=/home/node/project/node_modules/.bin:/opt/sonar-scanner/bin:\$PATH" >> /etc/bash.bashrc'
 
 USER node
 
