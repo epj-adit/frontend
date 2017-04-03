@@ -18,7 +18,6 @@ deploy:
     skip_cleanup: true
     on:
       branch: master
-      tags: true
   # Development
   - provider: script
     script: make deploy-develop upload-coverage
