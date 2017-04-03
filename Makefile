@@ -19,7 +19,7 @@ install:
 	@echo "===================================================================="
 	@echo "Installing basic dependencies"
 	@echo "===================================================================="
-	$(DOCKER_RUN) yarn install
+	$(DOCKER_RUN) yarn --quiet install
 
 docs: install
 	@echo "===================================================================="
