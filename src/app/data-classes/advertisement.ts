@@ -12,10 +12,10 @@ export class Advertisement {
   advertisementState: AdvertisementState;
   created: Date;
   updated: Date;
-  tags: Tag[];
-  advertiser: User;
-  category: Category;
-  media: Media[];
+  tags: Tag[] = [];
+  advertiser: User = null;
+  category: Category = null;
+  media: Media[] = [];
 
   // TODO: add advertiser, created, updated
   constructor(id: number, title: string, price: number, description: string, category: Category, tags: Tag[], media?: Media[]) {

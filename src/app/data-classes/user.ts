@@ -10,8 +10,8 @@ export class User {
   isPrivate: boolean;
   isActive: boolean;
   wantsNotification: boolean;
-  created: Date;
-  updated: Date;
-  role: Role;
-  subscriptions: Subscription[];
+  created: Date = new Date(Date.now());
+  updated: Date = new Date(Date.now());
+  role: Role = null;
+  subscriptions: Subscription[] = [];
 }

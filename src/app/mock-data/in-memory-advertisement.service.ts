@@ -12,19 +12,19 @@ export class InMemoryAdvertisementService implements InMemoryDbService {
                 price: 1,
                 description: "Bsys Buch von E. Glatz für Bsys1&2. Auflage 3, 2015",
                 advertisementState: null,
-                created: Date.now(),
-                updated: Date.now(),
+                created: new Date(Date.now()),
+                updated: new Date(Date.now()),
                 tags: [{id: 20, name: "Informatik"}, {id: 21, name:"Bsys"}],
                 advertiser: 1,
                 category: null,
                 media: [{
                     id: 100,
                     filename: "test",
-                    desciption: "blubb"
+                    description: "blubb"
                 }, {
                     id: 101,
                     filename: "test",
-                    desciption: "blubb"
+                    description: "blubb"
                 }]
             },
             {

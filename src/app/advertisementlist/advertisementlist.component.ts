@@ -5,11 +5,11 @@ import { Advertisement } from '../data-classes/advertisement';
 import { AdvertisementService } from '../_services/advertisement.service';
 
 @Component({
-  selector: 'adit-advertisements',
-  templateUrl: './advertisements.component.html',
-  styleUrls: ['./advertisements.component.scss']
+  selector: 'adit-advertisementlist',
+  templateUrl: './advertisementlist.component.html',
+  styleUrls: ['./advertisementlist.component.scss']
 })
-export class AdvertisementsComponent implements OnInit {
+export class AdvertisementListComponent implements OnInit {
   advertisements: Advertisement[];
 
   constructor(private router: Router,
