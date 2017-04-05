@@ -29,7 +29,7 @@ docs: install
 
 tests: install
 	@echo "===================================================================="
-	@echo "Executeing tests"
+	@echo "Executing tests"
 	@echo "===================================================================="
 	NODE_ENV=test $(DOCKER_RUN) npm test
 
