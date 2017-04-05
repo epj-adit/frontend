@@ -31,7 +31,7 @@ tests: install
 	@echo "===================================================================="
 	@echo "Executeing tests"
 	@echo "===================================================================="
-	NODE_ENV=test $(DOCKER_RUN) npm run alltests
+	NODE_ENV=test $(DOCKER_RUN) npm test
 
 upload-coverage:
 	@echo "===================================================================="
