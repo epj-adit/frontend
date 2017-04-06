@@ -9,7 +9,7 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawe
 
 
 import { routing, appRoutingProviders }  from './app.routing';
-import { InMemoryAdvertisementService } from './mock-data/in-memory-advertisement.service';
+//import { InMemoryAdvertisementService } from './mock-data/in-memory-advertisement.service';
 import { AdvertisementService } from './_services/advertisement.service';
 
 import { AppComponent } from './app.component';
@@ -30,7 +30,7 @@ export function HttpLoaderFactory(http: Http) {
     HttpModule,
     JsonpModule,
     Angular2FontawesomeModule,
-    InMemoryWebApiModule.forRoot(InMemoryAdvertisementService, {passThruUnknownUrl: true}),
+    //InMemoryWebApiModule.forRoot(InMemoryAdvertisementService, {passThruUnknownUrl: true}),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

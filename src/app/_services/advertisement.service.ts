@@ -10,7 +10,7 @@ import { Tag } from "../data-classes/tag";
 
 @Injectable()
 export class AdvertisementService {
-  private advertisementsUrl = 'api/advertisements';  // URL to web api
+  private advertisementsUrl = 'https://develop.adit.qo.is/api/advertisement';  // URL to web api
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {

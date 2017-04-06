@@ -13,7 +13,7 @@ export class AdvertisementComponent {
   constructor(private advertisementService: AdvertisementService) {
   }
 
-  // TODO:read av.avaiable categories from DB
+  // TODO:read available categories from DB
   category = ['Bücher', 'WG-Zimmer', 'Jobs'];
   tags: Tag[] = [];
   tagValue: string = '';
