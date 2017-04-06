@@ -17,8 +17,9 @@ export class AdvertisementComponent {
   category = ['Bücher', 'WG-Zimmer', 'Jobs'];
   tags: Tag[] = [];
   tagValue: string = '';
-  pricePattern = '[0-9]+(.[0-9]{2})?';
+  pricePattern = '[0-9]+(.[0-9][05])?';
   isSubmitted = '';
+  hasNoTags = true;
 
   model = new Advertisement(1, "", null, "", null, this.tags);
 
@@ -35,6 +36,7 @@ export class AdvertisementComponent {
     if (pattern.test(this.tagValue)){
       this.tags.push(new Tag(this.tagValue.substring(0,this.tagValue.length-1)));
       this.tagValue = '';
+      this.hasNoTags = false;
     }
   }
 }
