@@ -31,9 +31,11 @@
 		<div class="form-group">
 			<label for="tags">{{ "AD.tags" | translate }}</label>
 			<input [ngClass]="{'notags':hasNoTags}" type="text" class="form-control" id="tags"
-				   [(ngModel)]="tagValue" name="tags" (keyup)="addTag()">
+				   [(ngModel)]="tagValue" name="tags" (keyup)="addTag()" noTags="{{model.tags}}">
 		</div>
 		<button type="submit" class="submit" [disabled]="!adForm.form.valid">Submit</button>
 		{{isSubmitted}}
+
+		{{adForm.form.status}}
 	</form>
 </div>
