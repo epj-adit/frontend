@@ -1,5 +1,6 @@
 <div class="ad-info">
 	<div class="ad-title">
+		<!-- use ? for accessing attributes -> prevents accessing null objects (not yet loaded objects)-->
 		<h3>{{advertisement?.title}}</h3>
 		<span><fa [name]="'tags'"></fa>{{advertisement?.price/100 | currency:'CHF'}}</span>
 	</div>
@@ -15,8 +16,11 @@
 			<img [src]="getMedia(med)" alt="{{med.description}}"/>
 		</span>
 	</div>
-	<div class="ad-buttons">
-		<a>{{ "ADINFO.privateMessagingLink" | translate }}</a>
-		<a>{{ "ADINFO.emailLink" | translate }}</a>
+	<div class="buttons-user">
+		<p class="posted">posted by <span class="username">{{advertisement?.user?.username}}</span></p>
+		<div class="ad-buttons">
+			<a>{{ "ADINFO.privateMessagingLink" | translate }}</a>
+			<a>{{ "ADINFO.emailLink" | translate }}</a>
+		</div>
 	</div>
 </div>
