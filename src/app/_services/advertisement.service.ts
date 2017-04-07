@@ -10,16 +10,16 @@ import { Tag } from "../data-classes/tag";
 
 @Injectable()
 export class AdvertisementService {
-  private advertisementsUrl = 'https://develop.adit.qo.is/api/advertisement';  // URL to web api
+  private advertisementsUrl = 'https://develop.adit.qo.is/api/';  // URL to web api
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {
   }
 
   getAdvertisements(): Promise<Advertisement[]> {
-    return this.http.get(this.advertisementsUrl)
+    return this.http.get(this.advertisementsUrl + "advertisements")
       .toPromise()
-      .then(response => response.json().data as Advertisement[])
+      .then(response => response.json() as Advertisement[])
       .catch(this.handleError);
   }
 
@@ -34,20 +34,22 @@ export class AdvertisementService {
   }
 
   // TODO: add advertiser, created, updated
+
+  // created set bei server -> don't send it!
   create(advertisement: Advertisement): Promise<Advertisement> {
     let media = advertisement.media ? advertisement.media : [];
     return this.http
-      .post(this.advertisementsUrl, JSON.stringify({
-        id: advertisement.id,
+      .post(this.advertisementsUrl + "advertisement", JSON.stringify({
         title: advertisement.title,
+        userId: 1, // TODO: change back to userid,
         price: advertisement.price,
         description: advertisement.description,
-        category: advertisement.category,
-        tags: advertisement.tags,
+        categoryId: 1,// TODO: change to: advertisement.category.id,
+        tags: [], //TODO: change back to: advertisement.tags
         media: media
       }), {headers: this.headers})
       .toPromise()
-      .then(res => res.json().data)
+      .then(res => res.json())
       .catch(this.handleError);
   }
 

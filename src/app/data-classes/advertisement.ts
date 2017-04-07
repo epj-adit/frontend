@@ -13,7 +13,7 @@ export class Advertisement {
   created: Date;
   updated: Date;
   tags: Tag[] = [];
-  advertiser: User = null;
+  user: User = null;
   category: Category = null;
   media: Media[] = [];
 
@@ -26,7 +26,7 @@ export class Advertisement {
       this.tags = tags;
       this.media = media;
       this.category = category;
-      this.advertiser = null;
+      this.user = null;
       this.created = new Date(Date.now());
       this.updated = new Date(Date.now());
   }
