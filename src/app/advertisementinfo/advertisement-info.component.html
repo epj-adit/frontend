@@ -1,7 +1,7 @@
 <div class="ad-info">
 	<div class="ad-title">
 		<h3>{{advertisement?.title}}</h3>
-		<span><fa [name]="'tags'"></fa>{{advertisement?.price}}</span>
+		<span><fa [name]="'tags'"></fa>{{advertisement?.price/100 | currency:'CHF'}}</span>
 	</div>
 	<div class="ad-content">
 		<p>{{advertisement?.description}}</p>
