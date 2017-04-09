@@ -29,7 +29,8 @@ export class AdvertisementService {
   }
 
   getAdvertisement(id: number): Promise<Advertisement> {
-    return this.getAdvertisements()
+        // TODO: Get '/advertisement/:id
+      return this.getAdvertisements()
       .then(advertisements => advertisements.find(advertisement => advertisement.id === id));
   }
 
