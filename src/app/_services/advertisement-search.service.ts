@@ -21,6 +21,7 @@ export class AdvertisementSearchService {
     let advertisements : Advertisement[] = [];
     let tags : Tag[] = [];
     let categories : Category[] = [];
+
     let advertisementsRequest = this.http.get(`${this.apiUrl}/advertisements/?description=${term}&title=${term}`).map(res => res.json().data as Advertisement[]);
     let tagsRequest = this.http.get(`${this.apiUrl}/tags/?name=${term}`).map(res => res.json().data as Tag[]);
     let categoriesRequest = this.http.get(`${this.apiUrl}/categories/?name=${term}`).map(res => res.json().data as Category[]);
@@ -31,19 +32,16 @@ export class AdvertisementSearchService {
       categories.concat(results[2].json().data as Category[]);
     });
 
+    let observableAdvertisements = Observable.of<Advertisement[]>(advertisements);
 
     for(let i = 0; i<tags.length; i++){
-      // advertisements.concat(this.http.get(`{this.apiUrl}/advertisements/?tag[]=${tags[i]}`).map(res => res.json().data as Advertisement[]));
+      observableAdvertisements.concat(this.http.get(`${this.apiUrl}/advertisements/?tag[]=${tags[i]}`).map(res => res.json().data as Advertisement[]));
     }
 
     for(let i = 0; i<categories.length; i++){
-      // advertisements.concat(this.http.get(`{this.apiUrl}/advertisements/?category[]=${categories[i]}`).map(res => res.json().data as Advertisement[]));
+      observableAdvertisements.concat(this.http.get(`${this.apiUrl}/advertisements/?category[]=${categories[i]}`).map(res => res.json().data as Advertisement[]));
     }
 
-    // TODO: Find a way to get an Observable<Advertisement[]> out of it and return it
-
-    return this.http
-      .get(`api/advertisements/?description=${term}`)
-      .map(response => response.json().data as Advertisement[]);
+    return observableAdvertisements;
   }
 }
