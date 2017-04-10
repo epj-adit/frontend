@@ -38,14 +38,16 @@ export class AdvertisementService {
   // created set bei server -> don't send it!
   create(advertisement: Advertisement): Promise<Advertisement> {
     let media = advertisement.media ? advertisement.media : [];
+    console.log(advertisement);
+    // TODO: change userid,categoryid, tags
     return this.http
       .post(this.advertisementsUrl + "advertisement", JSON.stringify({
         title: advertisement.title,
-        userId: 1, // TODO: change back to userid,
+        userId: 1,
         price: advertisement.price,
         description: advertisement.description,
-        categoryId: 1,// TODO: change to: advertisement.category.id,
-        tags: [], //TODO: change back to: advertisement.tags
+        categoryId: 1,
+        tags: advertisement.tags,
         media: media
       }), {headers: this.headers})
       .toPromise()

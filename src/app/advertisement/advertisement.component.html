@@ -31,7 +31,7 @@
 			<input type="text" class="form-control" id="tags"
 				   [(ngModel)]="tagValue" name="tags" (keyup)="addTag()">
 		</div>
-		<button type="submit" class="submit" [disabled]="!adForm.form.valid">Submit</button>
+		<button type="submit" class="submit" [disabled]="!adForm.form.valid">{{ "AD.submit" | translate }}</button>
 		{{isSubmitted}}
 	</form>
 </div>

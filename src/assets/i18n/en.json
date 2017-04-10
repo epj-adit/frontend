@@ -21,6 +21,7 @@
     "category": "Category",
     "tags": "Tags",
     "description": "Description",
-    "price": "Price"
+    "price": "Price",
+    "submit": "submit"
   }
 }

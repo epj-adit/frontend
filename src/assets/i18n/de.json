@@ -21,6 +21,7 @@
     "category": "Kategorie",
     "tags": "Tags",
     "description": "Beschreibung",
-    "price": "Preis"
+    "price": "Preis",
+    "submit": "absenden"
   }
 }
