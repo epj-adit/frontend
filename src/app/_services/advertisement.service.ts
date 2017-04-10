@@ -3,6 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
+import { AppSettings } from '../app.settings';
 import { Advertisement } from '../data-classes/advertisement';
 import { Category } from "../data-classes/category";
 import { Media } from "../data-classes/media";
@@ -10,7 +11,7 @@ import { Tag } from "../data-classes/tag";
 
 @Injectable()
 export class AdvertisementService {
-  private advertisementsUrl = 'api/advertisements';  // URL to web api
+  private advertisementsUrl = AppSettings.API_ENDPOINT;  // URL to web api
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {
