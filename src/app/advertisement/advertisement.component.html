@@ -25,11 +25,13 @@
 				   [(ngModel)]="model.price" name="price"
 				   [pattern]="pricePattern">
 		</div>
-		<span *ngFor="let tag of tags" class="tag">{{tag.name}}</span>
+		<div class="tags">
+			<span *ngFor="let tag of tags" class="tag">{{tag.name}}</span>
+		</div>
 		<div class="form-group">
 			<label for="tags">{{ "AD.tags" | translate }}</label>
-			<input type="text" class="form-control" id="tags"
-				   [(ngModel)]="tagValue" name="tags" (keyup)="addTag()">
+			<input [ngClass]="{'notags':hasNoTags}" type="text" class="form-control" id="tags"
+				   [(ngModel)]="tagValue" name="tags" (keyup)="addTag()" noTags="{{model.tags}}">
 		</div>
 		<button type="submit" class="submit" [disabled]="!adForm.form.valid">{{ "AD.submit" | translate }}</button>
 		{{isSubmitted}}
