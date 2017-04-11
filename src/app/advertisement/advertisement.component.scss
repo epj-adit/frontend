@@ -3,6 +3,7 @@
 .tag {
   @include tag();
   margin: 0.1em;
+  cursor: pointer;
 }
 
 form {

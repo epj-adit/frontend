@@ -26,7 +26,7 @@
 				   [pattern]="pricePattern">
 		</div>
 		<div class="tags">
-			<span *ngFor="let tag of tags" class="tag">{{tag.name}}</span>
+			<span *ngFor="let tag of tags" class="tag" (click)="removeTag(tag)">x {{tag.name}}</span>
 		</div>
 		<div class="form-group">
 			<label for="tags">{{ "AD.tags" | translate }}</label>

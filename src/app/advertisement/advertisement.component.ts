@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
 
 import { AdvertisementService } from '../_services/advertisement.service';
-import { Advertisement } from "../data-classes/advertisement";
-import { Tag } from "../data-classes/tag";
-import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from "@angular/forms";
+import { Advertisement } from '../data-classes/advertisement';
+import { Tag } from '../data-classes/tag';
 
 @Component({
   selector: 'adit-advertisement',
   templateUrl: './advertisement.component.html',
   styleUrls: ['./advertisement.component.scss']
 })
-export class AdvertisementComponent {
+export class AdvertisementComponent /* implements AfterViewInit*/ {
   constructor(private advertisementService: AdvertisementService) {
   }
 
@@ -29,7 +28,7 @@ export class AdvertisementComponent {
     this.submitted = true;
     // convert userinput to Rappen
     // parseFloat needs a string as input. this.model.price should be a number, but is a string (userinput)
-    this.model.price = parseFloat(this.model.price+"") *100;
+    this.model.price = parseFloat(this.model.price + "") * 100;
     this.advertisementService.create(this.model)
       .then(ad => this.isSubmitted = "Your ad '" + ad.title + "' has been submitted");
   }
@@ -43,10 +42,12 @@ export class AdvertisementComponent {
     }
   }
 
-  removeTag(tag: string): void {
-    let index = this.tags.map(function(x) {return x.name; }).indexOf(tag);
+  removeTag(tag: Tag): void {
+    let index = this.tags.indexOf(tag);
     if (index > -1) {
       this.tags.splice(index, 1);
     }
+    this.hasNoTags = true;
+    this.tagValue = '';
   }
 }
