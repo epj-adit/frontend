@@ -45,11 +45,12 @@ export class AdvertisementComponent /* implements AfterViewInit*/ {
 
   removeTag(tag: Tag): void {
     let index = this.tags.indexOf(tag);
+    let oldtag = this.tags[index];
     if (index > -1) {
       this.tags.splice(index, 1);
     }
     this.hasNoTags = true;
-    this.tagValue = '';
+    this.tagValue = oldtag.name;
   }
 
   changeDisplay():void {

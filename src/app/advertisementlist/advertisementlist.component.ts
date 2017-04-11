@@ -21,6 +21,7 @@ export class AdvertisementListComponent implements OnInit {
   }
 
   gotoInfo(advertisement: Advertisement): void {
+    this.advertisementService.currentAdvertisement = advertisement;
     let link = ['/advertisementinfo', advertisement.id];
     this.router.navigate(link);
   }

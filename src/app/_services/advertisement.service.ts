@@ -16,6 +16,8 @@ export class AdvertisementService {
   private advertisementsUrl = 'https://develop.adit.qo.is/api/';  // URL to web api
   private headers = new Headers({'Content-Type': 'application/json'});
 
+  currentAdvertisement: Advertisement = null;
+
   constructor(private http: Http) {
   }
 
@@ -31,8 +33,11 @@ export class AdvertisementService {
   }
 
   getAdvertisement(id: number): Observable<Advertisement> {
-    return this.getAdvertisements()
-      .map(advertisements => advertisements.find(advertisement => advertisement.id === id));
+    return this.http.get(this.advertisementsUrl + "advertisement/" + id)
+      .map(response => response.json() as Advertisement)
+      .catch(err => this.handleError(err));
+    /*return this.getAdvertisements()
+      .map(advertisements => advertisements.find(advertisement => advertisement.id === id));*/
   }
 
   // TODO: add advertiser, created, updated
@@ -59,7 +64,7 @@ export class AdvertisementService {
     return this.http
       .post(this.advertisementsUrl + "advertisement", JSON.stringify({
         title: advertisement.title,
-        user: this.testuser,
+        user: {id: this.testuser.id},
         price: advertisement.price,
         description: advertisement.description,
         category: this.testcategory,
