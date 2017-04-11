@@ -9,6 +9,7 @@ import { Media } from "../data-classes/media";
 import { Tag } from "../data-classes/tag";
 import { User } from "../data-classes/user";
 import { AdvertisementState } from "../data-classes/advertisementState";
+import { Observable } from "rxjs";
 
 @Injectable()
 export class AdvertisementService {
@@ -18,11 +19,10 @@ export class AdvertisementService {
   constructor(private http: Http) {
   }
 
-  getAdvertisements(): Promise<Advertisement[]> {
+  getAdvertisements(): Observable<Advertisement[]> {
     return this.http.get(this.advertisementsUrl + "advertisements")
-      .toPromise()
-      .then(response => response.json() as Advertisement[])
-      .catch(this.handleError);
+      .map(response => response.json() as Advertisement[])
+      .catch(err => this.handleError(err));
   }
 
   private handleError(error: any): Promise<any> {
@@ -30,9 +30,9 @@ export class AdvertisementService {
     return Promise.reject(error.message || error);
   }
 
-  getAdvertisement(id: number): Promise<Advertisement> {
+  getAdvertisement(id: number): Observable<Advertisement> {
     return this.getAdvertisements()
-      .then(advertisements => advertisements.find(advertisement => advertisement.id === id));
+      .map(advertisements => advertisements.find(advertisement => advertisement.id === id));
   }
 
   // TODO: add advertiser, created, updated
