@@ -3,6 +3,7 @@ $secondarycolor: #f2f2f2;
 $highlightcolor: #d9534f;
 $footercolor: #263238;
 $font: "Segoe UI", sans-serif;
+$borderradius: 4px;
 
 @mixin flex($direction: row, $justify: flex-start, $align: flex-start){
   display: -webkit-flex;
@@ -70,3 +71,12 @@ $font: "Segoe UI", sans-serif;
     background: lightgrey;
   }
 }
+
+@mixin helptext(){
+  color: #31708f;
+  background-color: #d9edf7;
+  border-radius: $borderradius;
+  border: 1px solid #bce8f1;
+  padding: 8px;
+}
+

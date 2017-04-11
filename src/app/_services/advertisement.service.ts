@@ -7,6 +7,8 @@ import { Advertisement } from '../data-classes/advertisement';
 import { Category } from "../data-classes/category";
 import { Media } from "../data-classes/media";
 import { Tag } from "../data-classes/tag";
+import { User } from "../data-classes/user";
+import { AdvertisementState } from "../data-classes/advertisementState";
 
 @Injectable()
 export class AdvertisementService {
@@ -34,6 +36,20 @@ export class AdvertisementService {
   }
 
   // TODO: add advertiser, created, updated
+  testuser: User = {
+    id: 3,
+    role: {id: 3, name: "user", permissions: []},
+    username: "student",
+    email: "student@hsr.ch",
+    passwordHash: "abcde",
+    isPrivate: true,
+    wantsNotification: true,
+    isActive: true,
+    created: "Apr 6, 2017 2:12:33 PM",
+    subscriptions: []
+  };
+  testcategory = { id: 1, name: "Bücher" };
+
 
   // created set bei server -> don't send it!
   create(advertisement: Advertisement): Promise<Advertisement> {
@@ -43,17 +59,17 @@ export class AdvertisementService {
     return this.http
       .post(this.advertisementsUrl + "advertisement", JSON.stringify({
         title: advertisement.title,
-        userId: 1,
+        user: this.testuser,
         price: advertisement.price,
         description: advertisement.description,
-        categoryId: 1,
-        tags: advertisement.tags,
-        media: media
+        category: this.testcategory,
+        tags: [],
+        media: media,
+        advertisementState: AdvertisementState.active,
       }), {headers: this.headers})
       .toPromise()
       .then(res => res.json())
       .catch(this.handleError);
   }
-
   // TODO: update, delete
 }

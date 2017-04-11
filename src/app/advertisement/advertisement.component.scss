@@ -62,3 +62,10 @@ form {
     }
   }
 }
+
+.help-text {
+  @include helptext();
+  margin: 5px 0;
+  width: 100%;
+  font-size: smaller;
+}

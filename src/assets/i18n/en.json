@@ -22,6 +22,7 @@
     "tags": "Tags",
     "description": "Description",
     "price": "Price",
-    "submit": "submit"
+    "submit": "submit",
+    "taghelp": "separate tags with ';'. Permited special characters: - _"
   }
 }

@@ -21,6 +21,7 @@ export class AdvertisementComponent /* implements AfterViewInit*/ {
   isSubmitted = '';
   hasNoTags = true;
   submitted = false;
+  taghelpDisplay = 'none';
 
   model = new Advertisement(1, "", null, "", null, this.tags);
 
@@ -49,5 +50,9 @@ export class AdvertisementComponent /* implements AfterViewInit*/ {
     }
     this.hasNoTags = true;
     this.tagValue = '';
+  }
+
+  changeDisplay():void {
+    this.taghelpDisplay = this.taghelpDisplay == 'inline-block' ? 'none' : 'inline-block';
   }
 }

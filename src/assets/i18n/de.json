@@ -22,6 +22,7 @@
     "tags": "Tags",
     "description": "Beschreibung",
     "price": "Preis",
-    "submit": "absenden"
+    "submit": "absenden",
+    "taghelp": "Einzelne Tags mit ';' trennen. Erlaubte Sonderzeichen: - _"
   }
 }
