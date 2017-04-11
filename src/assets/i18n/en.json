@@ -21,7 +21,7 @@
     "category": "Category",
     "tags": "Tags",
     "description": "Description",
-    "price": "Price",
+    "price": "Price  [CHF]",
     "submit": "submit",
     "taghelp": "separate tags with ';'. Permited special characters: - _"
   }

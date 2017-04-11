@@ -21,7 +21,7 @@
     "category": "Kategorie",
     "tags": "Tags",
     "description": "Beschreibung",
-    "price": "Preis",
+    "price": "Preis [CHF]",
     "submit": "absenden",
     "taghelp": "Einzelne Tags mit ';' trennen. Erlaubte Sonderzeichen: - _"
   }
