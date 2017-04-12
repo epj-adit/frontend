@@ -36,8 +36,6 @@ export class AdvertisementService {
     return this.http.get(this.advertisementsUrl + "advertisement/" + id)
       .map(response => response.json() as Advertisement)
       .catch(err => this.handleError(err));
-    /*return this.getAdvertisements()
-      .map(advertisements => advertisements.find(advertisement => advertisement.id === id));*/
   }
 
   // TODO: add advertiser, created, updated
@@ -57,7 +55,8 @@ export class AdvertisementService {
 
 
   // created set bei server -> don't send it!
-  create(advertisement: Advertisement): Promise<Advertisement> {
+  create(advertisement: Advertisement): Observable<Advertisement> {
+    //TODO: first: send all tagstrings to api/tags, then send returned tag-object with ad
     let media = advertisement.media ? advertisement.media : [];
     console.log(advertisement);
     // TODO: change userid,categoryid, tags
@@ -67,13 +66,12 @@ export class AdvertisementService {
         user: {id: this.testuser.id},
         price: advertisement.price,
         description: advertisement.description,
-        category: this.testcategory,
+        category: {id: this.testcategory.id},
         tags: [],
         media: media,
         advertisementState: AdvertisementState.active,
       }), {headers: this.headers})
-      .toPromise()
-      .then(res => res.json())
+      .map(res => res.json())
       .catch(this.handleError);
   }
   // TODO: update, delete

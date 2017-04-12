@@ -31,11 +31,11 @@ export class AdvertisementComponent /* implements AfterViewInit*/ {
     // parseFloat needs a string as input. this.model.price should be a number, but is a string (userinput)
     this.model.price = parseFloat(this.model.price + "") * 100;
     this.advertisementService.create(this.model)
-      .then(ad => this.isSubmitted = "Your ad '" + ad.title + "' has been submitted");
+      .map(ad => this.isSubmitted = "Your ad '" + ad.title + "' has been submitted");
   }
 
   addTag(): void {
-    let pattern = new RegExp('[a-zA-Z\\-_\d]+;');
+    let pattern = new RegExp('[a-zA-Z\\-_\\d]+;');
     if (pattern.test(this.tagValue)) {
       this.tags.push(new Tag(this.tagValue.substring(0, this.tagValue.length - 1)));
       this.tagValue = '';
