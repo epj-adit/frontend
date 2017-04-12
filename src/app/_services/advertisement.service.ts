@@ -58,7 +58,6 @@ export class AdvertisementService {
   create(advertisement: Advertisement): Observable<Advertisement> {
     //TODO: first: send all tagstrings to api/tags, then send returned tag-object with ad
     let media = advertisement.media ? advertisement.media : [];
-    console.log(advertisement);
     // TODO: change userid,categoryid, tags
     return this.http
       .post(this.advertisementsUrl + "advertisement", JSON.stringify({

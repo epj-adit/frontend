@@ -31,7 +31,7 @@ export class AdvertisementComponent /* implements AfterViewInit*/ {
     // parseFloat needs a string as input. this.model.price should be a number, but is a string (userinput)
     this.model.price = parseFloat(this.model.price + "") * 100;
     this.advertisementService.create(this.model)
-      .map(ad => this.isSubmitted = "Your ad '" + ad.title + "' has been submitted");
+      .subscribe(ad => this.isSubmitted = "Your ad '" + ad.title + "' has been submitted");
   }
 
   addTag(): void {
