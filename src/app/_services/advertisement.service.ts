@@ -90,5 +90,10 @@ export class AdvertisementService {
       )
   }
 
-  // TODO: update, delete
+  deleteAd(advertisement: Advertisement): Observable<Advertisement> {
+    advertisement.advertisementState = AdvertisementState.closed;
+    return this.http.put(this.apiUrl + "advertisement/" + advertisement.id, JSON.stringify(advertisement), {headers: this.headers})
+      .map(res => res.json())
+      .catch(err => this.handleError(err));
+  }
 }

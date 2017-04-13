@@ -26,8 +26,8 @@ export class UserAdvertisementsComponent implements OnInit {
     this.router.navigate(link);
   }
 
-  delete(advertisement:Advertisement): void {
-
+  deleteAd(advertisement:Advertisement): void {
+    this.advertisementService.deleteAd(advertisement).subscribe();
   }
 
   ngOnInit(): void {

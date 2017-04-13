@@ -2,20 +2,20 @@
 <fieldset class="legende">
 	<legend>{{ "USERADVERTISEMENT.legend" | translate }}</legend>
 	<div>
-		<span><fa [name]="'eye'"></fa> to review</span>
-		<span><fa [name]="'play'"></fa> active</span>
-		<span><fa [name]="'hourglass-end'"></fa> expired</span>
-		<span><fa [name]="'ban'"></fa> declined</span>
-		<span><fa [name]="'trash'"></fa> deleted</span>
+		<span><fa [name]="'eye'" class="toReview"></fa> to review</span>
+		<span><fa [name]="'play'" class="active"></fa> active</span>
+		<span><fa [name]="'hourglass-end'" class="expired"></fa> expired</span>
+		<span><fa [name]="'ban'" class="declined"></fa> declined</span>
+		<span><fa [name]="'trash'" class="deleted"></fa> deleted</span>
 	</div>
 </fieldset>
 <ul class="advertisements">
 	<li *ngFor="let advertisement of advertisements">
-		<div class="advertisement">
+		<div class="advertisement state-{{advertisement?.advertisementState}}">
 			<div class="titleRow">
 				<h4>{{advertisement.title}}</h4>
 				<div class="buttons">
-					<span><fa [name]="'times'" (click)="delete(advertisement)"></fa></span>
+					<span><fa [name]="'times'" (click)="deleteAd(advertisement)"></fa></span>
 					<span><fa [name]="'cog'" (click)="edit(advertisement)"></fa></span>
 				</div>
 			</div>

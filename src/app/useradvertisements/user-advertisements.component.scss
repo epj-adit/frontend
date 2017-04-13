@@ -1,5 +1,6 @@
 @import "../_variables.scss";
 
+
 .legende {
   display: inline-block;
   width: 100%;
@@ -37,10 +38,54 @@
   width: 100%;
   @include flex(row, space-between);
   .buttons > span {
-      margin: 1px;
-    &:hover{
+    margin: 1px;
+    &:hover {
       cursor: pointer;
     }
   }
+}
 
+//------ Legende -------------------
+$activecolor:#009933;
+$closedcolor:#999999;
+$reviewcolor:#00ccff;
+$declinedcolor:#cc0000;
+
+.active{
+  color: $activecolor;
+}
+.deleted{
+  color: $closedcolor;
+}
+.toReview{
+  color:$reviewcolor;
+}
+.declined{
+  color: $declinedcolor;
+}
+
+//------ AdvertisementState --------
+
+// to-Review
+.state-0{
+  border-color:$reviewcolor;
+  background-color: #e6faff;
+}
+
+// declined
+.state-1{
+  border-color:$declinedcolor;
+  background-color: #ffe6e6;
+}
+
+// active
+.state-2 {
+  border-color: $activecolor;
+  background-color: #e6ffe6;
+}
+
+// closed
+.state-4 {
+  border-color: $closedcolor;
+  background-color: lightgray;
 }
