@@ -16,7 +16,7 @@ export class AdvertisementComponent implements OnInit {
   }
 
   // TODO:read available categories from DB
-  category: Category[];
+  categories: Category[];
   tags: Tag[] = [];
   tagValue: string = '';
   pricePattern = '[0-9]+(.[0-9][05])?';
@@ -28,7 +28,7 @@ export class AdvertisementComponent implements OnInit {
   model = new Advertisement(1, "", null, "", null, this.tags);
 
   ngOnInit(): void {
-    this.categoryService.getCategories().subscribe(res => this.category = res);
+    this.categoryService.getCategories().subscribe(res => this.categories = res);
   }
 
   onSubmit() {
@@ -38,7 +38,7 @@ export class AdvertisementComponent implements OnInit {
     this.model.price = parseFloat(this.model.price + "") * 100;
     this.advertisementService.createAdvertisementAndTags(this.model)
       .subscribe(ad => {
-        console.log(ad);
+        console.log(ad); //TODO: remove console.log for production
         this.isSubmitted = "Your ad has been submitted";
       });
   }

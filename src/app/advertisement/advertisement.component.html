@@ -11,7 +11,7 @@
 			<label for="category">{{ "AD.category" | translate }}</label>
 			<select class="form-control" id="category" required
 					[(ngModel)]="model.category" name="category">
-				<option *ngFor="let cat of category" [value]="cat">{{cat?.name}}</option>
+				<option *ngFor="let cat of categories" [ngValue]="cat">{{cat?.name}}</option>
 			</select>
 		</div>
 		<div class="form-group">
