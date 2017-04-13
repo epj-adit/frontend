@@ -8,40 +8,29 @@ import { AppSettings } from '../app.settings';
 import { Advertisement }           from '../data-classes/advertisement';
 import {Category} from "../data-classes/category";
 import {Tag} from "../data-classes/tag";
+import {SearchProposal} from "../search/search-proposal";
 
 @Injectable()
 export class AdvertisementSearchService {
 
-  private apiUrl = AppSettings.API_ENDPOINT;  // URL to web api
+  private apiUrlAdvertisements = AppSettings.API_ENDPOINT+'/advertisements';
+  private apiUrlTags= AppSettings.API_ENDPOINT+'/tags';
+  private apiUrlCategories = AppSettings.API_ENDPOINT+'/categories';
+  private searchProposals: SearchProposal[] = [];
 
   constructor(private http: Http) {
   }
 
-  search(term: string): Observable<Advertisement[]> {
-    let advertisements : Advertisement[] = [];
-    let tags : Tag[] = [];
-    let categories : Category[] = [];
+  search(term: string): Observable<SearchProposal[]> {
 
-    let advertisementsRequest = this.http.get(`${this.apiUrl}/advertisements/?description=${term}&title=${term}`).map(res => res.json().data as Advertisement[]);
-    let tagsRequest = this.http.get(`${this.apiUrl}/tags/?name=${term}`).map(res => res.json().data as Tag[]);
-    let categoriesRequest = this.http.get(`${this.apiUrl}/categories/?name=${term}`).map(res => res.json().data as Category[]);
+    this.searchProposals = [];
+    let advertisementsRequest = this.http.get(`${this.apiUrlAdvertisements}/?title=${term}&description=${term}`).map(res => res.json() as Advertisement[]);
+    let tagsRequest = this.http.get(`${this.apiUrlTags}/?name=${term}`).map(res => res.json() as Tag[]);
+    let categoriesRequest = this.http.get(`${this.apiUrlCategories}/?name=${term}`).map(res => res.json() as Category[]);
+    let observableProposals: Observable<SearchProposal[]> = Observable.of<SearchProposal[]>([]);
 
-    Observable.forkJoin([advertisementsRequest, tagsRequest, categoriesRequest]).subscribe(results => {
-      advertisements.concat(results[0].json().data as Advertisement[]);
-      tags.concat(results[1].json().data as Tag[]);
-      categories.concat(results[2].json().data as Category[]);
-    });
+     return Observable.forkJoin([advertisementsRequest, tagsRequest, categoriesRequest]);
 
-    let observableAdvertisements = Observable.of<Advertisement[]>(advertisements);
-
-    for(let i = 0; i<tags.length; i++){
-      observableAdvertisements.concat(this.http.get(`${this.apiUrl}/advertisements/?tag[]=${tags[i]}`).map(res => res.json().data as Advertisement[]));
-    }
-
-    for(let i = 0; i<categories.length; i++){
-      observableAdvertisements.concat(this.http.get(`${this.apiUrl}/advertisements/?category[]=${categories[i]}`).map(res => res.json().data as Advertisement[]));
-    }
-
-    return observableAdvertisements;
   }
+
 }

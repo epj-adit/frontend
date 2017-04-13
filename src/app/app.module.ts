@@ -2,14 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, Http, JsonpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 
 
 import { routing, appRoutingProviders }  from './app.routing';
-import { InMemoryAdvertisementService } from './mock-data/in-memory-advertisement.service';
 import { AdvertisementService } from './_services/advertisement.service';
 
 import { AppComponent } from './app.component';
@@ -30,7 +28,6 @@ export function HttpLoaderFactory(http: Http) {
     HttpModule,
     JsonpModule,
     Angular2FontawesomeModule,
-    InMemoryWebApiModule.forRoot(InMemoryAdvertisementService, {passThruUnknownUrl: true}),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

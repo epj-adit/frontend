@@ -2,9 +2,9 @@
 	<h2>{{"ADVERTISEMENTSEARCH.title" | translate}}</h2>
 	<input #searchBox id="search-box" (keyup)="search(searchBox.value)"/>
 	<div>
-		<div *ngFor="let advertisement of advertisements | async"
-			class="search-result" (click)="gotoInfo(advertisement)">
-			{{advertisement.title}}
+		<div *ngFor="let proposal of searchProposals | async"
+			class="search-result" (click)="gotoInfo(proposal)">
+			{{proposal.name}} | {{proposal.type}}
 		</div>
 	</div>
 </div>
