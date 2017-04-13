@@ -22,11 +22,9 @@ export class TagService {
 
 
   create(tags: Tag[]): Observable<Tag[]>{
-    console.log(tags);
    return this.http
         .post(this.apiUrl + "tags", JSON.stringify(tags), {headers: this.headers})
         .map(res => {
-          console.log(res);
           return res.json() as Tag[]
         })
         .catch(err => this.handleError(err));

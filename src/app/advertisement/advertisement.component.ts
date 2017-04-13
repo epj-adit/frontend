@@ -1,20 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { AdvertisementService } from '../_services/advertisement.service';
 import { Advertisement } from '../data-classes/advertisement';
 import { Tag } from '../data-classes/tag';
+import { CategoryService } from "../_services/category.service";
+import { Category } from "../data-classes/category";
 
 @Component({
   selector: 'adit-advertisement',
   templateUrl: './advertisement.component.html',
   styleUrls: ['./advertisement.component.scss']
 })
-export class AdvertisementComponent /* implements AfterViewInit*/ {
-  constructor(private advertisementService: AdvertisementService) {
+export class AdvertisementComponent implements OnInit {
+  constructor(private advertisementService: AdvertisementService, private categoryService: CategoryService) {
   }
 
   // TODO:read available categories from DB
-  category = ['Bücher', 'WG-Zimmer', 'Jobs'];
+  category: Category[];
   tags: Tag[] = [];
   tagValue: string = '';
   pricePattern = '[0-9]+(.[0-9][05])?';
@@ -24,6 +26,10 @@ export class AdvertisementComponent /* implements AfterViewInit*/ {
   taghelpDisplay = 'none';
 
   model = new Advertisement(1, "", null, "", null, this.tags);
+
+  ngOnInit(): void {
+    this.categoryService.getCategories().subscribe(res => this.category = res);
+  }
 
   onSubmit() {
     this.submitted = true;
