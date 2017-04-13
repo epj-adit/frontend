@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
-import 'rxjs/add/operator/toPromise';
+import { Observable } from "rxjs";
 
 import { Advertisement } from '../data-classes/advertisement';
 import { Category } from "../data-classes/category";
@@ -9,20 +9,20 @@ import { Media } from "../data-classes/media";
 import { Tag } from "../data-classes/tag";
 import { User } from "../data-classes/user";
 import { AdvertisementState } from "../data-classes/advertisementState";
-import { Observable } from "rxjs";
+import { TagService } from "./tag.service";
 
 @Injectable()
 export class AdvertisementService {
-  private advertisementsUrl = 'https://develop.adit.qo.is/api/';  // URL to web api
+  private apiUrl = 'https://develop.adit.qo.is/api/';  // URL to web api
   private headers = new Headers({'Content-Type': 'application/json'});
 
   currentAdvertisement: Advertisement = null;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private tagService: TagService) {
   }
 
   getAdvertisements(): Observable<Advertisement[]> {
-    return this.http.get(this.advertisementsUrl + "advertisements")
+    return this.http.get(this.apiUrl + "advertisements")
       .map(response => response.json() as Advertisement[])
       .catch(err => this.handleError(err));
   }
@@ -33,7 +33,7 @@ export class AdvertisementService {
   }
 
   getAdvertisement(id: number): Observable<Advertisement> {
-    return this.http.get(this.advertisementsUrl + "advertisement/" + id)
+    return this.http.get(this.apiUrl + "advertisement/" + id)
       .map(response => response.json() as Advertisement)
       .catch(err => this.handleError(err));
   }
@@ -51,27 +51,37 @@ export class AdvertisementService {
     created: "Apr 6, 2017 2:12:33 PM",
     subscriptions: []
   };
-  testcategory = { id: 1, name: "Bücher" };
+  testcategory = {id: 1, name: "Bücher"};
 
 
   // created set bei server -> don't send it!
-  create(advertisement: Advertisement): Observable<Advertisement> {
-    //TODO: first: send all tagstrings to api/tags, then send returned tag-object with ad
+  create(advertisement: Advertisement, tags: Tag[]): Observable<Advertisement> {
     let media = advertisement.media ? advertisement.media : [];
     // TODO: change userid,categoryid, tags
     return this.http
-      .post(this.advertisementsUrl + "advertisement", JSON.stringify({
+      .post(this.apiUrl + "advertisement", JSON.stringify({
         title: advertisement.title,
         user: {id: this.testuser.id},
         price: advertisement.price,
         description: advertisement.description,
         category: {id: this.testcategory.id},
-        tags: [],
+        tags: tags,
         media: media,
         advertisementState: AdvertisementState.active,
       }), {headers: this.headers})
       .map(res => res.json())
-      .catch(this.handleError);
+      .catch(err => this.handleError(err));
   }
+
+  createAdvertisementAndTags(advertisement: Advertisement) {
+    return this.tagService.create(advertisement.tags)
+      .flatMap(
+        res => {
+          console.log(res);
+          return this.create(advertisement, res)
+        }
+      )
+  }
+
   // TODO: update, delete
 }

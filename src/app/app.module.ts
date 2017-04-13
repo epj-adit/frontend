@@ -18,6 +18,7 @@ import { AdvertisementListComponent } from './advertisementlist/advertisementlis
 import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-info.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { NoTagsValidatorDirective } from "./advertisement/no-tags.directive";
+import { TagService } from "./_services/tag.service";
 
 
 export function HttpLoaderFactory(http: Http) {
@@ -50,7 +51,7 @@ export function HttpLoaderFactory(http: Http) {
     NoTagsValidatorDirective
   ],
   exports: [NoTagsValidatorDirective],
-  providers: [appRoutingProviders, AdvertisementService],
+  providers: [appRoutingProviders, AdvertisementService, TagService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
