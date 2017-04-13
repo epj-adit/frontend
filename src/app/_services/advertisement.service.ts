@@ -51,20 +51,19 @@ export class AdvertisementService {
     created: "Apr 6, 2017 2:12:33 PM",
     subscriptions: []
   };
-  testcategory = {id: 1, name: "Bücher"};
 
 
   // created set bei server -> don't send it!
   create(advertisement: Advertisement, tags: Tag[]): Observable<Advertisement> {
     let media = advertisement.media ? advertisement.media : [];
-    // TODO: change userid,categoryid, tags
+    // TODO: change State to ToReview, as soon as there are superusers
     return this.http
       .post(this.apiUrl + "advertisement", JSON.stringify({
         title: advertisement.title,
         user: {id: this.testuser.id},
         price: advertisement.price,
         description: advertisement.description,
-        category: {id: this.testcategory.id},
+        category: {id: advertisement.category.id},
         tags: tags,
         media: media,
         advertisementState: AdvertisementState.active,
