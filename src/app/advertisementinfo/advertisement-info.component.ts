@@ -21,6 +21,7 @@ export class AdvertisementInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // supress unnecessary server request, if we already have ad-object
     if (this.advertisementService.currentAdvertisement){
       this.advertisement = this.advertisementService.currentAdvertisement;
     } else {

@@ -5,6 +5,7 @@ import { Advertisement } from '../data-classes/advertisement';
 import { Tag } from '../data-classes/tag';
 import { CategoryService } from "../_services/category.service";
 import { Category } from "../data-classes/category";
+import { ActivatedRoute, Params } from "@angular/router";
 
 @Component({
   selector: 'adit-advertisement',
@@ -12,7 +13,9 @@ import { Category } from "../data-classes/category";
   styleUrls: ['./advertisement.component.scss']
 })
 export class AdvertisementComponent implements OnInit {
-  constructor(private advertisementService: AdvertisementService, private categoryService: CategoryService) {
+  constructor(private advertisementService: AdvertisementService,
+              private categoryService: CategoryService,
+              private route: ActivatedRoute,) {
   }
 
   // TODO:read available categories from DB
@@ -22,7 +25,6 @@ export class AdvertisementComponent implements OnInit {
   pricePattern = '[0-9]+(.[0-9][05])?';
   priceValue = "0.00";
   isSubmitted = false;
-  hasNoTags = true;
   submitted = false;
   taghelpDisplay = 'none';
 
@@ -30,7 +32,29 @@ export class AdvertisementComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(res => this.categories = res);
+    if (this.route.params) {
+      if (this.advertisementService.currentAdvertisement) {
+        let currAd = this.advertisementService.currentAdvertisement;
+        this.model = currAd;
+        this.tags = currAd.tags;
+        this.tagValue = " ";
+        this.priceValue = currAd.price/100+"";
+      } else {
+        this.route.params
+          .switchMap((params: Params) => this.advertisementService.getAdvertisement(+params['id']))
+          .subscribe(advertisement => {
+            this.model = advertisement;
+            this.tags = advertisement.tags;
+            this.tagValue = " ";
+            this.priceValue = advertisement.price/100+"";
+          });
+      }
+    } else {
+      //TODO: bit of a hack -> find a way to validate without needing to set input to ' '
+      this.tagValue = " ";
+    }
   }
+
 
   onSubmit() {
     this.submitted = true;
@@ -46,9 +70,8 @@ export class AdvertisementComponent implements OnInit {
   addTag(): void {
     let pattern = new RegExp('[a-zA-Z\\-_\\d]+;');
     if (pattern.test(this.tagValue)) {
-      this.tags.push(new Tag(this.tagValue.substring(0, this.tagValue.length - 1)));
+      this.tags.push(new Tag(this.tagValue.substring(1, this.tagValue.length - 1)));
       this.tagValue = '';
-      this.hasNoTags = false;
     }
   }
 
@@ -58,7 +81,6 @@ export class AdvertisementComponent implements OnInit {
     if (index > -1) {
       this.tags.splice(index, 1);
     }
-    this.hasNoTags = true;
     this.tagValue = oldtag.name;
   }
 

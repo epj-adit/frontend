@@ -5,6 +5,7 @@ import { AdvertisementSearchComponent } from './search/advertisement-search.comp
 import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-info.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { AdvertisementListComponent } from "./advertisementlist/advertisementlist.component";
+import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'advertisements', pathMatch: 'full'},
@@ -12,7 +13,8 @@ const appRoutes: Routes = [
   {path: 'advertisements', component: AdvertisementListComponent},
   {path: 'advertisementinfo/:id', component: AdvertisementInfoComponent},
   {path: 'advertisement/:id', component: AdvertisementComponent},
-  {path: 'advertisement', component: AdvertisementComponent}
+  {path: 'advertisement', component: AdvertisementComponent},
+  {path: 'user/:id/advertisements', component: UserAdvertisementsComponent}
 ];
 
 export const appRoutingProviders: any[] = [];

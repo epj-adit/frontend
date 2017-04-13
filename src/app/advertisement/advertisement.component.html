@@ -33,7 +33,7 @@
 				<span class="help"><fa [name]="'question-circle'" (click)="changeDisplay()"></fa></span>
 			</label>
 			<span class="help-text" [style.display]="taghelpDisplay">{{"AD.taghelp" | translate }}</span>
-			<input [ngClass]="{'notags':hasNoTags}" type="text" class="form-control" id="tags"
+			<input [ngClass]="{'notags':adForm.form.controls?.tags?.invalid}" type="text" class="form-control" id="tags"
 				   [(ngModel)]="tagValue" name="tags" (keyup)="addTag()" noTags="{{model.tags}}">
 		</div>
 		<button type="submit" class="submit" [disabled]="!adForm.form.valid">{{ "AD.submit" | translate }}</button>

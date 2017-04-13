@@ -54,22 +54,30 @@ export class AdvertisementService {
 
 
   // created set bei server -> don't send it!
-  create(advertisement: Advertisement, tags: Tag[]): Observable<Advertisement> {
-    let media = advertisement.media ? advertisement.media : [];
+  createOrUpdate(advertisement: Advertisement, tags: Tag[]): Observable<Advertisement> {
     // TODO: change State to ToReview, as soon as there are superusers
-    return this.http
-      .post(this.apiUrl + "advertisement", JSON.stringify({
-        title: advertisement.title,
-        user: {id: this.testuser.id},
-        price: advertisement.price,
-        description: advertisement.description,
-        category: {id: advertisement.category.id},
-        tags: tags,
-        media: media,
-        advertisementState: AdvertisementState.active,
-      }), {headers: this.headers})
-      .map(res => res.json())
-      .catch(err => this.handleError(err));
+    let media = advertisement.media ? advertisement.media : [];
+    let ad: any = {
+      title: advertisement.title,
+      user: {id: this.testuser.id},
+      price: advertisement.price,
+      description: advertisement.description,
+      category: {id: advertisement.category.id},
+      tags: tags,
+      media: media,
+      advertisementState: AdvertisementState.active,
+    };
+    if (advertisement.id) {
+      ad.id = advertisement.id;
+      return this.http.put(this.apiUrl + "advertisement/" + advertisement.id, JSON.stringify(ad), {headers: this.headers})
+        .map(res => res.json())
+        .catch(err => this.handleError(err));
+    } else {
+      return this.http
+        .post(this.apiUrl + "advertisement", JSON.stringify(ad), {headers: this.headers})
+        .map(res => res.json())
+        .catch(err => this.handleError(err));
+    }
   }
 
   createAdvertisementAndTags(advertisement: Advertisement) {
@@ -77,7 +85,7 @@ export class AdvertisementService {
       .flatMap(
         res => {
           console.log(res);
-          return this.create(advertisement, res)
+          return this.createOrUpdate(advertisement, res)
         }
       )
   }

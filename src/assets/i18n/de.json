@@ -3,6 +3,7 @@
     "searchLink": "Suche",
     "advertisementsLink": "Inserate",
     "advertisementLink": "Inserat erstellen",
+    "userAdvertisementLink": "Userinserate",
     "welcome": "Willkommen"
   },
   "ADVERTISEMENT": {
@@ -25,5 +26,9 @@
     "submit": "absenden",
     "taghelp": "Einzelne Tags mit ';' trennen. Erlaubte Sonderzeichen: - _",
     "isSubmitted": "Dein Inserat wurde gepostet"
+  },
+  "USERADVERTISEMENT": {
+    "title": "Meine Inserate",
+    "legend": "Legende"
   }
 }

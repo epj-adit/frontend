@@ -1,0 +1,46 @@
+@import "../_variables.scss";
+
+.legende {
+  display: inline-block;
+  width: 100%;
+  padding: 0.25em 0.5em;
+  margin: 0.5em 0 1em 0;
+  div {
+    @include flex(row, space-between);
+  }
+}
+
+.advertisements > li {
+  list-style-type: none;
+}
+
+.advertisement {
+  @include border(black);
+  padding: 0.5em;
+  margin: .25em;
+  @include flex(column);
+  & > h4 {
+    margin-bottom: 0.5em;
+  }
+  & > .tags {
+    margin-top: 0.5em;
+  }
+}
+
+.tags > li {
+  list-style-type: none;
+  display: inline-block;
+  @include tag();
+}
+
+.titleRow {
+  width: 100%;
+  @include flex(row, space-between);
+  .buttons > span {
+      margin: 1px;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+}
