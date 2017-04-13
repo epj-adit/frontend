@@ -80,3 +80,11 @@ $borderradius: 4px;
   padding: 8px;
 }
 
+@mixin oktext(){
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-radius: $borderradius;
+  border: 1px solid #d6e9c6;
+  padding: 8px;
+}
+

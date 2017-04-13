@@ -20,7 +20,8 @@ export class AdvertisementComponent implements OnInit {
   tags: Tag[] = [];
   tagValue: string = '';
   pricePattern = '[0-9]+(.[0-9][05])?';
-  isSubmitted = '';
+  priceValue = "0.00";
+  isSubmitted = false;
   hasNoTags = true;
   submitted = false;
   taghelpDisplay = 'none';
@@ -34,12 +35,11 @@ export class AdvertisementComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     // convert userinput to Rappen
-    // parseFloat needs a string as input. this.model.price should be a number, but is a string (userinput)
-    this.model.price = parseFloat(this.model.price + "") * 100;
+    this.model.price = parseFloat(this.priceValue) * 100;
     this.advertisementService.createAdvertisementAndTags(this.model)
       .subscribe(ad => {
         console.log(ad); //TODO: remove console.log for production
-        this.isSubmitted = "Your ad has been submitted";
+        this.isSubmitted = true;
       });
   }
 

@@ -23,6 +23,7 @@
     "description": "Beschreibung",
     "price": "Preis [CHF]",
     "submit": "absenden",
-    "taghelp": "Einzelne Tags mit ';' trennen. Erlaubte Sonderzeichen: - _"
+    "taghelp": "Einzelne Tags mit ';' trennen. Erlaubte Sonderzeichen: - _",
+    "isSubmitted": "Dein Inserat wurde gepostet"
   }
 }

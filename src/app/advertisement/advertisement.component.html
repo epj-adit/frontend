@@ -22,7 +22,7 @@
 		<div class="form-group">
 			<label for="price">{{ "AD.price" | translate }}</label>
 			<input type="text" class="form-control" id="price" required
-				   [(ngModel)]="model.price" name="price"
+				   [(ngModel)]="priceValue" name="price"
 				   [pattern]="pricePattern">
 		</div>
 		<div class="tags">
@@ -37,6 +37,6 @@
 				   [(ngModel)]="tagValue" name="tags" (keyup)="addTag()" noTags="{{model.tags}}">
 		</div>
 		<button type="submit" class="submit" [disabled]="!adForm.form.valid">{{ "AD.submit" | translate }}</button>
-		{{isSubmitted}}
+		<span *ngIf="isSubmitted" class="isSubmitted">{{ "AD.isSubmitted" | translate }}</span>
 	</form>
 </div>
