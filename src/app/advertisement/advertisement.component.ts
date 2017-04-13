@@ -30,8 +30,11 @@ export class AdvertisementComponent /* implements AfterViewInit*/ {
     // convert userinput to Rappen
     // parseFloat needs a string as input. this.model.price should be a number, but is a string (userinput)
     this.model.price = parseFloat(this.model.price + "") * 100;
-    this.advertisementService.create(this.model)
-      .subscribe(ad => this.isSubmitted = "Your ad '" + ad.title + "' has been submitted");
+    this.advertisementService.createAdvertisementAndTags(this.model)
+      .subscribe(ad => {
+        console.log(ad);
+        this.isSubmitted = "Your ad has been submitted";
+      });
   }
 
   addTag(): void {
@@ -53,7 +56,7 @@ export class AdvertisementComponent /* implements AfterViewInit*/ {
     this.tagValue = oldtag.name;
   }
 
-  changeDisplay():void {
+  changeDisplay(): void {
     this.taghelpDisplay = this.taghelpDisplay == 'inline-block' ? 'none' : 'inline-block';
   }
 }
