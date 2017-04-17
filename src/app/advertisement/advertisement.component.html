@@ -8,7 +8,7 @@
 				   [(ngModel)]="model.title" name="title">
 		</div>
 		<div class="form-group">
-			<label for="category">{{ "AD.category" | translate }}</label>
+			<label for="category">{{ "AD.Category" | translate }}</label>
 			<select class="form-control" id="category" required
 					[(ngModel)]="model.category" name="category">
 				<option *ngFor="let cat of category" [value]="cat">{{cat}}</option>

@@ -1,11 +1,11 @@
 export enum ProposalType{
-    category, tag, advertisement
+    Category, Tag, Advert
 }
 export class SearchProposal {
     name: string;
     type: ProposalType;
+    displayName: string;
     id: number;
     constructor(){
-
     }
 }

@@ -21,7 +21,7 @@ import {SearchProposal, ProposalType} from './search-proposal';
 })
 export class AdvertisementSearchComponent implements OnInit {
   searchProposals: Observable<SearchProposal[]>;
-
+  private propsalType :ProposalType;
   private searchTerms = new Subject<string>();
 
   constructor(private advertisementSearchService: AdvertisementSearchService,
@@ -51,11 +51,11 @@ export class AdvertisementSearchComponent implements OnInit {
     private handleNotification(results) {
         let advertisements = results[0];
         let proposals: SearchProposal[] = [];
-        proposals = proposals.concat(this.addToProposals(advertisements, ProposalType.advertisement));
+        proposals = proposals.concat(this.addToProposals(advertisements, ProposalType.Advert));
         let tags = results[1];
-        proposals = proposals.concat(this.addToProposals(tags, ProposalType.tag));
+        proposals = proposals.concat(this.addToProposals(tags, ProposalType.Tag));
         let categories = results[2];
-        proposals = proposals.concat(this.addToProposals(categories, ProposalType.category));
+        proposals = proposals.concat(this.addToProposals(categories, ProposalType.Category));
         console.log("wait for me ", proposals);
 
         proposals = proposals.filter(p=>p!=undefined);
@@ -67,10 +67,10 @@ export class AdvertisementSearchComponent implements OnInit {
     private addToProposals(toAdd: any[], proposalType : ProposalType) {
         if(!toAdd || toAdd.length===0) return;
         let proposals: SearchProposal[] = [];
-        if(proposalType == ProposalType.advertisement){
-            toAdd.forEach(ad => proposals.push({id:ad.id, name:ad.title, type:proposalType }));
+        if(proposalType == ProposalType.Advert){
+            toAdd.forEach(ad => proposals.push({id:ad.id, name:ad.title, type:proposalType,displayName: ProposalType[proposalType] }));
         } else {
-            toAdd.forEach(item => proposals.push({id:item.id, name:item.name, type:proposalType }));
+            toAdd.forEach(item => proposals.push({id:item.id, name:item.name, type:proposalType, displayName: ProposalType[proposalType] }));
         }
         return proposals;
     }
