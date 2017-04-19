@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
 import { routing, appRoutingProviders }  from './app.routing';
 
@@ -21,7 +23,6 @@ import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-in
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
 
-
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http);
 }
@@ -33,6 +34,8 @@ export function HttpLoaderFactory(http: Http) {
     HttpModule,
     JsonpModule,
     Angular2FontawesomeModule,
+    ModalModule.forRoot(),
+    BootstrapModalModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

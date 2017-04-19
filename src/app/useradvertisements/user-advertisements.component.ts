@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { Overlay } from 'angular2-modal';
+import { Modal } from 'angular2-modal/plugins/bootstrap';
 
 import { Advertisement } from '../data-classes/advertisement';
 import { AdvertisementService } from '../_services/advertisement.service';
@@ -13,7 +15,9 @@ export class UserAdvertisementsComponent implements OnInit {
   advertisements: Advertisement[];
 
   constructor(private router: Router,
-              private advertisementService: AdvertisementService) {
+              private advertisementService: AdvertisementService,
+              overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
+    overlay.defaultViewContainer = vcRef;
   }
 
   getAdvertisements(): void {
@@ -26,11 +30,27 @@ export class UserAdvertisementsComponent implements OnInit {
     this.router.navigate(link);
   }
 
-  deleteAd(advertisement:Advertisement): void {
-    this.advertisementService.deleteAd(advertisement).subscribe();
+  deleteAd(advertisement: Advertisement): void {
+    this.modal.confirm()
+      .size('sm')
+      .showClose(true)
+      .keyboard(27)
+      .title('Delete Advertisement')
+      .body(`
+            <p>Deleting an ad cannot be undone</p><p>Do you want to proceed?</p>`)
+      .okBtnClass('btn btn-danger')
+      .cancelBtnClass('btn btn-default')
+      .open()
+      .then((resultPromise) => {
+        return resultPromise.result.then(
+          (result) => {
+            if (result) this.advertisementService.deleteAd(advertisement).subscribe();
+          }, () => console.log('rejected'));
+      });
   }
 
   ngOnInit(): void {
     this.getAdvertisements();
   }
+
 }
