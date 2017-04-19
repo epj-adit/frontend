@@ -15,8 +15,8 @@
 			<div class="titleRow">
 				<h4>{{advertisement.title}}</h4>
 				<div class="buttons">
-					<span><fa [name]="'times'" (click)="deleteAd(advertisement)"></fa></span>
-					<span><fa [name]="'cog'" (click)="edit(advertisement)"></fa></span>
+					<span *ngIf="advertisement?.advertisementState!=4"><fa [name]="'times'" (click)="deleteAd(advertisement)"></fa></span>
+					<span *ngIf="advertisement?.advertisementState!=4"><fa [name]="'cog'" (click)="edit(advertisement)"></fa></span>
 				</div>
 			</div>
 			<span>{{advertisement.description}}</span>
