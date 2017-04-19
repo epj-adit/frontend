@@ -14,6 +14,13 @@ export class AdvertisementService {
   constructor(private http: Http) {
   }
 
+  getAdvertisementsQuery(query: string): Promise<Advertisement[]>{
+      return this.http.get(this.advertisementsUrl+query)
+          .toPromise()
+          .then(response => response.json() as Advertisement[])
+          .catch(this.handleError);
+  }
+
   getAdvertisements(): Promise<Advertisement[]> {
     return this.http.get(this.advertisementsUrl)
       .toPromise()

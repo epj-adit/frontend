@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 import { Advertisement } from '../data-classes/advertisement';
 import { AdvertisementService } from '../_services/advertisement.service';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'adit-advertisementlist',
@@ -10,9 +11,10 @@ import { AdvertisementService } from '../_services/advertisement.service';
   styleUrls: ['./advertisementlist.component.scss']
 })
 export class AdvertisementListComponent implements OnInit {
-  advertisements: Advertisement[];
-
+  private advertisements: Advertisement[];
+  private tagId: Observable<number>;
   constructor(private router: Router,
+              private route: ActivatedRoute,
               private advertisementService: AdvertisementService) {
   }
 
@@ -26,6 +28,8 @@ export class AdvertisementListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tagId = this.route.queryParams.map(params => {console.log(params['tagId']); return params['tagId']|| 0});
+    console.log("Got tagId: ", this.tagId);
     this.getAdvertisements();
   }
 }

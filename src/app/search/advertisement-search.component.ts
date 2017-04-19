@@ -56,10 +56,9 @@ export class AdvertisementSearchComponent implements OnInit {
         proposals = proposals.concat(this.addToProposals(tags, ProposalType.Tag));
         let categories = results[2];
         proposals = proposals.concat(this.addToProposals(categories, ProposalType.Category));
-        console.log("wait for me ", proposals);
 
         proposals = proposals.filter(p=>p!=undefined);
-        proposals.sort((p1,p2)=> p1.type-p2.type);
+        proposals.sort((p1,p2)=> p2.type-p1.type);
 
         this.searchProposals = Observable.of<SearchProposal[]>(proposals);
     }
@@ -76,7 +75,16 @@ export class AdvertisementSearchComponent implements OnInit {
     }
 
   gotoInfo(searchProposal: SearchProposal): void {
-    let link = ['/advertisementinfo', searchProposal.id];
-    this.router.navigate(link);
+      switch(searchProposal.type){
+          case ProposalType.Advert:
+              let proposalLink = ['/advertisementinfo', searchProposal.id];
+              this.router.navigate(proposalLink);
+              break;
+          case ProposalType.Tag:
+              console.log("Proposal tagId: ", searchProposal.id);
+              let tagLink = ['/advertisements/', {queryParams: {'tagId': searchProposal.id}}];
+              this.router.navigate(tagLink);
+              break;
+      }
   }
 }

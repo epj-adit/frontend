@@ -10,6 +10,7 @@ const appRoutes: Routes = [
   {path: '', redirectTo: 'advertisements', pathMatch: 'full'},
   {path: 'search', component: AdvertisementSearchComponent},
   {path: 'advertisements', component: AdvertisementListComponent},
+  {path: 'advertisements/', component: AdvertisementListComponent },
   {path: 'advertisementinfo/:id', component: AdvertisementInfoComponent},
   {path: 'advertisement/:id', component: AdvertisementComponent},
   {path: 'advertisement', component: AdvertisementComponent}
