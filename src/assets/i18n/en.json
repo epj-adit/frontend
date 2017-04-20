@@ -20,6 +20,7 @@
     "title": "create Advertisement",
     "titleField": "Title",
     "category": "Category",
+    "chooseCategory": "choose category...",
     "tags": "Tags",
     "description": "Description",
     "price": "Price  [CHF]",

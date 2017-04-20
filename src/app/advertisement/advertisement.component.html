@@ -1,40 +1,44 @@
 <div class="container">
 	<h2>{{ "AD.title" | translate }}</h2>
-	<form (ngSubmit)="onSubmit()" #adForm="ngForm">
+	<form (ngSubmit)="onSubmit(form.value)" #adForm="ngForm" [formGroup]="form">
 		<!-- TODO: add custom error messages https://angular.io/docs/ts/latest/guide/forms.html -->
+		<input type="hidden" id="id" name="id" fromControlName="id">
 		<div class="form-group">
 			<label for="title">{{ "AD.titleField" | translate }}</label>
 			<input type="text" class="form-control" id="title" required
-				   [(ngModel)]="model.title" name="title">
+				   formControlName="title" name="title">
 		</div>
 		<div class="form-group">
 			<label for="category">{{ "AD.category" | translate }}</label>
 			<select class="form-control" id="category" required
-					[(ngModel)]="model.category" name="category">
-				<option *ngFor="let cat of categories" [ngValue]="cat">{{cat?.name}}</option>
+					formControlName="category" name="category">
+				<option [value]="''">{{ "AD.chooseCategory" | translate }}</option>
+				<option *ngFor="let cat of categories" [selected]="cat?.name==form.controls['category']">{{cat?.name}}
+				</option>
 			</select>
 		</div>
 		<div class="form-group">
 			<label for="description">{{ "AD.description" | translate }}</label>
 			<input type="text" class="form-control" id="description" required
-				   [(ngModel)]="model.description" name="description">
+				   formControlName="description" name="description">
 		</div>
 		<div class="form-group">
 			<label for="price">{{ "AD.price" | translate }}</label>
 			<input type="text" class="form-control" id="price" required
-				   [(ngModel)]="priceValue" name="price"
+				   formControlName="priceValue" name="price"
 				   [pattern]="pricePattern">
 		</div>
 		<div class="tags">
 			<span *ngFor="let tag of tags" class="tag" (click)="removeTag(tag)">x {{tag.name}}</span>
 		</div>
 		<div class="form-group">
-			<label for="tags">{{ "AD.tags" | translate }}
+			<label for="tagValue">{{ "AD.tags" | translate }}
 				<span class="help"><fa [name]="'question-circle'" (click)="changeDisplay()"></fa></span>
 			</label>
 			<span class="help-text" [style.display]="taghelpDisplay">{{"AD.taghelp" | translate }}</span>
-			<input [ngClass]="{'notags':adForm.form.controls?.tags?.invalid}" type="text" class="form-control" id="tags"
-				   [(ngModel)]="tagValue" name="tags" (keyup)="addTag()" noTags="{{model.tags}}">
+			<input [ngClass]="{'notags':form.controls['tagValue'].invalid}" type="text" class="form-control"
+				   id="tagValue"
+				   formControlName="tagValue" (keyup)="addTag()">
 		</div>
 		<button type="submit" class="submit" [disabled]="!adForm.form.valid">{{ "AD.submit" | translate }}</button>
 		<span *ngIf="isSubmitted" class="isSubmitted">{{ "AD.isSubmitted" | translate }}</span>

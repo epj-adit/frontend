@@ -20,6 +20,7 @@
     "title": "Inserat erfassen",
     "titleField": "Titel",
     "category": "Kategorie",
+    "chooseCategory": "Kategorie auswählen...",
     "tags": "Tags",
     "description": "Beschreibung",
     "price": "Preis [CHF]",
