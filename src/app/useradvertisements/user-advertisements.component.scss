@@ -34,7 +34,7 @@
   @include tag();
 }
 
-.titleRow {
+.titleRow, .bottomRow {
   width: 100%;
   @include flex(row, space-between);
   .buttons > span {
@@ -50,6 +50,7 @@ $activecolor:#009933;
 $closedcolor:#999999;
 $reviewcolor:#00ccff;
 $declinedcolor:#cc0000;
+$expiredcolor:black;
 
 .active{
   color: $activecolor;
@@ -63,6 +64,9 @@ $declinedcolor:#cc0000;
 .declined{
   color: $declinedcolor;
 }
+.expired{
+  color: $expiredcolor;
+}
 
 //------ AdvertisementState --------
 
@@ -70,22 +74,53 @@ $declinedcolor:#cc0000;
 .state-0{
   border-color:$reviewcolor;
   background-color: #e6faff;
+  .bottomRow:after {
+    font-family: FontAwesome;
+    content: "\f06e";
+    color: $reviewcolor;
+  }
 }
 
 // declined
 .state-1{
   border-color:$declinedcolor;
   background-color: #ffe6e6;
+  .bottomRow:after {
+    font-family: FontAwesome;
+    content: "\f05e";
+    color: $declinedcolor;
+  }
 }
 
 // active
 .state-2 {
   border-color: $activecolor;
   background-color: #e6ffe6;
+  .bottomRow:after {
+      font-family: FontAwesome;
+      content: "\f04b";
+      color: $activecolor;
+  }
+}
+
+// expired
+.state-3 {
+  border-color: $expiredcolor;
+  background-color: white;
+  .bottomRow:after {
+    font-family: FontAwesome;
+    content: "\f253";
+    color: $expiredcolor;
+  }
 }
 
 // closed
 .state-4 {
   border-color: $closedcolor;
   background-color: lightgray;
+  .bottomRow:after {
+    font-family: FontAwesome;
+    content: "\f1f8";
+    color: $closedcolor;
+  }
 }

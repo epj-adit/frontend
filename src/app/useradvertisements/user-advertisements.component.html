@@ -20,11 +20,14 @@
 				</div>
 			</div>
 			<span>{{advertisement.description}}</span>
-			<ul class="tags">
-				<li *ngFor="let tag of advertisement.tags">
-					{{tag.name}}
-				</li>
-			</ul>
+			<div class="bottomRow">
+				<ul class="tags">
+					<li *ngFor="let tag of advertisement.tags">
+						{{tag.name}}
+					</li>
+				</ul>
+				<span class="icon-state-{{advertisement?.advertisementState}}"></span>
+			</div>
 		</div>
 	</li>
 </ul>
