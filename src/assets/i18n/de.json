@@ -29,6 +29,7 @@
   },
   "USERADVERTISEMENT": {
     "title": "Meine Inserate",
-    "legend": "Legende"
+    "legend": "Legende",
+    "deleteAdTitle": "Deleting an ad cannot be undone"
   }
 }

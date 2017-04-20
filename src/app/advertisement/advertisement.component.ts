@@ -6,6 +6,7 @@ import { Tag } from '../data-classes/tag';
 import { CategoryService } from "../_services/category.service";
 import { Category } from "../data-classes/category";
 import { ActivatedRoute, Params } from "@angular/router";
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'adit-advertisement',
@@ -23,41 +24,32 @@ export class AdvertisementComponent implements OnInit {
   tags: Tag[] = [];
   tagValue: string = '';
   pricePattern = '[0-9]+(.[0-9][05])?';
-  priceValue = "0.00";
+  priceValue = "";
   isSubmitted = false;
-  submitted = false;
   taghelpDisplay = 'none';
 
-  model = new Advertisement(1, "", null, "", null, this.tags);
+  model = new Advertisement(1, "", 0, "", null, this.tags);
 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(res => this.categories = res);
-    if (this.route.params) {
-      if (this.advertisementService.currentAdvertisement) {
-        let currAd = this.advertisementService.currentAdvertisement;
-        this.model = currAd;
-        this.tags = currAd.tags;
+    this.route.params
+      .switchMap((params: Params) => {
+        if (+params['id']) {
+          return this.advertisementService.getAdvertisement(+params['id']);
+        } else {
+          return Observable.of(this.model);
+        }
+      })
+      .subscribe(advertisement => {
+        this.model = advertisement;
+        this.tags = advertisement.tags;
         this.tagValue = " ";
-        this.priceValue = currAd.price/100+"";
-      } else {
-        this.route.params
-          .switchMap((params: Params) => this.advertisementService.getAdvertisement(+params['id']))
-          .subscribe(advertisement => {
-            this.model = advertisement;
-            this.tags = advertisement.tags;
-            this.tagValue = " ";
-            this.priceValue = advertisement.price/100+"";
-          });
-      }
-    } else {
-      //TODO: bit of a hack -> find a way to validate without needing to set input to ' '
-      this.tagValue = " ";
-    }
+        this.priceValue = parseFloat(advertisement.price / 100 + "").toFixed(2);
+      });
   }
 
 
   onSubmit() {
-    this.submitted = true;
     // convert userinput to Rappen
     this.model.price = parseFloat(this.priceValue) * 100;
     this.advertisementService.createAdvertisementAndTags(this.model)
