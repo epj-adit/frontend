@@ -17,7 +17,7 @@ export class AdvertisementListComponent implements OnInit {
   }
 
   getAdvertisements(): void {
-    this.advertisementService.getAdvertisements().subscribe(advertisements => this.advertisements = advertisements);
+    this.advertisementService.getAdvertisementsActive().subscribe(advertisements => this.advertisements = advertisements);
   }
 
   gotoInfo(advertisement: Advertisement): void {

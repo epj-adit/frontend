@@ -27,6 +27,12 @@ export class AdvertisementService {
       .catch(err => this.handleError(err));
   }
 
+  getAdvertisementsActive():Observable<Advertisement[]>{
+    return this.http.get(this.apiUrl + "advertisements/?advertisementState=2")
+      .map(response => response.json() as Advertisement[])
+      .catch(err => this.handleError(err));
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
