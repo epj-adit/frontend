@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from "../_services/user.service";
+import { User } from "../data-classes/user";
 
 
 @Component({
@@ -12,6 +13,7 @@ import { UserService } from "../_services/user.service";
 export class RegisterComponent implements OnInit {
   form: FormGroup;
   emailHelpDisplay = 'none';
+  isSubmitted = false;
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
@@ -37,7 +39,8 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(value) {
-    this.userService.create(value);
+    let newUser = new User(value.username,value.email+"@hsr.ch",value.password);
+    this.userService.create(newUser).subscribe(res => this.isSubmitted=true);
   }
 
   displayHelp(): void {

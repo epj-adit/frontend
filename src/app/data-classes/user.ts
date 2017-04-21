@@ -6,12 +6,21 @@ export class User {
   username: string;
   email: string;
   passwordHash: string;
-  //jwtToken: string;
+  password:string;
+  jwtToken: string;
   isPrivate: boolean;
   isActive: boolean;
   wantsNotification: boolean;
   created: string;
-  //updated: Date = new Date(Date.now());
+  updated: string;
   role: Role = null;
   subscriptions: Subscription[] = [];
+  constructor (username, email, password){
+    this.username = username;
+    this.email=email;
+    this.password=password;
+    this.isPrivate=false;
+    this.isActive=true;
+    this.wantsNotification=false;
+  }
 }

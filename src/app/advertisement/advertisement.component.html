@@ -31,11 +31,11 @@
 		<div class="tags">
 			<span *ngFor="let tag of tags" class="tag" (click)="removeTag(tag)">x {{tag.name}}</span>
 		</div>
+		<span class="help-text" [style.display]="taghelpDisplay">{{"AD.taghelp" | translate }}</span>
 		<div class="form-group">
 			<label for="tagValue">{{ "AD.tags" | translate }}
 				<span class="help"><fa [name]="'question-circle'" (click)="changeDisplay()"></fa></span>
 			</label>
-			<span class="help-text" [style.display]="taghelpDisplay">{{"AD.taghelp" | translate }}</span>
 			<input [ngClass]="{'notags':form.controls['tagValue'].invalid}" type="text" class="form-control"
 				   id="tagValue"
 				   formControlName="tagValue" (keyup)="addTag()">

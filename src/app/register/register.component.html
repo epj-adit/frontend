@@ -21,5 +21,6 @@
 				   formControlName="password">
 		</div>
 		<button type="submit" class="submit" [disabled]="!form.valid">{{ "REGISTER.submit" | translate }}</button>
+		<span *ngIf="isSubmitted" class="isSubmitted">{{ "AD.isSubmitted" | translate }}</span>
 	</form>
 </div>

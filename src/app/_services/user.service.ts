@@ -36,9 +36,7 @@ export class UserService {
   // TODO: add advertiser, created, updated
   create(user: User): Observable<User> {
     return this.http
-      .post(this.userUrl, JSON.stringify({
-
-      }), {headers: this.headers})
+      .post(this.userUrl, JSON.stringify(user), {headers: this.headers})
       .map(res => res.json())
       .catch(this.handleError);
   }

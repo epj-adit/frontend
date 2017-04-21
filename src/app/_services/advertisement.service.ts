@@ -27,7 +27,7 @@ export class AdvertisementService {
       .catch(err => this.handleError(err));
   }
 
-  getAdvertisementsActive():Observable<Advertisement[]>{
+  getAdvertisementsActive(): Observable<Advertisement[]> {
     return this.http.get(this.apiUrl + "advertisements/?advertisementState=2")
       .map(response => response.json() as Advertisement[])
       .catch(err => this.handleError(err));
@@ -51,10 +51,13 @@ export class AdvertisementService {
     username: "student",
     email: "student@hsr.ch",
     passwordHash: "abcde",
+    password: "test",
     isPrivate: true,
     wantsNotification: true,
     isActive: true,
     created: "Apr 6, 2017 2:12:33 PM",
+    updated: "",
+    jwtToken: "",
     subscriptions: []
   };
 
