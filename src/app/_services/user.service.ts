@@ -10,7 +10,7 @@ import { User } from "../data-classes/user";
 @Injectable()
 export class AdvertisementService {
   private usersUrl = 'api/users';  // URL to web api
-  private userUrl = 'api/user';
+  private userUrl = 'api/user/';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {
@@ -28,25 +28,18 @@ export class AdvertisementService {
   }
 
   getUser(id: number): Observable<User> {
-    return this.getAdvertisements()
-      .then(advertisements => advertisements.find(advertisement => advertisement.id === id));
+    return this.http.get(this.usersUrl + id)
+      .map(response => response.json() as User)
+      .catch(err => this.handleError(err));
   }
 
   // TODO: add advertiser, created, updated
-  create(advertisement: Advertisement): Promise<Advertisement> {
-    let media = advertisement.media ? advertisement.media : [];
+  create(user: User): Observable<User> {
     return this.http
-      .post(this.advertisementsUrl, JSON.stringify({
-        id: advertisement.id,
-        title: advertisement.title,
-        price: advertisement.price,
-        description: advertisement.description,
-        category: advertisement.category,
-        tags: advertisement.tags,
-        media: media
+      .post(this.userUrl, JSON.stringify({
+
       }), {headers: this.headers})
-      .toPromise()
-      .then(res => res.json().data)
+      .map(res => res.json())
       .catch(this.handleError);
   }
 

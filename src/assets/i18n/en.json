@@ -4,6 +4,7 @@
     "advertisementsLink": "Advertisements",
     "advertisementLink": "create Advertisement",
     "userAdvertisementLink": "Useradvertisements",
+    "registrationLink":"Registration",
     "welcome": "Welcome"
   },
   "ADVERTISEMENT": {
