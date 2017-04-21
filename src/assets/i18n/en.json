@@ -26,11 +26,19 @@
     "description": "Description",
     "price": "Price  [CHF]",
     "submit": "submit",
-    "taghelp": "separate tags with ';'. Permited special characters: - _",
+    "taghelp": "separate tags with ';'. Permitted special characters: - _",
     "isSubmitted": "Your advertisement was submitted"
   },
   "USERADVERTISEMENT": {
     "title": "My Advertisements",
     "legend": "Legend"
+  },
+  "REGISTER":{
+    "title": "Register User",
+    "usernameField": "username",
+    "emailField": "email",
+    "passwordField": "password",
+    "submit": "submit",
+    "emailHelp": "Please use the short form of your HSR email addresse. e.g.: amuster"
   }
 }

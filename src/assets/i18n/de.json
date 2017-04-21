@@ -33,5 +33,13 @@
     "title": "Meine Inserate",
     "legend": "Legende",
     "deleteAdTitle": "Deleting an ad cannot be undone"
+  },
+  "REGISTER":{
+    "title": "Benutzer registrieren",
+    "usernameField": "Username",
+    "emailField": "E-Mail",
+    "passwordField": "Passwort",
+    "submit": "absenden",
+    "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster"
   }
 }

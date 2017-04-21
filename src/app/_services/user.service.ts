@@ -8,7 +8,7 @@ import { User } from "../data-classes/user";
 
 
 @Injectable()
-export class AdvertisementService {
+export class UserService {
   private usersUrl = 'api/users';  // URL to web api
   private userUrl = 'api/user/';
   private headers = new Headers({'Content-Type': 'application/json'});
