@@ -1,25 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, Http, JsonpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
-
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
 import { routing, appRoutingProviders }  from './app.routing';
-import { InMemoryAdvertisementService } from './mock-data/in-memory-advertisement.service';
+
 import { AdvertisementService } from './_services/advertisement.service';
+import { TagService } from "./_services/tag.service";
+import { CategoryService } from "./_services/category.service";
 
 import { AppComponent } from './app.component';
 import { AdvertisementSearchComponent } from './search/advertisement-search.component';
 import { AdvertisementListComponent } from './advertisementlist/advertisementlist.component';
 import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-info.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
-import { NoTagsValidatorDirective } from "./advertisement/no-tags.directive";
 import { RegisterComponent } from "./register/register.component";
-
+import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
 
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http);
@@ -29,10 +30,12 @@ export function HttpLoaderFactory(http: Http) {
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     JsonpModule,
     Angular2FontawesomeModule,
-    InMemoryWebApiModule.forRoot(InMemoryAdvertisementService, {passThruUnknownUrl: true}),
+    ModalModule.forRoot(),
+    BootstrapModalModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -49,10 +52,9 @@ export function HttpLoaderFactory(http: Http) {
     AdvertisementListComponent,
     AdvertisementInfoComponent,
     RegisterComponent,
-    NoTagsValidatorDirective
+    UserAdvertisementsComponent
   ],
-  exports: [NoTagsValidatorDirective],
-  providers: [appRoutingProviders, AdvertisementService],
+  providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

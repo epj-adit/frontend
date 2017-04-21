@@ -3,6 +3,7 @@
     "searchLink": "Search",
     "advertisementsLink": "Advertisements",
     "advertisementLink": "create Advertisement",
+    "userAdvertisementLink": "Useradvertisements",
     "welcome": "Welcome"
   },
   "ADVERTISEMENT": {
@@ -19,8 +20,16 @@
     "title": "create Advertisement",
     "titleField": "Title",
     "category": "Category",
+    "chooseCategory": "choose category...",
     "tags": "Tags",
     "description": "Description",
-    "price": "Price"
+    "price": "Price  [CHF]",
+    "submit": "submit",
+    "taghelp": "separate tags with ';'. Permited special characters: - _",
+    "isSubmitted": "Your advertisement was submitted"
+  },
+  "USERADVERTISEMENT": {
+    "title": "My Advertisements",
+    "legend": "Legend"
   }
 }

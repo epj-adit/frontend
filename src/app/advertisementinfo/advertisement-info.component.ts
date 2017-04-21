@@ -21,9 +21,14 @@ export class AdvertisementInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params
-      .switchMap((params: Params) => this.advertisementService.getAdvertisement(+params['id']))
-      .subscribe(advertisement => this.advertisement = advertisement);
+    // supress unnecessary server request, if we already have ad-object
+    if (this.advertisementService.currentAdvertisement){
+      this.advertisement = this.advertisementService.currentAdvertisement;
+    } else {
+      this.route.params
+        .switchMap((params: Params) => this.advertisementService.getAdvertisement(+params['id']))
+        .subscribe(advertisement => this.advertisement = advertisement);
+    }
   }
 
   getMedia(filename: string): string {

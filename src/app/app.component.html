@@ -21,6 +21,13 @@
 						{{ "APP.advertisementLink" | translate }}
 					</a>
 				</li>
+				<li>
+					<!-- TODO change userid to variable-->
+					<a [routerLink]="['/user/3/advertisements']" routerLinkActive="active">
+						<fa [name]="'user-o'"></fa>
+						{{ "APP.userAdvertisementLink" | translate }}
+					</a>
+				</li>
 			</ul>
 		</nav>
 	</header>

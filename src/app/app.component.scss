@@ -9,12 +9,12 @@
 }
 
 html, body {
-  height: 100%;
+  height: 100vh;
 }
 
 .container {
   @include flex(column, flex-start, stretch);
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 header {

@@ -3,6 +3,7 @@
     "searchLink": "Suche",
     "advertisementsLink": "Inserate",
     "advertisementLink": "Inserat erstellen",
+    "userAdvertisementLink": "Userinserate",
     "welcome": "Willkommen"
   },
   "ADVERTISEMENT": {
@@ -19,8 +20,17 @@
     "title": "Inserat erfassen",
     "titleField": "Titel",
     "category": "Kategorie",
+    "chooseCategory": "Kategorie auswählen...",
     "tags": "Tags",
     "description": "Beschreibung",
-    "price": "Preis"
+    "price": "Preis [CHF]",
+    "submit": "absenden",
+    "taghelp": "Einzelne Tags mit ';' trennen. Erlaubte Sonderzeichen: - _",
+    "isSubmitted": "Dein Inserat wurde gepostet"
+  },
+  "USERADVERTISEMENT": {
+    "title": "Meine Inserate",
+    "legend": "Legende",
+    "deleteAdTitle": "Deleting an ad cannot be undone"
   }
 }

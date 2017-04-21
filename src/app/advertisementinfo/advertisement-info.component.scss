@@ -7,6 +7,19 @@
 
 }
 
+.buttons-user {
+  @include flex(row, space-between);
+}
+
+.posted {
+  font-style: italic;
+  color: $maincolor;
+  & > .username {
+    font-style: normal;
+    color: black;
+  }
+}
+
 .ad-buttons > a {
   @include buttonLink;
 }

@@ -17,10 +17,11 @@ export class AdvertisementListComponent implements OnInit {
   }
 
   getAdvertisements(): void {
-    this.advertisementService.getAdvertisements().then(advertisements => this.advertisements = advertisements);
+    this.advertisementService.getAdvertisementsActive().subscribe(advertisements => this.advertisements = advertisements);
   }
 
   gotoInfo(advertisement: Advertisement): void {
+    this.advertisementService.currentAdvertisement = advertisement;
     let link = ['/advertisementinfo', advertisement.id];
     this.router.navigate(link);
   }

@@ -3,6 +3,7 @@
 .tag {
   @include tag();
   margin: 0.1em;
+  cursor: pointer;
 }
 
 form {
@@ -60,4 +61,18 @@ form {
       width: 60%;
     }
   }
+}
+
+.help-text {
+  @include helptext();
+  margin: 5px 0;
+  width: 100%;
+  font-size: smaller;
+}
+
+.isSubmitted{
+  @include oktext();
+  margin: 5px 0;
+  width: 100%;
+  font-size: smaller;
 }
