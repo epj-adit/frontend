@@ -18,6 +18,7 @@ import { AdvertisementListComponent } from './advertisementlist/advertisementlis
 import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-info.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { NoTagsValidatorDirective } from "./advertisement/no-tags.directive";
+import { RegisterComponent } from "./register/register.component";
 
 
 export function HttpLoaderFactory(http: Http) {
@@ -47,6 +48,7 @@ export function HttpLoaderFactory(http: Http) {
     AdvertisementComponent,
     AdvertisementListComponent,
     AdvertisementInfoComponent,
+    RegisterComponent,
     NoTagsValidatorDirective
   ],
   exports: [NoTagsValidatorDirective],
