@@ -1,7 +1,9 @@
 <div class="container">
 	<header>
 		<a href="/"><img id="logo" src="/assets/images/logo-adit-small.png"></a>
-		<nav>
+		<input type="checkbox" id="menu-toggel" #menuToggle>
+		<label for="menu-toggel" id="label-toggle"></label>
+		<nav id="mainnav">
 			<ul>
 				<li>
 					<a [routerLink]="['/search']" routerLinkActive="active">

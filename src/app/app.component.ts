@@ -1,8 +1,10 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Router } from "@angular/router";
 
 import { Advertisement } from './data-classes/advertisement';
 import { AdvertisementService } from './_services/advertisement.service';
+
 /**
  * Styles required here are common for all components (SASS/SCSS versions of normalize.css and flexboxgrid),
  * so encapsulation is not used. Other components have their styles scoped with `ViewEncapsulation.Emulated`.
@@ -16,11 +18,15 @@ import { AdvertisementService } from './_services/advertisement.service';
 })
 export class AppComponent implements OnInit {
   advertisements: Advertisement[] = [];
+  @ViewChild('menuToggle') menuToggle;
 
-  constructor(private advertisementService: AdvertisementService, private translate: TranslateService) {
+  constructor(private advertisementService: AdvertisementService, private translate: TranslateService, private router: Router) {
     translate.addLangs(['de', 'en']);
     translate.setDefaultLang('de');
     translate.use('de');
+    router.events.subscribe(()=>{
+      this.menuToggle.nativeElement.checked = false;
+    });
   }
 
   changeLang(lang: string) {
