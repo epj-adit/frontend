@@ -80,10 +80,7 @@ export class AdvertisementComponent implements OnInit {
       this.tags
     );
     this.advertisementService.createAdvertisementAndTags(newAd)
-      .subscribe(ad => {
-        console.log(ad); //TODO: remove console.log for production
-        this.isSubmitted = true;
-      });
+      .subscribe(ad => this.isSubmitted = true);
   }
 
   addTag(): void {

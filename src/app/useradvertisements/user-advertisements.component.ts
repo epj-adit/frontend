@@ -45,7 +45,7 @@ export class UserAdvertisementsComponent implements OnInit {
         return resultPromise.result.then(
           (result) => {
             if (result) this.advertisementService.deleteAd(advertisement).subscribe();
-          }, () => console.log('rejected'));
+          }, () => console.log('Delete action rejected by user.'));
       });
   }
 
