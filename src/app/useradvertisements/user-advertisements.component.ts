@@ -5,6 +5,8 @@ import { Modal } from 'angular2-modal/plugins/bootstrap';
 
 import { Advertisement } from '../data-classes/advertisement';
 import { AdvertisementService } from '../_services/advertisement.service';
+import { TranslateService } from "@ngx-translate/core";
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'adit-useradvertisements',
@@ -16,7 +18,8 @@ export class UserAdvertisementsComponent implements OnInit {
 
   constructor(private router: Router,
               private advertisementService: AdvertisementService,
-              overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
+              overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,
+              private translate: TranslateService) {
     overlay.defaultViewContainer = vcRef;
   }
 
@@ -31,6 +34,10 @@ export class UserAdvertisementsComponent implements OnInit {
   }
 
   deleteAd(advertisement: Advertisement): void {
+    let translateTitle = this.translate.get('USERADVERTISEMENT.deleteConfirmTitle');
+    let translateDialog = this.translate.get('USERADVERTISEMENT.deleteConfirmDialog');
+    Observable.forkJoin([translateTitle, translateDialog]).subscribe(res => console.log(res));
+
     this.modal.confirm()
       .size('sm')
       .showClose(true)
