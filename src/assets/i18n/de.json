@@ -31,7 +31,7 @@
   "USERADVERTISEMENT": {
     "title": "Meine Inserate",
     "legend": "Legende",
-    "deleteConfirmTitle": "Deleting an ad cannot be undone",
-    "deleteConfirmDialog":"test"
+    "deleteConfirmTitle": "Inserat löschen",
+    "deleteConfirmDialog":"Das Löschen eines Inserats kann nicht rückgängig gemacht werden<br>Willst du fortfahren?"
   }
 }

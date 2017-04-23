@@ -36,24 +36,24 @@ export class UserAdvertisementsComponent implements OnInit {
   deleteAd(advertisement: Advertisement): void {
     let translateTitle = this.translate.get('USERADVERTISEMENT.deleteConfirmTitle');
     let translateDialog = this.translate.get('USERADVERTISEMENT.deleteConfirmDialog');
-    Observable.forkJoin([translateTitle, translateDialog]).subscribe(res => console.log(res));
+    Observable.forkJoin([translateTitle, translateDialog]).subscribe(
+      res => this.modal.confirm()
+        .size('sm')
+        .showClose(true)
+        .keyboard(27)
+        .title(res[0])
+        .body(res[1])
+        .okBtnClass('btn btn-danger')
+        .cancelBtnClass('btn btn-default')
+        .open()
+        .then((resultPromise) => {
+          return resultPromise.result.then(
+            (result) => {
+              if (result) this.advertisementService.deleteAd(advertisement).subscribe();
+            }, () => console.log('Delete action rejected by user.'));
+        })
 
-    this.modal.confirm()
-      .size('sm')
-      .showClose(true)
-      .keyboard(27)
-      .title('Delete Advertisement')
-      .body(`
-            <p>Deleting an ad cannot be undone</p><p>Do you want to proceed?</p>`)
-      .okBtnClass('btn btn-danger')
-      .cancelBtnClass('btn btn-default')
-      .open()
-      .then((resultPromise) => {
-        return resultPromise.result.then(
-          (result) => {
-            if (result) this.advertisementService.deleteAd(advertisement).subscribe();
-          }, () => console.log('Delete action rejected by user.'));
-      });
+    );
   }
 
   ngOnInit(): void {

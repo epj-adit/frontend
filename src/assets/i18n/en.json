@@ -30,6 +30,8 @@
   },
   "USERADVERTISEMENT": {
     "title": "My Advertisements",
-    "legend": "Legend"
+    "legend": "Legend",
+    "deleteConfirmTitle": "Delete Advertisement",
+    "deleteConfirmDialog":"Deleting an ad cannot be undone<br>Do you want to proceed?"
   }
 }
