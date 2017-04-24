@@ -27,15 +27,16 @@ export class AdvertisementListComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.switchMap(par => {
       let tagId=par['tagId'];
+      let categoryId = par['categoryId'];
+
       if (tagId){
-        return this.advertisementService.getAdvertisementsQuery(`/?tagId=`+tagId).then(advertisements => this.advertisements = advertisements)
+        return this.advertisementService.getAdvertisementsQuery(`/?tagId=${tagId}`).then(advertisements => this.advertisements = advertisements)
+      } else if(categoryId){
+        return this.advertisementService.getAdvertisementsQuery(`/?categoryId=${categoryId}`).then(advertisements => this.advertisements = advertisements)
       } else {
         return this.advertisementService.getAdvertisements().then(advertisements => this.advertisements = advertisements)
       }
     })
-      .subscribe(ads => {
-        console.log(ads);
-        return this.advertisements = ads;
-      } );
+      .subscribe(ads =>this.advertisements = ads);
   }
 }

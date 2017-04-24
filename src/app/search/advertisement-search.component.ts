@@ -21,7 +21,6 @@ import { SearchProposal, ProposalType } from '../data-classes/search-proposal';
 })
 export class AdvertisementSearchComponent implements OnInit {
   searchProposals: Observable<SearchProposal[]>;
-  private propsalType: ProposalType;
   private searchTerms = new Subject<string>();
 
   constructor(private advertisementSearchService: AdvertisementSearchService,
@@ -31,7 +30,6 @@ export class AdvertisementSearchComponent implements OnInit {
   // Push a search term into the observable stream.
   search(term: string): void {
     this.searchTerms.next(term);
-    console.log("Searchproposals now: ", this.searchProposals);
   }
 
   ngOnInit(): void {
@@ -93,6 +91,10 @@ export class AdvertisementSearchComponent implements OnInit {
       case ProposalType.Tag:
         let tagLink = ['advertisements', {tagId: searchProposal.id}];
         this.router.navigate(tagLink);
+        break;
+      case ProposalType.Category:
+        let categoryLink = ['advertisements', {categoryId: searchProposal.id}];
+        this.router.navigate(categoryLink);
         break;
     }
   }
