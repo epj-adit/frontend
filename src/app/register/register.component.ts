@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { UserService } from "../_services/user.service";
+import { ValidatorService } from '../_services/validator.service';
 import { User } from "../data-classes/user";
 
 
@@ -14,14 +16,14 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
   emailHelpDisplay = 'none';
   isSubmitted = false;
-  hasError=false;
+  hasError = false;
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
               private userService: UserService) {
     this.form = this.formBuilder.group({
       'username': ['', [Validators.required, Validators.minLength(5)]],
-      'email': ['', [Validators.required, this.validateEmail]],
+      'email': ['', [Validators.required, ValidatorService.validateEmail]],
       'password': ['', [Validators.required, Validators.minLength(6)]]
     });
   }
@@ -30,21 +32,12 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  validateEmail(c: FormControl) {
-    let regex = new RegExp('^[a-z0-9]{3,8}$');
-    return regex.test(c.value) ? null : {
-      validateEmail: {
-        valid: false
-      }
-    }
-  }
-
   onSubmit(value) {
-    let newUser = new User(value.username,value.email+"@hsr.ch",value.password);
+    let newUser = new User(value.username, value.email + "@hsr.ch", value.password);
     this.userService.create(newUser)
       .subscribe(
-        res => this.isSubmitted=true,
-        err => this.hasError=true);
+        res => this.isSubmitted = true,
+        err => this.hasError = true);
   }
 
   displayHelp(): void {

@@ -9,8 +9,8 @@ import { User } from "../data-classes/user";
 
 @Injectable()
 export class UserService {
-  private usersUrl = 'api/users';  // URL to web api
-  private userUrl = 'api/user/';
+  private usersUrl = 'https://develop.adit.qo.is/api/users';  // URL to web api
+  private userUrl = 'https://develop.adit.qo.is/api/user';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {

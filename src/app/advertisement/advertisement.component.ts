@@ -33,11 +33,11 @@ export class AdvertisementComponent implements OnInit {
       category: '',
       description: '',
       priceValue: "0.00",
-      tagValue: ['', this.validateTags.bind(this)],
+      tagValue: ['', this.validateTags(this.tags)],
     });
   }
 
-  validateTags(c: FormControl) {
+  validateTags(tags: Tag[]) {
     return this.tags.length > 0 ? null : {
       validateTags: {
         valid: false
