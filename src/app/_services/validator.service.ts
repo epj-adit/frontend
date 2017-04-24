@@ -11,11 +11,4 @@ export class ValidatorService {
       }
     }
   }
-  static validateTags(c: FormControl) {
-    return this.tags.length > 0 ? null : {
-      validateTags: {
-        valid: false
-      }
-    }
-  }
 }

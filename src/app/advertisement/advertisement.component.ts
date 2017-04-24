@@ -33,11 +33,12 @@ export class AdvertisementComponent implements OnInit {
       category: '',
       description: '',
       priceValue: "0.00",
-      tagValue: ['', this.validateTags(this.tags)],
+      tagValue: ['', this.validateTags.bind(this)],
     });
   }
 
-  validateTags(tags: Tag[]) {
+  // cant refactor method to validatorService, because it needs access to this.tags
+  validateTags(c: FormControl) {
     return this.tags.length > 0 ? null : {
       validateTags: {
         valid: false
