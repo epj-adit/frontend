@@ -88,3 +88,11 @@ $borderradius: 4px;
   padding: 8px;
 }
 
+@mixin errortext(){
+  color: #a94442;
+  background-color: #f2dede;
+  border-radius: $borderradius;
+  border: 1px solid #ebccd1;
+  padding: 8px;
+}
+

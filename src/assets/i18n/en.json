@@ -41,6 +41,8 @@
     "emailField": "email",
     "passwordField": "password",
     "submit": "submit",
-    "emailHelp": "Please use the short form of your HSR email addresse. e.g.: amuster"
+    "emailHelp": "Please use the short form of your HSR email addresse. e.g.: amuster",
+    "isSubmitted": "User was created",
+    "hasError": "An error occurred. Please try again later."
   }
 }

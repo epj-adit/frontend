@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
   emailHelpDisplay = 'none';
   isSubmitted = false;
+  hasError=false;
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
@@ -40,7 +41,10 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(value) {
     let newUser = new User(value.username,value.email+"@hsr.ch",value.password);
-    this.userService.create(newUser).subscribe(res => this.isSubmitted=true);
+    this.userService.create(newUser)
+      .subscribe(
+        res => this.isSubmitted=true,
+        err => this.hasError=true);
   }
 
   displayHelp(): void {
