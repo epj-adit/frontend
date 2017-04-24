@@ -13,6 +13,7 @@ import { routing, appRoutingProviders }  from './app.routing';
 import { AdvertisementService } from './_services/advertisement.service';
 import { TagService } from "./_services/tag.service";
 import { CategoryService } from "./_services/category.service";
+import { UserService } from "./_services/user.service";
 
 import { AppComponent } from './app.component';
 import { AdvertisementSearchComponent } from './search/advertisement-search.component';
