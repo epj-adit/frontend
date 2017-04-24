@@ -82,7 +82,8 @@ export class AdvertisementSearchComponent implements OnInit {
               break;
           case ProposalType.Tag:
               console.log("Proposal tagId: ", searchProposal.id);
-              let tagLink = ['/advertisements/', {queryParams: {'tagId': searchProposal.id}}];
+
+              let tagLink = ['advertisements', {queryParams: {tagId: searchProposal.id}}];
               this.router.navigate(tagLink);
               break;
       }

@@ -19,7 +19,10 @@ export class AdvertisementListComponent implements OnInit {
   }
 
   getAdvertisements(): void {
-    this.advertisementService.getAdvertisements().then(advertisements => this.advertisements = advertisements);
+    if(this.tagId!=undefined){
+      this.advertisementService.getAdvertisementsQuery(`'?tagId={this.tagId`);
+    }else {
+    this.advertisementService.getAdvertisements().then(advertisements => this.advertisements = advertisements);}
   }
 
   gotoInfo(advertisement: Advertisement): void {
@@ -28,8 +31,16 @@ export class AdvertisementListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tagId = this.route.queryParams.map(params => {console.log(params['tagId']); return params['tagId']|| 0});
+    this.route.queryParams.switchMap(par => {console.log("PAR:",par['tagId']);return this.advertisementService.getAdvertisementsQuery(`/?tagId=0`);}).subscribe(ads => this.advertisements = ads);
+    // var obsComb = Observable.combineLatest(this.route.params, this.route.queryParams,
+    //     (params, qparams) => ({ params, qparams }));
+    // obsComb.subscribe(params=>{
+    //   this.tagId = params.qparams['tagId'];
+    //   if(params.params.queryParams)
+    //   console.log('qp: ', params.params.queryParams);
+    // });
+
     console.log("Got tagId: ", this.tagId);
-    this.getAdvertisements();
+    //this.getAdvertisements();
   }
 }

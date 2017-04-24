@@ -49,6 +49,5 @@ h2 {
   @include proposal("\f0c5");
 }
 .proposal-Tag{
-  @include proposal('#');
-  @include tag();
+  @include proposal('\f292');
 }
