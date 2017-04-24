@@ -11,4 +11,12 @@ export class ValidatorService {
       }
     }
   }
+
+  static validateTags(tags, c: FormControl) {
+    return tags.length > 0 ? null : {
+      validateTags: {
+        valid: false
+      }
+    }
+  }
 }

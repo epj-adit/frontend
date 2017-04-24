@@ -22,7 +22,6 @@ import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-in
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { RegisterComponent } from "./register/register.component";
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
-import { UserService } from "./_services/user.service";
 
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http);

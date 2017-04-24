@@ -6,6 +6,7 @@ import { Observable } from "rxjs/Observable";
 
 import { AdvertisementService } from '../_services/advertisement.service';
 import { CategoryService } from "../_services/category.service";
+import { ValidatorService } from "../_services/validator.service";
 import { Advertisement } from '../data-classes/advertisement';
 import { Tag } from '../data-classes/tag';
 import { Category } from "../data-classes/category";
@@ -33,17 +34,8 @@ export class AdvertisementComponent implements OnInit {
       category: '',
       description: '',
       priceValue: "0.00",
-      tagValue: ['', this.validateTags.bind(this)],
+      tagValue: ['', ValidatorService.validateTags.bind(null, this.tags)],
     });
-  }
-
-  // cant refactor method to validatorService, because it needs access to this.tags
-  validateTags(c: FormControl) {
-    return this.tags.length > 0 ? null : {
-      validateTags: {
-        valid: false
-      }
-    }
   }
 
   ngOnInit(): void {
@@ -63,7 +55,7 @@ export class AdvertisementComponent implements OnInit {
           category: advertisement.category ? advertisement.category.name : null,
           description: advertisement.description,
           priceValue: parseFloat(advertisement.price / 100 + "").toFixed(2),
-          tagValue: ['', this.validateTags.bind(this)],
+          tagValue: ['', ValidatorService.validateTags.bind(null, this.tags)],
         });
         this.tags = advertisement.tags;
       });
