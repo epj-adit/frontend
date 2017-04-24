@@ -8,7 +8,7 @@ import { AppSettings } from '../app.settings';
 import { Advertisement }           from '../data-classes/advertisement';
 import {Category} from "../data-classes/category";
 import {Tag} from "../data-classes/tag";
-import {SearchProposal} from "../search/search-proposal";
+import {SearchProposal} from "../data-classes/search-proposal";
 
 @Injectable()
 export class AdvertisementSearchService {
