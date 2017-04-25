@@ -9,7 +9,7 @@ import { Http, HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
 import { Observable } from "rxjs/Observable";
 import { AdvertisementComponent } from "../../src/app/advertisement/advertisement.component";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../src/app/_services/advertisement.service";
 import { CategoryService } from "../../src/app/_services/category.service";
 import { Tag } from "../../src/app/data-classes/tag";
@@ -64,6 +64,14 @@ describe('AdvertisementComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AdvertisementComponent);
     comp = fixture.componentInstance;
+  });
+
+  it('should display the tag-help-text, when clicking on help', () => {
+    de = fixture.debugElement.query(By.css('.help'));
+    el = de.nativeElement;
+    expect(comp.taghelpDisplay).toEqual('none');
+    el.click();
+    expect(comp.taghelpDisplay).toEqual('inline-block')
   });
 
   describe('Tag Validation',() => {
