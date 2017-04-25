@@ -34,7 +34,7 @@
 		<span class="help-text" [style.display]="taghelpDisplay">{{"AD.taghelp" | translate }}</span>
 		<div class="form-group">
 			<label for="tagValue">{{ "AD.tags" | translate }}
-				<span class="help"><fa [name]="'question-circle'" (click)="changeDisplay()"></fa></span>
+				<span class="help" (click)="changeDisplay()"><fa [name]="'question-circle'"></fa></span>
 			</label>
 			<input [ngClass]="{'notags':form.controls['tagValue'].invalid}" type="text" class="form-control"
 				   id="tagValue"
