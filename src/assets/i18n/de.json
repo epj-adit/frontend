@@ -11,7 +11,8 @@
     "title": "Inserate"
   },
   "ADVERTISEMENTSEARCH": {
-    "title": "Inserat Suche"
+    "title": "Inserat Suche",
+    "search": "Suchen.."
   },
   "ADINFO": {
     "privateMessagingLink": "Private Nachricht",

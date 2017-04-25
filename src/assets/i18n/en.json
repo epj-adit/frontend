@@ -11,7 +11,8 @@
     "title": "Advertisements"
   },
   "ADVERTISEMENTSEARCH": {
-    "title": "Advertisement Search"
+    "title": "Advertisement Search",
+    "search": "Search.."
   },
   "ADINFO": {
     "privateMessagingLink": "Private Message",

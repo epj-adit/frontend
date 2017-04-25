@@ -13,7 +13,7 @@ module.exports = {
 	 * These parameters will be used for rendering `index.html`.
 	 */
 	metadata: {
-		title: 'Demo Application',
+		title: 'adit',
 		baseUrl: '/'
 	},
 
