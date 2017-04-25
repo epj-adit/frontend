@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
     let newUser = new User(value.username, value.email + "@hsr.ch", value.password);
     this.userService.create(newUser)
       .subscribe(
+        //TODO: reroute success to login screen
         res => this.isSubmitted = true,
         err => this.hasError = true);
   }
