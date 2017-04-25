@@ -31,11 +31,17 @@ export class AdvertisementListComponent implements OnInit {
       let categoryId = par['categoryId'];
 
       if (tagId) {
-        return this.advertisementService.getAdvertisementsQuery(`/?tagId=${tagId}`).map(advertisements => this.advertisements = advertisements);
+        return this.advertisementService
+          .getAdvertisementsQuery(`/?tagId=${tagId}`)
+          .map(advertisements => this.advertisements = advertisements);
       } else if (categoryId) {
-        return this.advertisementService.getAdvertisementsQuery(`/?categoryId=${categoryId}`).map(advertisements => this.advertisements = advertisements);
+        return this.advertisementService
+          .getAdvertisementsQuery(`/?categoryId=${categoryId}`)
+          .map(advertisements => this.advertisements = advertisements);
       } else {
-        return this.advertisementService.getAdvertisementsActive().map(advertisements => this.advertisements = advertisements);
+        return this.advertisementService
+          .getAdvertisementsActive()
+          .map(advertisements => this.advertisements = advertisements);
       }
     })
       .subscribe(ads => this.advertisements = ads);
