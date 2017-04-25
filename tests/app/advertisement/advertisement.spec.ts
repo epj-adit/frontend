@@ -8,11 +8,11 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { Http, HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
 import { Observable } from "rxjs/Observable";
-import { AdvertisementComponent } from "../../src/app/advertisement/advertisement.component";
+import { AdvertisementComponent } from "../../../src/app/advertisement/advertisement.component";
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AdvertisementService } from "../../src/app/_services/advertisement.service";
-import { CategoryService } from "../../src/app/_services/category.service";
-import { Tag } from "../../src/app/data-classes/tag";
+import { AdvertisementService } from "../../../src/app/_services/advertisement.service";
+import { CategoryService } from "../../../src/app/_services/category.service";
+import { Tag } from "../../../src/app/data-classes/tag";
 
 let translations: any = {"TEST": "This is a test"};
 class FakeLoader implements TranslateLoader {
@@ -73,9 +73,17 @@ describe('AdvertisementComponent', () => {
     el.click();
     expect(comp.taghelpDisplay).toEqual('inline-block')
   });
+  it('should hide tag-help-text, when clicking twice on help', () => {
+    de = fixture.debugElement.query(By.css('.help'));
+    el = de.nativeElement;
+    expect(comp.taghelpDisplay).toEqual('none');
+    el.click();
+    el.click();
+    expect(comp.taghelpDisplay).toEqual('none');
+  });
 
   describe('Tag Validation',() => {
-    it('should have an invalid Tag field with an empty Tag[]', () => {
+    it('should initially have an invalid Tag field with an empty Tag[]', () => {
       expect(comp.tags).toEqual([]);
       expect(comp.form.controls['tagValue'].valid).toBe(false);
     });
@@ -100,6 +108,26 @@ describe('AdvertisementComponent', () => {
       expect(comp.tags.length).toBe(0);
       expect(comp.form.controls['tagValue'].valid).toBe(false);
     });
+    it('should not remove any tags, if tag doesnt exist', () => {
+      let testValue = 'test';
+      let testTag = new Tag(testValue);
+      let tagTermiantor = ";";
+      comp.form.controls['tagValue'].setValue(testValue+tagTermiantor);
+      comp.addTag();
+      comp.removeTag(new Tag('nonexistent'));
+      expect(comp.tags.length).toBe(1);
+    });
+    it('should not add invalid tags', ()=>{
+      let testValue = 'test!';
+      let testTag = new Tag(testValue);
+      let tagTermiantor = ";";
+      comp.form.controls['tagValue'].setValue(testValue+tagTermiantor);
+      expect(comp.form.controls['tagValue'].value).toBe(testValue+tagTermiantor);
+      comp.addTag();
+      expect(comp.form.controls['tagValue'].value).toBe(testValue+tagTermiantor);
+      expect(comp.tags.length).toBe(0);
+      expect(comp.form.controls['tagValue'].valid).toBe(false);
+    })
   });
 
 });
