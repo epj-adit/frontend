@@ -57,7 +57,7 @@ export class AdvertisementService {
     username: "student",
     email: "student@hsr.ch",
     passwordHash: "abcde",
-    passwordPlainText: "test",
+    passwordPlaintext: "test",
     isPrivate: true,
     wantsNotification: true,
     isActive: true,
