@@ -31,11 +31,9 @@ export class AdvertisementSearchComponent implements OnInit {
     router.events.subscribe(()=>{
       this.searchBox.nativeElement.value = '';
       if(this.searchResults){
-        console.log(this.searchResults.nativeElement.children);
        for (let el of this.searchResults.nativeElement.children){
           el.style.display = 'none';
         }
-        //this.searchResults.nativeElement.style.display = 'none';
       }
     });
   }
