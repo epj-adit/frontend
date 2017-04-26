@@ -3,7 +3,10 @@
     "searchLink": "Suche",
     "advertisementsLink": "Inserate",
     "advertisementLink": "Inserat erstellen",
-    "userAdvertisementLink": "Userinserate",
+    "userAdvertisementLink": "Meine Inserate",
+    "userLink": "Account",
+    "userProfileLink":"Profil",
+    "privateMessagingLink": "Private Messaging",
     "registrationLink":"Registration",
     "welcome": "Willkommen"
   },

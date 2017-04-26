@@ -1,3 +1,25 @@
+<nav id="subnav">
+	<ul>
+		<li>
+			<a [routerLink]="['/user/profile']" routerLinkActive="active">
+				<fa [name]="'user'"></fa>
+				{{ "APP.userProfileLink" | translate }}
+			</a>
+		</li>
+		<li>
+			<a [routerLink]="['/user/advertisements']" routerLinkActive="active">
+				<fa [name]="'file'"></fa>
+				{{ "APP.userAdvertisementLink" | translate }}
+			</a>
+		</li>
+		<li>
+			<a [routerLink]="['/user/privatemessaging']" routerLinkActive="false">
+				<fa [name]="'comments'"></fa>
+				{{ "APP.privateMessagingLink" | translate }}
+			</a>
+		</li>
+	</ul>
+</nav>
 <h2>{{ "REGISTER.title" | translate }}</h2>
 <form (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
 	<div class="form-group">

@@ -3,7 +3,10 @@
     "searchLink": "Search",
     "advertisementsLink": "Advertisements",
     "advertisementLink": "create Advertisement",
-    "userAdvertisementLink": "Useradvertisements",
+    "userAdvertisementLink": "My Advertisements",
+    "userLink": "Account",
+    "userProfileLink":"Profile",
+    "privateMessagingLink": "Private Messaging",
     "registrationLink":"Registration",
     "welcome": "Welcome"
   },

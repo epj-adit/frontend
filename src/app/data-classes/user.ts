@@ -18,6 +18,7 @@ export class User {
     this.username = username;
     this.email=email;
     this.passwordPlainText=password;
+    this.passwordHash="";
     this.isPrivate=false;
     this.isActive=true;
     this.wantsNotification=false;
