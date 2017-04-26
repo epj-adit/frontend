@@ -3,13 +3,13 @@ import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { Router, Routes } from "@angular/router";
+import { Routes } from "@angular/router";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import { Http, HttpModule } from "@angular/http";
+import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
 import { Observable } from "rxjs/Observable";
 import { AdvertisementComponent } from "../../../src/app/advertisement/advertisement.component";
-import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../../src/app/_services/advertisement.service";
 import { CategoryService } from "../../../src/app/_services/category.service";
 import { Tag } from "../../../src/app/data-classes/tag";
