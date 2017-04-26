@@ -41,7 +41,8 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  edit(user:User){
-    //TODO: send to server
+  edit(user:User): Observable<User>{
+    //TODO: replace dummy -> send to server
+    return Observable.of(new User("","",""));
   }
 }
