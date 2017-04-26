@@ -41,5 +41,7 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  // TODO: update, delete
+  edit(user:User){
+    //TODO: send to server
+  }
 }
