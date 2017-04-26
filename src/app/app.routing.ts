@@ -8,6 +8,7 @@ import { AdvertisementListComponent } from "./advertisementlist/advertisementlis
 import { RegisterComponent } from "./register/register.component";
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
 import { UserProfilComponent } from "./userprofil/userprofil.component";
+import { AccountComponent } from "./account/account.component";
 
 
 const appRoutes: Routes = [
@@ -18,9 +19,11 @@ const appRoutes: Routes = [
   {path: 'advertisement/:id', component: AdvertisementComponent},
   {path: 'advertisement', component: AdvertisementComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'user', redirectTo: 'user/profil', pathMatch: 'full'},
-  {path: 'user/profile', component: UserProfilComponent},
-  {path: 'user/advertisements', component: UserAdvertisementsComponent}
+  {path: 'account', component: AccountComponent, children: [
+    {path:'', redirectTo: 'profile', pathMatch: 'full'},
+    {path: 'profile', component: UserProfilComponent},
+    {path: 'advertisements', component: UserAdvertisementsComponent}
+  ]}
 ];
 
 export const appRoutingProviders: any[] = [];

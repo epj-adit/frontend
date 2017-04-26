@@ -1,47 +1,35 @@
-<nav id="subnav">
-	<ul>
-		<li>
-			<a [routerLink]="['/user/profile']" routerLinkActive="active">
-				<fa [name]="'user'"></fa>
-				{{ "APP.userProfileLink" | translate }}
-			</a>
-		</li>
-		<li>
-			<a [routerLink]="['/user/advertisements']" routerLinkActive="active">
-				<fa [name]="'file'"></fa>
-				{{ "APP.userAdvertisementLink" | translate }}
-			</a>
-		</li>
-		<li>
-			<a [routerLink]="['/user/privatemessaging']" routerLinkActive="false">
-				<fa [name]="'comments'"></fa>
-				{{ "APP.privateMessagingLink" | translate }}
-			</a>
-		</li>
-	</ul>
-</nav>
-<h2>{{ "REGISTER.title" | translate }}</h2>
+<h2>{{ "PROFILE.title" | translate }}</h2>
 <form (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
 	<div class="form-group">
-		<label for="username">{{ "REGISTER.usernameField" | translate }}</label>
+		<label for="username">{{ "PROFILE.usernameField" | translate }}</label>
 		<input type="text" class="form-control" id="username"
 			   formControlName="username">
 	</div>
-	<span class="help-text" [style.display]="emailHelpDisplay">{{"REGISTER.emailHelp" | translate }}</span>
+	<span class="help-text" [style.display]="emailHelpDisplay">{{"PROFILE.emailHelp" | translate }}</span>
 	<div class="form-group">
 		<label for="email">
-			{{ "REGISTER.emailField" | translate }}
+			{{ "PROFILE.emailField" | translate }}
 			<span class="help"><fa [name]="'question-circle'" (click)="displayHelp()"></fa></span>
 		</label>
 		<span class="email"><input type="text" class="form-control" id="email"
 								   formControlName="email">@hsr.ch</span>
 	</div>
 	<div class="form-group">
-		<label for="password">{{ "REGISTER.passwordField" | translate }}</label>
+		<label for="password">{{ "PROFILE.passwordField" | translate }}</label>
 		<input type="password" class="form-control" id="password"
 			   formControlName="password">
 	</div>
-	<button type="submit" class="submit" [disabled]="!form.valid">{{ "REGISTER.submit" | translate }}</button>
-	<span *ngIf="isSubmitted" class="isSubmitted">{{ "REGISTER.isSubmitted" | translate }}</span>
-	<span *ngIf="hasError" class="hasError">{{ "REGISTER.hasError" | translate }}</span>
+	<div class="form-group">
+		<label for="isPrivate">{{ "PROFILE.isPrivateCheckbox" | translate }}</label>
+		<input type="checkbox" class="form-control" id="isPrivate"
+			   formControlName="isPrivate">
+	</div>
+	<div class="form-group">
+		<label for="wantsNotifications">{{ "PROFILE.wantsNotificationsCheckbox" | translate }}</label>
+		<input type="checkbox" class="form-control" id="wantsNotifications"
+			   formControlName="wantsNotifications">
+	</div>
+	<button type="submit" class="submit" [disabled]="!form.valid">{{ "PROFILE.submit" | translate }}</button>
+	<span *ngIf="isSubmitted" class="isSubmitted">{{ "PROFILE.isSubmitted" | translate }}</span>
+	<span *ngIf="hasError" class="hasError">{{ "PROFILE.hasError" | translate }}</span>
 </form>

@@ -24,17 +24,19 @@ export class UserProfilComponent implements OnInit {
     this.form = this.formBuilder.group({
       'username': ['', [Validators.required, Validators.minLength(5)]],
       'email': ['', [Validators.required, ValidatorService.validateEmail]],
-      'password': ['', [Validators.required, Validators.minLength(6)]]
+      'password': ['', [Validators.required, Validators.minLength(6)]],
+      'isPrivate': [''],
+      'wantsNotification': ['']
     });
   }
 
   ngOnInit(): void {
-
+    //TODO: get user from server and input info in form
   }
 
   onSubmit(value) {
-    let newUser = new User(value.username, value.email + "@hsr.ch", value.password);
-    this.userService.create(newUser)
+    let user = new User(value.username, value.email + "@hsr.ch", value.password);
+    this.userService.edit(user)
       .subscribe(
         //TODO: reroute success to login screen
         res => this.isSubmitted = true,

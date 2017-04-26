@@ -1,0 +1,23 @@
+<nav id="subnav">
+	<ul>
+		<li>
+			<a [routerLink]="['profile']" routerLinkActive="active">
+				<fa [name]="'user'"></fa>
+				{{ "APP.userProfileLink" | translate }}
+			</a>
+		</li>
+		<li>
+			<a [routerLink]="['advertisements']" routerLinkActive="active">
+				<fa [name]="'file'"></fa>
+				{{ "APP.userAdvertisementLink" | translate }}
+			</a>
+		</li>
+		<li>
+			<a [routerLink]="['privatemessaging']" routerLinkActive="false">
+				<fa [name]="'comments'"></fa>
+				{{ "APP.privateMessagingLink" | translate }}
+			</a>
+		</li>
+	</ul>
+</nav>
+<router-outlet></router-outlet>

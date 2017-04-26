@@ -1,0 +1,14 @@
+@import "../_variables.scss";
+
+#subnav{
+  margin-bottom: 1em;
+  ul>li>a{
+    color: black;
+    &:hover {
+      color: red;
+    }
+    &:active {
+      color:red;
+    }
+  }
+}

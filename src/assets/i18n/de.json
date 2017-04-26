@@ -48,5 +48,17 @@
     "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster",
     "isSubmitted": "User wurde erstellt",
     "hasError": "Ein Fehler ist aufgetretten. Bitte versuche es später nochmals"
+  },
+  "PROFILE": {
+    "title": "Profil bearbeiten",
+    "usernameField": "Username",
+    "emailField": "E-Mail",
+    "passwordField": "Passwort",
+    "submit": "absenden",
+    "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster",
+    "isSubmitted": "User wurde erstellt",
+    "hasError": "Ein Fehler ist aufgetretten. Bitte versuche es später nochmals",
+    "isPrivateCheckbox": "privates Profil",
+    "wantsNotificationsCheckbox": "Benachrichtigungen"
   }
 }

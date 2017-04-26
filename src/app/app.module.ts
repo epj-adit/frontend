@@ -23,6 +23,7 @@ import { AdvertisementComponent } from './advertisement/advertisement.component'
 import { RegisterComponent } from "./register/register.component";
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
 import { UserProfilComponent } from "./userprofil/userprofil.component";
+import { AccountComponent } from "./account/account.component";
 
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http);
@@ -55,7 +56,8 @@ export function HttpLoaderFactory(http: Http) {
     AdvertisementInfoComponent,
     RegisterComponent,
     UserProfilComponent,
-    UserAdvertisementsComponent
+    UserAdvertisementsComponent,
+    AccountComponent
   ],
   providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService],
   bootstrap: [AppComponent]
