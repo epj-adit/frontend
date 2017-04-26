@@ -1,7 +1,6 @@
 <div id="search-component">
-	<h2>{{"ADVERTISEMENTSEARCH.title" | translate}}</h2>
 	<input #searchBox id="search-box" (keyup)="search(searchBox.value)" placeholder='{{"ADVERTISEMENTSEARCH.search" | translate}}'/>
-	<div>
+	<div #searchResults>
 		<div *ngFor="let proposal of searchProposals | async"
 			class="search-result" (click)="gotoInfo(proposal)">
 			<span class="proposal-name">{{proposal.name}}</span>  <span class="proposal-{{proposal.displayName}}">{{proposal.displayName}}</span>
