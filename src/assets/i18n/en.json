@@ -47,7 +47,9 @@
     "submit": "submit",
     "emailHelp": "Please use the short form of your HSR email addresse. e.g.: amuster",
     "isSubmitted": "User was created",
-    "hasError": "An error occurred. Please try again later."
+    "hasError": "An error occurred. Please try again later.",
+    "error409": "This user exists already.",
+    "error403": "You don't have permission to execute this action."
   },
   "PROFILE": {
     "title": "edit profile",

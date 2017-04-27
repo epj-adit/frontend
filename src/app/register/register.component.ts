@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
   emailHelpDisplay = 'none';
   isSubmitted = false;
-  hasError = false;
+  errorStatus=0;
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
@@ -38,7 +38,9 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         //TODO: reroute success to login screen
         res => this.isSubmitted = true,
-        err => this.hasError = true);
+        err => {
+          this.errorStatus = err.status;
+        });
   }
 
   displayHelp(): void {

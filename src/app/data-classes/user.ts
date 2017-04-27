@@ -6,7 +6,7 @@ export class User {
   username: string;
   email: string;
   passwordHash: string;
-  passwordPlainText:string;
+  passwordPlaintext:string;
   jwtToken: string;
   isPrivate: boolean;
   isActive: boolean;
@@ -17,10 +17,11 @@ export class User {
   constructor (username, email, password){
     this.username = username;
     this.email=email;
-    this.passwordPlainText=password;
-    this.passwordHash="";
+    this.passwordPlaintext=password;
     this.isPrivate=false;
     this.isActive=true;
     this.wantsNotification=false;
+    this.role=new Role();
+    this.role.id=3;
   }
 }
