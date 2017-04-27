@@ -3,6 +3,7 @@
 .categoryList {
   list-style: none;
   border: 1px solid black;
+  margin-bottom: 1em;
   li {
     padding: 0.5em;
   }
@@ -13,4 +14,14 @@
   .currcat {
     font-weight: bold;
   }
+  .category {
+    @include flex(row, space-between)
+  }
 }
+
+.newCat{
+  @include border();
+  padding: 4px 6px;
+  cursor: pointer;
+}
+

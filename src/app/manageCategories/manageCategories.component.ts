@@ -9,7 +9,7 @@ import { Category } from "../data-classes/category";
 
 export class ManageCategoriesComponent implements OnInit {
   categories: Category[] = [];
-  currCat: Category;
+  currCat: Category = new Category("");
 
   constructor(private categoryService: CategoryService) {
   }
@@ -20,5 +20,20 @@ export class ManageCategoriesComponent implements OnInit {
 
   editCategory(cat: Category){
     this.currCat = cat;
+  }
+
+  deleteCat(cat: Category){
+    this.currCat = new Category("");
+    let index = this.categories.findIndex(currCat => currCat == cat);
+    if (index > -1){
+      this.categories.splice(index, 1);
+    }
+
+  }
+
+  newCat(){
+    let newCat = new Category("new Category");
+    this.currCat = newCat;
+    this.categories.push(newCat);
   }
 }

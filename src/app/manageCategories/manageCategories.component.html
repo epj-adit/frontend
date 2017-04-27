@@ -1,4 +1,8 @@
 <ul class="categoryList">
-	<li *ngFor="let cat of categories" (click)="editCategory(cat)" [ngClass]="{'currcat':currCat==cat}">{{cat.name}}</li>
+	<li class="category" *ngFor="let cat of categories" (click)="editCategory(cat)" [ngClass]="{'currcat':currCat==cat}">
+		<span>{{cat.name}}</span>
+		<fa [name]="'trash'" class="deleteCat" (click)="deleteCat(cat)"></fa>
+	</li>
 </ul>
-<input [ngValue]="currCat.name">
+<input [(ngModel)]="currCat.name" name="name">
+<span (click)="newCat()" class="newCat"><fa [name]="'plus'"></fa>{{ "MANAGECATEGORIES.newCat" }}</span>
