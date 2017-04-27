@@ -6,6 +6,9 @@ import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-in
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { AdvertisementListComponent } from "./advertisementlist/advertisementlist.component";
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
+import { SupervisorPanelComponent } from "./supervisorpanel/supervisorpanel.component";
+import { ManageAdvertiesmentComponent } from "./manageAdvertisements/manageAdvertisement.component";
+import { ManageCategoriesComponent } from "./manageCategories/manageCategories.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'advertisements', pathMatch: 'full'},
@@ -14,7 +17,12 @@ const appRoutes: Routes = [
   {path: 'advertisementinfo/:id', component: AdvertisementInfoComponent},
   {path: 'advertisement/:id', component: AdvertisementComponent},
   {path: 'advertisement', component: AdvertisementComponent},
-  {path: 'user/:id/advertisements', component: UserAdvertisementsComponent}
+  {path: 'user/:id/advertisements', component: UserAdvertisementsComponent},
+  {path: 'supervisorpanel', component: SupervisorPanelComponent, children: [
+    {path: '', redirectTo: 'manageAdvertisements', pathMatch: 'full'},
+    {path: 'manageAdvertisements', component: ManageAdvertiesmentComponent},
+    {path: 'manageCategory', component: ManageCategoriesComponent}
+  ]}
 ];
 
 export const appRoutingProviders: any[] = [];
