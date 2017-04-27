@@ -1,0 +1,33 @@
+<h2>{{ "USERADVERTISEMENT.title" | translate }}</h2>
+<fieldset class="legende">
+	<legend>{{ "USERADVERTISEMENT.legend" | translate }}</legend>
+	<div>
+		<span><fa [name]="'eye'" class="toReview"></fa> to review</span>
+		<span><fa [name]="'play'" class="active"></fa> active</span>
+		<span><fa [name]="'hourglass-end'" class="expired"></fa> expired</span>
+		<span><fa [name]="'ban'" class="declined"></fa> declined</span>
+		<span><fa [name]="'trash'" class="deleted"></fa> deleted</span>
+	</div>
+</fieldset>
+<ul class="advertisements">
+	<li *ngFor="let advertisement of advertisements">
+		<div class="advertisement state-{{advertisement?.advertisementState}}">
+			<div class="titleRow">
+				<h4>{{advertisement.title}}</h4>
+				<div class="buttons">
+					<span *ngIf="advertisement?.advertisementState!=4"><fa [name]="'times'" (click)="deleteAd(advertisement)"></fa></span>
+					<span *ngIf="advertisement?.advertisementState!=4"><fa [name]="'cog'" (click)="edit(advertisement)"></fa></span>
+				</div>
+			</div>
+			<span>{{advertisement.description}}</span>
+			<div class="bottomRow">
+				<ul class="tags">
+					<li *ngFor="let tag of advertisement.tags">
+						{{tag.name}}
+					</li>
+				</ul>
+				<span class="icon-state-{{advertisement?.advertisementState}}"></span>
+			</div>
+		</div>
+	</li>
+</ul>

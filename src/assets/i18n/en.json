@@ -3,13 +3,15 @@
     "searchLink": "Search",
     "advertisementsLink": "Advertisements",
     "advertisementLink": "create Advertisement",
+    "userAdvertisementLink": "Useradvertisements",
     "welcome": "Welcome"
   },
   "ADVERTISEMENT": {
     "title": "Advertisements"
   },
   "ADVERTISEMENTSEARCH": {
-    "title": "Advertisement Search"
+    "title": "Advertisement Search",
+    "search": "Search.."
   },
   "ADINFO": {
     "privateMessagingLink": "Private Message",
@@ -19,8 +21,18 @@
     "title": "create Advertisement",
     "titleField": "Title",
     "category": "Category",
+    "chooseCategory": "choose category...",
     "tags": "Tags",
     "description": "Description",
-    "price": "Price"
+    "price": "Price  [CHF]",
+    "submit": "submit",
+    "taghelp": "separate tags with ';'. Permited special characters: - _",
+    "isSubmitted": "Your advertisement was submitted"
+  },
+  "USERADVERTISEMENT": {
+    "title": "My Advertisements",
+    "legend": "Legend",
+    "deleteConfirmTitle": "Delete Advertisement",
+    "deleteConfirmDialog":"Deleting an ad cannot be undone<br>Do you want to proceed?"
   }
 }

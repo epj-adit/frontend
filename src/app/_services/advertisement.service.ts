@@ -1,55 +1,111 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
-import 'rxjs/add/operator/toPromise';
+import { Observable } from "rxjs";
 
+import { AppSettings } from '../app.settings';
 import { Advertisement } from '../data-classes/advertisement';
+
 import { Category } from "../data-classes/category";
 import { Media } from "../data-classes/media";
 import { Tag } from "../data-classes/tag";
+import { User } from "../data-classes/user";
+import { AdvertisementState } from "../data-classes/advertisementState";
+import { TagService } from "./tag.service";
 
 @Injectable()
 export class AdvertisementService {
-  private advertisementsUrl = 'api/advertisements';  // URL to web api
+  private advertisementsUrl = AppSettings.API_ENDPOINT+'/advertisements';  // URL to web api
+  private advertisementUrl = AppSettings.API_ENDPOINT+'/advertisement/';  // URL to web api
+
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor(private http: Http) {
+  currentAdvertisement: Advertisement = null;
+
+  constructor(private http: Http, private tagService: TagService) {
   }
 
-  getAdvertisements(): Promise<Advertisement[]> {
+  getAdvertisements(): Observable<Advertisement[]> {
     return this.http.get(this.advertisementsUrl)
-      .toPromise()
-      .then(response => response.json().data as Advertisement[])
-      .catch(this.handleError);
+        .map(response => response.json() as Advertisement[]);
+  }
+  getAdvertisement(id: number): Observable<Advertisement> {
+    return this.http.get(this.advertisementUrl + id)
+        .map(response => response.json() as Advertisement);
+  }
+  getAdvertisementsActive():Observable<Advertisement[]> {
+    return this.http.get(this.advertisementsUrl + "/?advertisementState=2")
+        .map(response => response.json() as Advertisement[]);
+  }
+
+  getAdvertisementsQuery(query: string): Observable<Advertisement[]>{
+    return this.http.get(this.advertisementsUrl+query)
+        .map(response => response.json() as Advertisement[]);
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
 
-  getAdvertisement(id: number): Promise<Advertisement> {
-    return this.getAdvertisements()
-      .then(advertisements => advertisements.find(advertisement => advertisement.id === id));
-  }
+
 
   // TODO: add advertiser, created, updated
-  create(advertisement: Advertisement): Promise<Advertisement> {
+  testuser: User = {
+    id: 3,
+    role: {id: 3, name: "user", permissions: []},
+    username: "student",
+    email: "student@hsr.ch",
+    passwordHash: "abcde",
+    isPrivate: true,
+    wantsNotification: true,
+    isActive: true,
+    created: "Apr 6, 2017 2:12:33 PM",
+    subscriptions: []
+  };
+
+
+  // created set bei server -> don't send it!
+  createOrUpdate(advertisement: Advertisement, tags: Tag[]): Observable<Advertisement> {
+    // TODO: change State to ToReview, as soon as there are superusers
     let media = advertisement.media ? advertisement.media : [];
-    return this.http
-      .post(this.advertisementsUrl, JSON.stringify({
-        id: advertisement.id,
-        title: advertisement.title,
-        price: advertisement.price,
-        description: advertisement.description,
-        category: advertisement.category,
-        tags: advertisement.tags,
-        media: media
-      }), {headers: this.headers})
-      .toPromise()
-      .then(res => res.json().data)
-      .catch(this.handleError);
+    let ad: any = {
+      title: advertisement.title,
+      user: {id: this.testuser.id},
+      price: advertisement.price,
+      description: advertisement.description,
+      category: {id: advertisement.category.id},
+      tags: tags,
+      media: media,
+      advertisementState: AdvertisementState.active,
+    };
+    if (advertisement.id) {
+      ad.id = advertisement.id;
+      return this.http.put(this.advertisementUrl + advertisement.id, JSON.stringify(ad), {headers: this.headers})
+        .map(res => res.json())
+        .catch(err => this.handleError(err));
+    } else {
+      return this.http
+        .post(this.advertisementUrl, JSON.stringify(ad), {headers: this.headers})
+        .map(res => res.json())
+        .catch(err => this.handleError(err));
+    }
   }
 
-  // TODO: update, delete
+  createAdvertisementAndTags(advertisement: Advertisement) {
+    return this.tagService.create(advertisement.tags)
+      .flatMap(
+        res => {
+          console.log(res);
+          return this.createOrUpdate(advertisement, res)
+        }
+      )
+  }
+
+  deleteAd(advertisement: Advertisement): Observable<Advertisement> {
+    advertisement.advertisementState = AdvertisementState.closed;
+    return this.http.put(this.advertisementUrl + advertisement.id, JSON.stringify(advertisement), {headers: this.headers})
+      .map(res => res.json())
+      .catch(err => this.handleError(err));
+  }
 }

@@ -2,19 +2,24 @@
 .SILENT:
 
 DOCKER_RUN=docker run -ti --rm --name "engineering-projekt-client-testing" --env NODE_ENV \
-		   --volume "$(shell pwd)/.npm:/home/node/.npm" --volume "$(shell pwd):/home/node/project" \
+		   --volume "$(shell pwd)/.npm:/home/node/.cache/yarn" --volume "$(shell pwd):/home/node/project" \
 		   fabianhauser/engineering-projekt-client-testing
 
-BRANCH=`git rev-parse --abbrev-ref HEAD`
 VERSION=$(shell ./ci/version.bash)
 export NODE_ENV=dev
+
+ifdef TRAVIS_BRANCH
+ BRANCH=$(TRAVIS_BRANCH)
+else
+ BRANCH=`git rev-parse --abbrev-ref HEAD`
+endif
 
 
 install:
 	@echo "===================================================================="
 	@echo "Installing basic dependencies"
 	@echo "===================================================================="
-	$(DOCKER_RUN) npm install --silent
+	$(DOCKER_RUN) yarn --quiet install
 
 docs: install
 	@echo "===================================================================="
@@ -24,9 +29,9 @@ docs: install
 
 tests: install
 	@echo "===================================================================="
-	@echo "Executeing tests"
+	@echo "Executing tests"
 	@echo "===================================================================="
-	NODE_ENV=test $(DOCKER_RUN) npm run alltests
+	NODE_ENV=test $(DOCKER_RUN) npm test
 
 upload-coverage:
 	@echo "===================================================================="

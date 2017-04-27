@@ -12,10 +12,10 @@ export class Advertisement {
   advertisementState: AdvertisementState;
   created: Date;
   updated: Date;
-  tags: Tag[];
-  advertiser: User;
-  category: Category;
-  media: Media[];
+  tags: Tag[] = [];
+  user: User = null;
+  category: Category = null;
+  media: Media[] = [];
 
   // TODO: add advertiser, created, updated
   constructor(id: number, title: string, price: number, description: string, category: Category, tags: Tag[], media?: Media[]) {
@@ -26,7 +26,7 @@ export class Advertisement {
       this.tags = tags;
       this.media = media;
       this.category = category;
-      this.advertiser = null;
+      this.user = null;
       this.created = new Date(Date.now());
       this.updated = new Date(Date.now());
   }

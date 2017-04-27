@@ -3,13 +3,15 @@
     "searchLink": "Suche",
     "advertisementsLink": "Inserate",
     "advertisementLink": "Inserat erstellen",
+    "userAdvertisementLink": "Userinserate",
     "welcome": "Willkommen"
   },
   "ADVERTISEMENT": {
     "title": "Inserate"
   },
   "ADVERTISEMENTSEARCH": {
-    "title": "Inserat Suche"
+    "title": "Inserat Suche",
+    "search": "Suchen.."
   },
   "ADINFO": {
     "privateMessagingLink": "Private Nachricht",
@@ -19,8 +21,18 @@
     "title": "Inserat erfassen",
     "titleField": "Titel",
     "category": "Kategorie",
+    "chooseCategory": "Kategorie auswählen...",
     "tags": "Tags",
     "description": "Beschreibung",
-    "price": "Preis"
+    "price": "Preis [CHF]",
+    "submit": "absenden",
+    "taghelp": "Einzelne Tags mit ';' trennen. Erlaubte Sonderzeichen: - _",
+    "isSubmitted": "Dein Inserat wurde gepostet"
+  },
+  "USERADVERTISEMENT": {
+    "title": "Meine Inserate",
+    "legend": "Legende",
+    "deleteConfirmTitle": "Inserat löschen",
+    "deleteConfirmDialog":"Das Löschen eines Inserats kann nicht rückgängig gemacht werden<br>Willst du fortfahren?"
   }
 }
