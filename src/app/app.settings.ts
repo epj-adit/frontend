@@ -1,6 +1,3 @@
 export class AppSettings{
-    // develop
-    //public static API_ENDPOINT ='https://develop.adit.qo.is/api';
-    // production
-    public static API_ENDPOINT ='https://adit.qo.is/api';
+    public static API_ENDPOINT = (window.location.hostname=='localhost')? 'https://develop.adit.qo.is/api':'https://adit.qo.is/api';
 }
