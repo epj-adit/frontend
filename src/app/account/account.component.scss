@@ -1,14 +1,24 @@
 @import "../_variables.scss";
 
-#subnav{
+#subnav {
   margin-bottom: 1em;
-  ul>li>a{
-    color: black;
-    &:hover {
-      color: red;
+  ul > li {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    &:first-child {
+      border-left: none;
     }
-    &:active {
-      color:red;
+    &:last-child {
+      border-right: none;
+    }
+    & > a {
+      color: black;
+      &:hover {
+        color: red;
+      }
+      &:active {
+        color: red;
+      }
     }
   }
 }

@@ -26,7 +26,7 @@ export class UserProfilComponent implements OnInit {
       'email': ['', [Validators.required, ValidatorService.validateEmail]],
       'password': ['', [Validators.required, Validators.minLength(6)]],
       'isPrivate': [''],
-      'wantsNotification': ['']
+      'wantsNotifications': ['']
     });
   }
 
