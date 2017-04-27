@@ -22,6 +22,7 @@
 		</div>
 		<button type="submit" class="submit" [disabled]="!form.valid">{{ "REGISTER.submit" | translate }}</button>
 		<span *ngIf="isSubmitted" class="isSubmitted">{{ "REGISTER.isSubmitted" | translate }}</span>
-		<span *ngIf="hasError" class="hasError">{{ "REGISTER.hasError" | translate }}</span>
+		<span *ngIf="errorStatus == 409" class="hasError">{{ "REGISTER.error409" | translate }}</span>
+		<span *ngIf="errorStatus == 403" class="hasError">{{ "REGISTER.error403" | translate }}</span>
 	</form>
 </div>
