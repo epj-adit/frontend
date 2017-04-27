@@ -1,16 +1,11 @@
 <div class="container">
 	<header>
 		<a href="/"><img id="logo" src="/assets/images/logo-adit-small.png"></a>
+		<adit-advertisementsearch></adit-advertisementsearch>
 		<input type="checkbox" id="menu-toggel" #menuToggle>
 		<label for="menu-toggel" id="label-toggle"></label>
 		<nav id="mainnav">
 			<ul>
-				<li>
-					<a [routerLink]="['/search']" routerLinkActive="active">
-						<fa [name]="'search'"></fa>
-						{{ "APP.searchLink" | translate }}
-					</a>
-				</li>
 				<li>
 					<a [routerLink]="['/advertisements']" routerLinkActive="active">
 						<fa [name]="'files-o'"></fa>
