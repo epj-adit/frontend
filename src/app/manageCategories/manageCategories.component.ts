@@ -1,10 +1,24 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { CategoryService } from "../_services/category.service";
+import { Category } from "../data-classes/category";
 @Component({
-  selector:'adit-manage-advertisement',
-  templateUrl: './manageAdvertisement.component.html',
-  styleUrls: ['./manageAdvertisement.component.scss']
+  selector: 'adit-manage-categories',
+  templateUrl: './manageCategories.component.html',
+  styleUrls: ['./manageCategories.component.scss']
 })
 
-export class ManageCategoriesComponent {
+export class ManageCategoriesComponent implements OnInit {
+  categories: Category[] = [];
+  currCat: Category;
 
+  constructor(private categoryService: CategoryService) {
+  }
+
+  ngOnInit(): void {
+    this.categoryService.getCategories().subscribe(res => this.categories = res);
+  }
+
+  editCategory(cat: Category){
+    this.currCat = cat;
+  }
 }

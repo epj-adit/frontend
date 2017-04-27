@@ -1,0 +1,4 @@
+<ul class="categoryList">
+	<li *ngFor="let cat of categories" (click)="editCategory(cat)" [ngClass]="{'currcat':currCat==cat}">{{cat.name}}</li>
+</ul>
+<input [ngValue]="currCat.name">

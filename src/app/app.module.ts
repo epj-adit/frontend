@@ -20,6 +20,9 @@ import { AdvertisementListComponent } from './advertisementlist/advertisementlis
 import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-info.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
+import { SupervisorPanelComponent } from "./supervisorpanel/supervisorpanel.component";
+import { ManageAdvertiesmentComponent } from "./manageAdvertisements/manageAdvertisement.component";
+import { ManageCategoriesComponent } from "./manageCategories/manageCategories.component";
 
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http);
@@ -50,7 +53,10 @@ export function HttpLoaderFactory(http: Http) {
     AdvertisementComponent,
     AdvertisementListComponent,
     AdvertisementInfoComponent,
-    UserAdvertisementsComponent
+    UserAdvertisementsComponent,
+    SupervisorPanelComponent,
+    ManageAdvertiesmentComponent,
+    ManageCategoriesComponent
   ],
   providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService],
   bootstrap: [AppComponent]
