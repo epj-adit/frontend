@@ -16,7 +16,7 @@ import { TagService } from "./tag.service";
 @Injectable()
 export class AdvertisementService {
   private advertisementsUrl = AppSettings.API_ENDPOINT+'/advertisements';  // URL to web api
-  private advertisementUrl = AppSettings.API_ENDPOINT+'/advertisement/';  // URL to web api
+  private advertisementUrl = AppSettings.API_ENDPOINT+'/advertisement';  // URL to web api
 
   private headers = new Headers({'Content-Type': 'application/json'});
 

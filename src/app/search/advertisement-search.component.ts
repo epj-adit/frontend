@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router }            from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
@@ -12,6 +12,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 
 import { AdvertisementSearchService } from '../_services/advertisement-search.service';
 import { SearchProposal, ProposalType } from '../data-classes/search-proposal';
+import forEach = require("core-js/fn/array/for-each");
 
 @Component({
   selector: 'adit-advertisementsearch',
@@ -22,9 +23,19 @@ import { SearchProposal, ProposalType } from '../data-classes/search-proposal';
 export class AdvertisementSearchComponent implements OnInit {
   searchProposals: Observable<SearchProposal[]>;
   private searchTerms = new Subject<string>();
+  @ViewChild('searchBox') searchBox;
+  @ViewChild('searchResults') searchResults;
 
   constructor(private advertisementSearchService: AdvertisementSearchService,
               private router: Router) {
+    router.events.subscribe(()=>{
+      this.searchBox.nativeElement.value = '';
+      if(this.searchResults){
+       for (let el of this.searchResults.nativeElement.children){
+          el.style.display = 'none';
+        }
+      }
+    });
   }
 
   // Push a search term into the observable stream.

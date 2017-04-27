@@ -15,12 +15,13 @@ import { AdvertisementService } from './_services/advertisement.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: []
+  providers: [],
+  //host: {'(input-blur)':'onInputBlur($event)'},
+
 })
-export class AppComponent{
+export class AppComponent {
   advertisements: Advertisement[] = [];
   @ViewChild('menuToggle') menuToggle;
-
 
   constructor(private advertisementService: AdvertisementService, private translate: TranslateService, private router: Router) {
     translate.addLangs(['de', 'en']);
