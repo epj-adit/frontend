@@ -1,5 +1,11 @@
 @import "../_variables.scss";
 
+#search-component{
+  position: absolute;
+  top: 1.1em;
+  left: 6em;
+}
+
 h2 {
   margin-bottom: 2em;
 }
