@@ -21,7 +21,7 @@ import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-in
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
 import { SupervisorPanelComponent } from "./supervisorpanel/supervisorpanel.component";
-import { ManageAdvertiesmentComponent } from "./manageAdvertisements/manageAdvertisement.component";
+import { ManageAdvertisementComponent } from "./manageAdvertisements/manageAdvertisement.component";
 import { ManageCategoriesComponent } from "./manageCategories/manageCategories.component";
 
 export function HttpLoaderFactory(http: Http) {
@@ -55,7 +55,7 @@ export function HttpLoaderFactory(http: Http) {
     AdvertisementInfoComponent,
     UserAdvertisementsComponent,
     SupervisorPanelComponent,
-    ManageAdvertiesmentComponent,
+    ManageAdvertisementComponent,
     ManageCategoriesComponent
   ],
   providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService],
