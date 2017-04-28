@@ -22,6 +22,9 @@ import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-in
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { RegisterComponent } from "./register/register.component";
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
+import { SupervisorPanelComponent } from "./supervisorpanel/supervisorpanel.component";
+import { ManageAdvertisementComponent } from "./manageAdvertisements/manageAdvertisement.component";
+import { ManageCategoriesComponent } from "./manageCategories/manageCategories.component";
 
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http);
@@ -53,7 +56,10 @@ export function HttpLoaderFactory(http: Http) {
     AdvertisementListComponent,
     AdvertisementInfoComponent,
     RegisterComponent,
-    UserAdvertisementsComponent
+    UserAdvertisementsComponent,
+    SupervisorPanelComponent,
+    ManageAdvertisementComponent,
+    ManageCategoriesComponent
   ],
   providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService],
   bootstrap: [AppComponent]

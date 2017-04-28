@@ -5,7 +5,10 @@
     "advertisementLink": "Inserat erstellen",
     "userAdvertisementLink": "Userinserate",
     "registrationLink":"Registration",
-    "welcome": "Willkommen"
+    "welcome": "Willkommen",
+    "supervisorLink": "Supervisorpanel",
+    "manageAdvertisementsLink": "Inserate verwalten",
+    "manageCategoriesLink": "Kategorien verwalten"
   },
   "ADVERTISEMENT": {
     "title": "Inserate"
@@ -46,5 +49,9 @@
     "hasError": "Ein Fehler ist aufgetretten. Bitte versuche es später nochmals",
     "error409": "Dieser User existiert bereits",
     "error403": "Du hast keine Berechtigung für diese Aktion."
+  },
+  "MANAGECATEGORIES": {
+    "newCat": "neue Kategorie erstellen",
+    "submit": "Speichern"
   }
 }

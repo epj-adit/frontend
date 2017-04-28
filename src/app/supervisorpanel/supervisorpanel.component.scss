@@ -1,0 +1,24 @@
+@import "../_variables.scss";
+
+#subnav {
+  margin-bottom: 1em;
+  ul > li {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    &:first-child {
+      border-left: none;
+    }
+    &:last-child {
+      border-right: none;
+    }
+    & > a {
+      color: black;
+      &:hover {
+        color: red;
+      }
+      &:active {
+        color: red;
+      }
+    }
+  }
+}
