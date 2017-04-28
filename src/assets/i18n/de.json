@@ -4,6 +4,7 @@
     "advertisementsLink": "Inserate",
     "advertisementLink": "Inserat erstellen",
     "userAdvertisementLink": "Userinserate",
+    "registrationLink":"Registration",
     "welcome": "Willkommen"
   },
   "ADVERTISEMENT": {
@@ -34,5 +35,16 @@
     "legend": "Legende",
     "deleteConfirmTitle": "Inserat löschen",
     "deleteConfirmDialog":"Das Löschen eines Inserats kann nicht rückgängig gemacht werden<br>Willst du fortfahren?"
+  },
+  "REGISTER":{
+    "title": "Benutzer registrieren",
+    "usernameField": "Username",
+    "emailField": "E-Mail",
+    "passwordField": "Passwort",
+    "submit": "absenden",
+    "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster",
+    "hasError": "Ein Fehler ist aufgetretten. Bitte versuche es später nochmals",
+    "error409": "Dieser User existiert bereits",
+    "error403": "Du hast keine Berechtigung für diese Aktion."
   }
 }

@@ -13,12 +13,14 @@ import { routing, appRoutingProviders }  from './app.routing';
 import { AdvertisementService } from './_services/advertisement.service';
 import { TagService } from "./_services/tag.service";
 import { CategoryService } from "./_services/category.service";
+import { UserService } from "./_services/user.service";
 
 import { AppComponent } from './app.component';
 import { AdvertisementSearchComponent } from './search/advertisement-search.component';
 import { AdvertisementListComponent } from './advertisementlist/advertisementlist.component';
 import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-info.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
+import { RegisterComponent } from "./register/register.component";
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
 
 export function HttpLoaderFactory(http: Http) {
@@ -50,9 +52,10 @@ export function HttpLoaderFactory(http: Http) {
     AdvertisementComponent,
     AdvertisementListComponent,
     AdvertisementInfoComponent,
+    RegisterComponent,
     UserAdvertisementsComponent
   ],
-  providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService],
+  providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

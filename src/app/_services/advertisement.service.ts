@@ -53,11 +53,13 @@ export class AdvertisementService {
     username: "student",
     email: "student@hsr.ch",
     passwordHash: "abcde",
+    passwordPlaintext: "test",
     isPrivate: true,
     wantsNotification: true,
     isActive: true,
     created: "Apr 6, 2017 2:12:33 PM",
-    subscriptions: []
+    updated: "",
+    jwtToken: ""
   };
 
 
