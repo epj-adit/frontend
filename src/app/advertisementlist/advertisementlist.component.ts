@@ -38,6 +38,10 @@ export class AdvertisementListComponent implements OnInit {
         return this.advertisementService
           .getAdvertisementsQuery(`/?categoryId=${categoryId}`)
           .map(advertisements => this.advertisements = advertisements);
+      } else if (this.router.url == '/supervisorpanel/manageAdvertisements'){
+        return this.advertisementService
+          .getAdvertisementsQuery("/?advertisementState=0")
+          .map(advertisements => this.advertisements = advertisements);
       } else {
         return this.advertisementService
           .getAdvertisementsQuery("/?advertisementState=2")

@@ -73,10 +73,11 @@ export class AdvertisementService {
       category: {id: advertisement.category.id},
       tags: tags,
       media: media,
-      advertisementState: AdvertisementState.active,
+      advertisementState: AdvertisementState.to_review,
     };
     if (advertisement.id) {
       ad.id = advertisement.id;
+      ad.advertisementState = AdvertisementState.to_review;
       return this.http.put(this.advertisementUrl + advertisement.id, JSON.stringify(ad), {headers: this.headers})
         .map(res => res.json())
         .catch(err => this.handleError(err));
