@@ -96,7 +96,6 @@ export class AdvertisementService {
     return this.tagService.create(advertisement.tags)
       .flatMap(
         res => {
-          console.log(res);
           return this.createOrUpdate(advertisement, res)
         }
       )
