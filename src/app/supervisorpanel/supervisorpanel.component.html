@@ -1,12 +1,12 @@
 <nav id="subnav">
 	<ul>
 		<li>
-			<a [routerLink]="['manageAdvertisements']" routerLinkActive="active">
+			<a [routerLink]="['manageAdvertisements']" [routerLinkActive]="['is-active']" routerLinkActive="active">
 				{{ "APP.manageAdvertisementsLink" | translate }}
 			</a>
 		</li>
 		<li>
-			<a [routerLink]="['manageCategories']" routerLinkActive="active">
+			<a [routerLink]="['manageCategories']" [routerLinkActive]="['is-active']" routerLinkActive="active">
 				{{ "APP.manageCategoriesLink" | translate }}
 			</a>
 		</li>

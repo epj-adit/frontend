@@ -14,11 +14,17 @@
     & > a {
       color: black;
       &:hover {
-        color: red;
+        color: $highlightcolor;
       }
-      &:active {
-        color: red;
+      &.is-active{
+        font-weight: bold;
+        color: $highlightcolor
       }
     }
   }
+}
+
+a.is-active{
+  font-weight: bold;
+  color: $highlightcolor
 }
