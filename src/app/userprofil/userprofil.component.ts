@@ -23,7 +23,7 @@ export class UserProfilComponent implements OnInit {
               private userService: UserService) {
     this.form = this.formBuilder.group({
       'username': ['', [Validators.required, Validators.minLength(5)]],
-      'email': ['', [Validators.required, ValidatorService.validateEmail]],
+      'email': ['', [Validators.required, ValidatorService.validateHsrUsername]],
       'password': ['', [Validators.required, Validators.minLength(6)]],
       'isPrivate': [''],
       'wantsNotifications': ['']

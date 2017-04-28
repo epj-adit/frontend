@@ -8,7 +8,10 @@
     "userProfileLink":"Profil",
     "privateMessagingLink": "Private Messaging",
     "registrationLink":"Registration",
-    "welcome": "Willkommen"
+    "welcome": "Willkommen",
+    "supervisorLink": "Supervisorpanel",
+    "manageAdvertisementsLink": "Inserate verwalten",
+    "manageCategoriesLink": "Kategorien verwalten"
   },
   "ADVERTISEMENT": {
     "title": "Inserate"
@@ -58,9 +61,12 @@
     "passwordField": "Passwort",
     "submit": "absenden",
     "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster",
-    "isSubmitted": "User wurde erstellt",
     "hasError": "Ein Fehler ist aufgetretten. Bitte versuche es später nochmals",
     "isPrivateCheckbox": "privates Profil",
     "wantsNotificationsCheckbox": "Benachrichtigungen"
+  },
+  "MANAGECATEGORIES": {
+    "newCat": "neue Kategorie erstellen",
+    "submit": "Speichern"
   }
 }

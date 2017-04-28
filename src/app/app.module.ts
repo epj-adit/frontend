@@ -24,6 +24,10 @@ import { RegisterComponent } from "./register/register.component";
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
 import { UserProfilComponent } from "./userprofil/userprofil.component";
 import { AccountComponent } from "./account/account.component";
+import { SupervisorPanelComponent } from "./supervisorpanel/supervisorpanel.component";
+import { ManageAdvertisementComponent } from "./manageAdvertisements/manageAdvertisement.component";
+import { ManageCategoriesComponent } from "./manageCategories/manageCategories.component";
+
 
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http);
@@ -57,7 +61,10 @@ export function HttpLoaderFactory(http: Http) {
     RegisterComponent,
     UserProfilComponent,
     UserAdvertisementsComponent,
-    AccountComponent
+    AccountComponent,
+    SupervisorPanelComponent,
+    ManageAdvertisementComponent,
+    ManageCategoriesComponent
   ],
   providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService],
   bootstrap: [AppComponent]

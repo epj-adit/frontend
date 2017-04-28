@@ -3,7 +3,7 @@ import { FormControl } from "@angular/forms";
 
 @Injectable()
 export class ValidatorService {
-  static validateEmail(c: FormControl) {
+  static validateHsrUsername(c: FormControl) {
     let regex = new RegExp('^[a-z0-9]{3,8}$');
     return regex.test(c.value) ? null : {
       validateEmail: {

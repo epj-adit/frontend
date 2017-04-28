@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -12,10 +12,9 @@ import { User } from "../data-classes/user";
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   form: FormGroup;
   emailHelpDisplay = 'none';
-  isSubmitted = false;
   errorStatus=0;
 
   constructor(private router: Router,
@@ -23,24 +22,21 @@ export class RegisterComponent implements OnInit {
               private userService: UserService) {
     this.form = this.formBuilder.group({
       'username': ['', [Validators.required, Validators.minLength(5)]],
-      'email': ['', [Validators.required, ValidatorService.validateEmail]],
+      'email': ['', [Validators.required, ValidatorService.validateHsrUsername]],
       'password': ['', [Validators.required, Validators.minLength(6)]]
     });
-  }
-
-  ngOnInit(): void {
-
   }
 
   onSubmit(value) {
     let newUser = new User(value.username, value.email + "@hsr.ch", value.password);
     this.userService.create(newUser)
       .subscribe(
-        //TODO: reroute success to login screen
-        res => this.isSubmitted = true,
-        err => {
-          this.errorStatus = err.status;
-        });
+        res => {
+          let link = ['/login'];
+          this.router.navigate(link);
+        },
+        err => this.errorStatus = err.status
+      );
   }
 
   displayHelp(): void {

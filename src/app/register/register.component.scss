@@ -50,13 +50,6 @@ form {
   font-size: smaller;
 }
 
-.isSubmitted {
-  @include oktext();
-  margin: 5px 0;
-  width: 100%;
-  font-size: smaller;
-}
-
 .hasError {
   @include errortext();
   margin: 5px 0;

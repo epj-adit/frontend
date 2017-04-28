@@ -49,6 +49,7 @@ export class AdvertisementComponent implements OnInit {
         }
       })
       .subscribe(advertisement => {
+        this.tags = advertisement.tags;
         this.form = this.formBuilder.group({
           id: advertisement.id,
           title: advertisement.title,
@@ -57,7 +58,6 @@ export class AdvertisementComponent implements OnInit {
           priceValue: parseFloat(advertisement.price / 100 + "").toFixed(2),
           tagValue: ['', ValidatorService.validateTags.bind(null, this.tags)],
         });
-        this.tags = advertisement.tags;
       });
   }
 
