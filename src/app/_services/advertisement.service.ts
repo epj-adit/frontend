@@ -13,8 +13,6 @@ import { User } from "../data-classes/user";
 import { AdvertisementState } from "../data-classes/advertisementState";
 import { TagService } from "./tag.service";
 
-//TODO: get auf advertisements --> /advertisements/
-
 @Injectable()
 export class AdvertisementService {
   private apiUrl = AppSettings.API_ENDPOINT;
