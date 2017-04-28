@@ -74,7 +74,7 @@ export class AdvertisementService {
       category: {id: advertisement.category.id},
       tags: tags,
       media: media,
-      advertisementState: AdvertisementState.active,
+      advertisementState: AdvertisementState.to_review,
     };
     if (advertisement.id) {
       ad.id = advertisement.id;
