@@ -4,6 +4,7 @@
     "advertisementsLink": "Advertisements",
     "advertisementLink": "create Advertisement",
     "userAdvertisementLink": "Useradvertisements",
+    "registrationLink":"Registration",
     "welcome": "Welcome"
   },
   "ADVERTISEMENT": {
@@ -26,7 +27,7 @@
     "description": "Description",
     "price": "Price  [CHF]",
     "submit": "submit",
-    "taghelp": "separate tags with ';'. Permited special characters: - _",
+    "taghelp": "separate tags with ';'. Permitted special characters: - _",
     "isSubmitted": "Your advertisement was submitted"
   },
   "USERADVERTISEMENT": {
@@ -34,5 +35,16 @@
     "legend": "Legend",
     "deleteConfirmTitle": "Delete Advertisement",
     "deleteConfirmDialog":"Deleting an ad cannot be undone<br>Do you want to proceed?"
+  },
+  "REGISTER":{
+    "title": "Register User",
+    "usernameField": "username",
+    "emailField": "email",
+    "passwordField": "password",
+    "submit": "submit",
+    "emailHelp": "Please use the short form of your HSR email addresse. e.g.: amuster",
+    "hasError": "An error occurred. Please try again later.",
+    "error409": "This user exists already.",
+    "error403": "You don't have permission to execute this action."
   }
 }
