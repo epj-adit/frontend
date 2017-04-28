@@ -40,7 +40,7 @@ export class AdvertisementListComponent implements OnInit {
           .map(advertisements => this.advertisements = advertisements);
       } else {
         return this.advertisementService
-          .getAdvertisementsActive()
+          .getAdvertisementsQuery("/?advertisementState=2")
           .map(advertisements => this.advertisements = advertisements);
       }
     })
