@@ -26,7 +26,7 @@
 </div>
 <div *ngIf="!url.includes('/advertisementinfo')" class="buttons-supervisor">
 	<div class="ad-buttons">
-		<button class="accept" (click)="changeState('accept')"><fa [name]="'check'"></fa>{{ "ADINFO.accept" | translate }}</button>
-		<button class="decline" (click)="changeState('decline')"><fa [name]="'ban'"></fa>{{ "ADINFO.decline" | translate }}</button>
+		<button class="accept" (click)="changeState(2)"><fa [name]="'check'"></fa>{{ "ADINFO.accept" | translate }}</button>
+		<button class="decline" (click)="changeState(1)"><fa [name]="'ban'"></fa>{{ "ADINFO.decline" | translate }}</button>
 	</div>
 </div>

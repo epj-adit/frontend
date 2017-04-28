@@ -33,15 +33,21 @@ export class CategoryService {
 
     categories.forEach((category, index) => {
       if (category.id) {
-        observableBatch.push(this.http.put(this.apiUrl + "/category/" + category.id, JSON.stringify(category)).map((res) => res.json() as Category));
+        observableBatch.push(
+          this.http.put(this.apiUrl + "/category/" + category.id, JSON.stringify(category), {headers: this.headers})
+            .map((res) => res.json() as Category)
+        );
       } else {
-        observableBatch.push(this.http.post(this.apiUrl + "/category", JSON.stringify(category)).map((res) => res.json() as Category));
+        observableBatch.push
+        (this.http.post(this.apiUrl + "/category", JSON.stringify(category), {headers: this.headers})
+          .map((res) => res.json() as Category)
+        );
       }
     });
     return Observable.forkJoin(observableBatch);
   }
 
-  deleteCat(category: Category): Observable<any>{
-    return this.http.delete(this.apiUrl+"/category/"+category.id);
+  deleteCat(category: Category): Observable<any> {
+    return this.http.delete(this.apiUrl + "/category/" + category.id);
   }
 }

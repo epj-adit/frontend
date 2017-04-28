@@ -62,7 +62,7 @@ export class AdvertisementService {
 
 
   // created set bei server -> don't send it!
-  createOrUpdate(advertisement: Advertisement, tags: Tag[]): Observable<Advertisement> {
+  createOrUpdate(advertisement: Advertisement, tags: Tag[], state:AdvertisementState=AdvertisementState.to_review): Observable<Advertisement> {
     // TODO: change State to ToReview, as soon as there are superusers
     let media = advertisement.media ? advertisement.media : [];
     let ad: any = {
@@ -73,11 +73,11 @@ export class AdvertisementService {
       category: {id: advertisement.category.id},
       tags: tags,
       media: media,
-      advertisementState: AdvertisementState.to_review,
+      advertisementState: state,
     };
     if (advertisement.id) {
       ad.id = advertisement.id;
-      ad.advertisementState = AdvertisementState.to_review;
+      ad.advertisementState = state;
       return this.http.put(this.advertisementUrl + "/" + advertisement.id, JSON.stringify(ad), {headers: this.headers})
         .map(res => res.json())
         .catch(err => this.handleError(err));

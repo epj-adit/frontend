@@ -4,6 +4,7 @@ import { Location }               from '@angular/common';
 
 import { AdvertisementService } from '../_services/advertisement.service';
 import { Advertisement } from '../data-classes/advertisement';
+import { AdvertisementState } from "../data-classes/advertisementState";
 
 @Component({
   selector: 'adit-advertisementinfo',
@@ -36,5 +37,13 @@ export class AdvertisementInfoComponent implements OnInit {
   getMedia(filename: string): string {
     // TODO: change mock to real deal
     return '/assets/images/logo-adit.png';
+  }
+
+  changeState(state: AdvertisementState){
+    this.advertisementService.createOrUpdate(this.advertisement, this.advertisement.tags, state)
+      .subscribe(
+        res => console.log("submitted"),
+        err => console.log("error")
+      );
   }
 }
