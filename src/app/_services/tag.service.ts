@@ -4,10 +4,11 @@ import { Headers, Http } from '@angular/http';
 
 import { Tag } from "../data-classes/tag";
 import { Observable } from "rxjs";
+import { AppSettings } from "../app.settings";
 
 @Injectable()
 export class TagService {
-  private apiUrl = 'https://develop.adit.qo.is/api/';  // URL to web api
+  private apiUrl = AppSettings.API_ENDPOINT;  // URL to web api
   private headers = new Headers({'Content-Type': 'application/json'});
 
 
@@ -23,7 +24,7 @@ export class TagService {
 
   create(tags: Tag[]): Observable<Tag[]>{
    return this.http
-        .post(this.apiUrl + "tags", JSON.stringify(tags), {headers: this.headers})
+        .post(this.apiUrl + "/tags", JSON.stringify(tags), {headers: this.headers})
         .map(res => {
           return res.json() as Tag[]
         })

@@ -19,9 +19,7 @@
   }
 }
 
-.newCat{
-  @include border();
-  padding: 4px 6px;
-  cursor: pointer;
+.newCat, .submit{
+  @include buttonLink();
 }
 
