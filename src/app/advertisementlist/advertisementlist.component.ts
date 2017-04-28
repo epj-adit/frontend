@@ -20,8 +20,12 @@ export class AdvertisementListComponent implements OnInit {
   }
 
   gotoInfo(advertisement: Advertisement): void {
-    this.advertisementService.currentAdvertisement = advertisement;
-    let link = ['/advertisementinfo', advertisement.id];
+    let link = ['', advertisement.id];
+    if (this.router.url == '/supervisorpanel/manageAdvertisements'){
+      link[0] = '/supervisorpanel/manageAdvertisements'
+    }else {
+      link[0] = '/advertisementinfo';
+    }
     this.router.navigate(link);
   }
 
