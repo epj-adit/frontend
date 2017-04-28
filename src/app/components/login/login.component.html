@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>{{ "LOGIN.title" | translate }}</h2>
+    <form (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
+        <span class="help-text" [style.display]="emailHelpDisplay">{{"LOGIN.emailHelp" | translate }}</span>
+        <div class="form-group">
+            <label for="email">
+                {{ "LOGIN.emailField" | translate }}
+                <span class="help"><fa [name]="'question-circle'" (click)="displayHelp()"></fa></span>
+            </label>
+            <span class="email"><input type="text" class="form-control" id="email"
+                                       formControlName="email">@hsr.ch</span>
+        </div>
+        <div class="form-group">
+            <label for="plaintextPassword">{{ "LOGIN.passwordField" | translate }}</label>
+            <input type="plaintextPassword" class="form-control" id="plaintextPassword"
+                   formControlName="plaintextPassword">
+        </div>
+        <button type="submit" class="submit" [disabled]="!form.valid">{{ "LOGIN.submit" | translate }}</button>
+    </form>
+</div>
