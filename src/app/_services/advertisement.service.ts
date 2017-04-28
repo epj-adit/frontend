@@ -31,7 +31,7 @@ export class AdvertisementService {
   }
 
   getAdvertisement(id: number): Observable<Advertisement> {
-    return this.http.get(this.advertisementUrl + id)
+    return this.http.get(this.advertisementUrl + "/" + id)
       .map(response => response.json() as Advertisement);
   }
 
@@ -77,7 +77,7 @@ export class AdvertisementService {
     };
     if (advertisement.id) {
       ad.id = advertisement.id;
-      return this.http.put(this.advertisementUrl + advertisement.id, JSON.stringify(ad), {headers: this.headers})
+      return this.http.put(this.advertisementUrl + "/" + advertisement.id, JSON.stringify(ad), {headers: this.headers})
         .map(res => res.json())
         .catch(err => this.handleError(err));
     } else {
