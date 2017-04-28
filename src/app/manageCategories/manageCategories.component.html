@@ -5,5 +5,5 @@
 	</li>
 </ul>
 <input [(ngModel)]="currCat.name" name="name">
-<button (click)="newCat()" class="newCat"><fa [name]="'plus'"></fa>{{ "MANAGECATEGORIES.newCat" }}</button>
-<button (click)="onSubmit()" class="submit"><fa [name]="'floppy-o'"></fa>{{ "MANAGECATEGORIES.submit" }}</button>
+<button (click)="newCat()" class="newCat"><fa [name]="'plus'"></fa>{{ "MANAGECATEGORIES.newCat" | translate }}</button>
+<button (click)="onSubmit()" class="submit"><fa [name]="'floppy-o'"></fa>{{ "MANAGECATEGORIES.submit" | translate }}</button>

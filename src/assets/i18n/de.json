@@ -4,7 +4,10 @@
     "advertisementsLink": "Inserate",
     "advertisementLink": "Inserat erstellen",
     "userAdvertisementLink": "Userinserate",
-    "welcome": "Willkommen"
+    "welcome": "Willkommen",
+    "supervisorLink": "Supervisorpanel",
+    "manageAdvertisementsLink": "Inserate verwalten",
+    "manageCategoriesLink": "Kategorien verwalten"
   },
   "ADVERTISEMENT": {
     "title": "Inserate"
@@ -34,5 +37,9 @@
     "legend": "Legende",
     "deleteConfirmTitle": "Inserat löschen",
     "deleteConfirmDialog":"Das Löschen eines Inserats kann nicht rückgängig gemacht werden<br>Willst du fortfahren?"
+  },
+  "MANAGECATEGORIES": {
+    "newCat": "neue Kategorie erstellen",
+    "submit": "Speichern"
   }
 }

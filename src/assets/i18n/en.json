@@ -4,7 +4,10 @@
     "advertisementsLink": "Advertisements",
     "advertisementLink": "create Advertisement",
     "userAdvertisementLink": "Useradvertisements",
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "supervisorLink": "Supervisorpanel",
+    "manageAdvertisementsLink": "manage advertisements",
+    "manageCategoriesLink": "manage categories"
   },
   "ADVERTISEMENT": {
     "title": "Advertisements"
@@ -34,5 +37,9 @@
     "legend": "Legend",
     "deleteConfirmTitle": "Delete Advertisement",
     "deleteConfirmDialog":"Deleting an ad cannot be undone<br>Do you want to proceed?"
+  },
+  "MANAGECATEGORIES": {
+    "newCat": "create new category",
+    "submit": "Submit"
   }
 }
