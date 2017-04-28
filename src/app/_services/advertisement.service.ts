@@ -15,8 +15,8 @@ import { TagService } from "./tag.service";
 
 @Injectable()
 export class AdvertisementService {
-  private advertisementsUrl = AppSettings.API_ENDPOINT+'/advertisements';  // URL to web api
-  private advertisementUrl = AppSettings.API_ENDPOINT+'/advertisement';  // URL to web api
+  private advertisementsUrl = AppSettings.API_ENDPOINT + '/advertisements';  // URL to web api
+  private advertisementUrl = AppSettings.API_ENDPOINT + '/advertisement';  // URL to web api
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -27,27 +27,23 @@ export class AdvertisementService {
 
   getAdvertisements(): Observable<Advertisement[]> {
     return this.http.get(this.advertisementsUrl)
-        .map(response => response.json() as Advertisement[]);
-  }
-  getAdvertisement(id: number): Observable<Advertisement> {
-    return this.http.get(this.advertisementUrl + id)
-        .map(response => response.json() as Advertisement);
-  }
-  getAdvertisementsActive():Observable<Advertisement[]> {
-    return this.http.get(this.advertisementsUrl + "/?advertisementState=2")
-        .map(response => response.json() as Advertisement[]);
+      .map(response => response.json() as Advertisement[]);
   }
 
-  getAdvertisementsQuery(query: string): Observable<Advertisement[]>{
-    return this.http.get(this.advertisementsUrl+query)
-        .map(response => response.json() as Advertisement[]);
+  getAdvertisement(id: number): Observable<Advertisement> {
+    return this.http.get(this.advertisementUrl + "/" + id)
+      .map(response => response.json() as Advertisement);
+  }
+
+  getAdvertisementsQuery(query: string): Observable<Advertisement[]> {
+    return this.http.get(this.advertisementsUrl + query)
+      .map(response => response.json() as Advertisement[]);
   }
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
-
 
 
   // TODO: add advertiser, created, updated
@@ -81,7 +77,7 @@ export class AdvertisementService {
     };
     if (advertisement.id) {
       ad.id = advertisement.id;
-      return this.http.put(this.advertisementUrl + advertisement.id, JSON.stringify(ad), {headers: this.headers})
+      return this.http.put(this.advertisementUrl + "/" + advertisement.id, JSON.stringify(ad), {headers: this.headers})
         .map(res => res.json())
         .catch(err => this.handleError(err));
     } else {
