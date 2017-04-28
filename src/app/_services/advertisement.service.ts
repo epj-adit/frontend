@@ -13,10 +13,11 @@ import { User } from "../data-classes/user";
 import { AdvertisementState } from "../data-classes/advertisementState";
 import { TagService } from "./tag.service";
 
+//TODO: get auf advertisements --> /advertisements/
+
 @Injectable()
 export class AdvertisementService {
-  private advertisementsUrl = AppSettings.API_ENDPOINT + '/advertisements';  // URL to web api
-  private advertisementUrl = AppSettings.API_ENDPOINT + '/advertisement';  // URL to web api
+  private apiUrl = AppSettings.API_ENDPOINT;
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -26,17 +27,17 @@ export class AdvertisementService {
   }
 
   getAdvertisements(): Observable<Advertisement[]> {
-    return this.http.get(this.advertisementsUrl)
+    return this.http.get(this.apiUrl + '/advertisements/')
       .map(response => response.json() as Advertisement[]);
   }
 
   getAdvertisement(id: number): Observable<Advertisement> {
-    return this.http.get(this.advertisementUrl + "/" + id)
+    return this.http.get(this.apiUrl + "/advertisement/" + id)
       .map(response => response.json() as Advertisement);
   }
 
   getAdvertisementsQuery(query: string): Observable<Advertisement[]> {
-    return this.http.get(this.advertisementsUrl + query)
+    return this.http.get(this.apiUrl + '/advertisements' + query)
       .map(response => response.json() as Advertisement[]);
   }
 
@@ -79,12 +80,12 @@ export class AdvertisementService {
     };
     if (advertisement.id) {
       ad.id = advertisement.id;
-      return this.http.put(this.advertisementUrl + "/" + advertisement.id, JSON.stringify(ad), {headers: this.headers})
+      return this.http.put(this.apiUrl + "/advertisement/" + advertisement.id, JSON.stringify(ad), {headers: this.headers})
         .map(res => res.json())
         .catch(err => this.handleError(err));
     } else {
       return this.http
-        .post(this.advertisementUrl, JSON.stringify(ad), {headers: this.headers})
+        .post(this.apiUrl + "/advertisement", JSON.stringify(ad), {headers: this.headers})
         .map(res => res.json())
         .catch(err => this.handleError(err));
     }
@@ -101,7 +102,7 @@ export class AdvertisementService {
 
   deleteAd(advertisement: Advertisement): Observable<Advertisement> {
     advertisement.advertisementState = AdvertisementState.closed;
-    return this.http.put(this.advertisementUrl + advertisement.id, JSON.stringify(advertisement), {headers: this.headers})
+    return this.http.put(this.apiUrl + "/advertisement/" + advertisement.id, JSON.stringify(advertisement), {headers: this.headers})
       .map(res => res.json())
       .catch(err => this.handleError(err));
   }

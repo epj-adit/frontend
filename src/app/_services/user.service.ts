@@ -10,15 +10,14 @@ import { User } from "../data-classes/user";
 
 @Injectable()
 export class UserService {
-  private usersUrl = AppSettings.API_ENDPOINT + '/api/users';  // URL to web api
-  private userUrl = AppSettings.API_ENDPOINT + '/api/user';
+  private apiUrl = AppSettings.API_ENDPOINT;
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get(this.usersUrl)
+    return this.http.get(this.apiUrl + "/users/")
       .map(response => response.json().data as User[])
       .catch(this.handleError);
   }
@@ -29,7 +28,7 @@ export class UserService {
   }
 
   getUser(id: number): Observable<User> {
-    return this.http.get(this.usersUrl + id)
+    return this.http.get(this.apiUrl + "/user/" + id)
       .map(response => response.json() as User)
       .catch(err => this.handleError(err));
   }
@@ -37,13 +36,13 @@ export class UserService {
   // TODO: add advertiser, created, updated
   create(user: User): Observable<User> {
     return this.http
-      .post(this.userUrl, JSON.stringify(user), {headers: this.headers})
+      .post(this.apiUrl + "/user", JSON.stringify(user), {headers: this.headers})
       .map(res => res.json())
       .catch(this.handleError);
   }
 
-  edit(user:User): Observable<User>{
+  edit(user: User): Observable<User> {
     //TODO: replace dummy -> send to server
-    return Observable.of(new User("","",""));
+    return Observable.of(new User("", "", ""));
   }
 }

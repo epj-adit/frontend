@@ -29,7 +29,7 @@ export class CategoryService {
   }
 
   getCategories(): Observable<Category[]>{
-    return this.http.get(this.apiUrl + "/categories")
+    return this.http.get(this.apiUrl + "/categories/")
       .map(res => res.json() as Category[])
       .catch(err => this.handleError(err));
   }
