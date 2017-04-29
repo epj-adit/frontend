@@ -26,6 +26,7 @@ export class LoginComponent {
     }
 
     onSubmit(value) {
+        value.email += "@hsr.ch";
         this.authenticationService.login(value as Credential)
             .subscribe(
                 authenticationSuccess => {
