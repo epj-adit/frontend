@@ -32,8 +32,8 @@ export class AuthenticationService {
         this.decodedToken = this.jwtHelper.decodeToken(token);
     }
 
-    getToken(): Observable<string> {
-        return Observable.of(this.user.jwtToken);
+    getToken(): string {
+        return this.user.jwtToken;
     }
 
 
