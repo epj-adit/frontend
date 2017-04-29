@@ -22,7 +22,7 @@ const appRoutes: Routes = [
   {path: 'user/:id/advertisements', component: UserAdvertisementsComponent},
   {path: 'supervisorpanel', component: SupervisorPanelComponent, children: [
     {path: '', redirectTo: 'manageAdvertisements', pathMatch: 'full'},
-    {path: 'manageAdvertisements', component: ManageAdvertiesmentComponent},
+    {path: 'manageAdvertisements', component: ManageAdvertisementComponent},
     {path: 'manageCategories', component: ManageCategoriesComponent},
     {path: 'manageAdvertisements/:id', component: AdvertisementInfoComponent}
   ]}
