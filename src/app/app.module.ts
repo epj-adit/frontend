@@ -23,7 +23,7 @@ import { AdvertisementComponent } from './advertisement/advertisement.component'
 import { RegisterComponent } from "./register/register.component";
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
 import { UserProfilComponent } from "./userprofil/userprofil.component";
-import { AccountComponent } from "./account/account.component";
+import { AccountComponent } from "./components/account/account.component";
 import { SupervisorPanelComponent } from "./supervisorpanel/supervisorpanel.component";
 import { ManageAdvertisementComponent } from "./manageAdvertisements/manageAdvertisement.component";
 import { ManageCategoriesComponent } from "./manageCategories/manageCategories.component";
