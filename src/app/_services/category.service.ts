@@ -22,8 +22,15 @@ export class CategoryService {
     return Promise.reject(error.message || error);
   }
 
+  create(category: Category): Observable<Category>{
+    return this.http
+      .post(this.apiUrl + "/category", JSON.stringify(category), {headers: this.headers})
+      .map(res => res.json() as Category)
+      .catch(err => this.handleError(err));
+  }
+
   getCategories(): Observable<Category[]> {
-    return this.http.get(this.apiUrl + "/categories")
+    return this.http.get(this.apiUrl + "/categories/")
       .map(res => res.json() as Category[])
       .catch(err => this.handleError(err));
   }

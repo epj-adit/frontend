@@ -10,17 +10,18 @@ cache:
 script:
   - make tests coverage
   - make build
+  - make upload-coverage
 
 deploy:
   # Production
   - provider: script
-    script: make deploy-live upload-coverage
+    script: make deploy-live
     skip_cleanup: true
     on:
       branch: master
   # Development
   - provider: script
-    script: make deploy-develop upload-coverage
+    script: make deploy-develop
     skip_cleanup: true
     on:
       branch: develop

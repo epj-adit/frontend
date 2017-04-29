@@ -6,6 +6,6 @@ import { Component } from "@angular/core";
   styleUrls: ['./manageAdvertisement.component.scss']
 })
 
-export class ManageAdvertiesmentComponent {
+export class ManageAdvertisementComponent {
 
 }
