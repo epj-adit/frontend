@@ -13,6 +13,7 @@ import { SupervisorPanelComponent } from "./supervisorpanel/supervisorpanel.comp
 import { ManageAdvertisementComponent } from "./manageAdvertisements/manageAdvertisement.component";
 import { ManageCategoriesComponent } from "./manageCategories/manageCategories.component";
 
+import { AuthenticationGuardService } from "./utils/authentication-guard.service";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'advertisements', pathMatch: 'full'},

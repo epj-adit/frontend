@@ -14,6 +14,9 @@ import { AdvertisementService } from './_services/advertisement.service';
 import { TagService } from "./_services/tag.service";
 import { CategoryService } from "./_services/category.service";
 import { UserService } from "./_services/user.service";
+import { AuthenticationService } from "./utils/authentication.service";
+import { AuthenticationGuardService } from "./utils/authentication-guard.service";
+import { ApiCallService } from "./utils/api-call.service";
 
 import { AppComponent } from './app.component';
 import { AdvertisementSearchComponent } from './search/advertisement-search.component';
@@ -66,7 +69,7 @@ export function HttpLoaderFactory(http: Http) {
     ManageAdvertisementComponent,
     ManageCategoriesComponent
   ],
-  providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService],
+  providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService, AuthenticationService, AuthenticationGuardService, ApiCallService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
