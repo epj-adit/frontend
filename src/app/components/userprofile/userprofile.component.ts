@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from "../../_services/user.service";
 import { ValidatorService } from '../../_services/validator.service';
 import { User } from "../../data-classes/user";
+import { AuthenticationService } from "../../utils/authentication.service";
 
 
 @Component({
@@ -17,30 +18,44 @@ export class UserProfileComponent implements OnInit {
   emailHelpDisplay = 'none';
   isSubmitted = false;
   hasError = false;
+  user: User;
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
-              private userService: UserService) {
-    this.form = this.formBuilder.group({
-      'username': ['', [Validators.required, Validators.minLength(5)]],
-      'email': ['', [Validators.required, ValidatorService.validateHsrUsername]],
-      'password': ['', [Validators.required, Validators.minLength(6)]],
-      'isPrivate': [''],
-      'wantsNotifications': ['']
+              private userService: UserService,
+              private authenticationService: AuthenticationService) {
+
+    this.authenticationService.getUser().subscribe(user => {
+      this.user = user;
+      this.form = this.formBuilder.group({
+        'username': [user.username, [Validators.required, Validators.minLength(5)]],
+        'email': [user.email, [Validators.required, ValidatorService.validateHsrUsername]],
+        'password': ['', [Validators.required, Validators.minLength(6)]],
+        'isPrivate': [user.isPrivate],
+        'wantsNotifications': [user.wantsNotification]
+      });
     });
   }
 
   ngOnInit(): void {
-    //TODO: get user from server and input info in form
+    this.authenticationService.getUser().subscribe(user => this.user)
   }
 
   onSubmit(value) {
-    let user = new User(value.username, value.email + "@hsr.ch", value.password);
-    this.userService.edit(user)
-      .subscribe(
-        //TODO: reroute success to login screen
-        res => this.isSubmitted = true,
-        err => this.hasError = true);
+    this.user.username = value.username;
+    this.user.email = value.email + "@hsr.ch";
+    this.user.passwordPlaintext = value.password;
+    this.userService.edit(this.user)
+      .subscribe(res => {
+        this.authenticationService.setUser(this.user);
+          //TODO: Display success message.
+          console.log("User was upated.");
+          this.isSubmitted = true;
+        },
+        err => {
+            this.hasError = true;
+            // TODO: Proper error handling
+      });
   }
 
   displayHelp(): void {
