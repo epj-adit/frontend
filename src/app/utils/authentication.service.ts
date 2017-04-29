@@ -22,7 +22,7 @@ export class AuthenticationService {
     constructor(private http: Http) {
         // Load existing user from local storage
         let userString = localStorage.getItem(AuthenticationService.LS_AUTHENTICATED_USER);
-        if(userString != null && userString.length != 0) {
+        if(userString != null && userString.length != 0 && userString != "undefined") {
             this.user = JSON.parse(userString) as User;
             this.setToken(this.user.jwtToken);
         }
@@ -38,7 +38,7 @@ export class AuthenticationService {
 
 
     setUser(user: User): Observable<boolean> {
-        localStorage.setItem(AuthenticationService.LS_AUTHENTICATED_USER, JSON.stringify(this.user));
+        localStorage.setItem(AuthenticationService.LS_AUTHENTICATED_USER, JSON.stringify(user));
         this.user = user;
         this.setToken(user.jwtToken);
         return Observable.of(this.authenticationActive());
@@ -84,6 +84,6 @@ export class AuthenticationService {
             return Observable.of(false);
         }
 
-        return Observable.of(this.decodedToken.payload.permissions.includes(permissionName));
+        return Observable.of(this.decodedToken.permissions.includes(permissionName));
     }
 }
