@@ -7,7 +7,7 @@ import { AdvertisementComponent } from './advertisement/advertisement.component'
 import { AdvertisementListComponent } from "./advertisementlist/advertisementlist.component";
 import { RegisterComponent } from "./register/register.component";
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
-import { UserProfilComponent } from "./components/userprofil/userprofil.component";
+import { UserProfileComponent } from "./components/userprofile/userprofile.component";
 import { AccountComponent } from "./components/account/account.component";
 import { SupervisorPanelComponent } from "./supervisorpanel/supervisorpanel.component";
 import { ManageAdvertisementComponent } from "./manageAdvertisements/manageAdvertisement.component";
@@ -24,7 +24,7 @@ const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'account', component: AccountComponent, children: [
     {path:'', redirectTo: 'profile', pathMatch: 'full'},
-    {path: 'profile', component: UserProfilComponent},
+    {path: 'profile', component: UserProfileComponent},
     {path: 'advertisements', component: UserAdvertisementsComponent}
   ]},
   {path: 'supervisorpanel', component: SupervisorPanelComponent, children: [

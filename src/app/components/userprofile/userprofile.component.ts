@@ -9,10 +9,10 @@ import { User } from "../../data-classes/user";
 
 @Component({
   selector: 'adit-userprofil',
-  templateUrl: './userprofil.component.html',
-  styleUrls: ['./userprofil.component.scss']
+  templateUrl: './userprofile.component.html',
+  styleUrls: ['./userprofile.component.scss']
 })
-export class UserProfilComponent implements OnInit {
+export class UserProfileComponent implements OnInit {
   form: FormGroup;
   emailHelpDisplay = 'none';
   isSubmitted = false;

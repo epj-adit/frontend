@@ -22,7 +22,7 @@ import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-in
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { RegisterComponent } from "./register/register.component";
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
-import { UserProfilComponent } from "./components/userprofil/userprofil.component";
+import { UserProfileComponent } from "./components/userprofile/userprofile.component";
 import { AccountComponent } from "./components/account/account.component";
 import { SupervisorPanelComponent } from "./supervisorpanel/supervisorpanel.component";
 import { ManageAdvertisementComponent } from "./manageAdvertisements/manageAdvertisement.component";
@@ -59,7 +59,7 @@ export function HttpLoaderFactory(http: Http) {
     AdvertisementListComponent,
     AdvertisementInfoComponent,
     RegisterComponent,
-    UserProfilComponent,
+    UserProfileComponent,
     UserAdvertisementsComponent,
     AccountComponent,
     SupervisorPanelComponent,
