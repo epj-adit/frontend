@@ -13,7 +13,7 @@ export class UserService {
   constructor(private apiCall: ApiCallService) { }
 
   getUsers(): Observable<User[]> {
-    return this.apiCall.get("users/").map(response => response.data as User[])
+    return this.apiCall.get("users/").map(response => response as User[])
       .catch(this.handleError);
   }
 
