@@ -85,7 +85,10 @@ describe('AdvertisementListComponent', () => {
       de = fixture.debugElement.query(By.css('.advertisement'));
       el = de.nativeElement;
       el.click();
-      expect(this.gotoInfo).toHaveBeenCalled();
+      let currentAd = getAdvertisementMocks()[0];
+      expect(this.gotoInfo).toHaveBeenCalledWith(currentAd);
+      expect(this.advertisementService.currentAdvertisement).toEqual(currentAd);
+      expect(this.router.navigate).toHaveBeenCalledWith(['/advertisementinfo', currentAd.id])
     });
   });
 });
