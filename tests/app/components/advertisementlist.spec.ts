@@ -71,21 +71,21 @@ describe('AdvertisementListComponent', () => {
   });
 
   it('should get advertisements from service', () => {
-    fakeAsync(inject([AdvertisementListComponent], (component) => {
-      component.ngOnInit();
+    fakeAsync(() => {
+      comp.ngOnInit();
       tick();
       expect(this.advertisements.toEqual(getAdvertisementMocks()));
-    }));
+    });
   });
 
   it('should navigate to info if ad is clicked', () => {
-    fakeAsync(inject([AdvertisementListComponent], (component) => {
-      component.ngOnInit();
+    fakeAsync(() => {
+      comp.ngOnInit();
       tick();
       de = fixture.debugElement.query(By.css('.advertisement'));
       el = de.nativeElement;
       el.click();
       expect(this.gotoInfo).toHaveBeenCalled();
-    }));
+    });
   });
 });
