@@ -101,7 +101,7 @@ export class AdvertisementService {
 
   deleteAd(advertisement: Advertisement): Observable<Advertisement> {
     advertisement.advertisementState = AdvertisementState.closed;
-    return this.http.put(this.advertisementUrl + advertisement.id, JSON.stringify(advertisement), {headers: this.headers})
+    return this.http.put(this.advertisementUrl + "/" + advertisement.id, JSON.stringify(advertisement), {headers: this.headers})
       .map(res => res.json())
       .catch(err => this.handleError(err));
   }
