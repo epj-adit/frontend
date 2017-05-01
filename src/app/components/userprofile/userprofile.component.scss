@@ -49,12 +49,6 @@ form {
       font-size: 13px;
     }
   }
-  .form-group.withCheckbox{
-    @include flex(row);
-    label {
-      min-width: 10em;
-    }
-  }
 }
 
 .email {
