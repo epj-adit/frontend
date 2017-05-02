@@ -28,6 +28,7 @@ import { UserAdvertisementsComponent } from "./useradvertisements/user-advertise
 import { SupervisorPanelComponent } from "./supervisorpanel/supervisorpanel.component";
 import { ManageAdvertisementComponent } from "./manageAdvertisements/manageAdvertisement.component";
 import { ManageCategoriesComponent } from "./manageCategories/manageCategories.component";
+import { LoginComponent } from "./components/login/login.component";
 
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http);
@@ -62,7 +63,8 @@ export function HttpLoaderFactory(http: Http) {
     UserAdvertisementsComponent,
     SupervisorPanelComponent,
     ManageAdvertisementComponent,
-    ManageCategoriesComponent
+    ManageCategoriesComponent,
+    LoginComponent
   ],
   providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService, AuthenticationService, AuthenticationGuardService, ApiCallService],
   bootstrap: [AppComponent]
