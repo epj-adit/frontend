@@ -3,7 +3,7 @@ import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { Routes } from "@angular/router";
+import { ActivatedRoute, Routes } from "@angular/router";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
@@ -14,6 +14,7 @@ import { AdvertisementService } from "../../../src/app/_services/advertisement.s
 import { CategoryService } from "../../../src/app/_services/category.service";
 import { AdvertisementListComponent } from "../../../src/app/advertisementlist/advertisementlist.component";
 import { getAdvertisementMocks } from "./mock-advertisements";
+import { ActivatedRouteStub } from "../../activated-route-stub";
 
 
 let translations: any = {"TEST": "This is a test"};
@@ -48,7 +49,8 @@ describe('AdvertisementListComponent', () => {
       declarations: [AdvertisementListComponent],
       providers: [
         {provide: AdvertisementService, useValue: AdvertisementServiceStub},
-        {provide: CategoryService, useValue: CategoryServiceStub}
+        //{provide: CategoryService, useValue: CategoryServiceStub},
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub }
       ],
       imports: [
         HttpModule,
@@ -75,6 +77,25 @@ describe('AdvertisementListComponent', () => {
       comp.ngOnInit();
       tick();
       expect(this.advertisements.toEqual(getAdvertisementMocks()));
+      expect(this.advertisementService.getAdvertisementsQuery).toHaveBeenCalledWith('/?advertisementState=2');
+    });
+  });
+
+  it('should get ads with tagId 1', ()=>{
+    fixture.debugElement.injector.get(ActivatedRoute).testParams = { tagId: 1 };
+    fakeAsync(() => {
+      comp.ngOnInit();
+      tick();
+      expect(this.advertisementService.getAdvertisementsQuery).toHaveBeenCalledWith('/?tagId=1');
+    });
+  });
+
+  it('should get ads with categoryId 1', ()=>{
+    fixture.debugElement.injector.get(ActivatedRoute).testParams = { categoryId: 1 };
+    fakeAsync(() => {
+      comp.ngOnInit();
+      tick();
+      expect(this.advertisementService.getAdvertisementsQuery).toHaveBeenCalledWith('/?categoryId=1');
     });
   });
 
