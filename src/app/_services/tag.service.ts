@@ -24,7 +24,7 @@ export class TagService {
 
   create(tags: Tag[]): Observable<Tag[]>{
    return this.http
-        .post(this.apiUrl + "/tags", JSON.stringify(tags), {headers: this.headers})
+        .post(this.apiUrl + "/tags/", JSON.stringify(tags), {headers: this.headers})
         .map(res => {
           return res.json() as Tag[]
         })
