@@ -54,8 +54,8 @@ export class AdvertisementService {
 
 
   // created set bei server -> don't send it!
-  createOrUpdate(advertisement: Advertisement, tags: Tag[]): Observable<Advertisement> {
-    // TODO: change State to ToReview, as soon as there are superusers
+  createOrUpdate(advertisement: Advertisement, tags: Tag[], state:AdvertisementState=AdvertisementState.to_review): Observable<Advertisement> {
+    // TODO: Make sure that the to_review state is enforced on the server side.
     let media = advertisement.media ? advertisement.media : [];
     let ad: any = {
       title: advertisement.title,
@@ -65,8 +65,9 @@ export class AdvertisementService {
       category: {id: advertisement.category.id},
       tags: tags,
       media: media,
-      advertisementState: AdvertisementState.active,
+      advertisementState: state,
     };
+
     if (advertisement.id) {
       ad.id = advertisement.id;
       return this.apiCall.put("advertisement/" + advertisement.id, ad).map(res => res as Advertisement)

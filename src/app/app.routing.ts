@@ -33,7 +33,10 @@ const appRoutes: Routes = [
   ]},
   {path: 'supervisorpanel', component: SupervisorPanelComponent, children: [
     {path: '', redirectTo: 'manageAdvertisements', pathMatch: 'full', canActivate: [ AuthenticationGuardService ]},
-    {path: 'manageAdvertisements', component: ManageAdvertisementComponent, canActivate: [ AuthenticationGuardService ]},
+    {path: 'manageAdvertisements', component: ManageAdvertisementComponent,
+      canActivate: [ AuthenticationGuardService ]},
+    {path: 'manageAdvertisements/:id', component: AdvertisementInfoComponent,
+      canActivate: [ AuthenticationGuardService ]},
     {path: 'manageCategories', component: ManageCategoriesComponent, canActivate: [ AuthenticationGuardService ]}
   ]}
 ];

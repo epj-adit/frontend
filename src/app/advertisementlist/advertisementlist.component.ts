@@ -21,7 +21,12 @@ export class AdvertisementListComponent implements OnInit {
 
   gotoInfo(advertisement: Advertisement): void {
     this.advertisementService.currentAdvertisement = advertisement;
-    let link = ['/advertisementinfo', advertisement.id];
+    let link = ['', advertisement.id];
+    if (this.router.url == '/supervisorpanel/manageAdvertisements'){
+      link[0] = '/supervisorpanel/manageAdvertisements'
+    }else {
+      link[0] = '/advertisementinfo';
+    }
     this.router.navigate(link);
   }
 
@@ -37,6 +42,10 @@ export class AdvertisementListComponent implements OnInit {
       } else if (categoryId) {
         return this.advertisementService
           .getAdvertisementsQuery(`/?categoryId=${categoryId}`)
+          .map(advertisements => this.advertisements = advertisements);
+      } else if (this.router.url == '/supervisorpanel/manageAdvertisements'){
+        return this.advertisementService
+          .getAdvertisementsQuery("/?advertisementState=0")
           .map(advertisements => this.advertisements = advertisements);
       } else {
         return this.advertisementService

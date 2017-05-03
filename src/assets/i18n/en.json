@@ -21,7 +21,9 @@
   },
   "ADINFO": {
     "privateMessagingLink": "Private Message",
-    "emailLink": "E-Mail"
+    "emailLink": "email",
+    "accept": "activate advertisement",
+    "decline": "decline advertisement"
   },
   "AD": {
     "title": "Create Advertisement",

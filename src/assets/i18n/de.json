@@ -21,7 +21,9 @@
   },
   "ADINFO": {
     "privateMessagingLink": "Private Nachricht",
-    "emailLink": "E-Mail"
+    "emailLink": "E-Mail",
+    "accept": "Inserat freischalten",
+    "decline": "Inserat ablehnen"
   },
   "AD": {
     "title": "Inserat erfassen",

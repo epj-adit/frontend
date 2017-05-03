@@ -63,6 +63,31 @@ $borderradius: 4px;
   }
 }
 
+@mixin buttonOk() {
+  padding: 0.25em;
+  border: 1px solid #3c763d;
+  border-radius: 0.2em;
+  background-color: #dff0d8;
+  color: #333;
+  &:hover {
+    cursor: pointer;
+    @include shadow();
+  }
+}
+
+@mixin buttonCancle() {
+  padding: 0.25em;
+  border: 1px solid #a94442;
+  border-radius: 0.2em;
+  background-color: #ebccd1;
+  color: #333;
+  &:hover {
+    cursor: pointer;
+    @include shadow();
+  }
+}
+
+
 @mixin buttonDisabled(){
   color: grey;
   background: lightgrey;
