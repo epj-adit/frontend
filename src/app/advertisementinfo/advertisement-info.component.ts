@@ -40,8 +40,13 @@ export class AdvertisementInfoComponent implements OnInit {
   changeState(state: AdvertisementState){
     this.advertisementService.createOrUpdate(this.advertisement, this.advertisement.tags, state)
       .subscribe(
-        res => console.log("submitted"),
-        err => console.log("error")
+        res => {
+          this.router.navigate(["supervisorpanel", "manageAdvertisements"]);
+        },
+        err => {
+          // TODO: Proper error handling
+          console.log("error", err);
+        }
       );
   }
 }
