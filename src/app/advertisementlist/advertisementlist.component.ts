@@ -30,17 +30,18 @@ export class AdvertisementListComponent implements OnInit {
       let tagId = par['tagId'];
       let categoryId = par['categoryId'];
 
+      let activeState: number = 2;
       if (tagId) {
         return this.advertisementService
-          .getAdvertisementsQuery(`/?tagId=${tagId}`)
+          .getAdvertisementsQuery(`/?tagId=${tagId}&advertisementState=${activeState}`)
           .map(advertisements => this.advertisements = advertisements);
       } else if (categoryId) {
         return this.advertisementService
-          .getAdvertisementsQuery(`/?categoryId=${categoryId}`)
+          .getAdvertisementsQuery(`/?categoryId=${categoryId}&advertisementState=${activeState}`)
           .map(advertisements => this.advertisements = advertisements);
       } else {
         return this.advertisementService
-          .getAdvertisementsQuery("/?advertisementState=2")
+          .getAdvertisementsQuery(`/?advertisementState=${activeState}`)
           .map(advertisements => this.advertisements = advertisements);
       }
     })

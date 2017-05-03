@@ -21,8 +21,8 @@ export class AdvertisementSearchService {
   }
 
   search(term: string): Observable<SearchProposal[]> {
-
-    let advertisementsRequest = this.http.get(`${this.apiUrlAdvertisements}/?title=${term}&description=${term}`).map(res => res.json() as Advertisement[]);
+    let activeState: number = 2;
+    let advertisementsRequest = this.http.get(`${this.apiUrlAdvertisements}/?title=${term}&description=${term}&advertisementState=${activeState}`).map(res => res.json() as Advertisement[]);
     let tagsRequest = this.http.get(`${this.apiUrlTags}/?name=${term}`).map(res => res.json() as Tag[]);
     let categoriesRequest = this.http.get(`${this.apiUrlCategories}/?name=${term}`).map(res => res.json() as Category[]);
 
