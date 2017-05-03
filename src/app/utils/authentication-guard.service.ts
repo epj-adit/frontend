@@ -9,6 +9,7 @@ export class AuthenticationGuardService implements CanActivate {
     constructor(private authentication: AuthenticationService, private router: Router) {}
 
     canActivate() {
+        this.authentication.ngOnInit();
         if(this.authentication.authenticationActive()) {
             return true;
         } else {

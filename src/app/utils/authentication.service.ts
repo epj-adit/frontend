@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
@@ -10,7 +10,7 @@ import { User } from '../data-classes/user';
 import { JwtToken } from '../data/jwt-token';
 
 @Injectable()
-export class AuthenticationService {
+export class AuthenticationService implements OnInit {
     public static AUTHENTICATION_ENDPOINT = '/authenticate';
     public static LS_AUTHENTICATED_USER = 'authenticated_user';
 
@@ -19,13 +19,23 @@ export class AuthenticationService {
     private user: User;
     private decodedToken: JwtToken;
 
-    constructor(private http: Http) {
-        // Load existing user from local storage
+    constructor(private http: Http) { }
+
+    ngOnInit(): void {
+        if(!this.user) {
+            this.loadUserFromLocalStorage();
+        }
+    }
+
+    private loadUserFromLocalStorage() : boolean {
         let userString = localStorage.getItem(AuthenticationService.LS_AUTHENTICATED_USER);
         if(userString != null && userString.length != 0 && userString != "undefined") {
             this.user = JSON.parse(userString) as User;
             this.setToken(this.user.jwtToken);
+            return true;
         }
+
+        return false;
     }
 
     private setToken(token: string): void {
@@ -35,7 +45,6 @@ export class AuthenticationService {
     getToken(): string {
         return this.user.jwtToken;
     }
-
 
     setUser(user: User): Observable<boolean> {
         localStorage.setItem(AuthenticationService.LS_AUTHENTICATED_USER, JSON.stringify(user));
