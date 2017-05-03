@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Headers, RequestOptionsArgs } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
 import { ApiCallService } from "../utils/api-call.service";
+import { AuthenticationService } from "../utils/authentication.service"
 
 import { Observable } from "rxjs/Observable";
 import { User } from "../data-classes/user";
@@ -10,7 +12,7 @@ import { User } from "../data-classes/user";
 @Injectable()
 export class UserService {
 
-  constructor(private apiCall: ApiCallService) { }
+  constructor(private apiCall: ApiCallService, private authenticationService: AuthenticationService) { }
 
   getUsers(): Observable<User[]> {
     return this.apiCall.get("users/").map(response => response as User[])
@@ -29,8 +31,13 @@ export class UserService {
 
   // TODO: add advertiser, created, updated
   create(user: User): Observable<User> {
-    return this.apiCall
-      .post("user", user).map(res => res as User)
+    let options : RequestOptionsArgs = { headers: new Headers({ "Content-Type" : "application/json" }) };
+
+    if(this.authenticationService.authenticationActive()) {
+      options.headers = this.apiCall.appendAuthorizationHeader(options.headers);
+    }
+
+    return this.apiCall.post("user", user, options).map(res => res as User)
       .catch(this.handleError);
   }
 

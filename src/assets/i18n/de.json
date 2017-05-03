@@ -7,7 +7,6 @@
     "userLink": "Account",
     "userProfileLink":"Profil",
     "privateMessagingLink": "Private Messaging",
-    "registrationLink":"Registration",
     "welcome": "Willkommen",
     "supervisorLink": "Supervisorpanel",
     "manageAdvertisementsLink": "Inserate verwalten",
@@ -64,6 +63,7 @@
     "emailField": "E-Mail",
     "passwordField": "Passwort",
     "submit": "Anmelden",
+    "registrationLink": "Registration",
     "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster"
   },
   "PROFILE": {

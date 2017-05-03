@@ -16,5 +16,8 @@
                    formControlName="plaintextPassword">
         </div>
         <button type="submit" class="submit" [disabled]="!form.valid">{{ "LOGIN.submit" | translate }}</button>
+        <a [routerLink]="['/register']" routerLinkActive="active">
+            <fa [name]="'user-plus'"></fa>{{ "LOGIN.registrationLink" | translate }}
+        </a>
     </form>
 </div>
