@@ -19,21 +19,21 @@ import { AuthenticationGuardService } from "./utils/authentication-guard.service
 const appRoutes: Routes = [
   {path: '', redirectTo: 'advertisements', pathMatch: 'full'},
   //{path: 'search', component: AdvertisementSearchComponent},
-  {path: 'advertisements', component: AdvertisementListComponent},
-  {path: 'advertisementinfo/:id', component: AdvertisementInfoComponent},
-  {path: 'advertisement/:id', component: AdvertisementComponent},
-  {path: 'advertisement', component: AdvertisementComponent},
-  {path: 'register', component: RegisterComponent},
+  {path: 'advertisements', component: AdvertisementListComponent, canActivate: [ AuthenticationGuardService ]},
+  {path: 'advertisementinfo/:id', component: AdvertisementInfoComponent, canActivate: [ AuthenticationGuardService ]},
+  {path: 'advertisement/:id', component: AdvertisementComponent, canActivate: [ AuthenticationGuardService ]},
+  {path: 'advertisement', component: AdvertisementComponent, canActivate: [ AuthenticationGuardService ]},
+  {path: 'register', component: RegisterComponent, canActivate: [ AuthenticationGuardService ]},
   {path: 'login', component: LoginComponent},
   {path: 'account', component: AccountComponent, children: [
-    {path:'', redirectTo: 'profile', pathMatch: 'full'},
-    {path: 'profile', component: UserProfileComponent},
-    {path: 'advertisements', component: UserAdvertisementsComponent}
+    {path:'', redirectTo: 'profile', pathMatch: 'full', canActivate: [ AuthenticationGuardService ]},
+    {path: 'profile', component: UserProfileComponent, canActivate: [ AuthenticationGuardService ]},
+    {path: 'advertisements', component: UserAdvertisementsComponent, canActivate: [ AuthenticationGuardService ]}
   ]},
   {path: 'supervisorpanel', component: SupervisorPanelComponent, children: [
-    {path: '', redirectTo: 'manageAdvertisements', pathMatch: 'full'},
-    {path: 'manageAdvertisements', component: ManageAdvertisementComponent},
-    {path: 'manageCategories', component: ManageCategoriesComponent}
+    {path: '', redirectTo: 'manageAdvertisements', pathMatch: 'full', canActivate: [ AuthenticationGuardService ]},
+    {path: 'manageAdvertisements', component: ManageAdvertisementComponent, canActivate: [ AuthenticationGuardService ]},
+    {path: 'manageCategories', component: ManageCategoriesComponent, canActivate: [ AuthenticationGuardService ]}
   ]}
 ];
 
