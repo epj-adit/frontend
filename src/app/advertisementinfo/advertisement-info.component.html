@@ -1,8 +1,7 @@
 <div class="ad-info">
 	<div class="ad-title">
-		<!-- use ? for accessing attributes -> prevents accessing null objects (not yet loaded objects)-->
 		<h3>{{advertisement?.title}}</h3>
-		<span><fa [name]="'tags'"></fa>{{advertisement?.price/100 | currency:'CHF'}}</span>
+		<span><fa [name]="'tags'"></fa>{{advertisement?.price/100 | aditCurrency:'CHF'}}</span>
 	</div>
 	<div class="ad-content">
 		<p>{{advertisement?.description}}</p>
