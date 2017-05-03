@@ -84,7 +84,10 @@ export class AuthenticationService implements OnInit {
     }
 
     authenticationActive(): boolean {
-        return tokenNotExpired();
+        if(this.user && this.user.jwtToken) {
+            return tokenNotExpired(null, this.user.jwtToken);
+        }
+        return false;
     }
 
     hasPermission(permissionName: string): Observable<boolean> {
