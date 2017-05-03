@@ -11,7 +11,7 @@ import { Observable } from "rxjs";
   styleUrls: ['./advertisementlist.component.scss']
 })
 export class AdvertisementListComponent implements OnInit {
-  private advertisements: Advertisement[];
+  advertisements: Advertisement[] = [];
   private tagId: Observable<number>;
 
   constructor(private router: Router,

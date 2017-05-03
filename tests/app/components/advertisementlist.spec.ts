@@ -11,10 +11,10 @@ import { Observable } from "rxjs/Observable";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../../src/app/_services/advertisement.service";
-import { CategoryService } from "../../../src/app/_services/category.service";
 import { AdvertisementListComponent } from "../../../src/app/advertisementlist/advertisementlist.component";
 import { getAdvertisementMocks } from "./mock-advertisements";
 import { ActivatedRouteStub } from "../../activated-route-stub";
+import { Advertisement } from "../../../src/app/data-classes/advertisement";
 
 
 let translations: any = {"TEST": "This is a test"};
@@ -25,14 +25,11 @@ class FakeLoader implements TranslateLoader {
 }
 
 class AdvertisementServiceStub {
-  getAdvertisementsQuery(string: string) {
+  getAdvertisementsQuery(string: string): Observable<Advertisement[]> {
     return Observable.of(getAdvertisementMocks());
   }
 }
 
-class CategoryServiceStub {
-
-}
 
 describe('AdvertisementListComponent', () => {
   const appRoutes: Routes = [
@@ -40,17 +37,24 @@ describe('AdvertisementListComponent', () => {
   ];
   let comp: AdvertisementListComponent;
   let fixture: ComponentFixture<AdvertisementListComponent>;
+  let activatedRoute;
   let de: DebugElement;
   let el: HTMLElement;
+
+  const createComponent = () => {
+    const fixture = TestBed.createComponent(AdvertisementListComponent);
+
+    comp = fixture.componentInstance;
+    fixture.detectChanges();
+  };
 
   // async beforeEach
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AdvertisementListComponent],
       providers: [
-        {provide: AdvertisementService, useValue: AdvertisementServiceStub},
-        //{provide: CategoryService, useValue: CategoryServiceStub},
-        { provide: ActivatedRoute, useClass: ActivatedRouteStub }
+        {provide: AdvertisementService, useClass: AdvertisementServiceStub},
+        {provide: ActivatedRoute, useClass: ActivatedRouteStub}
       ],
       imports: [
         HttpModule,
@@ -62,54 +66,28 @@ describe('AdvertisementListComponent', () => {
         }),
         RouterTestingModule.withRoutes(appRoutes)
       ]
-    })
-      .compileComponents();  // compile template and css
+    }).compileComponents().then(() => {
+      fixture = TestBed.createComponent(AdvertisementListComponent);
+      comp = fixture.componentInstance;
+      activatedRoute = fixture.debugElement.injector.get(ActivatedRoute);
+      activatedRoute.testParams = { tagId: 1};
+    });
   }));
 
-  // synchronous beforeEach
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AdvertisementListComponent);
-    comp = fixture.componentInstance;
+  it('should not have advertisements before ngOnInit', () => {
+    expect(comp.advertisements.length).toBe(0);
   });
 
-  it('should get advertisements from service', () => {
-    fakeAsync(() => {
-      comp.ngOnInit();
-      tick();
-      expect(this.advertisements.toEqual(getAdvertisementMocks()));
-      expect(this.advertisementService.getAdvertisementsQuery).toHaveBeenCalledWith('/?advertisementState=2');
-    });
-  });
+  describe('after get advertisements', () => {
+    beforeEach(async(() => {
+      fixture.detectChanges();
+      fixture.whenStable()
+        .then(() => fixture.detectChanges());
+    }));
 
-  it('should get ads with tagId 1', ()=>{
-    fixture.debugElement.injector.get(ActivatedRoute).testParams = { tagId: 1 };
-    fakeAsync(() => {
-      comp.ngOnInit();
-      tick();
-      expect(this.advertisementService.getAdvertisementsQuery).toHaveBeenCalledWith('/?tagId=1');
-    });
-  });
-
-  it('should get ads with categoryId 1', ()=>{
-    fixture.debugElement.injector.get(ActivatedRoute).testParams = { categoryId: 1 };
-    fakeAsync(() => {
-      comp.ngOnInit();
-      tick();
-      expect(this.advertisementService.getAdvertisementsQuery).toHaveBeenCalledWith('/?categoryId=1');
-    });
-  });
-
-  it('should navigate to info if ad is clicked', () => {
-    fakeAsync(() => {
-      comp.ngOnInit();
-      tick();
-      de = fixture.debugElement.query(By.css('.advertisement'));
-      el = de.nativeElement;
-      el.click();
-      let currentAd = getAdvertisementMocks()[0];
-      expect(this.gotoInfo).toHaveBeenCalledWith(currentAd);
-      expect(this.advertisementService.currentAdvertisement).toEqual(currentAd);
-      expect(this.router.navigate).toHaveBeenCalledWith(['/advertisementinfo', currentAd.id])
+    it('should have advertisements', () => {
+      expect(comp.advertisements.length).toBeGreaterThan(0, 'advertisements length should be greater than 0');
+      expect(comp.advertisements).toEqual(getAdvertisementMocks(), 'advertisements array should equal mock data');
     });
   });
 });
