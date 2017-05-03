@@ -74,6 +74,7 @@
     "submit": "absenden",
     "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster",
     "hasError": "Ein Fehler ist aufgetretten. Bitte versuche es später nochmals",
+    "isSubmitted": "Benutzerprofil wurde aktualisiert.",
     "isPrivateCheckbox": "privates Profil",
     "wantsNotificationsCheckbox": "Benachrichtigungen"
   },

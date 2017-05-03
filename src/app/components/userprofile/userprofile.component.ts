@@ -45,7 +45,7 @@ export class UserProfileComponent implements OnInit {
     this.user.username = value.username;
     this.user.email = value.email + "@hsr.ch";
     this.user.passwordPlaintext = value.password;
-    this.userService.edit(this.user)
+    this.userService.update(this.user)
       .subscribe(res => {
         this.authenticationService.setUser(this.user);
           //TODO: Display success message.

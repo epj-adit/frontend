@@ -41,8 +41,8 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  edit(user: User): Observable<User> {
-    //TODO: replace dummy -> send to server
-    return Observable.of(new User("", "", ""));
+  update(user: User): Observable<User> {
+    return this.apiCall.put("user/" + user.id, user).map(res => res as User)
+      .catch(this.handleError)
   }
 }

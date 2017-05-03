@@ -72,7 +72,7 @@
     "passwordField": "password",
     "submit": "submit",
     "emailHelp": "Please use the short form of your HSR email addresse. e.g.: amuster",
-    "isSubmitted": "User was created",
+    "isSubmitted": "User profile was updated",
     "hasError": "An error occurred. Please try again later.",
     "isPrivateCheckbox": "private profile",
     "wantsNotificationsCheckbox": "Notifications"
