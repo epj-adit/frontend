@@ -10,7 +10,6 @@ import { UserAdvertisementsComponent } from "./useradvertisements/user-advertise
 import { UserProfileComponent } from "./components/userprofile/userprofile.component";
 import { AccountComponent } from "./components/account/account.component";
 import { SupervisorPanelComponent } from "./supervisorpanel/supervisorpanel.component";
-import { ManageAdvertisementComponent } from "./manageAdvertisements/manageAdvertisement.component";
 import { ManageCategoriesComponent } from "./manageCategories/manageCategories.component";
 import { LoginComponent } from "./components/login/login.component"
 
@@ -33,7 +32,7 @@ const appRoutes: Routes = [
   ]},
   {path: 'supervisorpanel', component: SupervisorPanelComponent, children: [
     {path: '', redirectTo: 'manageAdvertisements', pathMatch: 'full', canActivate: [ AuthenticationGuardService ]},
-    {path: 'manageAdvertisements', component: ManageAdvertisementComponent,
+    {path: 'manageAdvertisements', component: AdvertisementListComponent,
       canActivate: [ AuthenticationGuardService ]},
     {path: 'manageAdvertisements/:id', component: AdvertisementInfoComponent,
       canActivate: [ AuthenticationGuardService ]},
