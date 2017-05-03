@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router }            from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
+import { TranslateService } from "@ngx-translate/core";
 // Observable class extensions
 import 'rxjs/add/observable/of';
 // Observable operators
@@ -22,6 +23,7 @@ import forEach = require("core-js/fn/array/for-each");
 })
 export class AdvertisementSearchComponent implements OnInit {
   searchProposals: Observable<SearchProposal[]>;
+  showNoResultsBox: boolean = false;
   private searchTerms = new Subject<string>();
   @ViewChild('searchBox') searchBox;
   @ViewChild('searchResults') searchResults;
@@ -40,6 +42,9 @@ export class AdvertisementSearchComponent implements OnInit {
 
   // Push a search term into the observable stream.
   search(term: string): void {
+    if(term.length===0){
+      this.showNoResultsBox = false;
+    }
     this.searchTerms.next(term);
   }
 
@@ -67,6 +72,8 @@ export class AdvertisementSearchComponent implements OnInit {
 
     proposals = proposals.filter(p => p != undefined);
     proposals.sort((p1, p2) => p2.type - p1.type);
+
+    this.showNoResultsBox = proposals.length == 0;
 
     this.searchProposals = Observable.of<SearchProposal[]>(proposals);
   }
@@ -105,6 +112,8 @@ export class AdvertisementSearchComponent implements OnInit {
       case ProposalType.Category:
         let categoryLink = ['advertisements', {categoryId: searchProposal.id}];
         this.router.navigate(categoryLink);
+        break;
+      default:
         break;
     }
   }
