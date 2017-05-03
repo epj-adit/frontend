@@ -65,11 +65,8 @@ export function HttpLoaderFactory(http: Http) {
     SupervisorPanelComponent,
     ManageAdvertisementComponent,
     ManageCategoriesComponent,
-<<<<<<< HEAD
+    LoginComponent,
     AditCurrencyPipe
-=======
-    LoginComponent
->>>>>>> feature/158_apicall_service_integration
   ],
   providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService, AuthenticationService, AuthenticationGuardService, ApiCallService],
   bootstrap: [AppComponent]
