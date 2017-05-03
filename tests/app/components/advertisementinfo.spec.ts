@@ -15,6 +15,7 @@ import { getAdvertisementMocks } from "./mock-advertisements";
 import { ActivatedRouteStub } from "../../activated-route-stub";
 import { Advertisement } from "../../../src/app/data-classes/advertisement";
 import { AdvertisementInfoComponent } from "../../../src/app/advertisementinfo/advertisement-info.component";
+import { AditCurrencyPipe } from "../../../src/app/util/adit-currency.pipe";
 
 
 let translations: any = {"TEST": "This is a test"};
@@ -26,7 +27,8 @@ class FakeLoader implements TranslateLoader {
 
 class AdvertisementServiceStub {
   currentAdvertisement: Advertisement;
-  getAdvertisement(id:number): Observable<Advertisement>{
+
+  getAdvertisement(id: number): Observable<Advertisement> {
     return Observable.of(getAdvertisementMocks()[0]);
   }
 }
@@ -50,7 +52,7 @@ describe('AdvertisementInfoComponent', () => {
   // async beforeEach
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AdvertisementInfoComponent],
+      declarations: [AdvertisementInfoComponent, AditCurrencyPipe],
       providers: [
         {provide: AdvertisementService, useClass: AdvertisementServiceStub},
         {provide: ActivatedRoute, useClass: ActivatedRouteStub}
@@ -73,11 +75,11 @@ describe('AdvertisementInfoComponent', () => {
     });
   }));
 
-/*  it('should not have advertisement before ngOnInit', () => {
+  it('should not have advertisement before ngOnInit', () => {
     expect(comp.advertisement).toBeUndefined();
-  });*/
+  });
 
-  describe('after get advertisement', () => {
+  describe('after get advertisement from server', () => {
     beforeEach(async(() => {
       fixture.detectChanges();
       fixture.whenStable()
@@ -86,6 +88,19 @@ describe('AdvertisementInfoComponent', () => {
 
     it('should have advertisement after ngOnInit', () => {
       expect(comp.advertisement).toEqual(getAdvertisementMocks()[0]);
-    })
+    });
   });
+
+  describe('after get current advertisement from service', () => {
+    beforeEach(async(() => {
+      advertisementService.currentAdvertisement = getAdvertisementMocks()[1];
+      fixture.detectChanges();
+      fixture.whenStable()
+        .then(() => fixture.detectChanges());
+    }));
+    it('should load current Advertisement from service, if defined', () => {
+      expect(comp.advertisement).toEqual(getAdvertisementMocks()[1]);
+    })
+  })
+
 });

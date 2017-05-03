@@ -5,7 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class AditCurrencyPipe implements PipeTransform {
   transform(value: number, arg: string): string {
-    //return moment(value).format(arg);
     return "CHF " + value.toFixed(2);
   }
 }
