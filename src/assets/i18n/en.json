@@ -2,13 +2,13 @@
   "APP": {
     "searchLink": "Search",
     "advertisementsLink": "Advertisements",
-    "advertisementLink": "create Advertisement",
-    "userAdvertisementLink": "Useradvertisements",
+    "advertisementLink": "Create Advertisement",
+    "userAdvertisementLink": "User Advertisements",
     "registrationLink":"Registration",
     "welcome": "Welcome",
     "supervisorLink": "Supervisorpanel",
-    "manageAdvertisementsLink": "manage advertisements",
-    "manageCategoriesLink": "manage categories"
+    "manageAdvertisementsLink": "Manage Advertisements",
+    "manageCategoriesLink": "Manage Categories"
   },
   "ADVERTISEMENT": {
     "title": "Advertisements"
@@ -19,39 +19,44 @@
   },
   "ADINFO": {
     "privateMessagingLink": "Private Message",
-    "emailLink": "e-Mail"
+    "emailLink": "E-Mail"
   },
   "AD": {
-    "title": "create Advertisement",
+    "title": "Create Advertisement",
     "titleField": "Title",
     "category": "Category",
-    "chooseCategory": "choose category...",
+    "chooseCategory": "Choose Category...",
     "tags": "Tags",
     "description": "Description",
     "price": "Price  [CHF]",
-    "submit": "submit",
-    "taghelp": "separate tags with ';'. Permitted special characters: - _",
+    "submit": "Submit",
+    "taghelp": "Separate tags with ';'. Permitted special characters: - _",
     "isSubmitted": "Your advertisement was submitted"
   },
   "USERADVERTISEMENT": {
     "title": "My Advertisements",
     "legend": "Legend",
     "deleteConfirmTitle": "Delete Advertisement",
-    "deleteConfirmDialog":"Deleting an ad cannot be undone<br>Do you want to proceed?"
+    "deleteConfirmDialog":"Deleting an ad cannot be undone<br>Do you want to proceed?",
+    "toReview": "To Review",
+    "active": "Active",
+    "expired": "Expired",
+    "declined": "Declined",
+    "deleted": "Deleted"
   },
   "REGISTER":{
     "title": "Register User",
-    "usernameField": "username",
-    "emailField": "email",
-    "passwordField": "password",
-    "submit": "submit",
-    "emailHelp": "Please use the short form of your HSR email addresse. e.g.: amuster",
+    "usernameField": "Username",
+    "emailField": "Email",
+    "passwordField": "Password",
+    "submit": "Submit",
+    "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster",
     "hasError": "An error occurred. Please try again later.",
-    "error409": "This user exists already.",
+    "error409": "This user already exists.",
     "error403": "You don't have permission to execute this action."
   },
   "MANAGECATEGORIES": {
-    "newCat": "create new category",
+    "newCat": "Create New Category",
     "submit": "Submit"
   }
 }
