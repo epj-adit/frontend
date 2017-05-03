@@ -1,5 +1,5 @@
 export enum ProposalType{
-    Category, Tag, Advert
+    Category, Tag, Advert, NoResult
 }
 export class SearchProposal {
     name: string;

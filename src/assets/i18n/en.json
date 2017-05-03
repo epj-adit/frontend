@@ -15,7 +15,8 @@
   },
   "ADVERTISEMENTSEARCH": {
     "title": "Advertisement Search",
-    "search": "Search.."
+    "search": "Search..",
+    "noResult": "No Search Results were found"
   },
   "ADINFO": {
     "privateMessagingLink": "Private Message",
