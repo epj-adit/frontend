@@ -1,8 +1,7 @@
-import { async, ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
-import { By }              from '@angular/platform-browser';
+import { async, ComponentFixture,TestBed } from '@angular/core/testing';
 import { DebugElement }    from '@angular/core';
 
-import { ActivatedRoute, Router, Routes } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
@@ -10,8 +9,7 @@ import { Observable } from "rxjs/Observable";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../../src/app/_services/advertisement.service";
-import { AdvertisementListComponent } from "../../../src/app/advertisementlist/advertisementlist.component";
-import { getAdvertisementMocks } from "./mock-advertisements";
+import { getAdvertisementMocks } from "../data/mock-advertisements";
 import { ActivatedRouteStub } from "../../activated-route-stub";
 import { Advertisement } from "../../../src/app/data-classes/advertisement";
 import { AdvertisementInfoComponent } from "../../../src/app/advertisementinfo/advertisement-info.component";
