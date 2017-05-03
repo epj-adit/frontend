@@ -29,29 +29,34 @@
     "tags": "Tags",
     "description": "Beschreibung",
     "price": "Preis [CHF]",
-    "submit": "absenden",
+    "submit": "Absenden",
     "taghelp": "Einzelne Tags mit ';' trennen. Erlaubte Sonderzeichen: - _",
-    "isSubmitted": "Dein Inserat wurde gepostet"
+    "isSubmitted": "Dein Inserat wurde gepostet."
   },
   "USERADVERTISEMENT": {
     "title": "Meine Inserate",
     "legend": "Legende",
     "deleteConfirmTitle": "Inserat löschen",
-    "deleteConfirmDialog":"Das Löschen eines Inserats kann nicht rückgängig gemacht werden<br>Willst du fortfahren?"
+    "deleteConfirmDialog":"Das Löschen eines Inserats kann nicht rückgängig gemacht werden<br>Willst du fortfahren?",
+    "toReview": "Zu Prüfen",
+    "active": "Aktiv",
+    "expired": "Abgelaufen",
+    "declined": "Abgelehnt",
+    "deleted": "Gelöscht"
   },
   "REGISTER":{
     "title": "Benutzer registrieren",
     "usernameField": "Username",
     "emailField": "E-Mail",
     "passwordField": "Passwort",
-    "submit": "absenden",
+    "submit": "Absenden",
     "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster",
     "hasError": "Ein Fehler ist aufgetretten. Bitte versuche es später nochmals",
     "error409": "Dieser User existiert bereits",
     "error403": "Du hast keine Berechtigung für diese Aktion."
   },
   "MANAGECATEGORIES": {
-    "newCat": "neue Kategorie erstellen",
+    "newCat": "Neue Kategorie erstellen",
     "submit": "Speichern"
   }
 }
