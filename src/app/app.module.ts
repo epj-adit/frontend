@@ -14,6 +14,9 @@ import { AdvertisementService } from './_services/advertisement.service';
 import { TagService } from "./_services/tag.service";
 import { CategoryService } from "./_services/category.service";
 import { UserService } from "./_services/user.service";
+import { AuthenticationService } from "./utils/authentication.service";
+import { AuthenticationGuardService } from "./utils/authentication-guard.service";
+import { ApiCallService } from "./utils/api-call.service";
 
 import { AppComponent } from './app.component';
 import { AdvertisementSearchComponent } from './search/advertisement-search.component';
@@ -25,6 +28,7 @@ import { UserAdvertisementsComponent } from "./useradvertisements/user-advertise
 import { SupervisorPanelComponent } from "./supervisorpanel/supervisorpanel.component";
 import { ManageAdvertisementComponent } from "./manageAdvertisements/manageAdvertisement.component";
 import { ManageCategoriesComponent } from "./manageCategories/manageCategories.component";
+import { LoginComponent } from "./components/login/login.component";
 import { AditCurrencyPipe } from "./util/adit-currency.pipe";
 
 export function HttpLoaderFactory(http: Http) {
@@ -61,9 +65,13 @@ export function HttpLoaderFactory(http: Http) {
     SupervisorPanelComponent,
     ManageAdvertisementComponent,
     ManageCategoriesComponent,
+<<<<<<< HEAD
     AditCurrencyPipe
+=======
+    LoginComponent
+>>>>>>> feature/158_apicall_service_integration
   ],
-  providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService],
+  providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService, AuthenticationService, AuthenticationGuardService, ApiCallService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

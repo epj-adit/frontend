@@ -10,7 +10,9 @@ import { UserAdvertisementsComponent } from "./useradvertisements/user-advertise
 import { SupervisorPanelComponent } from "./supervisorpanel/supervisorpanel.component";
 import { ManageAdvertisementComponent } from "./manageAdvertisements/manageAdvertisement.component";
 import { ManageCategoriesComponent } from "./manageCategories/manageCategories.component";
+import { LoginComponent } from "./components/login/login.component"
 
+import { AuthenticationGuardService } from "./utils/authentication-guard.service";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'advertisements', pathMatch: 'full'},
@@ -21,6 +23,7 @@ const appRoutes: Routes = [
   {path: 'advertisement', component: AdvertisementComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'user/:id/advertisements', component: UserAdvertisementsComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'supervisorpanel', component: SupervisorPanelComponent, children: [
     {path: '', redirectTo: 'manageAdvertisements', pathMatch: 'full'},
     {path: 'manageAdvertisements', component: ManageAdvertisementComponent},

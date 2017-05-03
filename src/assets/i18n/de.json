@@ -55,6 +55,13 @@
     "error409": "Dieser User existiert bereits",
     "error403": "Du hast keine Berechtigung für diese Aktion."
   },
+  "LOGIN": {
+    "title": "Anmelden",
+    "emailField": "E-Mail",
+    "passwordField": "Passwort",
+    "submit": "Anmelden",
+    "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster"
+  },
   "MANAGECATEGORIES": {
     "newCat": "Neue Kategorie erstellen",
     "submit": "Speichern"

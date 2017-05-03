@@ -55,6 +55,13 @@
     "error409": "This user already exists.",
     "error403": "You don't have permission to execute this action."
   },
+  "LOGIN": {
+    "title": "Login",
+    "emailField": "Email",
+    "passwordField": "Password",
+    "submit": "Login",
+    "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster"
+  },
   "MANAGECATEGORIES": {
     "newCat": "Create New Category",
     "submit": "Submit"
