@@ -29,7 +29,7 @@ export class UserProfileComponent implements OnInit {
       this.user = user;
       this.form = this.formBuilder.group({
         'username': [user.username, [Validators.required, Validators.minLength(5)]],
-        'email': [user.email, [Validators.required, ValidatorService.validateHsrUsername]],
+        'email': [user.email.split("@")[0], [Validators.required, ValidatorService.validateHsrUsername]],
         'password': ['', [Validators.required, Validators.minLength(6)]],
         'isPrivate': [user.isPrivate],
         'wantsNotifications': [user.wantsNotification]
