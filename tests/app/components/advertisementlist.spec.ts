@@ -3,7 +3,7 @@ import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { ActivatedRoute, Routes } from "@angular/router";
+import { ActivatedRoute, Router, Routes } from "@angular/router";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
@@ -15,6 +15,7 @@ import { AdvertisementListComponent } from "../../../src/app/advertisementlist/a
 import { getAdvertisementMocks } from "./mock-advertisements";
 import { ActivatedRouteStub } from "../../activated-route-stub";
 import { Advertisement } from "../../../src/app/data-classes/advertisement";
+import { AdvertisementInfoComponent } from "../../../src/app/advertisementinfo/advertisement-info.component";
 
 
 let translations: any = {"TEST": "This is a test"};
@@ -23,8 +24,13 @@ class FakeLoader implements TranslateLoader {
     return Observable.of(translations);
   }
 }
+class RouterStub {
+  navigate(url: string) { return url; }
+}
 
 class AdvertisementServiceStub {
+  currentAdvertisement: Advertisement;
+
   getAdvertisementsQuery(string: string): Observable<Advertisement[]> {
     return Observable.of(getAdvertisementMocks());
   }
@@ -32,12 +38,10 @@ class AdvertisementServiceStub {
 
 
 describe('AdvertisementListComponent', () => {
-  const appRoutes: Routes = [
-    {path: '', redirectTo: 'advertisements', pathMatch: 'full'}
-  ];
   let comp: AdvertisementListComponent;
   let fixture: ComponentFixture<AdvertisementListComponent>;
   let activatedRoute;
+  let advertisementService;
   let de: DebugElement;
   let el: HTMLElement;
 
@@ -54,7 +58,8 @@ describe('AdvertisementListComponent', () => {
       declarations: [AdvertisementListComponent],
       providers: [
         {provide: AdvertisementService, useClass: AdvertisementServiceStub},
-        {provide: ActivatedRoute, useClass: ActivatedRouteStub}
+        {provide: ActivatedRoute, useClass: ActivatedRouteStub},
+        {provide: Router, useClass: RouterStub}
       ],
       imports: [
         HttpModule,
@@ -63,14 +68,14 @@ describe('AdvertisementListComponent', () => {
         Angular2FontawesomeModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: FakeLoader}
-        }),
-        RouterTestingModule.withRoutes(appRoutes)
+        })
       ]
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(AdvertisementListComponent);
       comp = fixture.componentInstance;
       activatedRoute = fixture.debugElement.injector.get(ActivatedRoute);
-      activatedRoute.testParams = { tagId: 1};
+      activatedRoute.testParams = {tagId: 1};
+      advertisementService = fixture.debugElement.injector.get(AdvertisementService);
     });
   }));
 
@@ -89,5 +94,27 @@ describe('AdvertisementListComponent', () => {
       expect(comp.advertisements.length).toBeGreaterThan(0, 'advertisements length should be greater than 0');
       expect(comp.advertisements).toEqual(getAdvertisementMocks(), 'advertisements array should equal mock data');
     });
+
+    it('should render advertisements', () => {
+      de = fixture.debugElement.query(By.css('.advertisement'));
+      el = de.nativeElement;
+      expect(el).toBeDefined();
+    });
+
+    it('should call gotoInfo when advertisement is clicked', () => {
+      de = fixture.debugElement.query(By.css('.advertisement'));
+      el = de.nativeElement;
+      spyOn(comp, 'gotoInfo');
+      el.click();
+      expect(comp.gotoInfo).toHaveBeenCalledWith(getAdvertisementMocks()[0]);
+    });
+
+    it('should set clicked advertisement as current advertisement', () => {
+      de = fixture.debugElement.query(By.css('.advertisement'));
+      el = de.nativeElement;
+      expect(advertisementService.currentAdvertisement).toBeUndefined('current Advertisement in Service should be undefined');
+      el.click();
+      expect(advertisementService.currentAdvertisement).toEqual(getAdvertisementMocks()[0]);
+    })
   });
 });
