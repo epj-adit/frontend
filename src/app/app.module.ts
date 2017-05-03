@@ -16,6 +16,8 @@ import { CategoryService } from "./_services/category.service";
 import { UserService } from "./_services/user.service";
 import { AuthenticationService } from "./utils/authentication.service";
 import { AuthenticationGuardService } from "./utils/authentication-guard.service";
+import { NotAuthenticatedGuardService } from "./utils/not-authenticated-guard.service";
+
 import { ApiCallService } from "./utils/api-call.service";
 
 import { AppComponent } from './app.component';
@@ -73,7 +75,7 @@ export function HttpLoaderFactory(http: Http) {
     LoginComponent,
     AditCurrencyPipe
   ],
-  providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService, AuthenticationService, AuthenticationGuardService, ApiCallService],
+  providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService, AuthenticationService, AuthenticationGuardService, NotAuthenticatedGuardService, ApiCallService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
