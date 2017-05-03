@@ -41,11 +41,11 @@ header {
   display: none;
 }
 
-input[type=checkbox] {
-  display: none;
+input[type=checkbox]#menu-toggel {
+  display:none;
 }
 
-input[type=checkbox] + label {
+input[type=checkbox]#menu-toggel + label {
   background: linear-gradient(to bottom, $menuiconcolor 0%, $menuiconcolor 20%, transparent 20%, transparent 40%, $menuiconcolor 40%, $menuiconcolor 60%, transparent 60%, transparent 80%, $menuiconcolor 80%, $menuiconcolor 100%); //Gradient Hamburger
   cursor: pointer;
   height: 16px;

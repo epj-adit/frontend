@@ -3,7 +3,10 @@
     "searchLink": "Suche",
     "advertisementsLink": "Inserate",
     "advertisementLink": "Inserat erstellen",
-    "userAdvertisementLink": "Userinserate",
+    "userAdvertisementLink": "Meine Inserate",
+    "userLink": "Account",
+    "userProfileLink":"Profil",
+    "privateMessagingLink": "Private Messaging",
     "registrationLink":"Registration",
     "welcome": "Willkommen",
     "supervisorLink": "Supervisorpanel",
@@ -51,6 +54,7 @@
     "passwordField": "Passwort",
     "submit": "Absenden",
     "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster",
+    "isSubmitted": "User wurde erstellt",
     "hasError": "Ein Fehler ist aufgetretten. Bitte versuche es später nochmals",
     "error409": "Dieser User existiert bereits",
     "error403": "Du hast keine Berechtigung für diese Aktion."
@@ -61,6 +65,17 @@
     "passwordField": "Passwort",
     "submit": "Anmelden",
     "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster"
+  },
+  "PROFILE": {
+    "title": "Profil bearbeiten",
+    "usernameField": "Username",
+    "emailField": "E-Mail",
+    "passwordField": "Passwort",
+    "submit": "absenden",
+    "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster",
+    "hasError": "Ein Fehler ist aufgetretten. Bitte versuche es später nochmals",
+    "isPrivateCheckbox": "privates Profil",
+    "wantsNotificationsCheckbox": "Benachrichtigungen"
   },
   "MANAGECATEGORIES": {
     "newCat": "Neue Kategorie erstellen",

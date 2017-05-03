@@ -2,8 +2,11 @@
   "APP": {
     "searchLink": "Search",
     "advertisementsLink": "Advertisements",
-    "advertisementLink": "Create Advertisement",
-    "userAdvertisementLink": "User Advertisements",
+    "advertisementLink": "create Advertisement",
+    "userAdvertisementLink": "My Advertisements",
+    "userLink": "Account",
+    "userProfileLink":"Profile",
+    "privateMessagingLink": "Private Messaging",
     "registrationLink":"Registration",
     "welcome": "Welcome",
     "supervisorLink": "Supervisorpanel",
@@ -55,12 +58,26 @@
     "error409": "This user already exists.",
     "error403": "You don't have permission to execute this action."
   },
+<<<<<<< HEAD
   "LOGIN": {
     "title": "Login",
     "emailField": "Email",
     "passwordField": "Password",
     "submit": "Login",
     "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster"
+=======
+  "PROFILE": {
+    "title": "edit profile",
+    "usernameField": "username",
+    "emailField": "email",
+    "passwordField": "password",
+    "submit": "submit",
+    "emailHelp": "Please use the short form of your HSR email addresse. e.g.: amuster",
+    "isSubmitted": "User was created",
+    "hasError": "An error occurred. Please try again later.",
+    "isPrivateCheckbox": "private profile",
+    "wantsNotificationsCheckbox": "Notifications"
+>>>>>>> feature/162_edit-userprofil
   },
   "MANAGECATEGORIES": {
     "newCat": "Create New Category",
