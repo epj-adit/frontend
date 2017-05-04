@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 
 import { ApiCallService } from '../utils/api-call.service';
-import { Advertisement } from '../data-classes/advertisement';
+import { Advertisement } from '../data/advertisement';
 
-import { Category } from "../data-classes/category";
-import { Media } from "../data-classes/media";
-import { Tag } from "../data-classes/tag";
-import { User } from "../data-classes/user";
-import { AdvertisementState } from "../data-classes/advertisementState";
+import { Category } from "../data/category";
+import { Media } from "../data/media";
+import { Tag } from "../data/tag";
+import { User } from "../data/user";
+import { AdvertisementState } from "../data/advertisementState";
 import { TagService } from "./tag.service";
 
 @Injectable()

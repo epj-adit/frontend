@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import 'rxjs/add/observable/forkJoin'
 
 import { ApiCallService } from "../utils/api-call.service";
-import { Category } from "../data-classes/category";
+import { Category } from "../data/category";
 
 @Injectable()
 export class CategoryService {

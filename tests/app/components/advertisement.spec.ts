@@ -12,7 +12,7 @@ import { AdvertisementComponent } from "../../../src/app/components/advertisemen
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../../src/app/_services/advertisement.service";
 import { CategoryService } from "../../../src/app/_services/category.service";
-import { Tag } from "../../../src/app/data-classes/tag";
+import { Tag } from "../../../src/app/data/tag";
 
 let translations: any = {"TEST": "This is a test"};
 class FakeLoader implements TranslateLoader {

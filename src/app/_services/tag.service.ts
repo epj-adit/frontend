@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Tag } from "../data-classes/tag";
+import { Tag } from "../data/tag";
 import { Observable } from "rxjs";
 import { ApiCallService } from "../utils/api-call.service";
 

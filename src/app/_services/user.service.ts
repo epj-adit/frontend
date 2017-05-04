@@ -7,7 +7,7 @@ import { ApiCallService } from "../utils/api-call.service";
 import { AuthenticationService } from "../utils/authentication.service"
 
 import { Observable } from "rxjs/Observable";
-import { User } from "../data-classes/user";
+import { User } from "../data/user";
 
 @Injectable()
 export class UserService {

@@ -3,10 +3,10 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { ApiCallService } from '../utils/api-call.service';
-import { Advertisement } from '../data-classes/advertisement';
-import { Category } from "../data-classes/category";
-import { Tag } from "../data-classes/tag";
-import { SearchProposal } from "../data-classes/search-proposal";
+import { Advertisement } from '../data/advertisement';
+import { Category } from "../data/category";
+import { Tag } from "../data/tag";
+import { SearchProposal } from "../data/search-proposal";
 
 @Injectable()
 export class AdvertisementSearchService {

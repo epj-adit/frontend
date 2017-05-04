@@ -11,7 +11,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 import { AdvertisementSearchService } from '../../_services/advertisement-search.service';
-import { SearchProposal, ProposalType } from '../../data-classes/search-proposal';
+import { SearchProposal, ProposalType } from '../../data/search-proposal';
 import forEach = require("core-js/fn/array/for-each");
 
 @Component({

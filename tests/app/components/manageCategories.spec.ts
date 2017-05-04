@@ -8,8 +8,8 @@ import { Angular2FontawesomeModule } from "angular2-fontawesome";
 import { Observable } from "rxjs/Observable";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { Advertisement } from "../../../src/app/data-classes/advertisement";
-import { Category } from "../../../src/app/data-classes/category";
+import { Advertisement } from "../../../src/app/data/advertisement";
+import { Category } from "../../../src/app/data/category";
 import { getCategoriesMocks } from "../data/mock-categories";
 import { ManageCategoriesComponent } from "../../../src/app/components/manageCategories/manageCategories.component";
 import { CategoryService } from "../../../src/app/_services/category.service";

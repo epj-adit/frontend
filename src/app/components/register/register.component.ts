@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UserService } from "../../_services/user.service";
 import { ValidatorService } from '../../_services/validator.service';
-import { User } from "../../data-classes/user";
+import { User } from "../../data/user";
 
 
 @Component({

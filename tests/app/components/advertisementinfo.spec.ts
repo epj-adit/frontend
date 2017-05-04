@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../../src/app/_services/advertisement.service";
 import { getAdvertisementMocks } from "../data/mock-advertisements";
 import { ActivatedRouteStub } from "../../activated-route-stub";
-import { Advertisement } from "../../../src/app/data-classes/advertisement";
+import { Advertisement } from "../../../src/app/data/advertisement";
 import { AdvertisementInfoComponent } from "../../../src/app/components/advertisementinfo/advertisement-info.component";
 import { AditCurrencyPipe } from "../../../src/app/utils/adit-currency.pipe";
 

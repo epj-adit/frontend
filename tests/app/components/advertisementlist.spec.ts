@@ -13,7 +13,7 @@ import { AdvertisementService } from "../../../src/app/_services/advertisement.s
 import { AdvertisementListComponent } from "../../../src/app/components/advertisementlist/advertisementlist.component";
 import { getAdvertisementMocks } from "../data/mock-advertisements";
 import { ActivatedRouteStub } from "../../activated-route-stub";
-import { Advertisement } from "../../../src/app/data-classes/advertisement";
+import { Advertisement } from "../../../src/app/data/advertisement";
 
 
 let translations: any = {"TEST": "This is a test"};

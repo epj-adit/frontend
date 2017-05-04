@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 
 import { AppSettings } from '../app.settings';
 import { Credential } from '../data/credential';
-import { User } from '../data-classes/user';
+import { User } from '../data/user';
 import { JwtToken } from '../data/jwt-token';
 
 @Injectable()

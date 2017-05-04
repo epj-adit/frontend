@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CategoryService } from "../../_services/category.service";
-import { Category } from "../../data-classes/category";
+import { Category } from "../../data/category";
 @Component({
   selector: 'adit-manage-categories',
   templateUrl: './manageCategories.component.html',

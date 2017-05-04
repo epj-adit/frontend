@@ -1,4 +1,4 @@
-import { Advertisement } from "../../../src/app/data-classes/advertisement";
+import { Advertisement } from "../../../src/app/data/advertisement";
 export function getAdvertisementMocks() : Advertisement[] {
   return [{
     id: 1,
