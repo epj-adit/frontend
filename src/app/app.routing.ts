@@ -7,7 +7,7 @@ import { AdvertisementComponent } from './components/advertisement/advertisement
 import { AdvertisementListComponent } from "./components/advertisement-list/advertisement-list.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { UserAdvertisementsComponent } from "./components/useradvertisements/user-advertisements.component";
-import { UserProfileComponent } from "./components/userprofile/userprofile.component";
+import { UserProfileComponent } from "./components/user-profile/user-profile.component";
 import { AccountComponent } from "./components/account/account.component";
 import { SupervisorPanelComponent } from "./components/supervisorpanel/supervisorpanel.component";
 import { ManageCategoriesComponent } from "./components/manage-categories/manage-categories.component";

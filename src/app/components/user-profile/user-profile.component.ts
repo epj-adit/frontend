@@ -10,8 +10,8 @@ import { AuthenticationService } from "../../utils/authentication.service";
 
 @Component({
   selector: 'adit-userprofil',
-  templateUrl: './userprofile.component.html',
-  styleUrls: ['./userprofile.component.scss']
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
   form: FormGroup;
