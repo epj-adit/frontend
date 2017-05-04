@@ -1,4 +1,4 @@
-import { MessageState } from './messageState';
+import { MessageState } from './message-state';
 import { Advertisement } from './advertisement';
 import { User } from './user';
 

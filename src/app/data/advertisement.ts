@@ -1,4 +1,4 @@
-import { AdvertisementState } from './advertisementState';
+import { AdvertisementState } from './advertisement-state';
 import { Tag } from './tag';
 import { User } from './user';
 import { Category } from './category';

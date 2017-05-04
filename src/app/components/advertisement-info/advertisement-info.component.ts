@@ -3,7 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { AdvertisementService } from '../../services/advertisement.service';
 import { Advertisement } from '../../data/advertisement';
-import { AdvertisementState } from "../../data/advertisementState";
+import { AdvertisementState } from "../../data/advertisement-state";
 
 @Component({
   selector: 'adit-advertisementinfo',

@@ -8,7 +8,7 @@ import { Category } from "../data/category";
 import { Media } from "../data/media";
 import { Tag } from "../data/tag";
 import { User } from "../data/user";
-import { AdvertisementState } from "../data/advertisementState";
+import { AdvertisementState } from "../data/advertisement-state";
 import { TagService } from "./tag.service";
 
 @Injectable()
