@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { UserService } from "../_services/user.service";
-import { ValidatorService } from '../_services/validator.service';
-import { User } from "../data-classes/user";
+import { UserService } from "../../_services/user.service";
+import { ValidatorService } from '../../_services/validator.service';
+import { User } from "../../data-classes/user";
 
 
 @Component({
