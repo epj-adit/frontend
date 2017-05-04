@@ -21,7 +21,7 @@ import { NotAuthenticatedGuardService } from "./utils/not-authenticated-guard.se
 import { ApiCallService } from "./utils/api-call.service";
 
 import { AppComponent } from './app.component';
-import { AdvertisementSearchComponent } from './search/advertisement-search.component';
+import { AdvertisementSearchComponent } from './components/search/advertisement-search.component';
 import { AdvertisementListComponent } from './components/advertisementlist/advertisementlist.component';
 import { AdvertisementInfoComponent } from './components/advertisementinfo/advertisement-info.component';
 import { AdvertisementComponent } from './components/advertisement/advertisement.component';
