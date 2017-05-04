@@ -13,7 +13,7 @@ import { getAdvertisementMocks } from "../data/mock-advertisements";
 import { ActivatedRouteStub } from "../../activated-route-stub";
 import { Advertisement } from "../../../src/app/data-classes/advertisement";
 import { AdvertisementInfoComponent } from "../../../src/app/components/advertisementinfo/advertisement-info.component";
-import { AditCurrencyPipe } from "../../../src/app/util/adit-currency.pipe";
+import { AditCurrencyPipe } from "../../../src/app/utils/adit-currency.pipe";
 
 
 let translations: any = {"TEST": "This is a test"};

@@ -32,7 +32,7 @@ import { AccountComponent } from "./components/account/account.component";
 import { SupervisorPanelComponent } from "./components/supervisorpanel/supervisorpanel.component";
 import { ManageCategoriesComponent } from "./components/manageCategories/manageCategories.component";
 import { LoginComponent } from "./components/login/login.component";
-import { AditCurrencyPipe } from "./util/adit-currency.pipe";
+import { AditCurrencyPipe } from "./utils/adit-currency.pipe";
 
 
 export function HttpLoaderFactory(http: Http) {
