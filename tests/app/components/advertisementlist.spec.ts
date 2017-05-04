@@ -14,25 +14,9 @@ import { AdvertisementListComponent } from "../../../src/app/advertisementlist/a
 import { getAdvertisementMocks } from "../data/mock-advertisements";
 import { ActivatedRouteStub } from "../../activated-route-stub";
 import { Advertisement } from "../../../src/app/data-classes/advertisement";
-
-
-let translations: any = {"TEST": "This is a test"};
-class FakeLoader implements TranslateLoader {
-  getTranslation(lang: string): Observable<any> {
-    return Observable.of(translations);
-  }
-}
-class RouterStub {
-  navigate(url: string) { return url; }
-}
-
-class AdvertisementServiceStub {
-  currentAdvertisement: Advertisement;
-
-  getAdvertisementsQuery(string: string): Observable<Advertisement[]> {
-    return Observable.of(getAdvertisementMocks());
-  }
-}
+import { FakeTranslationLoader } from "../../fake-translation-loader";
+import { AdvertisementServiceStub } from "../../advertisement-service-stub";
+import { RouterStub } from "../../router-stub";
 
 
 describe('AdvertisementListComponent', () => {
@@ -65,7 +49,7 @@ describe('AdvertisementListComponent', () => {
         ReactiveFormsModule,
         Angular2FontawesomeModule,
         TranslateModule.forRoot({
-          loader: {provide: TranslateLoader, useClass: FakeLoader}
+          loader: {provide: TranslateLoader, useClass: FakeTranslationLoader}
         })
       ]
     }).compileComponents().then(() => {

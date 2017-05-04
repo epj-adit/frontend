@@ -7,27 +7,15 @@ import { Routes } from "@angular/router";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
-import { Observable } from "rxjs/Observable";
 import { AdvertisementComponent } from "../../../src/app/advertisement/advertisement.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../../src/app/_services/advertisement.service";
 import { CategoryService } from "../../../src/app/_services/category.service";
 import { Tag } from "../../../src/app/data-classes/tag";
+import { FakeTranslationLoader } from "../../fake-translation-loader";
+import { CategoryServiceStub } from "../../category-service-stub";
+import { AdvertisementServiceStub } from "../../advertisement-service-stub";
 
-let translations: any = {"TEST": "This is a test"};
-class FakeLoader implements TranslateLoader {
-  getTranslation(lang: string): Observable<any> {
-    return Observable.of(translations);
-  }
-}
-
-class AdvertisementServiceStub {
-
-}
-
-class CategoryServiceStub {
-
-}
 
 describe('AdvertisementComponent', () => {
   const appRoutes: Routes = [
@@ -52,7 +40,7 @@ describe('AdvertisementComponent', () => {
         ReactiveFormsModule,
         Angular2FontawesomeModule,
         TranslateModule.forRoot({
-          loader: {provide: TranslateLoader, useClass: FakeLoader}
+          loader: {provide: TranslateLoader, useClass: FakeTranslationLoader}
         }),
         RouterTestingModule.withRoutes(appRoutes)
       ]
