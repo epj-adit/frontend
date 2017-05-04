@@ -24,7 +24,7 @@ import { AppComponent } from './app.component';
 import { AdvertisementSearchComponent } from './search/advertisement-search.component';
 import { AdvertisementListComponent } from './components/advertisementlist/advertisementlist.component';
 import { AdvertisementInfoComponent } from './components/advertisementinfo/advertisement-info.component';
-import { AdvertisementComponent } from './advertisement/advertisement.component';
+import { AdvertisementComponent } from './components/advertisement/advertisement.component';
 import { RegisterComponent } from "./register/register.component";
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
 import { UserProfileComponent } from "./components/userprofile/userprofile.component";

@@ -8,7 +8,7 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
 import { Observable } from "rxjs/Observable";
-import { AdvertisementComponent } from "../../../src/app/advertisement/advertisement.component";
+import { AdvertisementComponent } from "../../../src/app/components/advertisement/advertisement.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../../src/app/_services/advertisement.service";
 import { CategoryService } from "../../../src/app/_services/category.service";

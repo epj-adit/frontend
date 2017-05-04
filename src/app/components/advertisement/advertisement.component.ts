@@ -4,12 +4,12 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 import { Observable } from "rxjs/Observable";
 
-import { AdvertisementService } from '../_services/advertisement.service';
-import { CategoryService } from "../_services/category.service";
-import { ValidatorService } from "../_services/validator.service";
-import { Advertisement } from '../data-classes/advertisement';
-import { Tag } from '../data-classes/tag';
-import { Category } from "../data-classes/category";
+import { AdvertisementService } from '../../_services/advertisement.service';
+import { CategoryService } from "../../_services/category.service";
+import { ValidatorService } from "../../_services/validator.service";
+import { Advertisement } from '../../data-classes/advertisement';
+import { Tag } from '../../data-classes/tag';
+import { Category } from "../../data-classes/category";
 
 @Component({
   selector: 'adit-advertisement',
