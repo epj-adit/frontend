@@ -32,11 +32,6 @@ export class AdvertisementInfoComponent implements OnInit {
     }
   }
 
-  getMedia(filename: string): string {
-    // TODO: change mock to real deal
-    return '/assets/images/logo-adit.png';
-  }
-
   changeState(state: AdvertisementState){
     this.advertisementService.createOrUpdate(this.advertisement, this.advertisement.tags, state)
       .subscribe(

@@ -56,7 +56,6 @@ export class AdvertisementService {
   // created set bei server -> don't send it!
   createOrUpdate(advertisement: Advertisement, tags: Tag[], state:AdvertisementState=AdvertisementState.to_review): Observable<Advertisement> {
     // TODO: Make sure that the to_review state is enforced on the server side.
-    let media = advertisement.media ? advertisement.media : [];
     let ad: any = {
       title: advertisement.title,
       user: {id: this.testuser.id},
@@ -64,7 +63,7 @@ export class AdvertisementService {
       description: advertisement.description,
       category: {id: advertisement.category.id},
       tags: tags,
-      media: media,
+      media: [],
       advertisementState: state,
     };
 

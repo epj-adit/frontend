@@ -36,15 +36,6 @@
   }
 }
 
-.ad-media > span {
-  & > img {
-    max-width: 4em;
-    @include border($maincolor);
-    margin-bottom: 1em;
-    padding: 0.5em;
-  }
-}
-
 .accept{
   @include buttonOk();
 }
