@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdvertisementSearchComponent } from './search/advertisement-search.component';
 import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-info.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
-import { AdvertisementListComponent } from "./advertisementlist/advertisementlist.component";
+import { AdvertisementListComponent } from "./components/advertisementlist/advertisementlist.component";
 import { RegisterComponent } from "./register/register.component";
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
 import { UserProfileComponent } from "./components/userprofile/userprofile.component";

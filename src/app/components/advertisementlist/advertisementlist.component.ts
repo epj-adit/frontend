@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Advertisement } from '../data-classes/advertisement';
-import { AdvertisementService } from '../_services/advertisement.service';
+import { Advertisement } from '../../data-classes/advertisement';
+import { AdvertisementService } from '../../_services/advertisement.service';
 import { Observable } from "rxjs";
 
 @Component({

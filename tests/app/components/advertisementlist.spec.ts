@@ -10,7 +10,7 @@ import { Observable } from "rxjs/Observable";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../../src/app/_services/advertisement.service";
-import { AdvertisementListComponent } from "../../../src/app/advertisementlist/advertisementlist.component";
+import { AdvertisementListComponent } from "../../../src/app/components/advertisementlist/advertisementlist.component";
 import { getAdvertisementMocks } from "../data/mock-advertisements";
 import { ActivatedRouteStub } from "../../activated-route-stub";
 import { Advertisement } from "../../../src/app/data-classes/advertisement";
