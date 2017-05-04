@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { Overlay } from 'angular2-modal';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
 
-import { Advertisement } from '../data-classes/advertisement';
-import { AdvertisementService } from '../_services/advertisement.service';
+import { Advertisement } from '../../data-classes/advertisement';
+import { AdvertisementService } from '../../_services/advertisement.service';
 import { TranslateService } from "@ngx-translate/core";
 import { Observable } from "rxjs/Observable";
 
