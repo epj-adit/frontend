@@ -12,7 +12,7 @@ import { AdvertisementService } from "../../../src/app/services/advertisement.se
 import { getAdvertisementMocks } from "../data/mock-advertisements";
 import { ActivatedRouteStub } from "../../activated-route-stub";
 import { Advertisement } from "../../../src/app/data/advertisement";
-import { AdvertisementInfoComponent } from "../../../src/app/components/advertisementinfo/advertisement-info.component";
+import { AdvertisementInfoComponent } from "../../../src/app/components/advertisement-info/advertisement-info.component";
 import { AditCurrencyPipe } from "../../../src/app/utils/adit-currency.pipe";
 
 
