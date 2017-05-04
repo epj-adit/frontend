@@ -20,8 +20,7 @@ export class UserProfileComponent implements OnInit {
   hasError = false;
   user: User;
 
-  constructor(private router: Router,
-              private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
               private userService: UserService,
               private authenticationService: AuthenticationService) {
 
