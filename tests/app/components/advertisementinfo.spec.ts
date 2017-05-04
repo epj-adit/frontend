@@ -1,7 +1,7 @@
-import { async, ComponentFixture,TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement }    from '@angular/core';
 
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
@@ -31,14 +31,20 @@ class AdvertisementServiceStub {
   }
 }
 
+class RouterStub {
+  url = "";
+
+  navigate(url: string) {
+    return url;
+  }
+}
+
 
 describe('AdvertisementInfoComponent', () => {
   let comp: AdvertisementInfoComponent;
   let fixture: ComponentFixture<AdvertisementInfoComponent>;
   let activatedRoute;
   let advertisementService;
-  let de: DebugElement;
-  let el: HTMLElement;
 
   const createComponent = () => {
     const fixture = TestBed.createComponent(AdvertisementInfoComponent);
@@ -53,7 +59,8 @@ describe('AdvertisementInfoComponent', () => {
       declarations: [AdvertisementInfoComponent, AditCurrencyPipe],
       providers: [
         {provide: AdvertisementService, useClass: AdvertisementServiceStub},
-        {provide: ActivatedRoute, useClass: ActivatedRouteStub}
+        {provide: ActivatedRoute, useClass: ActivatedRouteStub},
+        {provide: Router, useClass: RouterStub}
       ],
       imports: [
         HttpModule,
