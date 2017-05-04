@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
-
 import { Observable } from "rxjs";
 
-import { AppSettings } from '../app.settings';
+import { ApiCallService } from '../utils/api-call.service';
 import { Advertisement } from '../data-classes/advertisement';
 
 import { Category } from "../data-classes/category";
@@ -15,28 +13,21 @@ import { TagService } from "./tag.service";
 
 @Injectable()
 export class AdvertisementService {
-  private apiUrl = AppSettings.API_ENDPOINT;
-
-  private headers = new Headers({'Content-Type': 'application/json'});
-
   currentAdvertisement: Advertisement = null;
 
-  constructor(private http: Http, private tagService: TagService) {
-  }
+  constructor(private apiCall: ApiCallService, private tagService: TagService) { }
 
   getAdvertisements(): Observable<Advertisement[]> {
-    return this.http.get(this.apiUrl + '/advertisements/')
-      .map(response => response.json() as Advertisement[]);
+    return this.apiCall.get('advertisements/').map(response => response as Advertisement[]);
   }
 
   getAdvertisement(id: number): Observable<Advertisement> {
-    return this.http.get(this.apiUrl + "/advertisement/" + id)
-      .map(response => response.json() as Advertisement);
+    return this.apiCall.get("advertisement/" + id).map(response => response as Advertisement);
   }
 
   getAdvertisementsQuery(query: string): Observable<Advertisement[]> {
-    return this.http.get(this.apiUrl + '/advertisements' + query)
-      .map(response => response.json() as Advertisement[]);
+    return this.apiCall.get('advertisements' + query)
+      .map(response => response as Advertisement[]);
   }
 
   private handleError(error: any): Promise<any> {
@@ -63,8 +54,8 @@ export class AdvertisementService {
 
 
   // created set bei server -> don't send it!
-  createOrUpdate(advertisement: Advertisement, tags: Tag[]): Observable<Advertisement> {
-    // TODO: change State to ToReview, as soon as there are superusers
+  createOrUpdate(advertisement: Advertisement, tags: Tag[], state:AdvertisementState=AdvertisementState.to_review): Observable<Advertisement> {
+    // TODO: Make sure that the to_review state is enforced on the server side.
     let media = advertisement.media ? advertisement.media : [];
     let ad: any = {
       title: advertisement.title,
@@ -74,17 +65,16 @@ export class AdvertisementService {
       category: {id: advertisement.category.id},
       tags: tags,
       media: media,
-      advertisementState: AdvertisementState.active,
+      advertisementState: state,
     };
+
     if (advertisement.id) {
       ad.id = advertisement.id;
-      return this.http.put(this.apiUrl + "/advertisement/" + advertisement.id, JSON.stringify(ad), {headers: this.headers})
-        .map(res => res.json())
+      return this.apiCall.put("advertisement/" + advertisement.id, ad).map(res => res as Advertisement)
         .catch(err => this.handleError(err));
     } else {
-      return this.http
-        .post(this.apiUrl + "/advertisement", JSON.stringify(ad), {headers: this.headers})
-        .map(res => res.json())
+      return this.apiCall
+        .post("advertisement", ad).map(res => res as Advertisement)
         .catch(err => this.handleError(err));
     }
   }
@@ -100,8 +90,7 @@ export class AdvertisementService {
 
   deleteAd(advertisement: Advertisement): Observable<Advertisement> {
     advertisement.advertisementState = AdvertisementState.closed;
-    return this.http.put(this.apiUrl + "/advertisement/" + advertisement.id, JSON.stringify(advertisement), {headers: this.headers})
-      .map(res => res.json())
+    return this.apiCall.put("advertisement/" + advertisement.id, advertisement).map(res => res as Advertisement)
       .catch(err => this.handleError(err));
   }
 }

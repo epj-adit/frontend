@@ -3,8 +3,10 @@
     "searchLink": "Suche",
     "advertisementsLink": "Inserate",
     "advertisementLink": "Inserat erstellen",
-    "userAdvertisementLink": "Userinserate",
-    "registrationLink":"Registration",
+    "userAdvertisementLink": "Meine Inserate",
+    "userLink": "Account",
+    "userProfileLink":"Profil",
+    "privateMessagingLink": "Private Messaging",
     "welcome": "Willkommen",
     "supervisorLink": "Supervisorpanel",
     "manageAdvertisementsLink": "Inserate verwalten",
@@ -19,7 +21,9 @@
   },
   "ADINFO": {
     "privateMessagingLink": "Private Nachricht",
-    "emailLink": "E-Mail"
+    "emailLink": "E-Mail",
+    "accept": "Inserat freischalten",
+    "decline": "Inserat ablehnen"
   },
   "AD": {
     "title": "Inserat erfassen",
@@ -51,9 +55,30 @@
     "passwordField": "Passwort",
     "submit": "Absenden",
     "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster",
+    "isSubmitted": "User wurde erstellt",
     "hasError": "Ein Fehler ist aufgetretten. Bitte versuche es später nochmals",
     "error409": "Dieser User existiert bereits",
     "error403": "Du hast keine Berechtigung für diese Aktion."
+  },
+  "LOGIN": {
+    "title": "Anmelden",
+    "emailField": "E-Mail",
+    "passwordField": "Passwort",
+    "submit": "Anmelden",
+    "registrationLink": "Registration",
+    "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster"
+  },
+  "PROFILE": {
+    "title": "Profil bearbeiten",
+    "usernameField": "Username",
+    "emailField": "E-Mail",
+    "passwordField": "Passwort",
+    "submit": "absenden",
+    "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster",
+    "hasError": "Ein Fehler ist aufgetretten. Bitte versuche es später nochmals",
+    "isSubmitted": "Benutzerprofil wurde aktualisiert.",
+    "isPrivateCheckbox": "privates Profil",
+    "wantsNotificationsCheckbox": "Benachrichtigungen"
   },
   "MANAGECATEGORIES": {
     "newCat": "Neue Kategorie erstellen",

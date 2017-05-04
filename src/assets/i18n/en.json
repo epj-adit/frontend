@@ -2,9 +2,11 @@
   "APP": {
     "searchLink": "Search",
     "advertisementsLink": "Advertisements",
-    "advertisementLink": "Create Advertisement",
-    "userAdvertisementLink": "User Advertisements",
-    "registrationLink":"Registration",
+    "advertisementLink": "create Advertisement",
+    "userAdvertisementLink": "My Advertisements",
+    "userLink": "Account",
+    "userProfileLink":"Profile",
+    "privateMessagingLink": "Private Messaging",
     "welcome": "Welcome",
     "supervisorLink": "Supervisorpanel",
     "manageAdvertisementsLink": "Manage Advertisements",
@@ -19,7 +21,9 @@
   },
   "ADINFO": {
     "privateMessagingLink": "Private Message",
-    "emailLink": "E-Mail"
+    "emailLink": "email",
+    "accept": "activate advertisement",
+    "decline": "decline advertisement"
   },
   "AD": {
     "title": "Create Advertisement",
@@ -54,6 +58,26 @@
     "hasError": "An error occurred. Please try again later.",
     "error409": "This user already exists.",
     "error403": "You don't have permission to execute this action."
+  },
+  "LOGIN": {
+    "title": "Login",
+    "emailField": "Email",
+    "passwordField": "Password",
+    "submit": "Login",
+    "registrationLink": "Registration",
+    "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster"
+  },
+  "PROFILE": {
+    "title": "edit profile",
+    "usernameField": "username",
+    "emailField": "email",
+    "passwordField": "password",
+    "submit": "submit",
+    "emailHelp": "Please use the short form of your HSR email addresse. e.g.: amuster",
+    "isSubmitted": "User profile was updated",
+    "hasError": "An error occurred. Please try again later.",
+    "isPrivateCheckbox": "private profile",
+    "wantsNotificationsCheckbox": "Notifications"
   },
   "MANAGECATEGORIES": {
     "newCat": "Create New Category",

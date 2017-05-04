@@ -1,4 +1,4 @@
-@import "../_variables.scss";
+@import "../../variables";
 
 #subnav {
   margin-bottom: 1em;
@@ -14,17 +14,11 @@
     & > a {
       color: black;
       &:hover {
-        color: $highlightcolor;
+        color: red;
       }
-      &.is-active{
-        font-weight: bold;
-        color: $highlightcolor
+      &:active {
+        color: red;
       }
     }
   }
-}
-
-a.is-active{
-  font-weight: bold;
-  color: $highlightcolor
 }

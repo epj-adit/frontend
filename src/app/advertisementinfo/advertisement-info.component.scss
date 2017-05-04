@@ -7,7 +7,7 @@
 
 }
 
-.buttons-user {
+.buttons-user{
   @include flex(row, space-between);
 }
 
@@ -42,5 +42,21 @@
     @include border($maincolor);
     margin-bottom: 1em;
     padding: 0.5em;
+  }
+}
+
+.accept{
+  @include buttonOk();
+}
+
+.decline{
+  @include buttonCancle();
+}
+
+.buttons-supervisor{
+  margin-top: 1em;
+  @include flex(row, space-around);
+  .ad-buttons button{
+    margin: 1em;
   }
 }
