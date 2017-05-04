@@ -9,7 +9,7 @@ import { RegisterComponent } from "./components/register/register.component";
 import { UserAdvertisementsComponent } from "./components/user-advertisements/user-advertisements.component";
 import { UserProfileComponent } from "./components/user-profile/user-profile.component";
 import { AccountComponent } from "./components/account/account.component";
-import { SupervisorPanelComponent } from "./components/supervisorpanel/supervisorpanel.component";
+import { SupervisorPanelComponent } from "./components/supervisor-panel/supervisor-panel.component";
 import { ManageCategoriesComponent } from "./components/manage-categories/manage-categories.component";
 import { LoginComponent } from "./components/login/login.component"
 
