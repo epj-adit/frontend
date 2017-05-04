@@ -26,7 +26,7 @@ import { AdvertisementListComponent } from './components/advertisement-list/adve
 import { AdvertisementInfoComponent } from './components/advertisement-info/advertisement-info.component';
 import { AdvertisementComponent } from './components/advertisement/advertisement.component';
 import { RegisterComponent } from "./components/register/register.component";
-import { UserAdvertisementsComponent } from "./components/useradvertisements/user-advertisements.component";
+import { UserAdvertisementsComponent } from "./components/user-advertisements/user-advertisements.component";
 import { UserProfileComponent } from "./components/user-profile/user-profile.component";
 import { AccountComponent } from "./components/account/account.component";
 import { SupervisorPanelComponent } from "./components/supervisorpanel/supervisorpanel.component";
