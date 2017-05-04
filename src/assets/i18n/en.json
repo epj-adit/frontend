@@ -9,6 +9,9 @@
     "privateMessagingLink": "Private Messaging",
     "welcome": "Welcome",
     "supervisorLink": "Supervisorpanel",
+    "logoutLink": "Logout",
+    "loginLink": "Login",
+    "registerLink": "Registration",
     "manageAdvertisementsLink": "Manage Advertisements",
     "manageCategoriesLink": "Manage Categories"
   },

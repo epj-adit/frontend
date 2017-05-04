@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 
 import { Advertisement } from './data/advertisement';
 import { AdvertisementService } from './services/advertisement.service';
+import { AuthenticationService } from './utils/authentication.service';
 
 /**
  * Styles required here are common for all components (SASS/SCSS versions of normalize.css and flexboxgrid),
@@ -23,7 +24,8 @@ export class AppComponent {
   advertisements: Advertisement[] = [];
   @ViewChild('menuToggle') menuToggle;
 
-  constructor(private advertisementService: AdvertisementService, private translate: TranslateService, private router: Router) {
+  constructor(private advertisementService: AdvertisementService, private translate: TranslateService,
+              private authenticationService: AuthenticationService, private router: Router) {
     translate.addLangs(['de', 'en']);
     translate.setDefaultLang('de');
     translate.use('de');
@@ -34,6 +36,15 @@ export class AppComponent {
 
   changeLang(lang: string) {
     this.translate.use(lang);
+  }
+
+  isAuthenticated(): boolean {
+    return this.authenticationService.authenticationActive();
+  }
+
+  logout(): void {
+    this.authenticationService.logout();
+    this.router.navigate([ "login" ]);
   }
 
 }
