@@ -81,6 +81,7 @@
   },
   "MANAGECATEGORIES": {
     "newCat": "Create New Category",
-    "submit": "Submit"
+    "submit": "Submit",
+    "successMessage": "Categories have been saved."
   }
 }
