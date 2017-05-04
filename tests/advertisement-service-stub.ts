@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Advertisement } from "../src/app/data/advertisement";
 import { Observable } from "rxjs/Observable";
+import 'rxjs/add/observable/of';
 import { getAdvertisementMocks } from "./app/data/mock-advertisements";
 
 @Injectable()
