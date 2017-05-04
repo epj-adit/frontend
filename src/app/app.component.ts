@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router } from "@angular/router";
 
 import { Advertisement } from './data/advertisement';
-import { AdvertisementService } from './_services/advertisement.service';
+import { AdvertisementService } from './services/advertisement.service';
 
 /**
  * Styles required here are common for all components (SASS/SCSS versions of normalize.css and flexboxgrid),

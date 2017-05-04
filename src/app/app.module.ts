@@ -10,10 +10,10 @@ import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
 import { routing, appRoutingProviders }  from './app.routing';
-import { AdvertisementService } from './_services/advertisement.service';
-import { TagService } from "./_services/tag.service";
-import { CategoryService } from "./_services/category.service";
-import { UserService } from "./_services/user.service";
+import { AdvertisementService } from './services/advertisement.service';
+import { TagService } from "./services/tag.service";
+import { CategoryService } from "./services/category.service";
+import { UserService } from "./services/user.service";
 import { AuthenticationService } from "./utils/authentication.service";
 import { AuthenticationGuardService } from "./utils/authentication-guard.service";
 import { NotAuthenticatedGuardService } from "./utils/not-authenticated-guard.service";

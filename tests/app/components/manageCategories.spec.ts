@@ -12,7 +12,7 @@ import { Advertisement } from "../../../src/app/data/advertisement";
 import { Category } from "../../../src/app/data/category";
 import { getCategoriesMocks } from "../data/mock-categories";
 import { ManageCategoriesComponent } from "../../../src/app/components/manageCategories/manageCategories.component";
-import { CategoryService } from "../../../src/app/_services/category.service";
+import { CategoryService } from "../../../src/app/services/category.service";
 
 
 let translations: any = {"TEST": "This is a test"};

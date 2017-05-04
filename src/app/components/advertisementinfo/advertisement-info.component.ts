@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { AdvertisementService } from '../../_services/advertisement.service';
+import { AdvertisementService } from '../../services/advertisement.service';
 import { Advertisement } from '../../data/advertisement';
 import { AdvertisementState } from "../../data/advertisementState";
 

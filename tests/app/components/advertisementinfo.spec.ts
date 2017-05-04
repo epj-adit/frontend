@@ -8,7 +8,7 @@ import { Angular2FontawesomeModule } from "angular2-fontawesome";
 import { Observable } from "rxjs/Observable";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AdvertisementService } from "../../../src/app/_services/advertisement.service";
+import { AdvertisementService } from "../../../src/app/services/advertisement.service";
 import { getAdvertisementMocks } from "../data/mock-advertisements";
 import { ActivatedRouteStub } from "../../activated-route-stub";
 import { Advertisement } from "../../../src/app/data/advertisement";

@@ -4,8 +4,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 import { Observable } from "rxjs/Observable";
 
-import { AdvertisementService } from '../../_services/advertisement.service';
-import { CategoryService } from "../../_services/category.service";
+import { AdvertisementService } from '../../services/advertisement.service';
+import { CategoryService } from "../../services/category.service";
 import { ValidatorService } from "../../utils/validator.service";
 import { Advertisement } from '../../data/advertisement';
 import { Tag } from '../../data/tag';

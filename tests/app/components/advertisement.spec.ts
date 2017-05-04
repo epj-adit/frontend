@@ -10,8 +10,8 @@ import { Angular2FontawesomeModule } from "angular2-fontawesome";
 import { Observable } from "rxjs/Observable";
 import { AdvertisementComponent } from "../../../src/app/components/advertisement/advertisement.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AdvertisementService } from "../../../src/app/_services/advertisement.service";
-import { CategoryService } from "../../../src/app/_services/category.service";
+import { AdvertisementService } from "../../../src/app/services/advertisement.service";
+import { CategoryService } from "../../../src/app/services/category.service";
 import { Tag } from "../../../src/app/data/tag";
 
 let translations: any = {"TEST": "This is a test"};
