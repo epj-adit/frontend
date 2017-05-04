@@ -82,6 +82,7 @@
   },
   "MANAGECATEGORIES": {
     "newCat": "Neue Kategorie erstellen",
-    "submit": "Speichern"
+    "submit": "Speichern",
+    "successMessage": "Kategorien wurden gespeichert."
   }
 }

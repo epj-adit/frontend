@@ -22,22 +22,32 @@ export class ManageCategoriesComponent implements OnInit {
 
   editCategory(cat: Category) {
     this.currCat = cat;
+    this.isSubmitted = false;
   }
 
   deleteCat(cat: Category) {
-    this.currCat = new Category("");
+    this.isSubmitted = false;
     let index = this.categories.findIndex(currCat => currCat == cat);
     if (index > -1) {
-      this.categories.splice(index, 1);
+      if (cat.id){
+        this.categoryService.deleteCat(cat).subscribe(
+          res => {
+            this.currCat = new Category("");
+            console.log("was deleted");
+            this.categories.splice(index, 1);
+          },
+          // TODO: error handling anhand von statuscodes!
+          err => console.log("cant be deleted")
+        );
+      } else {
+        this.categories.splice(index, 1);
+        this.currCat = new Category("");
+      }
     }
-    // TODO: error handling anhand von statuscodes!
-    this.categoryService.deleteCat(cat).subscribe(
-      res => console.log("was deleted"),
-      err => console.log("cant be deleted")
-    );
   }
 
   newCat() {
+    this.isSubmitted = false;
     let newCat = new Category("new Category");
     this.currCat = newCat;
     this.categories.push(newCat);
@@ -46,7 +56,10 @@ export class ManageCategoriesComponent implements OnInit {
   onSubmit() {
     this.categoryService.createOrUpdate(this.categories)
       .subscribe(
-        res => this.isSubmitted = true,
+        res => {
+          this.isSubmitted = true;
+          this.categories = res;
+        },
         err => this.hasError = true);
   }
 }
