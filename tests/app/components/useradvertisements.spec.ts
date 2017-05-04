@@ -1,31 +1,36 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
-import { Observable } from "rxjs/Observable";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../../src/app/services/advertisement.service";
 import { getAdvertisementMocks } from "../data/mock-advertisements";
-import { ActivatedRouteStub } from "../../activated-route-stub";
-import { Advertisement } from "../../../src/app/data/advertisement";
-import { AdvertisementInfoComponent } from "../../../src/app/components/advertisement-info/advertisement-info.component";
 import { AditCurrencyPipe } from "../../../src/app/utils/adit-currency.pipe";
 import { FakeTranslationLoader } from "../../fake-translation-loader";
 import { AdvertisementServiceStub } from "../../advertisement-service-stub";
 import { RouterStub } from "../../router-stub";
+import { UserAdvertisementsComponent } from "../../../src/app/components/user-advertisements/user-advertisements.component";
+import { OverlayStub, ViewContainerRefStub } from "../../modal-stub";
+import { Overlay } from "angular2-modal";
+import { Modal } from 'angular2-modal/plugins/bootstrap';
+import { ViewContainerRef } from "@angular/core";
 
 
-describe('AdvertisementInfoComponent', () => {
-  let comp: AdvertisementInfoComponent;
-  let fixture: ComponentFixture<AdvertisementInfoComponent>;
-  let activatedRoute;
+let modal = {
+  create: jasmine.createSpy('create'),
+  confirm: jasmine.createSpy('confirm')
+};
+
+describe('UserAdvertisementComponent', () => {
+  let comp: UserAdvertisementsComponent;
+  let fixture: ComponentFixture<UserAdvertisementsComponent>;
   let advertisementService;
 
   const createComponent = () => {
-    const fixture = TestBed.createComponent(AdvertisementInfoComponent);
+    const fixture = TestBed.createComponent(UserAdvertisementsComponent);
 
     comp = fixture.componentInstance;
     fixture.detectChanges();
@@ -34,11 +39,13 @@ describe('AdvertisementInfoComponent', () => {
   // async beforeEach
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AdvertisementInfoComponent, AditCurrencyPipe],
+      declarations: [UserAdvertisementsComponent, AditCurrencyPipe],
       providers: [
         {provide: AdvertisementService, useClass: AdvertisementServiceStub},
-        {provide: ActivatedRoute, useClass: ActivatedRouteStub},
-        {provide: Router, useClass: RouterStub}
+        {provide: Router, useClass: RouterStub},
+        {provide: Overlay, useClass: OverlayStub},
+        {provide: ViewContainerRef, useClass: ViewContainerRefStub},
+        {provide: Modal, useValue: modal}
       ],
       imports: [
         HttpModule,
@@ -50,16 +57,14 @@ describe('AdvertisementInfoComponent', () => {
         })
       ]
     }).compileComponents().then(() => {
-      fixture = TestBed.createComponent(AdvertisementInfoComponent);
+      fixture = TestBed.createComponent(UserAdvertisementsComponent);
       comp = fixture.componentInstance;
-      activatedRoute = fixture.debugElement.injector.get(ActivatedRoute);
-      activatedRoute.testParams = {id: 1};
       advertisementService = fixture.debugElement.injector.get(AdvertisementService);
     });
   }));
 
-  it('should not have advertisement before ngOnInit', () => {
-    expect(comp.advertisement).toBeUndefined();
+  it('should not have advertisements before ngOnInit', () => {
+    expect(comp.advertisements).toBeUndefined();
   });
 
   describe('after get advertisement from server', () => {
@@ -69,21 +74,14 @@ describe('AdvertisementInfoComponent', () => {
         .then(() => fixture.detectChanges());
     }));
 
-    it('should have advertisement after ngOnInit', () => {
-      expect(comp.advertisement).toEqual(getAdvertisementMocks()[0]);
+    it('should have advertisements after ngOnInit', () => {
+      expect(comp.advertisements).toEqual(getAdvertisementMocks());
+    });
+
+    it('should set current advertisement when edit is called', () => {
+      expect(advertisementService.currentAdvertisement).toBeUndefined();
+      comp.edit(getAdvertisementMocks()[0]);
+      expect(advertisementService.currentAdvertisement).toEqual(getAdvertisementMocks()[0]);
     });
   });
-
-  describe('after get current advertisement from service', () => {
-    beforeEach(async(() => {
-      advertisementService.currentAdvertisement = getAdvertisementMocks()[1];
-      fixture.detectChanges();
-      fixture.whenStable()
-        .then(() => fixture.detectChanges());
-    }));
-    it('should load current Advertisement from service, if defined', () => {
-      expect(comp.advertisement).toEqual(getAdvertisementMocks()[1]);
-    })
-  })
-
 });

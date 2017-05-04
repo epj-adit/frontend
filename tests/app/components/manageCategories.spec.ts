@@ -1,11 +1,10 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
-import { Observable } from "rxjs/Observable";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Advertisement } from "../../../src/app/data/advertisement";
@@ -13,30 +12,8 @@ import { Category } from "../../../src/app/data/category";
 import { getCategoriesMocks } from "../data/mock-categories";
 import { ManageCategoriesComponent } from "../../../src/app/components/manage-categories/manage-categories.component";
 import { CategoryService } from "../../../src/app/services/category.service";
-
-
-let translations: any = {"TEST": "This is a test"};
-class FakeLoader implements TranslateLoader {
-  getTranslation(lang: string): Observable<any> {
-    return Observable.of(translations);
-  }
-}
-
-class CategoryServiceStub {
-  currentAdvertisement: Advertisement;
-
-  getCategories(string: string): Observable<Category[]> {
-    return Observable.of(getCategoriesMocks());
-  }
-
-  deleteCat(cat: Category): Observable<any> {
-    return Observable.of({success: "success"});
-  }
-
-  createOrUpdate(categories: Category[]): Observable<Category[]> {
-    return Observable.of(getCategoriesMocks());
-  }
-}
+import { FakeTranslationLoader } from "../../fake-translation-loader";
+import { CategoryServiceStub } from "../../category-service-stub";
 
 
 describe('ManageCategoriesComponent', () => {
@@ -66,7 +43,7 @@ describe('ManageCategoriesComponent', () => {
         ReactiveFormsModule,
         Angular2FontawesomeModule,
         TranslateModule.forRoot({
-          loader: {provide: TranslateLoader, useClass: FakeLoader}
+          loader: {provide: TranslateLoader, useClass: FakeTranslationLoader}
         })
       ]
     }).compileComponents().then(() => {
