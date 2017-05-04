@@ -23,7 +23,7 @@ import { ApiCallService } from "./utils/api-call.service";
 import { AppComponent } from './app.component';
 import { AdvertisementSearchComponent } from './search/advertisement-search.component';
 import { AdvertisementListComponent } from './components/advertisementlist/advertisementlist.component';
-import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-info.component';
+import { AdvertisementInfoComponent } from './components/advertisementinfo/advertisement-info.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { RegisterComponent } from "./register/register.component";
 import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";

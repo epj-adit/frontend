@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { AdvertisementService } from '../_services/advertisement.service';
-import { Advertisement } from '../data-classes/advertisement';
-import { AdvertisementState } from "../data-classes/advertisementState";
+import { AdvertisementService } from '../../_services/advertisement.service';
+import { Advertisement } from '../../data-classes/advertisement';
+import { AdvertisementState } from "../../data-classes/advertisementState";
 
 @Component({
   selector: 'adit-advertisementinfo',
