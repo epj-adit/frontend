@@ -132,7 +132,7 @@ footer {
     display: inline-block;
   }
 
-  #label-toggle {
+  input[type=checkbox]#menu-toggel + label {
     display: none;
   }
 
