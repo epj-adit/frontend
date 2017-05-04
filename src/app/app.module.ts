@@ -30,7 +30,7 @@ import { UserAdvertisementsComponent } from "./components/useradvertisements/use
 import { UserProfileComponent } from "./components/userprofile/userprofile.component";
 import { AccountComponent } from "./components/account/account.component";
 import { SupervisorPanelComponent } from "./components/supervisorpanel/supervisorpanel.component";
-import { ManageCategoriesComponent } from "./components/manageCategories/manageCategories.component";
+import { ManageCategoriesComponent } from "./components/manage-categories/manage-categories.component";
 import { LoginComponent } from "./components/login/login.component";
 import { AditCurrencyPipe } from "./utils/adit-currency.pipe";
 

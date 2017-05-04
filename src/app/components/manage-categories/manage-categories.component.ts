@@ -3,8 +3,8 @@ import { CategoryService } from "../../services/category.service";
 import { Category } from "../../data/category";
 @Component({
   selector: 'adit-manage-categories',
-  templateUrl: './manageCategories.component.html',
-  styleUrls: ['./manageCategories.component.scss']
+  templateUrl: './manage-categories.component.html',
+  styleUrls: ['./manage-categories.component.scss']
 })
 
 export class ManageCategoriesComponent implements OnInit {
