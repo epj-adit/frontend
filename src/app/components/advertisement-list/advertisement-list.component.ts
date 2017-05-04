@@ -7,8 +7,8 @@ import { Observable } from "rxjs";
 
 @Component({
   selector: 'adit-advertisementlist',
-  templateUrl: './advertisementlist.component.html',
-  styleUrls: ['./advertisementlist.component.scss']
+  templateUrl: './advertisement-list.component.html',
+  styleUrls: ['./advertisement-list.component.scss']
 })
 export class AdvertisementListComponent implements OnInit {
   advertisements: Advertisement[] = [];
