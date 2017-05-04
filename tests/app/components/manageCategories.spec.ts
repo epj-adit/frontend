@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Advertisement } from "../../../src/app/data-classes/advertisement";
 import { Category } from "../../../src/app/data-classes/category";
 import { getCategoriesMocks } from "../data/mock-categories";
-import { ManageCategoriesComponent } from "../../../src/app/manageCategories/manageCategories.component";
+import { ManageCategoriesComponent } from "../../../src/app/components/manageCategories/manageCategories.component";
 import { CategoryService } from "../../../src/app/_services/category.service";
 
 
