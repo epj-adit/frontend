@@ -12,8 +12,8 @@ import { Category } from "../../../src/app/data/category";
 import { getCategoriesMocks } from "../data/mock-categories";
 import { ManageCategoriesComponent } from "../../../src/app/components/manage-categories/manage-categories.component";
 import { CategoryService } from "../../../src/app/services/category.service";
-import { FakeTranslationLoader } from "../../fake-translation-loader";
-import { CategoryServiceStub } from "../../category-service-stub";
+import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
+import { CategoryServiceStub } from "../_mocks/category-service-stub";
 
 
 describe('ManageCategoriesComponent', () => {

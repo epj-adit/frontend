@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { User } from "../src/app/data/user";
+import { User } from "../../../src/app/data/user";
 import { Observable } from "rxjs/Observable";
-import { getUsersMocks } from "./app/data/mock-users";
-import { Credential } from "../src/app/data/credential";
+import { getUsersMocks } from "../data/mock-users";
+import { Credential } from "../../../src/app/data/credential";
 
 @Injectable()
 export class AuthenticationServiceStub {

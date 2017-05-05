@@ -7,12 +7,12 @@ import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-import { FakeTranslationLoader } from "../../fake-translation-loader";
-import { RouterStub } from "../../router-stub";
-import { UserServiceStub } from "../../user-service-stub";
+import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
+import { RouterStub } from "../_mocks/router-stub";
+import { UserServiceStub } from "../_mocks/user-service-stub";
 import { UserService } from "../../../src/app/services/user.service";
 import { AuthenticationService } from "../../../src/app/utils/authentication.service";
-import { AuthenticationServiceStub } from "../../authentication-service-stub";
+import { AuthenticationServiceStub } from "../_mocks/authentication-service-stub";
 import { UserProfileComponent } from "../../../src/app/components/user-profile/user-profile.component";
 import { getUsersMocks } from "../data/mock-users";
 import { User } from "../../../src/app/data/user";

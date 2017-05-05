@@ -12,9 +12,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../../src/app/services/advertisement.service";
 import { CategoryService } from "../../../src/app/services/category.service";
 import { Tag } from "../../../src/app/data/tag";
-import { FakeTranslationLoader } from "../../fake-translation-loader";
-import { CategoryServiceStub } from "../../category-service-stub";
-import { AdvertisementServiceStub } from "../../advertisement-service-stub";
+import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
+import { CategoryServiceStub } from "../_mocks/category-service-stub";
+import { AdvertisementServiceStub } from "../_mocks/advertisement-service-stub";
 
 
 describe('AdvertisementComponent', () => {

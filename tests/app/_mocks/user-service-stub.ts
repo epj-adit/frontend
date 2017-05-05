@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/observable/of';
 
-import { User } from "../src/app/data/user";
-import { getUsersMocks } from "./app/data/mock-users";
+import { User } from "../../../src/app/data/user";
+import { getUsersMocks } from "../data/mock-users";
 
 @Injectable()
 export class UserServiceStub {

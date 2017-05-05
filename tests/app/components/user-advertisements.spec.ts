@@ -11,11 +11,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../../src/app/services/advertisement.service";
 import { getAdvertisementMocks } from "../data/mock-advertisements";
 import { AditCurrencyPipe } from "../../../src/app/utils/adit-currency.pipe";
-import { FakeTranslationLoader } from "../../fake-translation-loader";
-import { AdvertisementServiceStub } from "../../advertisement-service-stub";
-import { RouterStub } from "../../router-stub";
+import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
+import { AdvertisementServiceStub } from "../_mocks/advertisement-service-stub";
+import { RouterStub } from "../_mocks/router-stub";
 import { UserAdvertisementsComponent } from "../../../src/app/components/user-advertisements/user-advertisements.component";
-import { OverlayStub } from "../../modal-stub";
+import { OverlayStub } from "../_mocks/modal-stub";
 
 
 let modal = {

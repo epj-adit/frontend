@@ -12,11 +12,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../../src/app/services/advertisement.service";
 import { AdvertisementListComponent } from "../../../src/app/components/advertisement-list/advertisement-list.component";
 import { getAdvertisementMocks } from "../data/mock-advertisements";
-import { ActivatedRouteStub } from "../../activated-route-stub";
+import { ActivatedRouteStub } from "../_mocks/activated-route-stub";
 import { Advertisement } from "../../../src/app/data/advertisement";
-import { FakeTranslationLoader } from "../../fake-translation-loader";
-import { AdvertisementServiceStub } from "../../advertisement-service-stub";
-import { RouterStub } from "../../router-stub";
+import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
+import { AdvertisementServiceStub } from "../_mocks/advertisement-service-stub";
+import { RouterStub } from "../_mocks/router-stub";
 
 
 describe('AdvertisementListComponent', () => {

@@ -9,13 +9,13 @@ import { Observable } from "rxjs/Observable";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../../src/app/services/advertisement.service";
 import { getAdvertisementMocks } from "../data/mock-advertisements";
-import { ActivatedRouteStub } from "../../activated-route-stub";
+import { ActivatedRouteStub } from "../_mocks/activated-route-stub";
 import { Advertisement } from "../../../src/app/data/advertisement";
 import { AdvertisementInfoComponent } from "../../../src/app/components/advertisement-info/advertisement-info.component";
 import { AditCurrencyPipe } from "../../../src/app/utils/adit-currency.pipe";
-import { FakeTranslationLoader } from "../../fake-translation-loader";
-import { AdvertisementServiceStub } from "../../advertisement-service-stub";
-import { RouterStub } from "../../router-stub";
+import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
+import { AdvertisementServiceStub } from "../_mocks/advertisement-service-stub";
+import { RouterStub } from "../_mocks/router-stub";
 
 
 describe('AdvertisementInfoComponent', () => {
