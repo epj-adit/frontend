@@ -35,7 +35,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   // this.authenticationService.getUser().subscribe(user => this.user)
+    this.authenticationService.getUser().subscribe(user => this.user)
   }
 
   onSubmit(value) {
@@ -44,15 +44,15 @@ export class UserProfileComponent implements OnInit {
     this.user.passwordPlaintext = value.password;
     this.userService.update(this.user)
       .subscribe(res => {
-        this.authenticationService.setUser(this.user);
+          this.authenticationService.setUser(this.user);
           //TODO: Display success message.
           console.log("User was upated.");
           this.isSubmitted = true;
         },
         err => {
-            this.hasError = true;
-            // TODO: Proper error handling
-      });
+          this.hasError = true;
+          // TODO: Proper error handling
+        });
   }
 
   displayHelp(): void {
