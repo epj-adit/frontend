@@ -1,17 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
-
-import { ActivatedRoute, Router, Routes } from "@angular/router";
+import { Router } from "@angular/router";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
-import { Observable } from "rxjs/Observable";
-
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AdvertisementService } from "../../../src/app/services/advertisement.service";
-import { AdvertisementListComponent } from "../../../src/app/components/advertisement-list/advertisement-list.component";
-import { getAdvertisementMocks } from "../data/mock-advertisements";
+
 import { FakeTranslationLoader } from "../../fake-translation-loader";
 import { RouterStub } from "../../router-stub";
 import { UserServiceStub } from "../../user-service-stub";
@@ -20,14 +15,17 @@ import { AuthenticationService } from "../../../src/app/utils/authentication.ser
 import { AuthenticationServiceStub } from "../../authentication-service-stub";
 import { UserProfileComponent } from "../../../src/app/components/user-profile/user-profile.component";
 import { getUsersMocks } from "../data/mock-users";
+import { User } from "../../../src/app/data/user";
 
 
 describe('UserProfileComponent', () => {
   let comp: UserProfileComponent;
   let fixture: ComponentFixture<UserProfileComponent>;
-  let userService;
   let de: DebugElement;
   let el: HTMLElement;
+  let userService : UserServiceStub;
+  let user: User;
+  let authenticationService: AuthenticationService;
 
   const createComponent = () => {
     const fixture = TestBed.createComponent(UserProfileComponent);
@@ -58,23 +56,71 @@ describe('UserProfileComponent', () => {
       fixture = TestBed.createComponent(UserProfileComponent);
       comp = fixture.componentInstance;
       userService = fixture.debugElement.injector.get(UserService);
+      authenticationService = fixture.debugElement.injector.get(AuthenticationService);
+      user = getUsersMocks()[0];
     });
   }));
 
-  /*
-  it('should not have a user before ngOnInit', () => {
-    expect(comp.user).toBeUndefined();
-  });*/
+  beforeEach(async(() => {
+    fixture.detectChanges();
+    fixture.whenStable()
+      .then(() => fixture.detectChanges());
+  }));
 
-  describe('after get user', () => {
-    beforeEach(async(() => {
-      fixture.detectChanges();
-      fixture.whenStable()
-        .then(() => fixture.detectChanges());
-    }));
+  function updateForm(username, email, password) {
+    comp.form.controls['username'].setValue(username);
+    comp.form.controls['email'].setValue(email);
+    comp.form.controls['password'].setValue(password);
+  }
 
-    it('should have a user', () => {
-      expect(comp.user).toEqual(getUsersMocks()[0]);
-    });
+  it('should have a user', () => {
+    expect(comp.user).toEqual(user);
+  });
+
+  it('should show user credentials in form', () => {
+    let shortEmail = user.email.slice(0, -7);
+    expect(comp.form.value).toEqual({username: user.username, email: shortEmail, password: ''});
+  });
+
+  it('should mark form and fields as invalid when input invalid', () => {
+    updateForm('a', 'a', 'a');
+    expect(comp.form.valid).toBe(false);
+    expect(comp.form.controls['email'].valid).toBe(false);
+    expect(comp.form.controls['username'].valid).toBe(false);
+    expect(comp.form.controls['password'].valid).toBe(false);
+  });
+
+  it('should mark form as valid when input is valid', () => {
+    updateForm('amuster', 'amuster', '123muster');
+    expect(comp.form.valid).toBe(true);
+    expect(comp.form.controls['email'].valid).toBe(true);
+    expect(comp.form.controls['username'].valid).toBe(true);
+    expect(comp.form.controls['password'].valid).toBe(true);
+  });
+
+  it('should submit changes', () => {
+    spyOn(userService, 'update').and.callThrough();
+    spyOn(authenticationService, 'setUser').and.callThrough();
+    comp.onSubmit(comp.form.value);
+    expect(userService.update).toHaveBeenCalledWith(comp.user);
+    expect(authenticationService.setUser).toHaveBeenCalledWith(comp.user);
+    expect(comp.isSubmitted).toBe(true);
+  });
+
+  it('should display the email-help-text, when clicking on help', () => {
+    de = fixture.debugElement.query(By.css('.help'));
+    el = de.nativeElement;
+    expect(comp.emailHelpDisplay).toEqual('none');
+    el.click();
+    expect(comp.emailHelpDisplay).toEqual('inline-block')
+  });
+
+  it('should hide email-help-text, when clicking twice on help', () => {
+    de = fixture.debugElement.query(By.css('.help'));
+    el = de.nativeElement;
+    expect(comp.emailHelpDisplay).toEqual('none');
+    el.click();
+    el.click();
+    expect(comp.emailHelpDisplay).toEqual('none');
   });
 });
