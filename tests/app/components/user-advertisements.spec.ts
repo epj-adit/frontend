@@ -1,11 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Router } from "@angular/router";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
-
+import { Overlay } from "angular2-modal";
+import { Modal } from 'angular2-modal/plugins/bootstrap';
+import { ViewContainerRef } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 import { AdvertisementService } from "../../../src/app/services/advertisement.service";
 import { getAdvertisementMocks } from "../data/mock-advertisements";
 import { AditCurrencyPipe } from "../../../src/app/utils/adit-currency.pipe";
@@ -13,10 +15,7 @@ import { FakeTranslationLoader } from "../../fake-translation-loader";
 import { AdvertisementServiceStub } from "../../advertisement-service-stub";
 import { RouterStub } from "../../router-stub";
 import { UserAdvertisementsComponent } from "../../../src/app/components/user-advertisements/user-advertisements.component";
-import { OverlayStub, ViewContainerRefStub } from "../../modal-stub";
-import { Overlay } from "angular2-modal";
-import { Modal } from 'angular2-modal/plugins/bootstrap';
-import { ViewContainerRef } from "@angular/core";
+import { OverlayStub } from "../../modal-stub";
 
 
 let modal = {
@@ -44,8 +43,8 @@ describe('UserAdvertisementComponent', () => {
         {provide: AdvertisementService, useClass: AdvertisementServiceStub},
         {provide: Router, useClass: RouterStub},
         {provide: Overlay, useClass: OverlayStub},
-        {provide: ViewContainerRef, useClass: ViewContainerRefStub},
-        {provide: Modal, useValue: modal}
+        {provide: Modal, useValue: modal},
+        ViewContainerRef
       ],
       imports: [
         HttpModule,
