@@ -29,15 +29,13 @@ export class UserProfileComponent implements OnInit {
       this.form = this.formBuilder.group({
         'username': [user.username, [Validators.required, Validators.minLength(5)]],
         'email': [user.email.split("@")[0], [Validators.required, ValidatorService.validateHsrUsername]],
-        'password': ['', [Validators.required, Validators.minLength(6)]],
-        'isPrivate': [user.isPrivate],
-        'wantsNotifications': [user.wantsNotification]
+        'password': ['', [Validators.required, Validators.minLength(6)]]
       });
     });
   }
 
   ngOnInit(): void {
-    this.authenticationService.getUser().subscribe(user => this.user)
+   // this.authenticationService.getUser().subscribe(user => this.user)
   }
 
   onSubmit(value) {
