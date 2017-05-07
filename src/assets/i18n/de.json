@@ -87,5 +87,8 @@
     "newCat": "Neue Kategorie erstellen",
     "submit": "Speichern",
     "successMessage": "Kategorien wurden gespeichert."
+  },
+  "STATUS":{
+    "errorOccurred": "Mit Deiner Abfrage ist ein Fehler aufgetreten. "
   }
 }

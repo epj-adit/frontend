@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { TranslateService } from "@ngx-translate/core";
 import { AuthenticationService } from "../../utils/authentication.service";
 import { ValidatorService } from '../../utils/validator.service';
+import { StatusmessageService} from '../../utils/statusmessage.service';
 import { Credential } from "../../data/credential";
 
 
@@ -18,7 +19,9 @@ export class LoginComponent {
 
     constructor(private router: Router,
                 private formBuilder: FormBuilder,
-                private authenticationService: AuthenticationService) {
+                private authenticationService: AuthenticationService,
+                private statusmessageService: StatusmessageService,
+                private translate: TranslateService){
         this.form = this.formBuilder.group({
             'email': ['', [Validators.required, ValidatorService.validateHsrUsername]],
             'plaintextPassword': ['', [Validators.required, Validators.minLength(6)]]
@@ -27,19 +30,25 @@ export class LoginComponent {
 
     onSubmit(value) {
         value.email += "@hsr.ch";
+        let errorMessage:string;
+        this.translate.get("STATUS.errorOccurred").subscribe(msg => errorMessage = msg);
+
         this.authenticationService.login(value as Credential)
             .subscribe(
                 authenticationSuccess => {
                     if(authenticationSuccess) {
+
                         this.router.navigate(['/']);
                     } else {
-                        // TODO: Display error message
+
+                        this.statusmessageService.error(errorMessage);
                         console.error("Invalid user login");
                     }
                 },
                 err => {
-                    // TODO: error handling.
-                    console.error("Connection error")
+                    this.statusmessageService.error(errorMessage + err.detailMessage);
+
+                    console.error("Connection error");
                 }
             );
     }
