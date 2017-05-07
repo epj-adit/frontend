@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { TranslateService } from '@ngx-translate/core';
 import { UserService } from "../../services/user.service";
 import { ValidatorService } from '../../utils/validator.service';
 import { User } from "../../data/user";
 import { AuthenticationService } from "../../utils/authentication.service";
-
+import { StatusmessageService } from "../../utils/statusmessage.service";
 
 @Component({
   selector: 'adit-userprofil',
@@ -22,7 +21,9 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private translate: TranslateService,
+              private statusmessageService: StatusmessageService) {
 
     this.authenticationService.getUser().subscribe(user => {
       this.user = user;
@@ -42,16 +43,21 @@ export class UserProfileComponent implements OnInit {
     this.user.username = value.username;
     this.user.email = value.email + "@hsr.ch";
     this.user.passwordPlaintext = value.password;
+
     this.userService.update(this.user)
       .subscribe(res => {
           this.authenticationService.setUser(this.user);
-          //TODO: Display success message.
+          let successMessage: string;
+          this.translate.get("STATUS.success").subscribe(msg=>successMessage = msg);
+          this.statusmessageService.success(successMessage);
           console.log("User was upated.");
           this.isSubmitted = true;
         },
         err => {
           this.hasError = true;
-          // TODO: Proper error handling
+          let errorMessage: string;
+          this.translate.get("STATUS.errorOccurred").subscribe(msg=>errorMessage = msg);
+          this.statusmessageService.error(errorMessage);
         });
   }
 

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { TranslateService } from '@ngx-translate/core';
 import { UserService } from "../../services/user.service";
 import { ValidatorService } from '../../utils/validator.service';
 import { User } from "../../data/user";
-
+import { StatusmessageService } from "../../utils/statusmessage.service";
 
 @Component({
   selector: 'adit-register',
@@ -19,7 +19,9 @@ export class RegisterComponent {
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
-              private userService: UserService) {
+              private userService: UserService,
+              private translate: TranslateService,
+              private statusmessageService: StatusmessageService) {
     this.form = this.formBuilder.group({
       'username': ['', [Validators.required, Validators.minLength(5)]],
       'email': ['', [Validators.required, ValidatorService.validateHsrUsername]],
@@ -35,7 +37,12 @@ export class RegisterComponent {
           let link = ['/login'];
           this.router.navigate(link);
         },
-        err => this.errorStatus = err.status
+        err => {
+          let errorMessage: string;
+          this.translate.get("STATUS.errorOccurred").subscribe(msg => errorMessage = msg);
+          this.statusmessageService.error(errorMessage + err.detailMessage);
+          this.errorStatus = err.status
+        }
       );
   }
 

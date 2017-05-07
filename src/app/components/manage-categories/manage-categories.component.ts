@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core";
+import { TranslateService} from '@ngx-translate/core';
+
 import { CategoryService } from "../../services/category.service";
 import { Category } from "../../data/category";
+import { StatusmessageService } from "../../utils/statusmessage.service";
+
 @Component({
   selector: 'adit-manage-categories',
   templateUrl: './manage-categories.component.html',
@@ -13,7 +17,7 @@ export class ManageCategoriesComponent implements OnInit {
   isSubmitted = false;
   hasError = false;
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService, private translate: TranslateService, private statusmessageService: StatusmessageService) {
   }
 
   ngOnInit(): void {
@@ -32,12 +36,18 @@ export class ManageCategoriesComponent implements OnInit {
       if (cat.id){
         this.categoryService.deleteCat(cat).subscribe(
           res => {
+            let successMessage: string;
+            this.translate.get("STATUS.success").subscribe(msg => successMessage = msg);
             this.currCat = new Category("");
             console.log("was deleted");
             this.categories.splice(index, 1);
           },
-          // TODO: error handling anhand von statuscodes!
-          err => console.log("cant be deleted")
+          err => {
+            let errorMessage: string;
+            this.translate.get("STATUS.errorOccurred").subscribe(msg => errorMessage = msg);
+            this.statusmessageService.error(errorMessage + err.detailMessage);
+            console.log("cant be deleted");
+          }
         );
       } else {
         this.categories.splice(index, 1);
@@ -60,6 +70,11 @@ export class ManageCategoriesComponent implements OnInit {
           this.isSubmitted = true;
           this.categories = res;
         },
-        err => this.hasError = true);
+        err => {
+          this.hasError = true
+          let errorMessage: string;
+          this.translate.get("STATUS.errorOccurred").subscribe(msg => errorMessage = msg);
+          this.statusmessageService.error(errorMessage + err.detailMessage);
+        });
   }
 }

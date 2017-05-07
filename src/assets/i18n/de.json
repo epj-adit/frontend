@@ -89,6 +89,7 @@
     "successMessage": "Kategorien wurden gespeichert."
   },
   "STATUS":{
-    "errorOccurred": "Mit Deiner Abfrage ist ein Fehler aufgetreten. "
+    "errorOccurred": "Mit Deiner Abfrage ist ein Fehler aufgetreten. ",
+    "success": "Deine Abfrage war erfolgreich!"
   }
 }

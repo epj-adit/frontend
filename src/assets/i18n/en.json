@@ -88,6 +88,7 @@
     "successMessage": "Categories have been saved."
   },
   "STATUS":{
-    "errorOccurred": "There was an error with your request. "
+    "errorOccurred": "There was an error with your request. ",
+    "success": "Your request was successful!"
   }
 }
