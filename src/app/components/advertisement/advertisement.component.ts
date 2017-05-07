@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from "@angular/router";
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from "rxjs/Observable";
 
 import { AdvertisementService } from '../../services/advertisement.service';
@@ -10,6 +10,7 @@ import { ValidatorService } from "../../utils/validator.service";
 import { Advertisement } from '../../data/advertisement';
 import { Tag } from '../../data/tag';
 import { Category } from "../../data/category";
+import { StatusmessageService } from "../../utils/statusmessage.service";
 
 @Component({
   selector: 'adit-advertisement',
@@ -27,7 +28,9 @@ export class AdvertisementComponent implements OnInit {
   constructor(private advertisementService: AdvertisementService,
               private categoryService: CategoryService,
               private route: ActivatedRoute,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private translate: TranslateService,
+              private statusmessageService: StatusmessageService) {
     this.form = this.formBuilder.group({
       id: null,
       title: '',
@@ -73,7 +76,14 @@ export class AdvertisementComponent implements OnInit {
       this.tags
     );
     this.advertisementService.createAdvertisementAndTags(newAd)
-      .subscribe(ad => this.isSubmitted = true);
+      .subscribe(ad => {
+          this.isSubmitted = true;
+        },
+        err => {
+          let errorMessage: string;
+          this.translate.get("STATUS.errorOccurred").subscribe(msg => errorMessage = msg);
+          this.statusmessageService.error(errorMessage + err.detailMessage);
+        });
   }
 
   addTag(): void {
