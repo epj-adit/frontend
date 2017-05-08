@@ -16,6 +16,9 @@ import { AuthenticationServiceStub } from "../_mocks/authentication-service-stub
 import { UserProfileComponent } from "../../../src/app/components/user-profile/user-profile.component";
 import { getUsersMocks } from "../data/mock-users";
 import { User } from "../../../src/app/data/user";
+import {StatusmessageComponent} from "../../../src/app/widgets/statusmessage.component";
+import {StatusmessageService} from "../../../src/app/utils/statusmessage.service";
+import {StatusmessageServiceStub} from "../_mocks/statusmessage-service-stub";
 
 
 describe('UserProfileComponent', () => {
@@ -26,14 +29,16 @@ describe('UserProfileComponent', () => {
   let userService : UserServiceStub;
   let user: User;
   let authenticationService: AuthenticationService;
+  let statusmessageService: StatusmessageService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UserProfileComponent],
+      declarations: [UserProfileComponent, StatusmessageComponent],
       providers: [
         {provide: UserService, useClass: UserServiceStub},
         {provide: AuthenticationService, useClass: AuthenticationServiceStub},
-        {provide: Router, useClass: RouterStub}
+        {provide: Router, useClass: RouterStub},
+        {provide: StatusmessageService, useClass: StatusmessageServiceStub},
       ],
       imports: [
         HttpModule,
@@ -47,8 +52,9 @@ describe('UserProfileComponent', () => {
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(UserProfileComponent);
       comp = fixture.componentInstance;
-      userService = TestBed.get(UserService);
-      authenticationService = TestBed.get(AuthenticationService);
+      userService = fixture.debugElement.injector.get(UserService);
+      authenticationService = fixture.debugElement.injector.get(AuthenticationService);
+      statusmessageService = fixture.debugElement.injector.get(StatusmessageService);
       user = getUsersMocks()[0];
     });
   }));

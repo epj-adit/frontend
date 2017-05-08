@@ -13,20 +13,25 @@ import { ManageCategoriesComponent } from "../../../src/app/components/manage-ca
 import { CategoryService } from "../../../src/app/services/category.service";
 import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
 import { CategoryServiceStub } from "../_mocks/category-service-stub";
+import {StatusmessageService} from "../../../src/app/utils/statusmessage.service";
+import {StatusmessageServiceStub} from "../_mocks/statusmessage-service-stub";
+import {StatusmessageComponent} from "../../../src/app/widgets/statusmessage.component";
 
 
 describe('ManageCategoriesComponent', () => {
   let comp: ManageCategoriesComponent;
   let fixture: ComponentFixture<ManageCategoriesComponent>;
   let categoryService;
+  let statusmessageService;
   let de: DebugElement;
   let el: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ManageCategoriesComponent],
+      declarations: [ManageCategoriesComponent, StatusmessageComponent],
       providers: [
-        {provide: CategoryService, useClass: CategoryServiceStub}
+        {provide: CategoryService, useClass: CategoryServiceStub},
+        {provide: StatusmessageService, useClass: StatusmessageServiceStub},
       ],
       imports: [
         HttpModule,
@@ -40,7 +45,8 @@ describe('ManageCategoriesComponent', () => {
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(ManageCategoriesComponent);
       comp = fixture.componentInstance;
-      categoryService = TestBed.get(CategoryService);
+      categoryService = fixture.debugElement.injector.get(CategoryService);
+      statusmessageService = fixture.debugElement.injector.get(StatusmessageService);
     });
   }));
 
