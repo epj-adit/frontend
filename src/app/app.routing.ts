@@ -18,7 +18,6 @@ import { NotAuthenticatedGuardService } from "./utils/not-authenticated-guard.se
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'advertisements', pathMatch: 'full'},
-  //{path: 'search', component: AdvertisementSearchComponent},
   {path: 'advertisements', component: AdvertisementListComponent, canActivate: [ AuthenticationGuardService ]},
   {path: 'advertisementinfo/:id', component: AdvertisementInfoComponent, canActivate: [ AuthenticationGuardService ]},
   {path: 'advertisement/:id', component: AdvertisementComponent, canActivate: [ AuthenticationGuardService ]},
