@@ -28,3 +28,9 @@
   display: inline-block;
   @include tag();
 }
+
+.noAds {
+  margin-top: 2em;
+  font-style: italic;
+  color: $maincolor
+}

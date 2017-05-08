@@ -16,7 +16,8 @@
     "manageCategoriesLink": "Manage Categories"
   },
   "ADVERTISEMENT": {
-    "title": "Advertisements"
+    "title": "Advertisements",
+    "noAds": "There are currently no ads to display."
   },
   "ADVERTISEMENTSEARCH": {
     "title": "Advertisement Search",

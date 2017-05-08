@@ -16,7 +16,8 @@
     "manageCategoriesLink": "Kategorien verwalten"
   },
   "ADVERTISEMENT": {
-    "title": "Inserate"
+    "title": "Inserate",
+    "noAds": "Zur Zeit gibt es keine passenden Inserate."
   },
   "ADVERTISEMENTSEARCH": {
     "title": "Inserat Suche",
