@@ -2,18 +2,16 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 
-import { ActivatedRoute, Router, Routes } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
-import { Observable } from "rxjs/Observable";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvertisementService } from "../../../src/app/services/advertisement.service";
 import { AdvertisementListComponent } from "../../../src/app/components/advertisement-list/advertisement-list.component";
 import { getAdvertisementMocks } from "../data/mock-advertisements";
 import { ActivatedRouteStub } from "../_mocks/activated-route-stub";
-import { Advertisement } from "../../../src/app/data/advertisement";
 import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
 import { AdvertisementServiceStub } from "../_mocks/advertisement-service-stub";
 import { RouterStub } from "../_mocks/router-stub";
@@ -27,14 +25,6 @@ describe('AdvertisementListComponent', () => {
   let de: DebugElement;
   let el: HTMLElement;
 
-  const createComponent = () => {
-    const fixture = TestBed.createComponent(AdvertisementListComponent);
-
-    comp = fixture.componentInstance;
-    fixture.detectChanges();
-  };
-
-  // async beforeEach
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AdvertisementListComponent],
@@ -55,9 +45,9 @@ describe('AdvertisementListComponent', () => {
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(AdvertisementListComponent);
       comp = fixture.componentInstance;
-      activatedRoute = fixture.debugElement.injector.get(ActivatedRoute);
+      activatedRoute = TestBed.get(ActivatedRoute);
       activatedRoute.testParams = {tagId: 1};
-      advertisementService = fixture.debugElement.injector.get(AdvertisementService);
+      advertisementService = TestBed.get(AdvertisementService);
     });
   }));
 

@@ -26,7 +26,6 @@ describe('AdvertisementComponent', () => {
   let de: DebugElement;
   let el: HTMLElement;
 
-  // async beforeEach
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AdvertisementComponent],
@@ -45,10 +44,9 @@ describe('AdvertisementComponent', () => {
         RouterTestingModule.withRoutes(appRoutes)
       ]
     })
-      .compileComponents();  // compile template and css
+      .compileComponents();
   }));
 
-  // synchronous beforeEach
   beforeEach(() => {
     fixture = TestBed.createComponent(AdvertisementComponent);
     comp = fixture.componentInstance;

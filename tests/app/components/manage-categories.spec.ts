@@ -7,7 +7,6 @@ import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { Advertisement } from "../../../src/app/data/advertisement";
 import { Category } from "../../../src/app/data/category";
 import { getCategoriesMocks } from "../data/mock-categories";
 import { ManageCategoriesComponent } from "../../../src/app/components/manage-categories/manage-categories.component";
@@ -23,14 +22,6 @@ describe('ManageCategoriesComponent', () => {
   let de: DebugElement;
   let el: HTMLElement;
 
-  const createComponent = () => {
-    const fixture = TestBed.createComponent(ManageCategoriesComponent);
-
-    comp = fixture.componentInstance;
-    fixture.detectChanges();
-  };
-
-  // async beforeEach
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ManageCategoriesComponent],
@@ -49,7 +40,7 @@ describe('ManageCategoriesComponent', () => {
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(ManageCategoriesComponent);
       comp = fixture.componentInstance;
-      categoryService = fixture.debugElement.injector.get(CategoryService);
+      categoryService = TestBed.get(CategoryService);
     });
   }));
 

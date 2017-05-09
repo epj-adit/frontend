@@ -27,14 +27,6 @@ describe('UserProfileComponent', () => {
   let user: User;
   let authenticationService: AuthenticationService;
 
-  const createComponent = () => {
-    const fixture = TestBed.createComponent(UserProfileComponent);
-
-    comp = fixture.componentInstance;
-    fixture.detectChanges();
-  };
-
-  // async beforeEach
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [UserProfileComponent],
@@ -55,8 +47,8 @@ describe('UserProfileComponent', () => {
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(UserProfileComponent);
       comp = fixture.componentInstance;
-      userService = fixture.debugElement.injector.get(UserService);
-      authenticationService = fixture.debugElement.injector.get(AuthenticationService);
+      userService = TestBed.get(UserService);
+      authenticationService = TestBed.get(AuthenticationService);
       user = getUsersMocks()[0];
     });
   }));

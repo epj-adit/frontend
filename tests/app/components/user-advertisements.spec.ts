@@ -28,14 +28,6 @@ describe('UserAdvertisementComponent', () => {
   let fixture: ComponentFixture<UserAdvertisementsComponent>;
   let advertisementService;
 
-  const createComponent = () => {
-    const fixture = TestBed.createComponent(UserAdvertisementsComponent);
-
-    comp = fixture.componentInstance;
-    fixture.detectChanges();
-  };
-
-  // async beforeEach
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [UserAdvertisementsComponent, AditCurrencyPipe],
@@ -58,7 +50,7 @@ describe('UserAdvertisementComponent', () => {
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(UserAdvertisementsComponent);
       comp = fixture.componentInstance;
-      advertisementService = fixture.debugElement.injector.get(AdvertisementService);
+      advertisementService = TestBed.get(AdvertisementService);
     });
   }));
 
