@@ -13,8 +13,7 @@
 	<div class="buttons-user">
 		<p class="posted">posted by <span class="username">{{advertisement?.user?.username}}</span></p>
 		<div class="ad-buttons" *ngIf="url.includes('/advertisementinfo')">
-			<a>{{ "ADINFO.privateMessagingLink" | translate }}</a>
-			<a>{{ "ADINFO.emailLink" | translate }}</a>
+			<a href="mailto:{{advertisement?.user?.email}}">{{ "ADINFO.emailLink" | translate }}</a>
 		</div>
 	</div>
 </div>
