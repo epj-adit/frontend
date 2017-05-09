@@ -1,64 +1,9 @@
 @import "../../_variables.scss";
 
-form {
-  @include flex(column);
-}
-
-input {
-  box-shadow: none;
-  @include border();
-}
-
-.ng-valid[required], .ng-valid.required {
-  border-left: 5px solid #42A948;
-}
-
-.ng-invalid:not(form), .notags {
-  border-left: 5px solid #a94442;
-}
-
-.submit {
-  @include buttonLink();
-  &:disabled {
-    @include buttonDisabled();
-  }
-}
-
-form {
-  @include flex(column);
-  .form-group {
-    width: 100%;
-    margin: 0.5em 0;
-    @include flex(column);
-    input, select {
-      width: 100%;
-
-      height: 1.5em;
-      font-size: 13px;
-    }
-  }
-}
-
-.email {
-  @include flex();
-}
 
 .help-text {
   @include helptext();
   margin: 5px 0;
   width: 100%;
   font-size: smaller;
-}
-
-@media (min-width: 700px) {
-  form > .form-group {
-    margin: 0.5em 0;
-    @include flex(row);
-    label {
-      width: 8em;
-    }
-    input, select {
-      width: 60%;
-    }
-  }
 }

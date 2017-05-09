@@ -5,6 +5,7 @@
 }
 
 .buttons-user{
+  width: 100%;
   @include flex(row, space-between);
 }
 
@@ -22,6 +23,7 @@
 }
 
 .ad-title {
+  width: 100%;
   @include flex(row, space-between);
   padding-bottom: 1em;
 }

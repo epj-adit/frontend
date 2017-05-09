@@ -1,32 +1,16 @@
 @import "../../variables";
 
-
-
 .legende {
-  display: inline-block;
+  @include box();
   width: 100%;
-  padding: 0.25em 0.5em;
-  margin: 0.5em 0 1em 0;
-  div {
-    @include flex(row, space-between);
-  }
-}
 
-.advertisements > li {
-  list-style-type: none;
+  span {
+    margin: 0 1rem;
+  }
 }
 
 .advertisement {
-  @include border(black);
-  padding: 0.5em;
-  margin: .25em;
-  @include flex(column);
-  & > h4 {
-    margin-bottom: 0.5em;
-  }
-  & > .tags {
-    margin-top: 0.5em;
-  }
+  @include box();
 }
 
 .tags > li {

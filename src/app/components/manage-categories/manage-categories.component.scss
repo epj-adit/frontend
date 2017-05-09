@@ -1,15 +1,14 @@
 @import "../../variables";
 
 .categoryList {
-  list-style: none;
-  border: 1px solid black;
-  margin-bottom: 1em;
   li {
+    @include box();
     padding: 0.5em;
-  }
-  li:hover, .currcat {
-    background: $secondarycolor;
-    cursor: pointer;
+
+    &:hover {
+      background: #EEFBFF;
+      cursor: pointer;
+    }
   }
   .currcat {
     font-weight: bold;
