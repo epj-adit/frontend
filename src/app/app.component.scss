@@ -176,22 +176,26 @@ form {
   @include box();
 
   .form-group {
-    width: 100%;
-    @include flex(column);
+    width: 60%;
+    margin: 0.5em 0;
+    @include flex(column, center, center);
   }
 }
 
 label {
-  width: 14rem;
+  width: 20rem;
 }
 
 select,
 input {
   width: 100%;
   padding: 0.3rem;
-  box-shadow: none;
-  @include border();
+  box-shadow: inset 0px 2px 3px 0px rgba(234,241,245,1);
+  border: 1px solid #EAF1F5;
+  border-radius: 0.3rem;
+  padding: 1rem;
 }
+
 
 
 .ng-valid[required], .ng-valid.required {
@@ -217,8 +221,7 @@ input {
 
 @media (min-width: 1024px) {
   form > .form-group {
-    margin: 0.5em 0;
-    @include flex(row);
+    @include flex(row, center, center);
   }
 }
 
@@ -227,7 +230,6 @@ input {
 footer {
   @include box();
   margin-top: 2rem;
-  border-top: solid 0.1rem #EAF1F5;
   @include flex(row, space-between);
   color: #364352;
   font-size: small;
