@@ -29,7 +29,11 @@
 }
 
 .ad-tags {
-  margin: 2em 0;
+  border-top: solid 0.1rem #EAF1F5;
+  width: 100%;
+  padding-top: 1rem;
+  margin: 1rem;
+
   & > span {
     @include tag();
   }

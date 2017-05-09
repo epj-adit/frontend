@@ -44,8 +44,8 @@ $borderradius: 4px;
   @include flex(column);
   @include shadow();
   background: white;
-  border-radius: 0.5rem;
-  padding: 1rem;
+  border-radius: 0.2rem;
+  padding: 1.5rem;
   margin: 1rem 0;
   & > h4 {
     width: 100%;
@@ -54,7 +54,10 @@ $borderradius: 4px;
     margin-bottom: 1rem;
   }
   & > .tags {
-    margin: 1rem 0;
+    border-top: solid 0.1rem #EAF1F5;
+    width: 100%;
+    padding-top: 1rem;
+    margin-top: 1rem;
   }
 }
 
@@ -62,7 +65,7 @@ $borderradius: 4px;
   display: inline-block;
   background-color: $highlightcolor;
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   margin-right: 0.5rem;
   font-size: 75%;
   border-radius: 2rem;

@@ -160,6 +160,7 @@ input {
 
 .submit {
   @include buttonLink();
+  margin-top: 2rem;
   &:disabled {
     @include buttonDisabled();
   }
@@ -180,11 +181,15 @@ input {
 
 /* FOOTER */
 footer {
-  @include flex();
+  @include flex(row, space-between);
   background-color: #364352;
   color: white;
   font-size: small;
   border-top: 1px solid #A0A0A0;
+
+  nav > ul > li {
+    display: inline-block;
+  }
 }
 
 @media (min-width: 700px) {

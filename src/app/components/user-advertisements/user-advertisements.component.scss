@@ -13,11 +13,6 @@
   @include box();
 }
 
-.tags > li {
-  list-style-type: none;
-  display: inline-block;
-  @include tag();
-}
 
 .titleRow, .bottomRow {
   width: 100%;
