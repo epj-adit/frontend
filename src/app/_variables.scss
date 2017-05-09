@@ -66,52 +66,42 @@ $borderradius: 4px;
 }
 
 @mixin buttonLink(){
-  padding: 0.25em;
-  border: 1px solid $maincolor;
-  border-radius: 0.2em;
-  color: #333;
+  padding: 0.75rem;
+  min-width: 20rem;
+  border-radius: 0.3rem;
+  background: #00B998;
+  color: white;
+  border: none;
   &:hover {
-    background-color: $secondarycolor;
     cursor: pointer;
-    @include shadow();
   }
 }
 
-@mixin buttonOk() {
-  padding: 0.25em;
-  border: 1px solid #3c763d;
-  border-radius: 0.2em;
-  background-color: #dff0d8;
-  color: #333;
+@mixin buttonDisabled() {
+  padding: 0.75rem;
+  min-width: 20rem;
+  border-radius: 0.3em;
+  background-color: #CFD4D7;
+  color: white;
+  border: none;
   &:hover {
     cursor: pointer;
-    @include shadow();
   }
 }
 
 
 @mixin buttonCancle() {
-  padding: 0.25em;
-  border: 1px solid #a94442;
-  border-radius: 0.2em;
-  background-color: #ebccd1;
-  color: #333;
+  padding: 0.75rem;
+  min-width: 20rem;
+  border-radius: 0.3em;
+  background-color: #FF6D6D;
+  color: white;
+  border: none;
   &:hover {
     cursor: pointer;
-    @include shadow();
   }
 }
 
-
-@mixin buttonDisabled(){
-  color: grey;
-  background: lightgrey;
-  &:hover {
-    cursor: not-allowed;
-    color: grey;
-    background: lightgrey;
-  }
-}
 
 @mixin helptext(){
   color: #31708f;

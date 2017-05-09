@@ -40,7 +40,7 @@
 }
 
 .accept{
-  @include buttonOk();
+  @include buttonLink();
 }
 
 .decline{
