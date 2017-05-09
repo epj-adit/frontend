@@ -22,16 +22,12 @@ import { AuthenticationService } from './utils/authentication.service';
 })
 export class AppComponent {
   advertisements: Advertisement[] = [];
-  @ViewChild('menuToggle') menuToggle;
 
   constructor(private advertisementService: AdvertisementService, private translate: TranslateService,
               private authenticationService: AuthenticationService, private router: Router) {
     translate.addLangs(['de', 'en']);
     translate.setDefaultLang('de');
     translate.use('de');
-    router.events.subscribe(()=>{
-      this.menuToggle.nativeElement.checked = false;
-    });
   }
 
   changeLang(lang: string) {
