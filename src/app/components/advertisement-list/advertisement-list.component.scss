@@ -2,30 +2,16 @@
 
 .advertisements {
   cursor: pointer;
-  & > li {
-    list-style-type: none;
-  }
 }
 
 .advertisement {
-  @include border(black);
-  padding: 0.5em;
-  margin: .25em;
-  @include flex(column);
+  @include box();
   &:hover {
-    background: $secondarycolor;
-  }
-  & > h4 {
-    margin-bottom: 0.5em;
-  }
-  & > .tags {
-    margin-top: 0.5em;
+    background: #EEFBFF;
   }
 }
 
 .tags > li {
-  list-style-type: none;
-  display: inline-block;
   @include tag();
 }
 

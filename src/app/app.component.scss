@@ -10,10 +10,30 @@
 
 html, body {
   height: 100vh;
+  background: #EAF1F5;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.75rem;
 }
 
 a {
+  text-decoration: none;
+  outline: none;
+  color: white;
   cursor: pointer;
+}
+
+ul > li {
+  list-style: none;
 }
 
 .container {
@@ -24,16 +44,19 @@ a {
 header {
   @include flex(row, space-between, center);
   flex: 0 0 10%;
-  @include gradient($maincolor, rgb(193, 193, 193), -45deg);
-  height: 50px;
-  padding: 5px;
   position: fixed;
+  padding: 0 1rem;
+  background: #364352;
   z-index: 2;
   width: 100%;
-  @include shadow();
   nav {
     height: auto;
     margin-right: 1em;
+  }
+
+  img {
+    height: 50px;
+    margin-right: 1rem;
   }
 }
 
@@ -41,11 +64,31 @@ header {
   display: none;
 }
 
-input[type=checkbox]#menu-toggel {
+#subnav {
+  @include box();
+  margin-bottom: 1em;
+  ul > li {
+    display: inline-block;
+  }
+  ul > li > a {
+    margin-right: 0.5rem;
+    color: black;
+    &:hover {
+      color: $highlightcolor;
+    }
+    &.is-active{
+      font-weight: bold;
+      color: $highlightcolor
+    }
+  }
+}
+
+
+input[type=checkbox]#menu-toggle {
   display:none;
 }
 
-input[type=checkbox]#menu-toggel + label {
+input[type=checkbox]#menu-toggle + label {
   background: linear-gradient(to bottom, $menuiconcolor 0%, $menuiconcolor 20%, transparent 20%, transparent 40%, $menuiconcolor 40%, $menuiconcolor 60%, transparent 60%, transparent 80%, $menuiconcolor 80%, $menuiconcolor 100%); //Gradient Hamburger
   cursor: pointer;
   height: 16px;
@@ -63,22 +106,19 @@ input[type=checkbox]:checked ~ #mainnav {
 }
 
 #mainnav > ul > li {
-  color: white;
-  display: list-item;
-  padding: 1em;
-  border-bottom: 1px solid black;
-  border-top: 1px solid black;
-}
+  display: inline-block;
+  background: #303C4A;
+  line-height: 3rem;
+  padding: 1.5rem;
+  border-bottom: 0.3rem solid $highlightcolor;
 
-nav > ul > li {
-  list-style-type: none;
-  display: inline;
-  padding: 0 0.5em;
   a {
-    color: white;
     text-decoration: none;
-    &:visited {
-      color: black;
+    padding-bottom: 1.5rem;
+
+    &:visited,
+    &:focus {
+      color: white;
     }
     &:hover {
       color: $highlightcolor;
@@ -92,9 +132,13 @@ main {
   padding-top: 50px;
   .content {
     flex: 0 1 100%;
-    background-color: white;
-    padding: 1rem;
+    padding: 3rem 0;
+    max-width: 100rem;
   }
+}
+
+form {
+  @include box();
 }
 
 h1 {
@@ -103,63 +147,17 @@ h1 {
 
 footer {
   flex: 0 1 5%;
-  height: 5em;
-  margin: 0;
-  padding: 1em;
-  background-color: $footercolor;
+  background-color: #364352;
   color: white;
   font-size: small;
-  border-top: 1px solid $maincolor;
+  border-top: 1px solid #A0A0A0;
 }
 
 @media (min-width: 700px) {
-  header {
-    @include flex(row, space-between, center);
-    flex: 0 0 10%;
-    @include gradient($maincolor, rgb(193, 193, 193), -45deg);
-    height: 50px;
-    padding: 5px;
-    position: fixed;
-    z-index: 2;
-    width: 100%;
-    @include shadow();
-    nav {
-      height: auto;
-      margin-right: 1em;
-    }
-  }
   #mainnav {
-    display: inline-block;
+    display: block;
   }
-
-  input[type=checkbox]#menu-toggel + label {
+  #label-toggle {
     display: none;
-  }
-
-  nav > ul > li, #mainnav > ul > li {
-    list-style-type: none;
-    display: inline;
-    padding: 0 0.5em;
-    border: none;
-    a {
-      color: white;
-      text-decoration: none;
-      &:visited {
-        color: black;
-      }
-      &:hover {
-        color: $highlightcolor;
-      }
-    }
-  }
-  main {
-    @include flex(row, space-around);
-    flex: 1 1 100%;
-    padding-top: 50px;
-    .content {
-      flex: 0 1 65%;
-      background-color: white;
-      padding: 1rem;
-    }
   }
 }

@@ -1,6 +1,6 @@
 $maincolor: #A0A0A0;
 $secondarycolor: #f2f2f2;
-$highlightcolor: #d9534f;
+$highlightcolor: #FE4E4D;
 $footercolor: #263238;
 $menuiconcolor: $footercolor;
 $font: "Segoe UI", sans-serif;
@@ -40,18 +40,35 @@ $borderradius: 4px;
   border-radius: $radius;
 }
 
-
-@mixin tag() {
-  background-color: $highlightcolor;
-  @include border(white, 0, 0.25em);
-  color: white;
-  padding: 0.1em .5em;
-  margin: 0 0.5em 0 0;
-  font-weight: bold;
-  font-size: 75%;
+@mixin box {
+  @include flex(column);
+  @include shadow();
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  & > h4 {
+    width: 100%;
+    color: #6B7E93;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  & > .tags {
+    margin: 1rem 0;
+  }
 }
 
-@mixin buttonLink() {
+@mixin tag() {
+  display: inline-block;
+  background-color: $highlightcolor;
+  color: white;
+  padding: 0.75rem;
+  margin-right: 0.5rem;
+  font-size: 75%;
+  border-radius: 2rem;
+}
+
+@mixin buttonLink(){
   padding: 0.25em;
   border: 1px solid $maincolor;
   border-radius: 0.2em;
@@ -74,6 +91,7 @@ $borderradius: 4px;
     @include shadow();
   }
 }
+
 
 @mixin buttonCancle() {
   padding: 0.25em;
