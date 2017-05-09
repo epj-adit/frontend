@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
@@ -13,6 +13,7 @@ import { TagServiceStub } from "../_mocks/tag-service-stub";
 import { AuthenticationService } from "../../../src/app/utils/authentication.service";
 import { getAdvertisementMocks } from "../data/mock-advertisements";
 import { Advertisement } from "../../../src/app/data/advertisement";
+import { Observable } from "rxjs/Observable";
 
 
 describe('AdvertisementService', () => {
@@ -81,4 +82,33 @@ describe('AdvertisementService', () => {
     service.deleteAd(ad);
     expect(apiCallService.put).toHaveBeenCalledWith("advertisement/" + ad.id, ad);
   });
+
+  it('should map returned advertisement', fakeAsync(() => {
+    spyOn(apiCallService, 'put').and.callFake(() => {
+      return Observable.of(ad);
+    });
+    let reveicedAd: Advertisement;
+    service.deleteAd(ad).subscribe(res => reveicedAd = res);
+    tick();
+    expect(reveicedAd).toEqual(ad);
+  }));
+
+  it('should catch http errors', fakeAsync(() => {
+    let reveicedAd: Advertisement;
+    let error = new Error('error');
+    spyOn(apiCallService, 'put').and.callFake(() => {
+      return Observable.throw('error');
+    });
+    service.deleteAd(ad).subscribe(
+        res => {
+          reveicedAd = res;
+        },
+        err => {
+          error = err;
+        }
+    );
+    tick();
+    expect(reveicedAd).toBeUndefined();
+    expect(error).toEqual(error);
+  }));
 });

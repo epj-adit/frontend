@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
@@ -42,6 +42,35 @@ describe('CategoryService', () => {
         expect(apiCallService.post).toHaveBeenCalledWith("category", category);
     });
 
+    it('should map returned categry', fakeAsync(() => {
+        spyOn(apiCallService, 'post').and.callFake(() => {
+            return Observable.of(category);
+        });
+        let reveicedCategory: Category;
+        service.create(category).subscribe(res => reveicedCategory = res);
+        tick();
+        expect(reveicedCategory).toEqual(category);
+    }));
+
+    it('should catch http errors', fakeAsync(() => {
+        let receivedCategory: Category;
+        let error = new Error('error');
+        spyOn(apiCallService, 'post').and.callFake(() => {
+            return Observable.throw('error');
+        });
+        service.create(category).subscribe(
+            res => {
+                receivedCategory = res;
+            },
+            err => {
+                error = err;
+            }
+        );
+        tick();
+        expect(receivedCategory).toBeUndefined();
+        expect(error).toEqual(error);
+    }));
+
     it('should get Categories from API Call Service', () => {
         spyOn(apiCallService, 'get').and.callThrough();
         service.getCategories();
@@ -73,5 +102,7 @@ describe('CategoryService', () => {
        service.deleteCat(category);
        expect(apiCallService.delete).toHaveBeenCalledWith("category/"+category.id);
     });
+
+
 
 });

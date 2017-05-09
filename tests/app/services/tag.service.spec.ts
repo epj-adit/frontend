@@ -28,7 +28,7 @@ describe('TagService', () => {
         expect(apiCallService.post).toHaveBeenCalledWith("tags/", tags);
     });
 
-    it('should return created tags', fakeAsync(() => {
+    it('should map returned tags', fakeAsync(() => {
         spyOn(apiCallService, 'post').and.callFake(() => {
             return Observable.of(tags);
         });
