@@ -7,13 +7,7 @@ import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { Advertisement } from "../../../src/app/data/advertisement";
-import { Category } from "../../../src/app/data/category";
-import { getCategoriesMocks } from "../data/mock-categories";
-import { ManageCategoriesComponent } from "../../../src/app/components/manage-categories/manage-categories.component";
-import { CategoryService } from "../../../src/app/services/category.service";
 import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
-import { CategoryServiceStub } from "../_mocks/category-service-stub";
 import { RegisterComponent } from "../../../src/app/components/register/register.component";
 import { UserService } from "../../../src/app/services/user.service";
 import { UserServiceStub } from "../_mocks/user-service-stub";
@@ -56,16 +50,10 @@ describe('RegisterComponent', () => {
         }).compileComponents().then(() => {
             fixture = TestBed.createComponent(RegisterComponent);
             comp = fixture.componentInstance;
-            userService = fixture.debugElement.injector.get(UserService);
+            userService = TestBed.get(UserService);
         });
     }));
-    /*
-     describe('after get categories', () => {
-     beforeEach(async(() => {
-     fixture.detectChanges();
-     fixture.whenStable()
-     .then(() => fixture.detectChanges());
-     }));*/
+
     function updateForm(username, email, password) {
         comp.form.controls['username'].setValue(username);
         comp.form.controls['email'].setValue(email);
