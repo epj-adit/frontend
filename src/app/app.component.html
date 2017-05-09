@@ -1,73 +1,74 @@
 <div class="container">
 	<header>
-		<a href="/"><img id="logo" src="/assets/images/logo-adit-small.png"></a>
-		<adit-advertisementsearch></adit-advertisementsearch>
-		<input type="checkbox" id="menu-toggle" #menuToggle>
-		<label for="menu-toggle" id="label-toggle"></label>
-		<nav id="mainnav">
-			<ul>
-				<li *ngIf="isAuthenticated()">
-					<a [routerLink]="['/advertisements']" routerLinkActive="active">
-						<fa [name]="'files-o'"></fa>
-						{{ "APP.advertisementsLink" | translate }}
-					</a>
-				</li>
-				<li *ngIf="isAuthenticated()">
-					<a [routerLink]="['/advertisement']" routerLinkActive="active">
-						<fa [name]="'plus-square-o'"></fa>
-						{{ "APP.advertisementLink" | translate }}
-					</a>
-				</li>
-				<li *ngIf="isAuthenticated()">
-					<a [routerLink]="['/account']" routerLinkActive="active">
-						<fa [name]="'user-o'"></fa>
-						{{ "APP.userLink" | translate }}
-					</a>
-				</li>
-                <li *ngIf="isAuthenticated()">
-					<a [routerLink]="['/supervisorpanel']" routerLinkActive="active">
-						<fa [name]="'star-o'"></fa>
-						{{ "APP.supervisorLink" | translate }}
-					</a>
-				</li>
-				<li *ngIf="isAuthenticated()">
-					<a (click)="logout()">
-						<fa [name]="'sign-out'"></fa>
-						{{ "APP.logoutLink" | translate }}
-					</a>
-				</li>
-				<li *ngIf="!isAuthenticated()">
-					<a [routerLink]="['/register']" routerLinkActive="active">
-						<fa [name]="'user-plus'"></fa>
-						{{ "APP.registerLink" | translate }}
-					</a>
-				</li>
-				<li *ngIf="!isAuthenticated()">
-					<a [routerLink]="['/login']" routerLinkActive="active">
-						<fa [name]="'sign-in'"></fa>
-						{{ "APP.loginLink" | translate }}
-					</a>
-				</li>
-			</ul>
-		</nav>
+        <div class="inner">
+            <a href="/"><img id="logo" src="/assets/images/logo-adit-small.png"></a>
+            <adit-advertisementsearch></adit-advertisementsearch>
+            <input type="checkbox" id="menu-toggle" #menuToggle>
+            <label for="menu-toggle" id="label-toggle"></label>
+            <nav id="mainnav">
+                <ul>
+                    <li *ngIf="isAuthenticated()">
+                        <a [routerLink]="['/advertisements']" routerLinkActive="active">
+                            <fa [name]="'files-o'"></fa>
+                            {{ "APP.advertisementsLink" | translate }}
+                        </a>
+                    </li>
+                    <li *ngIf="isAuthenticated()">
+                        <a [routerLink]="['/advertisement']" routerLinkActive="active">
+                            <fa [name]="'plus-square-o'"></fa>
+                            {{ "APP.advertisementLink" | translate }}
+                        </a>
+                    </li>
+                    <li *ngIf="isAuthenticated()">
+                        <a [routerLink]="['/account']" routerLinkActive="active">
+                            <fa [name]="'user-o'"></fa>
+                            {{ "APP.userLink" | translate }}
+                        </a>
+                    </li>
+                    <li *ngIf="isAuthenticated()">
+                        <a [routerLink]="['/supervisorpanel']" routerLinkActive="active">
+                            <fa [name]="'star-o'"></fa>
+                            {{ "APP.supervisorLink" | translate }}
+                        </a>
+                    </li>
+                    <li *ngIf="isAuthenticated()">
+                        <a (click)="logout()">
+                            <fa [name]="'sign-out'"></fa>
+                            {{ "APP.logoutLink" | translate }}
+                        </a>
+                    </li>
+                    <li *ngIf="!isAuthenticated()">
+                        <a [routerLink]="['/register']" routerLinkActive="active">
+                            <fa [name]="'user-plus'"></fa>
+                            {{ "APP.registerLink" | translate }}
+                        </a>
+                    </li>
+                    <li *ngIf="!isAuthenticated()">
+                        <a [routerLink]="['/login']" routerLinkActive="active">
+                            <fa [name]="'sign-in'"></fa>
+                            {{ "APP.loginLink" | translate }}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 	</header>
 	<main>
 		<div class="content">
 			<router-outlet></router-outlet>
+            <footer>
+                <span>&copy; adit</span>
+                <nav>
+                    <ul>
+                        <li>
+                            <a (click)="changeLang('en')">EN</a>
+                        </li>
+                        <li>
+                            <a (click)="changeLang('de')">DE</a>
+                        </li>
+                    </ul>
+                </nav>
+            </footer>
 		</div>
-
 	</main>
-	<footer>
-		<span>©adit</span>
-		<nav>
-			<ul>
-				<li>
-					<a (click)="changeLang('en')">EN</a>
-				</li>
-				<li>
-					<a (click)="changeLang('de')">DE</a>
-				</li>
-			</ul>
-		</nav>
-	</footer>
 </div>

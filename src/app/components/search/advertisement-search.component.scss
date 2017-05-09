@@ -1,9 +1,11 @@
 @import "../../variables";
 
-#search-component{
+#search-component {
+  position: relative;
+}
+
+#search-box ~ div {
   position: absolute;
-  top: 1.1em;
-  left: 8em;
 }
 
 .search-result{
@@ -28,6 +30,7 @@
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   background: #EAF1F5;
+  display: block;
 }
 .proposal-name{
   display: inline-block;
