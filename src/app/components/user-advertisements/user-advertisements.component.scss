@@ -49,15 +49,24 @@ $expiredcolor:black;
 }
 
 //------ AdvertisementState --------
-
 // to-Review
 .state-0{
   border-color:$reviewcolor;
   background-color: #e6faff;
-  .bottomRow:after {
+  position: relative;
+  &:after {
+    position: absolute;
     font-family: FontAwesome;
     content: "\f06e";
+    bottom: 0;
+    right: 1rem;
+    font-size: 3rem;
     color: $reviewcolor;
+    opacity:0.2;
+  }
+
+  .tags {
+    border-top: none;
   }
 }
 
@@ -65,10 +74,20 @@ $expiredcolor:black;
 .state-1{
   border-color:$declinedcolor;
   background-color: #ffe6e6;
-  .bottomRow:after {
+  position: relative;
+  &:after {
+    position: absolute;
     font-family: FontAwesome;
     content: "\f05e";
+    bottom: 0;
+    right: 1rem;
+    font-size: 3rem;
     color: $declinedcolor;
+    opacity:0.2;
+  }
+
+  .tags {
+    border-top: none;
   }
 }
 
@@ -76,10 +95,20 @@ $expiredcolor:black;
 .state-2 {
   border-color: $activecolor;
   background-color: #e6ffe6;
-  .bottomRow:after {
-      font-family: FontAwesome;
-      content: "\f04b";
-      color: $activecolor;
+  position: relative;
+  &:after {
+    position: absolute;
+    font-family: FontAwesome;
+    content: "\f04b";
+    bottom: 0;
+    right: 1rem;
+    font-size: 3rem;
+    color: $activecolor;
+    opacity:0.2;
+  }
+
+  .tags {
+    border-top: none;
   }
 }
 
@@ -87,10 +116,20 @@ $expiredcolor:black;
 .state-3 {
   border-color: $expiredcolor;
   background-color: white;
-  .bottomRow:after {
+  position: relative;
+  &:after {
+    position: absolute;
     font-family: FontAwesome;
     content: "\f253";
+    bottom: 0;
+    right: 1rem;
+    font-size: 3rem;
     color: $expiredcolor;
+    opacity:0.2;
+  }
+
+  .tags {
+    border-top: none;
   }
 }
 
@@ -98,9 +137,19 @@ $expiredcolor:black;
 .state-4 {
   border-color: $closedcolor;
   background-color: lightgray;
-  .bottomRow:after {
+  position: relative;
+  &:after {
+    position: absolute;
     font-family: FontAwesome;
     content: "\f1f8";
+    bottom: 0;
+    right: 1rem;
+    font-size: 3rem;
     color: $closedcolor;
+    opacity:0.2;
+  }
+
+  .tags {
+    border-top: none;
   }
 }
