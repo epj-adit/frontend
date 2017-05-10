@@ -31,6 +31,12 @@
                         </a>
                     </li>
                     <li *ngIf="isAuthenticated()">
+                        <a [routerLink]="['/adminpanel']" routerLinkActive="active">
+                            <fa [name]="'shield'"></fa>
+                            {{ "APP.adminpanelLink" | translate }}
+                        </a>
+                    </li>
+                    <li *ngIf="isAuthenticated()">
                         <a (click)="logout()">
                             <fa [name]="'sign-out'"></fa>
                             {{ "APP.logoutLink" | translate }}

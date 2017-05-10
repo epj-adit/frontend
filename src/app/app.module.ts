@@ -33,6 +33,8 @@ import { SupervisorPanelComponent } from "./components/supervisor-panel/supervis
 import { ManageCategoriesComponent } from "./components/manage-categories/manage-categories.component";
 import { LoginComponent } from "./components/login/login.component";
 import { AditCurrencyPipe } from "./utils/adit-currency.pipe";
+import {AdminPanelComponent} from "./components/admin-panel/admin-panel.component";
+import {ManageRolesComponent} from "./components/manage-roles/manage-roles.component";
 
 
 export function HttpLoaderFactory(http: Http) {
@@ -69,6 +71,8 @@ export function HttpLoaderFactory(http: Http) {
     UserAdvertisementsComponent,
     AccountComponent,
     SupervisorPanelComponent,
+    AdminPanelComponent,
+    ManageRolesComponent,
     ManageCategoriesComponent,
     LoginComponent,
     AditCurrencyPipe
