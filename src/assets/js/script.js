@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var mobileMenu = document.getElementById('mobile-menu');
+    var hamburger = document.getElementById('mobile-menu');
     var mainNav = document.getElementById('mainnav');
 
     // toggle mobile menu
-    mobileMenu.addEventListener('click', function () {
+    hamburger.addEventListener('click', function () {
         if (mainNav.style.display == 'block') {
             mainNav.style.display = 'none'
         } else {
@@ -11,15 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // close mobile menu after click on menu item
-    var menuItems = mainNav.getElementsByTagName('li');
-    for (var i = 0; i < menuItems.length; i++) {
-        menuItems[i].addEventListener('click', function () {
-            if (isMobile()) {
-                mainNav.style.display = 'none'
-            }
-        })
-    }
+    // close mobile menu if user clicks anywhere
+    document.addEventListener('click', function(event) {
+        if (mobileMenuVisible() && !hamburger.contains(event.target) ) {
+            mainNav.style.display = 'none'
+        }
+    });
 
     // maintain correct visibility while resizing
     window.addEventListener('resize', function () {
@@ -31,7 +28,11 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function isMobile() {
-        return !(mobileMenu.offsetParent === null);
+        return !(hamburger.offsetParent === null);
+    }
+
+    function mobileMenuVisible() {
+        return isMobile() && !(mainNav.offsetParent === null);
     }
 });
 
