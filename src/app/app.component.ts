@@ -1,10 +1,8 @@
-
-import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from "@angular/router";
 
 import { Advertisement } from './data/advertisement';
-import { AdvertisementService } from './services/advertisement.service';
 import { AuthenticationService } from './utils/authentication.service';
 
 /**
@@ -16,14 +14,12 @@ import { AuthenticationService } from './utils/authentication.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [],
-  //host: {'(input-blur)':'onInputBlur($event)'},
-
+  providers: []
 })
 export class AppComponent {
   advertisements: Advertisement[] = [];
 
-  constructor(private advertisementService: AdvertisementService, private translate: TranslateService,
+  constructor(private translate: TranslateService,
               private authenticationService: AuthenticationService, private router: Router) {
     translate.addLangs(['de', 'en']);
     translate.setDefaultLang('de');
