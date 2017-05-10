@@ -42,10 +42,13 @@ export class AdvertisementSearchComponent implements OnInit {
 
   // Push a search term into the observable stream.
   search(term: string): void {
-    if(term.length===0){
+    if(term.length>0){
+      this.searchTerms.next(term);
+    }
+    else{
+      this.searchProposals = Observable.of<SearchProposal[]>([]);
       this.showNoResultsBox = false;
     }
-    this.searchTerms.next(term);
   }
 
   ngOnInit(): void {
@@ -57,7 +60,6 @@ export class AdvertisementSearchComponent implements OnInit {
         console.log(error);
         return Observable.of<SearchProposal[]>([]);
       });
-
     this.searchProposals.subscribe(results => results ? this.handleNotification(results) : Observable.of<SearchProposal[]>([]));
   }
 
