@@ -1,0 +1,15 @@
+<nav id="subnav">
+    <ul>
+        <li>
+            <a [routerLink]="['manageRoles']" [routerLinkActive]="['is-active']" routerLinkActive="active">
+                {{ "APP.manageRolesLink" | translate }}
+            </a>
+        </li>
+        <li>
+                <a [routerLink]="['managePermissions']" [routerLinkActive]="['is-active']" routerLinkActive="active">
+                {{ "APP.managePermissionsLink" | translate }}
+            </a>
+        </li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>

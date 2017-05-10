@@ -11,8 +11,12 @@
     "logoutLink": "Logout",
     "loginLink": "Login",
     "registerLink": "Registration",
+    "adminpanelLink": "Adminpanel"
     "manageAdvertisementsLink": "Manage Advertisements",
-    "manageCategoriesLink": "Manage Categories"
+    "manageCategoriesLink": "Manage Categories",
+    "manageRolesLink": "Manage Roles",
+    "managePermissionsLink": "Manage Permissions"
+
   },
   "ADVERTISEMENT": {
     "title": "Advertisements",

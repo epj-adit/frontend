@@ -14,6 +14,8 @@ import { LoginComponent } from "./components/login/login.component"
 
 import { AuthenticationGuardService } from "./utils/authentication-guard.service";
 import { NotAuthenticatedGuardService } from "./utils/not-authenticated-guard.service";
+import {AdminPanelComponent} from "./components/admin-panel/admin-panel.component";
+import {ManageRolesComponent} from "./components/manage-roles/manage-roles.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'advertisements', pathMatch: 'full'},
@@ -35,6 +37,9 @@ const appRoutes: Routes = [
     {path: 'manageAdvertisements/:id', component: AdvertisementInfoComponent,
       canActivate: [ AuthenticationGuardService ]},
     {path: 'manageCategories', component: ManageCategoriesComponent, canActivate: [ AuthenticationGuardService ]}
+  ]},
+  {path: 'adminpanel', component: AdminPanelComponent, children: [
+    {path: 'manageRoles', component: ManageRolesComponent, canActivate:[ AuthenticationGuardService ]}
   ]}
 ];
 

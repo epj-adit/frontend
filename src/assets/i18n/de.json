@@ -11,8 +11,11 @@
     "logoutLink": "Abmelden",
     "loginLink": "Anmelden",
     "registerLink": "Registrieren",
+    "adminpanelLink": "Adminpanel",
     "manageAdvertisementsLink": "Inserate verwalten",
-    "manageCategoriesLink": "Kategorien verwalten"
+    "manageCategoriesLink": "Kategorien verwalten",
+    "manageRolesLink": "Rollen verwalten",
+    "managePermissionsLink": "Rechte verwalten"
   },
   "ADVERTISEMENT": {
     "title": "Inserate",
