@@ -30,8 +30,8 @@ describe('AdvertisementComponent', () => {
     TestBed.configureTestingModule({
       declarations: [AdvertisementComponent],
       providers: [
-        {provide: AdvertisementService, useValue: AdvertisementServiceStub},
-        {provide: CategoryService, useValue: CategoryServiceStub}
+        {provide: AdvertisementService, useClass: AdvertisementServiceStub},
+        {provide: CategoryService, useClass: CategoryServiceStub}
         ],
       imports: [
         HttpModule,
