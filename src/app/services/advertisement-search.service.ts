@@ -14,8 +14,8 @@ export class AdvertisementSearchService {
   constructor(private apiCall: ApiCallService) { }
 
   search(term: string): Observable<SearchProposal[]> {
-
-    let advertisementsRequest = this.apiCall.get(`advertisements/?title=${term}&description=${term}`)
+    let activeState: number = 2;
+    let advertisementsRequest = this.apiCall.get(`advertisements/?title=${term}&description=${term}&advertisementState=${activeState}`)
       .map(res => res as Advertisement[]);
     let tagsRequest = this.apiCall.get(`tags/?name=${term}`)
       .map(res => res as Tag[]);
