@@ -103,7 +103,8 @@ header {
     &:hover {
       color: $highlightcolor;
     }
-    &.is-active{
+    &.is-active,
+    &.active {
       font-weight: bold;
       color: $highlightcolor
     }
@@ -127,7 +128,7 @@ header {
 #mainnav {
   display: none;
   position: absolute;
-  top: 5rem;
+  top: 4.5rem;
   left: 0;
   right: 0;
   background: #323E4C;
