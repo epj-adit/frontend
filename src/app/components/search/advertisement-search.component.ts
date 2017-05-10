@@ -2,9 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router }            from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
-// Observable class extensions
 import 'rxjs/add/observable/of';
-// Observable operators
 import 'rxjs/add/operator/switchMap'
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
