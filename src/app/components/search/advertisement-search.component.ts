@@ -26,14 +26,6 @@ export class AdvertisementSearchComponent implements OnInit {
 
   constructor(private advertisementSearchService: AdvertisementSearchService,
               private router: Router) {
-    router.events.subscribe(()=>{
-      this.searchBox.nativeElement.value = '';
-      if(this.searchResults){
-       for (let el of this.searchResults.nativeElement.children){
-          el.style.display = 'none';
-        }
-      }
-    });
   }
 
   // Push a search term into the observable stream.
@@ -42,6 +34,14 @@ export class AdvertisementSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.router.events.subscribe(()=>{
+      this.searchBox.nativeElement.value = '';
+      if(this.searchResults){
+        for (let el of this.searchResults.nativeElement.children){
+          el.style.display = 'none';
+        }
+      }
+    });
     this.searchProposals = this.searchTerms
       .debounceTime(300)       // wait 300ms after each keystroke before considering the term
       .distinctUntilChanged()   // ignore if next search term is same as previous
