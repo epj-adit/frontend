@@ -76,10 +76,10 @@ describe('RegisterComponent', () => {
     });
 
     it('should submit changes', () => {
-        spyOn(userService, 'create').and.callThrough();
+        spyOn(userService, 'register').and.callThrough();
         comp.onSubmit(comp.form.value);
         let newUser = new User(comp.form.value.username, comp.form.value.email + "@hsr.ch", comp.form.value.password);
-        expect(userService.create).toHaveBeenCalledWith(newUser);
+        expect(userService.register).toHaveBeenCalledWith(newUser);
     });
 
     it('should display the email-help-text, when clicking on help', () => {

@@ -77,16 +77,16 @@ describe('UserService', () => {
         spyOn(authenticationService, 'authenticationActive').and.callThrough();
         let options : RequestOptionsArgs = { headers: new Headers({ "Content-Type" : "application/json" }) };
         options.headers = apiCallService.appendAuthorizationHeader(options.headers);
-        service.create(users[0]);
-        expect(apiCallService.post).toHaveBeenCalledWith("user", users[0], options);
+        service.register(users[0]);
+        expect(apiCallService.post).toHaveBeenCalledWith("register", users[0], options);
     });
 
     it('should post user without Authorization header', () => {
         spyOn(apiCallService, 'post').and.callThrough();
         spyOn(authenticationService, 'authenticationActive').and.callFake(() => {return false});
         let options : RequestOptionsArgs = { headers: new Headers({ "Content-Type" : "application/json" }) };
-        service.create(users[0]);
-        expect(apiCallService.post).toHaveBeenCalledWith("user", users[0], options);
+        service.register(users[0]);
+        expect(apiCallService.post).toHaveBeenCalledWith("register", users[0], options);
     });
 
     it('should put user via ApiCallServie', () => {

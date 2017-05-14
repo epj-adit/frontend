@@ -30,14 +30,14 @@ export class UserService {
   }
 
   // TODO: add advertiser, created, updated
-  create(user: User): Observable<User> {
+  register(user: User): Observable<User> {
     let options : RequestOptionsArgs = { headers: new Headers({ "Content-Type" : "application/json" }) };
 
     if(this.authenticationService.authenticationActive()) {
       options.headers = this.apiCall.appendAuthorizationHeader(options.headers);
     }
 
-    return this.apiCall.post("user", user, options).map(res => res as User)
+    return this.apiCall.post("register", user, options).map(res => res as User)
       .catch(this.handleError);
   }
 

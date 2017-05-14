@@ -29,7 +29,7 @@ export class RegisterComponent {
 
   onSubmit(value) {
     let newUser = new User(value.username, value.email + "@hsr.ch", value.password);
-    this.userService.create(newUser)
+    this.userService.register(newUser)
       .subscribe(
         res => {
           let link = ['/login'];

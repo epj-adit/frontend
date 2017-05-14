@@ -16,7 +16,7 @@ export class UserServiceStub {
   }
 
   // TODO: add advertiser, created, updated
-  create(user: User): Observable<User> {
+  register(user: User): Observable<User> {
     return this.getUser(1);
   }
 
