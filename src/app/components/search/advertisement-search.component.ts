@@ -68,7 +68,6 @@ export class AdvertisementSearchComponent implements OnInit {
     let proposals: SearchProposal[] = [];
     proposals = proposals.concat(this.addToProposals(advertisements, ProposalType.Advert));
     let tags = results[1];
-    tags = tags.filter((x, i, a) => a.indexOf(x) == i);
     proposals = proposals.concat(this.addToProposals(tags, ProposalType.Tag));
     let categories = results[2];
     proposals = proposals.concat(this.addToProposals(categories, ProposalType.Category));
