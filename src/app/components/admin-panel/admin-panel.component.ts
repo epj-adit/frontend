@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 @Component({
     selector: 'adminpanel',
     templateUrl: './admin-panel.component.html',

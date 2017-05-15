@@ -36,6 +36,7 @@ import { AditCurrencyPipe } from "./utils/adit-currency.pipe";
 import { AdminPanelComponent } from "./components/admin-panel/admin-panel.component";
 import { ManageRolesComponent } from "./components/manage-roles/manage-roles.component";
 import { RoleService } from "./services/role.service";
+import {ManagePermissionsComponent} from "./components/manage-permissions/manage-permissions.component";
 
 
 export function HttpLoaderFactory(http: Http) {
@@ -74,6 +75,7 @@ export function HttpLoaderFactory(http: Http) {
     SupervisorPanelComponent,
     AdminPanelComponent,
     ManageRolesComponent,
+    ManagePermissionsComponent,
     ManageCategoriesComponent,
     LoginComponent,
     AditCurrencyPipe
