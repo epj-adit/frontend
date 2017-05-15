@@ -1,0 +1,23 @@
+@import "../../variables";
+
+.rolesList{
+  li {
+    @include box();
+    padding: 0.5em;
+
+    &:hover {
+      background: #EEFBFF;
+      cursor: pointer;
+    }
+    #role{
+      font-style:italic;
+
+    }
+  }
+  .currentUser{
+    font-weight: bold;
+  }
+  .userroles{
+    @include flex(row, space-between);
+  }
+}
