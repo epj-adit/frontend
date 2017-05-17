@@ -30,4 +30,12 @@ export class ManageRolesComponent implements OnInit{
         console.log("Editing User ", user.username);
     }
 
+    userRoleChange(role:Role):void{
+        console.log(`USERROLE of ${this.currentUser.username} changed to ${role.name}`);
+        this.currentUser.role = role;
+    }
+    userChanged($event, user:User):void{
+        console.log(`${user.username} changed. EVENT: ${$event}`);
+    }
+
 }
