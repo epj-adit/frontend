@@ -11,8 +11,13 @@ export class RoleService{
     }
 
     getRoles(): Observable<Role[]>{
-        return this.apiCall.get("roles/").map(res=>res as Role[])
+        let roles = this.apiCall.get("roles/").map(res=>{
+            console.log("RES: ", res as Role[]);
+            return res as Role[];
+        })
             .catch(this.handleError);
+        console.log(roles);
+        return roles;
     }
 
     private handleError(error: any): Promise<any> {

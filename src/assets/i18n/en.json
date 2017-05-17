@@ -90,5 +90,12 @@
     "newCat": "Create New Category",
     "submit": "Submit",
     "successMessage": "Categories have been saved."
+  },
+  "USERROLES": {
+    "title": "User/Roles",
+    "user": "User",
+    "role": "Role",
+    "active": "Active"
   }
+
 }

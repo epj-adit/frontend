@@ -90,5 +90,11 @@
     "newCat": "Neue Kategorie erstellen",
     "submit": "Speichern",
     "successMessage": "Kategorien wurden gespeichert."
+  },
+  "USERROLES": {
+    "title": "Benutzer/Rollen",
+    "user": "Benutzer",
+    "role": "Rolle",
+    "active": "Aktiv"
   }
 }
