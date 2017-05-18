@@ -20,7 +20,8 @@
   },
   "ADVERTISEMENTSEARCH": {
     "title": "Inserat Suche",
-    "search": "Suchen.."
+    "search": "Suchen..",
+    "noResult": "0 Treffer"
   },
   "ADINFO": {
     "emailLink": "E-Mail",

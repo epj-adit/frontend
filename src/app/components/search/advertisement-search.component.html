@@ -5,5 +5,8 @@
 			class="search-result" (click)="gotoInfo(proposal)">
 			<span class="proposal-name">{{proposal.name}}</span>  <span class="proposal-{{proposal.displayName}}">{{proposal.displayName}}</span>
 		</div>
+		<div *ngIf="showNoResultsBox" class="search-result">
+			{{"ADVERTISEMENTSEARCH.noResult" | translate}}
+		</div>
 	</div>
 </div>

@@ -16,25 +16,32 @@ import { Tag } from "../../data/tag";
 import { Category } from "../../data/category";
 
 @Component({
-    selector: 'adit-advertisementsearch',
-    templateUrl: './advertisement-search.component.html',
-    styleUrls: ['./advertisement-search.component.scss'],
-    providers: [AdvertisementSearchService]
+  selector: 'adit-advertisementsearch',
+  templateUrl: './advertisement-search.component.html',
+  styleUrls: ['./advertisement-search.component.scss'],
+  providers: [AdvertisementSearchService]
 })
 export class AdvertisementSearchComponent implements OnInit {
-    searchProposals: Observable<SearchProposal[]>;
-    searchTerms = new Subject<string>();
-    @ViewChild('searchBox') searchBox;
-    @ViewChild('searchResults') searchResults;
+  searchProposals: Observable<SearchProposal[]>;
+  showNoResultsBox: boolean = false;
+  private searchTerms = new Subject<string>();
+  @ViewChild('searchBox') searchBox;
+  @ViewChild('searchResults') searchResults;
 
     constructor(private advertisementSearchService: AdvertisementSearchService,
                 private router: Router) {
     }
 
-    // Push a search term into the observable stream.
-    search(term: string): void {
-        this.searchTerms.next(term);
+  // Push a search term into the observable stream.
+  search(term: string): void {
+    if(term.length>0){
+      this.searchTerms.next(term);
     }
+    else{
+      this.searchProposals = Observable.of<SearchProposal[]>([]);
+      this.showNoResultsBox = false;
+    }
+  }
 
     ngOnInit(): void {
         this.router.events.subscribe(() => {
@@ -48,20 +55,15 @@ export class AdvertisementSearchComponent implements OnInit {
         this.searchProposals = this.searchTerms
             .debounceTime(300)       // wait 300ms after each keystroke before considering the term
             .distinctUntilChanged()   // ignore if next search term is same as previous
-            .switchMap(term => {
-                console.log("term:", term);
-                return term ? this.advertisementSearchService.search(term) : Observable.of<SearchProposal[]>([])
-            })
+            .switchMap(term =>
+                term ? this.advertisementSearchService.search(term) : Observable.of<SearchProposal[]>([]))
             .catch(error => {
                 console.log(error);
                 return Observable.of<SearchProposal[]>([]);
             });
 
-        this.searchProposals.subscribe(results => {
-            console.log("result", results);
-            results ? this.handleNotification(results) : Observable.of<SearchProposal[]>([])
-        });
-    }
+    this.searchProposals.subscribe(results => results ? this.handleNotification(results) : Observable.of<SearchProposal[]>([]));
+  }
 
     private handleNotification(results) {
         let advertisements: Advertisement[] = results[0];
@@ -75,8 +77,10 @@ export class AdvertisementSearchComponent implements OnInit {
         proposals = proposals.filter(p => p != undefined);
         proposals.sort((p1, p2) => p2.type - p1.type);
 
-        this.searchProposals = Observable.of<SearchProposal[]>(proposals);
-    }
+    this.showNoResultsBox = proposals.length == 0;
+
+    this.searchProposals = Observable.of<SearchProposal[]>(proposals);
+  }
 
     private addToProposals(toAdd: any[], proposalType: ProposalType) {
         if (!toAdd || toAdd.length === 0) return;
@@ -113,6 +117,8 @@ export class AdvertisementSearchComponent implements OnInit {
                 let categoryLink = ['advertisements', {categoryId: searchProposal.id}];
                 this.router.navigate(categoryLink);
                 break;
+	   default:
+		break;
         }
     }
 }
