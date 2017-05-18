@@ -21,7 +21,7 @@
   "ADVERTISEMENTSEARCH": {
     "title": "Inserat Suche",
     "search": "Suchen..",
-    "noResult": "Keine Suchresultate gefunden"
+    "noResult": "0 Treffer"
   },
   "ADINFO": {
     "emailLink": "E-Mail",

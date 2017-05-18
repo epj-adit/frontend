@@ -21,7 +21,7 @@
   "ADVERTISEMENTSEARCH": {
     "title": "Advertisement Search",
     "search": "Search..",
-    "noResult": "No Search Results were found"
+    "noResult": "0 Hits"
   },
   "ADINFO": {
     "emailLink": "email",
