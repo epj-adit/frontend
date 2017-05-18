@@ -1,17 +1,18 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { ApiCallService } from "../../../src/app/utils/api-call.service";
 import { AuthenticationService } from "../../../src/app/utils/authentication.service";
 import { MockBackend } from "@angular/http/testing";
-import { BaseRequestOptions, ConnectionBackend, Http, HttpModule, RequestOptions } from "@angular/http";
+import { BaseRequestOptions, ConnectionBackend, Http, RequestOptions } from "@angular/http";
 import { getUsersMocks } from "../data/mock-users";
-import { User } from "../../../src/app/data/user";
 import { ReflectiveInjector } from "@angular/core";
 
-// needed because PhantomJS does not support Array.includes(), which is being testet via service.hasPermission
+/* needed because PhantomJS does not support Array.includes(),
+ * which is being testet via service.hasPermission
+ * https://github.com/Semantic-Org/Semantic-UI-Ember/issues/155
+ */
 import '../_mocks/includes.polyfill.js';
 
 
-fdescribe('AuthenticationService', () => {
+describe('AuthenticationService', () => {
 
     beforeEach(() => {
         this.injector = ReflectiveInjector.resolveAndCreate([
