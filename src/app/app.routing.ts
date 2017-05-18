@@ -1,7 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AdvertisementSearchComponent } from './components/search/advertisement-search.component';
 import { AdvertisementInfoComponent } from './components/advertisement-info/advertisement-info.component';
 import { AdvertisementComponent } from './components/advertisement/advertisement.component';
 import { AdvertisementListComponent } from "./components/advertisement-list/advertisement-list.component";
