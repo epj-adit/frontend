@@ -2,20 +2,16 @@
 <ul class="rolesList">
     <li class="userroles" *ngFor="let user of users" (click)="editUser(user)"
         [ngClass]="{'currentUser':currentUser==user}">
-        <span>{{user.username}} |
-            <span id="role">
-                <select (change)="userChanged($event, user)">
-                    <option *ngFor="let role of roles" value="{{role.name}}" [selected]="role.name==user.role.name" (change)="userRoleChange(role)">{{role.name}}</option>
+        <div id="usercontent">
+            <label>{{user.username}} |</label>
+                <select (change)="userRoleChanged($event.target.value, user)">
+                    <option *ngFor="let role of roles" [ngValue]="role" [selected]="role.name==user.role.name">{{role.name}}</option>
                 </select>
-            </span>
-            <span id="isActive">
                 <input type="checkbox" value="isActive" [checked]="user.isActive">{{"USERROLES.active" | translate}}
-            </span>
-
-            <button (click)="onSubmit()" class="submit" [disabled]="currentUserDirty">
+                <button (click)="onSubmit()" class="submit" [disabled]="!currentUserDirty">
                 <fa [name]="'floppy-o'"></fa>
                 {{ "MANAGECATEGORIES.submit" | translate }}
             </button>
-        </span>
+        </div>
     </li>
 </ul>

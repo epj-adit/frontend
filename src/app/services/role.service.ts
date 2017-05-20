@@ -10,7 +10,7 @@ export class RoleService{
 
     }
 
-    getRoles(): Observable<Role[]>{
+    public getRoles(): Observable<Role[]>{
         let roles = this.apiCall.get("roles/").map(res=>{
             console.log("RES: ", res as Role[]);
             return res as Role[];
@@ -24,4 +24,5 @@ export class RoleService{
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     }
+
 }

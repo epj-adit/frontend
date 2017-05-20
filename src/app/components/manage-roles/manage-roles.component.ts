@@ -13,11 +13,12 @@ import { Role } from "../../data/role";
 export class ManageRolesComponent implements OnInit{
     private users: User[];
     private currentUser: User;
+    private currentUserDirty: boolean = false;
     private roles: Role[];
+
 
     constructor(private userService: UserService,
                 private roleService: RoleService){
-
     }
 
     ngOnInit(): void{
@@ -30,12 +31,21 @@ export class ManageRolesComponent implements OnInit{
         console.log("Editing User ", user.username);
     }
 
-    userRoleChange(role:Role):void{
-        console.log(`USERROLE of ${this.currentUser.username} changed to ${role.name}`);
-        this.currentUser.role = role;
-    }
-    userChanged($event, user:User):void{
-        console.log(`${user.username} changed. EVENT: ${$event}`);
+    userRoleChanged(roleName: string, user: User):void {
+        this.currentUser = user;
+        this.currentUser.role = this.roles.filter(r=>r.name===roleName).pop();
+        this.currentUserDirty = true;
     }
 
+    onSubmit():void{
+        console.log("Sending put request with user ", this.currentUser.username);
+        console.log(`${this.currentUser.role.name}`);
+        this.userService.update(this.currentUser).subscribe(res=>
+        {
+            console.log("Success");
+        },err=>{
+            console.log("ERROR:",err);
+        });
+        this.currentUserDirty = false;
+    }
 }

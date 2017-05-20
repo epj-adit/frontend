@@ -18,6 +18,17 @@
     font-weight: bold;
   }
   .userroles{
-    @include flex(row, space-between);
   }
+  #usercontent{
+    width: 100%;
+    vertical-align: middle;
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+
+  }
+  #usercontent > select{
+    max-height: 40px;
+  }
+
 }
