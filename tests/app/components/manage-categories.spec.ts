@@ -112,8 +112,9 @@ describe('ManageCategoriesComponent', () => {
     });
 
     it('should submit categories', () => {
+      spyOn(categoryService, 'createOrUpdate').and.callThrough();
       comp.onSubmit();
-      expect(false).toBe(true); //TODO: Fix this test. It should spy on the category service.
+      expect(categoryService.createOrUpdate).toHaveBeenCalledWith(getCategoriesMocks());
     });
   });
 });
