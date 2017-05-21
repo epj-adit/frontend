@@ -13,9 +13,12 @@ import { AuthenticationService } from "../utils/authentication.service";
 @Injectable()
 export class AdvertisementService {
   currentAdvertisement: Advertisement = null;
+  userId: number;
 
   constructor(private apiCall: ApiCallService, private tagService: TagService,
-              private authenticationService: AuthenticationService) { }
+              private authenticationService: AuthenticationService) {
+    this.authenticationService.getUser().subscribe(user => this.userId = user.id)
+  }
 
   getAdvertisements(): Observable<Advertisement[]> {
     return this.apiCall.get('advertisements/').map(response => response as Advertisement[]);
@@ -40,7 +43,7 @@ export class AdvertisementService {
     let ad: any = {
       title: advertisement.title,
       user: {
-        id: this.authenticationService.getUser().mapTo(user => user.id)
+        id: this.userId
       },
       price: advertisement.price,
       description: advertisement.description,
