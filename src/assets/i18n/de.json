@@ -69,7 +69,8 @@
     "passwordField": "Passwort",
     "submit": "Anmelden",
     "registrationLink": "Registrieren",
-    "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster"
+    "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster",
+    "wrongCredentials": "Bitte überprüfe deine E-Mail und Passwort (falsche Anmeldedaten)"
   },
   "PROFILE": {
     "title": "Profil bearbeiten",
@@ -81,7 +82,8 @@
     "hasError": "Ein Fehler ist aufgetretten. Bitte versuche es später nochmals",
     "isSubmitted": "Benutzerprofil wurde aktualisiert.",
     "isPrivateCheckbox": "privates Profil",
-    "wantsNotificationsCheckbox": "Benachrichtigungen"
+    "wantsNotificationsCheckbox": "Benachrichtigungen",
+    "updateSuccess": "Dein Profil wurde erfolgreich aktualisiert."
   },
   "MANAGECATEGORIES": {
     "newCat": "Neue Kategorie erstellen",
@@ -89,7 +91,7 @@
     "successMessage": "Kategorien wurden gespeichert."
   },
   "STATUS":{
-    "errorOccurred": "Mit Deiner Abfrage ist ein Fehler aufgetreten. ",
+    "errorOccurred": "Beim Verarbeiten ist ein Fehler aufgetreten. Bitte versuche es später nochmals! (Details: {{details}})",
     "success": "Deine Abfrage war erfolgreich!"
   }
 }

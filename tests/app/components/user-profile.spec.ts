@@ -102,7 +102,6 @@ describe('UserProfileComponent', () => {
     comp.onSubmit(comp.form.value);
     expect(userService.update).toHaveBeenCalledWith(comp.user);
     expect(authenticationService.setUser).toHaveBeenCalledWith(comp.user);
-    expect(comp.isSubmitted).toBe(true);
   });
 
   it('should display the email-help-text, when clicking on help', () => {

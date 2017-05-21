@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 import { UserService } from "../../services/user.service";
 import { ValidatorService } from '../../utils/validator.service';
 import { User } from "../../data/user";
@@ -20,7 +19,6 @@ export class RegisterComponent {
   constructor(private router: Router,
               private formBuilder: FormBuilder,
               private userService: UserService,
-              private translate: TranslateService,
               private statusMessageService: StatusMessageService) {
     this.form = this.formBuilder.group({
       'username': ['', [Validators.required, Validators.minLength(5)]],
@@ -33,14 +31,12 @@ export class RegisterComponent {
     let newUser = new User(value.username, value.email + "@hsr.ch", value.password);
     this.userService.register(newUser)
       .subscribe(
-        res => {
-          let link = ['/login'];
-          this.router.navigate(link);
+        () => {
+          this.router.navigate(['/login']);
         },
         err => {
-          let errorMessage: string;
-          this.translate.get("STATUS.errorOccurred").subscribe(msg => errorMessage = msg);
-          this.statusMessageService.error(errorMessage + err.detailMessage);
+          this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
+          console.error(err);
           this.errorStatus = err.status
         }
       );

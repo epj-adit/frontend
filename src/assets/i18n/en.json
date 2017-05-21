@@ -58,7 +58,6 @@
     "passwordField": "Password",
     "submit": "Submit",
     "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster",
-    "hasError": "An error occurred. Please try again later.",
     "error409": "This user already exists.",
     "error403": "You don't have permission to execute this action."
   },
@@ -68,7 +67,8 @@
     "passwordField": "Password",
     "submit": "Login",
     "registrationLink": "Registration",
-    "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster"
+    "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster",
+    "wrongCredentials": "Please check your email and password (invalid credentials)"
   },
   "PROFILE": {
     "title": "edit profile",
@@ -77,10 +77,9 @@
     "passwordField": "password",
     "submit": "submit",
     "emailHelp": "Please use the short form of your HSR email addresse. e.g.: amuster",
-    "isSubmitted": "User profile was updated",
-    "hasError": "An error occurred. Please try again later.",
     "isPrivateCheckbox": "private profile",
-    "wantsNotificationsCheckbox": "Notifications"
+    "wantsNotificationsCheckbox": "Notifications",
+    "updateSuccess": "Your profile has been updated."
   },
   "MANAGECATEGORIES": {
     "newCat": "Create New Category",
@@ -88,7 +87,7 @@
     "successMessage": "Categories have been saved."
   },
   "STATUS":{
-    "errorOccurred": "There was an error with your request. ",
+    "errorOccurred": "There was an error processing your request. Please try again later! (Details: {{details}})",
     "success": "Your request was successful!"
   }
 }

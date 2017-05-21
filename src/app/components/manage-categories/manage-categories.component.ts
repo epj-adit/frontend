@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { TranslateService} from '@ngx-translate/core';
 
 import { CategoryService } from "../../services/category.service";
 import { Category } from "../../data/category";
@@ -14,10 +13,8 @@ import { StatusMessageService } from "../../utils/status-message.service";
 export class ManageCategoriesComponent implements OnInit {
   categories: Category[] = [];
   currCat: Category = new Category("");
-  isSubmitted = false;
-  hasError = false;
 
-  constructor(private categoryService: CategoryService, private translate: TranslateService, private statusMessageService: StatusMessageService) {
+  constructor(private categoryService: CategoryService, private statusMessageService: StatusMessageService) {
   }
 
   ngOnInit(): void {
@@ -26,27 +23,20 @@ export class ManageCategoriesComponent implements OnInit {
 
   editCategory(cat: Category) {
     this.currCat = cat;
-    this.isSubmitted = false;
   }
 
   deleteCat(cat: Category) {
-    this.isSubmitted = false;
     let index = this.categories.findIndex(currCat => currCat == cat);
     if (index > -1) {
       if (cat.id){
         this.categoryService.deleteCat(cat).subscribe(
-          res => {
-            let successMessage: string;
-            this.translate.get("STATUS.success").subscribe(msg => successMessage = msg);
+          () => {
             this.currCat = new Category("");
-            console.log("was deleted");
             this.categories.splice(index, 1);
           },
           err => {
-            let errorMessage: string;
-            this.translate.get("STATUS.errorOccurred").subscribe(msg => errorMessage = msg);
-            this.statusMessageService.error(errorMessage + err.detailMessage);
-            console.log("cant be deleted");
+            this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
+            console.error(err);
           }
         );
       } else {
@@ -57,7 +47,6 @@ export class ManageCategoriesComponent implements OnInit {
   }
 
   newCat() {
-    this.isSubmitted = false;
     let newCat = new Category("new Category");
     this.currCat = newCat;
     this.categories.push(newCat);
@@ -67,14 +56,11 @@ export class ManageCategoriesComponent implements OnInit {
     this.categoryService.createOrUpdate(this.categories)
       .subscribe(
         res => {
-          this.isSubmitted = true;
           this.categories = res;
         },
         err => {
-          this.hasError = true
-          let errorMessage: string;
-          this.translate.get("STATUS.errorOccurred").subscribe(msg => errorMessage = msg);
-          this.statusMessageService.error(errorMessage + err.detailMessage);
+          this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
+          console.log(err);
         });
   }
 }

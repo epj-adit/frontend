@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from "@angular/router";
+import { Router, ActivatedRoute, Params } from "@angular/router";
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 import { Observable } from "rxjs/Observable";
 
 import { AdvertisementService } from '../../services/advertisement.service';
@@ -22,14 +21,13 @@ export class AdvertisementComponent implements OnInit {
   categories: Category[];
   tags: Tag[] = [];
   pricePattern = '[0-9]+(\\.[0-9][05])?';
-  isSubmitted = false;
   taghelpDisplay = 'none';
 
   constructor(private advertisementService: AdvertisementService,
               private categoryService: CategoryService,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private translate: TranslateService,
+              private router: Router,
               private statusMessageService: StatusMessageService) {
     this.form = this.formBuilder.group({
       id: null,
@@ -77,12 +75,11 @@ export class AdvertisementComponent implements OnInit {
     );
     this.advertisementService.createAdvertisementAndTags(newAd)
       .subscribe(ad => {
-          this.isSubmitted = true;
+          this.router.navigate( ['/account', 'advertisement'] );
         },
         err => {
-          let errorMessage: string;
-          this.translate.get("STATUS.errorOccurred").subscribe(msg => errorMessage = msg);
-          this.statusMessageService.error(errorMessage + err.detailMessage);
+          this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
+          console.error(err);
         });
   }
 

@@ -113,7 +113,7 @@ describe('ManageCategoriesComponent', () => {
 
     it('should submit categories', () => {
       comp.onSubmit();
-      expect(comp.isSubmitted).toBe(true);
+      expect(false).toBe(true); //TODO: Fix this test. It should spy on the category service.
     });
   });
 });
