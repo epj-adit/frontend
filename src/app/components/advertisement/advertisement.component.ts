@@ -10,7 +10,7 @@ import { ValidatorService } from "../../utils/validator.service";
 import { Advertisement } from '../../data/advertisement';
 import { Tag } from '../../data/tag';
 import { Category } from "../../data/category";
-import { StatusmessageService } from "../../utils/statusmessage.service";
+import { StatusMessageService } from "../../utils/status-message.service";
 
 @Component({
   selector: 'adit-advertisement',
@@ -30,7 +30,7 @@ export class AdvertisementComponent implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private translate: TranslateService,
-              private statusmessageService: StatusmessageService) {
+              private statusMessageService: StatusMessageService) {
     this.form = this.formBuilder.group({
       id: null,
       title: '',
@@ -82,7 +82,7 @@ export class AdvertisementComponent implements OnInit {
         err => {
           let errorMessage: string;
           this.translate.get("STATUS.errorOccurred").subscribe(msg => errorMessage = msg);
-          this.statusmessageService.error(errorMessage + err.detailMessage);
+          this.statusMessageService.error(errorMessage + err.detailMessage);
         });
   }
 

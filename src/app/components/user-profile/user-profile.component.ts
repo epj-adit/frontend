@@ -5,7 +5,7 @@ import { UserService } from "../../services/user.service";
 import { ValidatorService } from '../../utils/validator.service';
 import { User } from "../../data/user";
 import { AuthenticationService } from "../../utils/authentication.service";
-import { StatusmessageService } from "../../utils/statusmessage.service";
+import { StatusMessageService } from "../../utils/status-message.service";
 
 @Component({
   selector: 'adit-userprofil',
@@ -23,7 +23,7 @@ export class UserProfileComponent implements OnInit {
               private userService: UserService,
               private authenticationService: AuthenticationService,
               private translate: TranslateService,
-              private statusmessageService: StatusmessageService) {
+              private statusMessageService: StatusMessageService) {
 
     this.authenticationService.getUser().subscribe(user => {
       this.user = user;
@@ -49,7 +49,7 @@ export class UserProfileComponent implements OnInit {
           this.authenticationService.setUser(this.user);
           let successMessage: string;
           this.translate.get("STATUS.success").subscribe(msg=>successMessage = msg);
-          this.statusmessageService.success(successMessage);
+          this.statusMessageService.success(successMessage);
           console.log("User was upated.");
           this.isSubmitted = true;
         },
@@ -57,7 +57,7 @@ export class UserProfileComponent implements OnInit {
           this.hasError = true;
           let errorMessage: string;
           this.translate.get("STATUS.errorOccurred").subscribe(msg=>errorMessage = msg);
-          this.statusmessageService.error(errorMessage);
+          this.statusMessageService.error(errorMessage);
         });
   }
 

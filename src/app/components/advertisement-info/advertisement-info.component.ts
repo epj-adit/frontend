@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AdvertisementService } from '../../services/advertisement.service';
 import { Advertisement } from '../../data/advertisement';
 import { AdvertisementState } from "../../data/advertisement-state";
-import { StatusmessageService } from "../../utils/statusmessage.service";
+import { StatusMessageService } from "../../utils/status-message.service";
 @Component({
   selector: 'adit-advertisementinfo',
   templateUrl: './advertisement-info.component.html',
@@ -19,7 +19,7 @@ export class AdvertisementInfoComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private translate: TranslateService,
-              private statusmessageService: StatusmessageService) {
+              private statusMessageService: StatusMessageService) {
     this.url = this.router.url;
   }
 
@@ -32,7 +32,7 @@ export class AdvertisementInfoComponent implements OnInit {
       this.translate.get("STATUS.errorOccurred").subscribe(msg => statusMessage = msg);
       this.route.params
         .switchMap((params: Params) => this.advertisementService.getAdvertisement(+params['id']))
-        .subscribe(advertisement => this.advertisement = advertisement, err => this.statusmessageService.error(statusMessage + err.detailMessage));
+        .subscribe(advertisement => this.advertisement = advertisement, err => this.statusMessageService.error(statusMessage + err.detailMessage));
     }
   }
 
@@ -45,7 +45,7 @@ export class AdvertisementInfoComponent implements OnInit {
           this.router.navigate(["supervisorpanel", "manageAdvertisements"]);
         },
         err => {
-          this.statusmessageService.error(statusMessage + err.detailMessage);
+          this.statusMessageService.error(statusMessage + err.detailMessage);
           console.log("error", err);
         }
       );

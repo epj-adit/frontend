@@ -33,8 +33,8 @@ import { SupervisorPanelComponent } from "./components/supervisor-panel/supervis
 import { ManageCategoriesComponent } from "./components/manage-categories/manage-categories.component";
 import { LoginComponent } from "./components/login/login.component";
 import { AditCurrencyPipe } from "./utils/adit-currency.pipe";
-import {StatusmessageComponent} from "./widgets/statusmessage.component";
-import {StatusmessageService} from "./utils/statusmessage.service";
+import {StatusMessageComponent} from "./widgets/status-message/status-message.component";
+import {StatusMessageService} from "./utils/status-message.service";
 
 
 export function HttpLoaderFactory(http: Http) {
@@ -73,7 +73,7 @@ export function HttpLoaderFactory(http: Http) {
     SupervisorPanelComponent,
     ManageCategoriesComponent,
     LoginComponent,
-    StatusmessageComponent,
+    StatusMessageComponent,
     AditCurrencyPipe
   ],
   providers: [
@@ -86,7 +86,7 @@ export function HttpLoaderFactory(http: Http) {
     AuthenticationGuardService,
     NotAuthenticatedGuardService,
     ApiCallService,
-    StatusmessageService
+    StatusMessageService
   ],
   bootstrap: [AppComponent]
 })

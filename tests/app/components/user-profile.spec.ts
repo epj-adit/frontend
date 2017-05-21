@@ -16,9 +16,9 @@ import { AuthenticationServiceStub } from "../_mocks/authentication-service-stub
 import { UserProfileComponent } from "../../../src/app/components/user-profile/user-profile.component";
 import { getUsersMocks } from "../data/mock-users";
 import { User } from "../../../src/app/data/user";
-import {StatusmessageComponent} from "../../../src/app/widgets/statusmessage.component";
-import {StatusmessageService} from "../../../src/app/utils/statusmessage.service";
-import {StatusmessageServiceStub} from "../_mocks/statusmessage-service-stub";
+import {StatusMessageComponent} from "../../../src/app/widgets/status-message/status-message.component";
+import {StatusMessageService} from "../../../src/app/utils/status-message.service";
+import {StatusMessageServiceStub} from "../_mocks/status-message-service-stub";
 
 
 describe('UserProfileComponent', () => {
@@ -29,16 +29,16 @@ describe('UserProfileComponent', () => {
   let userService : UserServiceStub;
   let user: User;
   let authenticationService: AuthenticationService;
-  let statusmessageService: StatusmessageService;
+  let statusMessageService: StatusMessageService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UserProfileComponent, StatusmessageComponent],
+      declarations: [UserProfileComponent, StatusMessageComponent],
       providers: [
         {provide: UserService, useClass: UserServiceStub},
         {provide: AuthenticationService, useClass: AuthenticationServiceStub},
         {provide: Router, useClass: RouterStub},
-        {provide: StatusmessageService, useClass: StatusmessageServiceStub},
+        {provide: StatusMessageService, useClass: StatusMessageServiceStub},
       ],
       imports: [
         HttpModule,
@@ -54,7 +54,7 @@ describe('UserProfileComponent', () => {
       comp = fixture.componentInstance;
       userService = fixture.debugElement.injector.get(UserService);
       authenticationService = fixture.debugElement.injector.get(AuthenticationService);
-      statusmessageService = fixture.debugElement.injector.get(StatusmessageService);
+      statusMessageService = fixture.debugElement.injector.get(StatusMessageService);
       user = getUsersMocks()[0];
     });
   }));

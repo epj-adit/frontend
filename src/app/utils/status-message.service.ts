@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
-export class StatusmessageService {
+export class StatusMessageService {
     private subject = new Subject<any>();
 
     private hide() {

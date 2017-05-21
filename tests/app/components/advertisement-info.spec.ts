@@ -15,9 +15,9 @@ import { AditCurrencyPipe } from "../../../src/app/utils/adit-currency.pipe";
 import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
 import { AdvertisementServiceStub } from "../_mocks/advertisement-service-stub";
 import { RouterStub } from "../_mocks/router-stub";
-import { StatusmessageService } from "../../../src/app/utils/statusmessage.service";
-import { StatusmessageServiceStub } from "../_mocks/statusmessage-service-stub";
-import {StatusmessageComponent} from "../../../src/app/widgets/statusmessage.component";
+import { StatusMessageService } from "../../../src/app/utils/status-message.service";
+import { StatusMessageServiceStub } from "../_mocks/status-message-service-stub";
+import { StatusMessageComponent } from "../../../src/app/widgets/status-message/status-message.component";
 
 
 describe('AdvertisementInfoComponent', () => {
@@ -25,16 +25,16 @@ describe('AdvertisementInfoComponent', () => {
   let fixture: ComponentFixture<AdvertisementInfoComponent>;
   let activatedRoute;
   let advertisementService;
-  let statusmessageService;
+  let statusMessageService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AdvertisementInfoComponent, AditCurrencyPipe, StatusmessageComponent],
+      declarations: [AdvertisementInfoComponent, AditCurrencyPipe, StatusMessageComponent],
       providers: [
         {provide: AdvertisementService, useClass: AdvertisementServiceStub},
         {provide: ActivatedRoute, useClass: ActivatedRouteStub},
         {provide: Router, useClass: RouterStub},
-        {provide: StatusmessageService, useClass: StatusmessageServiceStub},
+        {provide: StatusMessageService, useClass: StatusMessageServiceStub},
       ],
       imports: [
         HttpModule,
@@ -51,7 +51,7 @@ describe('AdvertisementInfoComponent', () => {
       activatedRoute = fixture.debugElement.injector.get(ActivatedRoute);
       activatedRoute.testParams = {id: 1};
       advertisementService = fixture.debugElement.injector.get(AdvertisementService);
-      statusmessageService = fixture.debugElement.injector.get(StatusmessageService);
+      statusMessageService = fixture.debugElement.injector.get(StatusMessageService);
     });
   }));
 

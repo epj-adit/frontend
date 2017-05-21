@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from "@ngx-translate/core";
 import { AuthenticationService } from "../../utils/authentication.service";
 import { ValidatorService } from '../../utils/validator.service';
-import { StatusmessageService} from '../../utils/statusmessage.service';
+import { StatusMessageService} from '../../utils/status-message.service';
 import { Credential } from "../../data/credential";
 
 
@@ -20,7 +20,7 @@ export class LoginComponent {
     constructor(private router: Router,
                 private formBuilder: FormBuilder,
                 private authenticationService: AuthenticationService,
-                private statusmessageService: StatusmessageService,
+                private statusMessageService: StatusMessageService,
                 private translate: TranslateService){
         this.form = this.formBuilder.group({
             'email': ['', [Validators.required, ValidatorService.validateHsrUsername]],
@@ -41,12 +41,12 @@ export class LoginComponent {
                         this.router.navigate(['/']);
                     } else {
 
-                        this.statusmessageService.error(errorMessage);
+                        this.statusMessageService.error(errorMessage);
                         console.error("Invalid user login");
                     }
                 },
                 err => {
-                    this.statusmessageService.error(errorMessage + err.detailMessage);
+                    this.statusMessageService.error(errorMessage + err.detailMessage);
 
                     console.error("Connection error");
                 }

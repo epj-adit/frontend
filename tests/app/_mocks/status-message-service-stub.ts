@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 @Injectable()
-export class StatusmessageServiceStub{
+export class StatusMessageServiceStub{
     private subject = new Subject<any>();
 
     getMessage(): Observable<any> {

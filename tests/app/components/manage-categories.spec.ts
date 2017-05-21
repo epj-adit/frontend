@@ -13,25 +13,25 @@ import { ManageCategoriesComponent } from "../../../src/app/components/manage-ca
 import { CategoryService } from "../../../src/app/services/category.service";
 import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
 import { CategoryServiceStub } from "../_mocks/category-service-stub";
-import {StatusmessageService} from "../../../src/app/utils/statusmessage.service";
-import {StatusmessageServiceStub} from "../_mocks/statusmessage-service-stub";
-import {StatusmessageComponent} from "../../../src/app/widgets/statusmessage.component";
+import {StatusMessageService} from "../../../src/app/utils/status-message.service";
+import {StatusMessageServiceStub} from "../_mocks/status-message-service-stub";
+import {StatusMessageComponent} from "../../../src/app/widgets/status-message/status-message.component";
 
 
 describe('ManageCategoriesComponent', () => {
   let comp: ManageCategoriesComponent;
   let fixture: ComponentFixture<ManageCategoriesComponent>;
   let categoryService;
-  let statusmessageService;
+  let statusMessageService;
   let de: DebugElement;
   let el: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ManageCategoriesComponent, StatusmessageComponent],
+      declarations: [ManageCategoriesComponent, StatusMessageComponent],
       providers: [
         {provide: CategoryService, useClass: CategoryServiceStub},
-        {provide: StatusmessageService, useClass: StatusmessageServiceStub},
+        {provide: StatusMessageService, useClass: StatusMessageServiceStub},
       ],
       imports: [
         HttpModule,
@@ -46,7 +46,7 @@ describe('ManageCategoriesComponent', () => {
       fixture = TestBed.createComponent(ManageCategoriesComponent);
       comp = fixture.componentInstance;
       categoryService = fixture.debugElement.injector.get(CategoryService);
-      statusmessageService = fixture.debugElement.injector.get(StatusmessageService);
+      statusMessageService = fixture.debugElement.injector.get(StatusMessageService);
     });
   }));
 

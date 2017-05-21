@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { UserService } from "../../services/user.service";
 import { ValidatorService } from '../../utils/validator.service';
 import { User } from "../../data/user";
-import { StatusmessageService } from "../../utils/statusmessage.service";
+import { StatusMessageService } from "../../utils/status-message.service";
 
 @Component({
   selector: 'adit-register',
@@ -21,7 +21,7 @@ export class RegisterComponent {
               private formBuilder: FormBuilder,
               private userService: UserService,
               private translate: TranslateService,
-              private statusmessageService: StatusmessageService) {
+              private statusMessageService: StatusMessageService) {
     this.form = this.formBuilder.group({
       'username': ['', [Validators.required, Validators.minLength(5)]],
       'email': ['', [Validators.required, ValidatorService.validateHsrUsername]],
@@ -40,7 +40,7 @@ export class RegisterComponent {
         err => {
           let errorMessage: string;
           this.translate.get("STATUS.errorOccurred").subscribe(msg => errorMessage = msg);
-          this.statusmessageService.error(errorMessage + err.detailMessage);
+          this.statusMessageService.error(errorMessage + err.detailMessage);
           this.errorStatus = err.status
         }
       );

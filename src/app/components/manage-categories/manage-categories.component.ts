@@ -3,7 +3,7 @@ import { TranslateService} from '@ngx-translate/core';
 
 import { CategoryService } from "../../services/category.service";
 import { Category } from "../../data/category";
-import { StatusmessageService } from "../../utils/statusmessage.service";
+import { StatusMessageService } from "../../utils/status-message.service";
 
 @Component({
   selector: 'adit-manage-categories',
@@ -17,7 +17,7 @@ export class ManageCategoriesComponent implements OnInit {
   isSubmitted = false;
   hasError = false;
 
-  constructor(private categoryService: CategoryService, private translate: TranslateService, private statusmessageService: StatusmessageService) {
+  constructor(private categoryService: CategoryService, private translate: TranslateService, private statusMessageService: StatusMessageService) {
   }
 
   ngOnInit(): void {
@@ -45,7 +45,7 @@ export class ManageCategoriesComponent implements OnInit {
           err => {
             let errorMessage: string;
             this.translate.get("STATUS.errorOccurred").subscribe(msg => errorMessage = msg);
-            this.statusmessageService.error(errorMessage + err.detailMessage);
+            this.statusMessageService.error(errorMessage + err.detailMessage);
             console.log("cant be deleted");
           }
         );
@@ -74,7 +74,7 @@ export class ManageCategoriesComponent implements OnInit {
           this.hasError = true
           let errorMessage: string;
           this.translate.get("STATUS.errorOccurred").subscribe(msg => errorMessage = msg);
-          this.statusmessageService.error(errorMessage + err.detailMessage);
+          this.statusMessageService.error(errorMessage + err.detailMessage);
         });
   }
 }
