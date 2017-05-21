@@ -5,7 +5,7 @@ export function getUsersMocks(): User[] {
     username: "student",
     email: "student@hsr.ch",
     passwordHash: "abc",
-    passwordPlaintext: "abc",
+    passwordPlaintext: "",
     jwtToken: "",
     isActive: true,
     isPrivate: true,

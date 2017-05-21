@@ -22,8 +22,9 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService) { }
 
+  ngOnInit(): void {
     this.authenticationService.getUser().subscribe(user => {
       this.user = user;
       this.form = this.formBuilder.group({
@@ -34,17 +35,13 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.authenticationService.getUser().subscribe(user => this.user)
-  }
-
   onSubmit(value) {
-    this.user.username = value.username;
-    this.user.email = value.email + "@hsr.ch";
-    this.user.passwordPlaintext = value.password;
-    this.userService.update(this.user)
-      .subscribe(res => {
-          this.authenticationService.setUser(this.user);
+    let user = this.user;
+    user.username = value.username;
+    user.email = value.email + "@hsr.ch";
+    user.passwordPlaintext = value.password;
+    this.userService.update(user).subscribe(res => {
+          this.authenticationService.setUser(res as User);
           //TODO: Display success message.
           console.log("User was upated.");
           this.isSubmitted = true;
