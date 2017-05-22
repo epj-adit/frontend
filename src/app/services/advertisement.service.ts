@@ -4,18 +4,21 @@ import { Observable } from "rxjs";
 import { ApiCallService } from '../utils/api-call.service';
 import { Advertisement } from '../data/advertisement';
 
-import { Category } from "../data/category";
-import { Media } from "../data/media";
 import { Tag } from "../data/tag";
-import { User } from "../data/user";
 import { AdvertisementState } from "../data/advertisement-state";
 import { TagService } from "./tag.service";
+
+import { AuthenticationService } from "../utils/authentication.service";
 
 @Injectable()
 export class AdvertisementService {
   currentAdvertisement: Advertisement = null;
+  userId: number;
 
-  constructor(private apiCall: ApiCallService, private tagService: TagService) { }
+  constructor(private apiCall: ApiCallService, private tagService: TagService,
+              private authenticationService: AuthenticationService) {
+    this.authenticationService.getUser().subscribe(user => this.userId = user.id)
+  }
 
   getAdvertisements(): Observable<Advertisement[]> {
     return this.apiCall.get('advertisements/').map(response => response as Advertisement[]);
@@ -35,33 +38,18 @@ export class AdvertisementService {
     return Promise.reject(error.message || error);
   }
 
-
-  // TODO: add advertiser, created, updated
-  testuser: User = {
-    id: 3,
-    role: {id: 3, name: "user", permissions: []},
-    username: "student",
-    email: "student@hsr.ch",
-    passwordHash: "abcde",
-    passwordPlaintext: "test",
-    isPrivate: true,
-    wantsNotification: true,
-    isActive: true,
-    created: "Apr 6, 2017 2:12:33 PM",
-    updated: "",
-    jwtToken: ""
-  };
-
-
   // created set bei server -> don't send it!
   createOrUpdate(advertisement: Advertisement, tags: Tag[], state:AdvertisementState=AdvertisementState.to_review): Observable<Advertisement> {
-    // TODO: Make sure that the to_review state is enforced on the server side.
     let ad: any = {
       title: advertisement.title,
-      user: {id: this.testuser.id},
+      user: {
+        id: this.userId
+      },
       price: advertisement.price,
       description: advertisement.description,
-      category: {id: advertisement.category.id},
+      category: {
+        id: advertisement.category.id
+      },
       tags: tags,
       media: [],
       advertisementState: state,

@@ -11,6 +11,7 @@ import { TagService } from "../../../src/app/services/tag.service";
 import { ApiCallServiceStub } from "../_mocks/api-call-service-stub";
 import { TagServiceStub } from "../_mocks/tag-service-stub";
 import { AuthenticationService } from "../../../src/app/utils/authentication.service";
+import { AuthenticationServiceStub } from "../_mocks/authentication-service-stub";
 import { getAdvertisementMocks } from "../data/mock-advertisements";
 import { Advertisement } from "../../../src/app/data/advertisement";
 import { Observable } from "rxjs/Observable";
@@ -20,6 +21,7 @@ describe('AdvertisementService', () => {
   let service: AdvertisementService;
   let apiCallService: ApiCallService;
   let tagService: TagService;
+  let authenticationService: AuthenticationService;
   let ad: Advertisement;
 
   beforeEach(() => {
@@ -27,11 +29,13 @@ describe('AdvertisementService', () => {
       providers: [
         {provide: ApiCallService, useClass: ApiCallServiceStub},
         {provide: TagService, useClass: TagServiceStub},
+        {provide: AuthenticationService, useClass: AuthenticationServiceStub}
       ]
     });
     apiCallService = TestBed.get(ApiCallService);
     tagService = TestBed.get(TagService);
-    service = new AdvertisementService(apiCallService, tagService);
+    authenticationService = TestBed.get(AuthenticationService);
+    service = new AdvertisementService(apiCallService, tagService, authenticationService);
     ad = getAdvertisementMocks()[0];
   });
 
