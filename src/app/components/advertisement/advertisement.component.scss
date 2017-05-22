@@ -1,5 +1,13 @@
 @import "../../variables";
 
+
+// An advertisement form
+//
+// .help-text      - Help Text
+// .isSubmitted    - Submitt Text
+//
+// Styleguide base
+
 .help-text {
   @include helptext();
   margin: 5px 0;
