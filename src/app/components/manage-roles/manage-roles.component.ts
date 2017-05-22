@@ -37,6 +37,13 @@ export class ManageRolesComponent implements OnInit{
         this.currentUserDirty = true;
     }
 
+    isActiveChanged(user:User): void{
+        this.currentUser = user;
+        this.currentUser.isActive = !this.currentUser.isActive;
+        this.currentUserDirty = true;
+        console.log(`${this.currentUser.username} changed to ${this.currentUser.isActive}`);
+    }
+
     onSubmit():void{
         console.log("Sending put request with user ", this.currentUser.username);
         console.log(`${this.currentUser.role.name}`);

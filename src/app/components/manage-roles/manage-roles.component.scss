@@ -19,6 +19,13 @@
   }
   .userroles{
   }
+  #isActiveInput{
+    margin: 0 4em;
+    box-shadow: none;
+  }
+  #isActiveInput > input{
+    box-shadow: none;
+  }
   #usercontent{
     width: 100%;
     vertical-align: middle;

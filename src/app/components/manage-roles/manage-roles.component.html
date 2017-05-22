@@ -7,7 +7,9 @@
                 <select (change)="userRoleChanged($event.target.value, user)">
                     <option *ngFor="let role of roles" [ngValue]="role" [selected]="role.name==user.role.name">{{role.name}}</option>
                 </select>
-                <input type="checkbox" value="isActive" [checked]="user.isActive">{{"USERROLES.active" | translate}}
+                <div id="isActiveInput">
+                    <input type="checkbox" value="isActive" [checked]="user.isActive" (change)="isActiveChanged(user)">{{"USERROLES.active" | translate}}
+                </div>
                 <button (click)="onSubmit()" class="submit" [disabled]="!currentUserDirty">
                 <fa [name]="'floppy-o'"></fa>
                 {{ "MANAGECATEGORIES.submit" | translate }}
