@@ -1,0 +1,44 @@
+@import "../../variables";
+
+.rolesList{
+  li {
+    @include box();
+
+    &:hover {
+      background: #EEFBFF;
+      cursor: pointer;
+    }
+  }
+  .currentUser{
+    font-weight: bold;
+  }
+  #isActiveInput > input{
+    box-shadow: none;
+  }
+  #usercontent{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content:space-between;
+  }
+  #usercontent > select{
+    max-height: 2.7em;
+  }
+  #usercontent > div {
+    display:block;
+    text-align: center;
+    margin: 0.2em 0;
+  }
+
+  @media (min-width: 900px){
+    #usercontent{
+      flex-direction: row;
+    }
+    #isActiveInput{
+      width: 10em;
+      margin: 0 4em;
+      box-shadow: none;
+    }
+  }
+
+}

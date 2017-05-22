@@ -1,15 +1,19 @@
-<nav id="subnav">
-    <ul>
-        <li>
-            <a [routerLink]="['manageRoles']" [routerLinkActive]="['is-active']" routerLinkActive="active">
-                {{ "APP.manageRolesLink" | translate }}
-            </a>
-        </li>
-        <li>
-                <a [routerLink]="['managePermissions']" [routerLinkActive]="['is-active']" routerLinkActive="active">
-                {{ "APP.managePermissionsLink" | translate }}
-            </a>
-        </li>
-    </ul>
-</nav>
-<router-outlet></router-outlet>
+<h2> {{"USERROLES.title" | translate}} </h2>
+<ul class="rolesList">
+    <li class="userroles" *ngFor="let user of users" (click)="editUser(user)"
+        [ngClass]="{'currentUser':currentUser==user}">
+        <div id="usercontent">
+            <div>{{user.username}} </div>
+            <select (change)="userRoleChanged($event.target.value, user)">
+                <option *ngFor="let role of roles" [ngValue]="role" [selected]="role.name==user.role.name">{{role.name}}</option>
+            </select>
+            <div id="isActiveInput">
+                <input type="checkbox" value="isActive" [checked]="user.isActive" (change)="isActiveChanged(user)">{{"USERROLES.active" | translate}}
+            </div>
+            <button (click)="onSubmit()" class="submit" [disabled]="!editedUsers[user.id]">
+                <fa [name]="'floppy-o'"></fa>
+                {{ "MANAGECATEGORIES.submit" | translate }}
+            </button>
+        </div>
+    </li>
+</ul>
