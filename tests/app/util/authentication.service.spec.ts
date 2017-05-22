@@ -5,6 +5,9 @@ import { BaseRequestOptions, ConnectionBackend, Http, RequestOptions } from "@an
 import { getUsersMocks } from "../data/mock-users";
 import { ReflectiveInjector } from "@angular/core";
 
+
+import * as jwt from 'angular2-jwt';
+
 /* needed because PhantomJS does not support Array.includes(),
  * which is being testet via service.hasPermission
  * https://github.com/Semantic-Org/Semantic-UI-Ember/issues/155
@@ -30,13 +33,22 @@ describe('AuthenticationService', () => {
 
     it('should set user and activate Authentication', fakeAsync(() => {
         let isActive: boolean;
-        this.service.setUser(this.user).subscribe(res => isActive = res);
+        spyOn(jwt, 'tokenNotExpired').and.callFake(()=>{
+            return true;
+        });
+        this.service.setUser(this.user).subscribe(res => {
+            console.log(res);
+            return isActive = res
+        });
         tick();
         expect(isActive).toBe(true);
     }));
 
     describe('after set User', () => {
         beforeEach(() => {
+            spyOn(jwt, 'tokenNotExpired').and.callFake(()=>{
+                return true;
+            });
             this.service.setUser(this.user);
         });
 
