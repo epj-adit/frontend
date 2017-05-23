@@ -44,6 +44,7 @@ describe('TagService', () => {
         spyOn(apiCallService, 'post').and.callFake(() => {
             return Observable.throw('error');
         });
+        spyOn(console, 'error').and.returnValue(true);
         service.create(tags).subscribe(
             res => {
                 reveicedTags = res;
@@ -55,5 +56,6 @@ describe('TagService', () => {
         tick();
         expect(reveicedTags).toEqual([]);
         expect(error).toEqual(error);
+        expect(console.error).toHaveBeenCalled();
     }));
 });
