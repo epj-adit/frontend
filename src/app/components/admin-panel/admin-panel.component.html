@@ -3,7 +3,7 @@
     <li class="userroles" *ngFor="let user of users" (click)="editUser(user)"
         [ngClass]="{'currentUser':currentUser==user}">
         <div id="usercontent">
-            <div>{{user.username}} </div>
+            <div id="username">{{user.username}} </div>
             <select (change)="userRoleChanged($event.target.value, user)">
                 <option *ngFor="let role of roles" [ngValue]="role" [selected]="role.name==user.role.name">{{role.name}}</option>
             </select>
