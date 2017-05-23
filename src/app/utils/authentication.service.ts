@@ -71,8 +71,10 @@ export class AuthenticationService implements OnInit {
             .map(response => {
                 let user = response.json() as User;
                 return this.setUser(user).valueOf();
-            }).catch(res => {
-                return Observable.throw(res.json()); // TODO: Proper error handling with different error cases.
+            }).catch(error => {
+                let content: any = error.json();
+                content.status = error.status;
+                return Observable.throw(content);
             });
     }
 

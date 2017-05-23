@@ -39,7 +39,15 @@ export class LoginComponent {
                     }
                 },
                 err => {
-                    this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
+                    switch(err.status) {
+                        case 401:
+                        case 404:
+                            this.statusMessageService.error("LOGIN.wrongCredentials");
+                            break;
+                        default:
+                            this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
+                            break;
+                    }
                     console.error(err);
                 }
             );
