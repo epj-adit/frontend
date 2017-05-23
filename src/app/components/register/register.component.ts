@@ -14,7 +14,6 @@ import { StatusMessageService } from "../../utils/status-message.service";
 export class RegisterComponent {
   form: FormGroup;
   emailHelpDisplay = 'none';
-  errorStatus=0;
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
@@ -32,12 +31,20 @@ export class RegisterComponent {
     this.userService.register(newUser)
       .subscribe(
         () => {
+          this.statusMessageService.success("REGISTER.success");
           this.router.navigate(['/login']);
         },
         err => {
-          this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
+          switch(err.status) {
+            case 409:
+              this.statusMessageService.error("REGISTER.userExistsMessage");
+              break;
+
+            default:
+              this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
+              break;
+          }
           console.error(err);
-          this.errorStatus = err.status
         }
       );
   }

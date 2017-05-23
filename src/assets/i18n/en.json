@@ -58,8 +58,8 @@
     "passwordField": "Password",
     "submit": "Submit",
     "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster",
-    "error409": "This user already exists.",
-    "error403": "You don't have permission to execute this action."
+    "success": "Your user has been created!",
+    "userExistsMessage": "This user already exists."
   },
   "LOGIN": {
     "title": "Login",
@@ -88,6 +88,7 @@
   },
   "STATUS":{
     "errorOccurred": "There was an error processing your request. Please try again later! (Details: {{details}})",
-    "success": "Your request was successful!"
+    "success": "Your request was successful!",
+    "missingPermissions": "You don't have permission to execute this action."
   }
 }

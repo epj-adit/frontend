@@ -58,10 +58,8 @@
     "passwordField": "Passwort",
     "submit": "Absenden",
     "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster",
-    "isSubmitted": "User wurde erstellt",
-    "hasError": "Ein Fehler ist aufgetretten. Bitte versuche es später nochmals",
-    "error409": "Dieser User existiert bereits",
-    "error403": "Du hast keine Berechtigung für diese Aktion."
+    "success": "User wurde erstellt",
+    "userExistsMessage": "Dieser User existiert bereits"
   },
   "LOGIN": {
     "title": "Anmelden",
@@ -92,6 +90,7 @@
   },
   "STATUS":{
     "errorOccurred": "Beim Verarbeiten ist ein Fehler aufgetreten. Bitte versuche es später nochmals! (Details: {{details}})",
-    "success": "Deine Abfrage war erfolgreich!"
+    "success": "Deine Abfrage war erfolgreich!",
+    "missingPermissions": "Du hast keine Berechtigung für diese Aktion."
   }
 }
