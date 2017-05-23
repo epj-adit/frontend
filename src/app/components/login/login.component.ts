@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from "../../utils/authentication.service";
 import { ValidatorService } from '../../utils/validator.service';
-import { StatusMessageService} from '../../utils/status-message.service';
+import { StatusMessageService } from '../../utils/status-message.service';
 import { Credential } from "../../data/credential";
 
 

@@ -33,8 +33,8 @@ import { SupervisorPanelComponent } from "./components/supervisor-panel/supervis
 import { ManageCategoriesComponent } from "./components/manage-categories/manage-categories.component";
 import { LoginComponent } from "./components/login/login.component";
 import { AditCurrencyPipe } from "./utils/adit-currency.pipe";
-import {StatusMessageComponent} from "./widgets/status-message/status-message.component";
-import {StatusMessageService} from "./utils/status-message.service";
+import { StatusMessageComponent } from "./widgets/status-message/status-message.component";
+import { StatusMessageService } from "./utils/status-message.service";
 
 
 export function HttpLoaderFactory(http: Http) {
