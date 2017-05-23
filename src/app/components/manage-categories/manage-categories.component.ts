@@ -35,7 +35,15 @@ export class ManageCategoriesComponent implements OnInit {
             this.categories.splice(index, 1);
           },
           err => {
-            this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
+            switch(err.status) {
+              case 409:
+                this.statusMessageService.error("MANAGECATEGORIES.deleteConstraintError");
+                break;
+
+              default:
+                this.statusMessageService.error("STATUS.errorOccurred", { details: err.detail });
+                break;
+            }
             console.error(err);
           }
         );
@@ -56,11 +64,12 @@ export class ManageCategoriesComponent implements OnInit {
     this.categoryService.createOrUpdate(this.categories)
       .subscribe(
         res => {
+          this.statusMessageService.success("MANAGECATEGORIES.successMessage");
           this.categories = res;
         },
         err => {
-          this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
-          console.log(err);
+          this.statusMessageService.error("STATUS.errorOccurred", { details: err.detail });
+          console.error(err);
         });
   }
 }

@@ -84,7 +84,8 @@
   "MANAGECATEGORIES": {
     "newCat": "Create New Category",
     "submit": "Submit",
-    "successMessage": "Categories have been saved."
+    "successMessage": "Categories have been saved.",
+    "deleteConstraintError": "The category could not be deleted, because of ads in this category."
   },
   "STATUS":{
     "errorOccurred": "There was an error processing your request. Please try again later! (Details: {{details}})",

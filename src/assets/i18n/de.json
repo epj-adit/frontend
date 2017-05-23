@@ -86,7 +86,8 @@
   "MANAGECATEGORIES": {
     "newCat": "Neue Kategorie erstellen",
     "submit": "Speichern",
-    "successMessage": "Kategorien wurden gespeichert."
+    "successMessage": "Kategorien wurden gespeichert.",
+    "deleteConstraintError": "Die Kategorie konnte nicht gelöscht werden, da es darin noch Inserate gibt."
   },
   "STATUS":{
     "errorOccurred": "Beim Verarbeiten ist ein Fehler aufgetreten. Bitte versuche es später nochmals! (Details: {{details}})",
