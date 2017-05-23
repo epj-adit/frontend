@@ -33,6 +33,8 @@ import { SupervisorPanelComponent } from "./components/supervisor-panel/supervis
 import { ManageCategoriesComponent } from "./components/manage-categories/manage-categories.component";
 import { LoginComponent } from "./components/login/login.component";
 import { AditCurrencyPipe } from "./utils/adit-currency.pipe";
+import { SupervisorGuardService } from "./utils/supervisor-guard.service";
+import { AdminGuardService } from "./utils/admin-guard.service";
 
 
 export function HttpLoaderFactory(http: Http) {
@@ -73,7 +75,7 @@ export function HttpLoaderFactory(http: Http) {
     LoginComponent,
     AditCurrencyPipe
   ],
-  providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService, AuthenticationService, AuthenticationGuardService, NotAuthenticatedGuardService, ApiCallService],
+  providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService, AuthenticationService, AuthenticationGuardService, NotAuthenticatedGuardService, SupervisorGuardService, AdminGuardService, ApiCallService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
