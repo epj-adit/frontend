@@ -34,8 +34,8 @@ export class AppComponent {
     return this.authenticationService.authenticationActive();
   }
 
-  hasPermission(permissionName: string){
-    this.authenticationService.hasPermission(permissionName);
+  hasPermission(permissionName: string): boolean{
+    return this.authenticationService.hasPermission(permissionName);
   }
 
   logout(): void {
