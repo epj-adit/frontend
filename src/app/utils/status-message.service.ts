@@ -10,21 +10,25 @@ export class StatusMessageService {
 
     constructor(private translate: TranslateService) { }
 
-    private hide() {
-        Observable.of(null).delay(10000).subscribe(() => this.subject.next());
+    private hide(displayTime: number) {
+        Observable.of(null).delay(displayTime).subscribe(() => this.subject.next());
     }
 
-    success(expr: string, params?: any) {
+    success(expr: string, params?: any, displayTime?: number) {
         this.translate.get(expr, params).subscribe(message => {
             this.subject.next({ type: 'success', text: message });
-            //this.hide();
+            if(displayTime) {
+                this.hide(displayTime);
+            }
         });
     }
 
-    error(expr: string, params?: any) {
+    error(expr: string, params?: any, displayTime?: number) {
         this.translate.get(expr, params).subscribe(message => {
             this.subject.next({type: 'error', text: message});
-            //this.hide();
+            if(displayTime) {
+                this.hide(displayTime);
+            }
         });
     }
 
