@@ -26,13 +26,13 @@
                             {{ "APP.userLink" | translate }}
                         </a>
                     </li>
-                    <li *ngIf="isAuthenticated()">
+                    <li *ngIf="hasPermission('supervisor_permission')">
                         <a [routerLink]="['/supervisorpanel']" routerLinkActive="active">
                             <fa [name]="'star-o'"></fa>
                             {{ "APP.supervisorLink" | translate }}
                         </a>
                     </li>
-                    <li *ngIf="isAuthenticated()">
+                    <li *ngIf="hasPermission('administrator_permission')">
                         <a [routerLink]="['/adminpanel']" routerLinkActive="active">
                             <fa [name]="'shield'"></fa>
                             {{ "APP.adminpanelLink" | translate }}

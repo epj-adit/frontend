@@ -35,6 +35,8 @@ import { LoginComponent } from "./components/login/login.component";
 import { AditCurrencyPipe } from "./utils/adit-currency.pipe";
 import { AdminPanelComponent } from "./components/admin-panel/admin-panel.component";
 import { RoleService } from "./services/role.service";
+import { SupervisorGuardService } from "./utils/supervisor-guard.service";
+import { AdminGuardService } from "./utils/admin-guard.service";
 
 
 export function HttpLoaderFactory(http: Http) {
@@ -86,9 +88,11 @@ export function HttpLoaderFactory(http: Http) {
     AuthenticationService,
     AuthenticationGuardService,
     NotAuthenticatedGuardService,
+    SupervisorGuardService,
+    AdminGuardService,
     ApiCallService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
+  export class AppModule {
 }
