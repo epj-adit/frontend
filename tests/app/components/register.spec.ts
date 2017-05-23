@@ -14,6 +14,9 @@ import { UserServiceStub } from "../_mocks/user-service-stub";
 import { User } from "../../../src/app/data/user";
 import { Router } from "@angular/router";
 import { RouterStub } from "../_mocks/router-stub";
+import { StatusMessageComponent } from "../../../src/app/widgets/status-message/status-message.component";
+import { StatusMessageService } from "../../../src/app/utils/status-message.service";
+import { StatusMessageServiceStub } from "../_mocks/status-message-service-stub";
 
 
 describe('RegisterComponent', () => {
@@ -22,6 +25,7 @@ describe('RegisterComponent', () => {
     let userService;
     let de: DebugElement;
     let el: HTMLElement;
+    let statusMessageService: StatusMessageService;
 
     const createComponent = () => {
         const fixture = TestBed.createComponent(RegisterComponent);
@@ -33,10 +37,11 @@ describe('RegisterComponent', () => {
     // async beforeEach
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [RegisterComponent],
+            declarations: [RegisterComponent, StatusMessageComponent],
             providers: [
                 {provide: UserService, useClass: UserServiceStub},
-                {provide: Router, useClass: RouterStub}
+                {provide: Router, useClass: RouterStub},
+                {provide: StatusMessageService, useClass: StatusMessageServiceStub}
             ],
             imports: [
                 HttpModule,
@@ -51,6 +56,7 @@ describe('RegisterComponent', () => {
             fixture = TestBed.createComponent(RegisterComponent);
             comp = fixture.componentInstance;
             userService = TestBed.get(UserService);
+            statusMessageService = TestBed.get(StatusMessageService);
         });
     }));
 
