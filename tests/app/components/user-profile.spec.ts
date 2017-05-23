@@ -16,9 +16,9 @@ import { AuthenticationServiceStub } from "../_mocks/authentication-service-stub
 import { UserProfileComponent } from "../../../src/app/components/user-profile/user-profile.component";
 import { getUsersMocks } from "../data/mock-users";
 import { User } from "../../../src/app/data/user";
-import {StatusMessageComponent} from "../../../src/app/widgets/status-message/status-message.component";
-import {StatusMessageService} from "../../../src/app/utils/status-message.service";
-import {StatusMessageServiceStub} from "../_mocks/status-message-service-stub";
+import { StatusMessageComponent } from "../../../src/app/widgets/status-message/status-message.component";
+import { StatusMessageService } from "../../../src/app/utils/status-message.service";
+import { StatusMessageServiceStub } from "../_mocks/status-message-service-stub";
 
 
 describe('UserProfileComponent', () => {

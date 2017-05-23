@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StatusMessageService } from '../../utils/status-message.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { StatusMessageService } from '../../utils/status-message.service';
     styleUrls: ['./status-message.component.scss']
 })
 
-export class StatusMessageComponent {
+export class StatusMessageComponent implements OnInit {
     message: string;
 
     constructor(private statusMessageService: StatusMessageService){}

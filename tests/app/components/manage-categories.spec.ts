@@ -13,9 +13,9 @@ import { ManageCategoriesComponent } from "../../../src/app/components/manage-ca
 import { CategoryService } from "../../../src/app/services/category.service";
 import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
 import { CategoryServiceStub } from "../_mocks/category-service-stub";
-import {StatusMessageService} from "../../../src/app/utils/status-message.service";
-import {StatusMessageServiceStub} from "../_mocks/status-message-service-stub";
-import {StatusMessageComponent} from "../../../src/app/widgets/status-message/status-message.component";
+import { StatusMessageService } from "../../../src/app/utils/status-message.service";
+import { StatusMessageServiceStub } from "../_mocks/status-message-service-stub";
+import { StatusMessageComponent } from "../../../src/app/widgets/status-message/status-message.component";
 
 
 describe('ManageCategoriesComponent', () => {
