@@ -233,14 +233,20 @@ input {
   }
 }
 
+#email {
+  max-width: 20rem;
+  margin-right: 2rem;
+}
+
 .email {
-  @include flex(row, center, center);
+  @include flex(row, flex-start, center);
+  text-align: left;
   width: 100%;
 }
 
 @media (min-width: 1024px) {
   form > .form-group {
-    @include flex(row, center, center);
+    @include flex(row, flex-start, center);
   }
 }
 
