@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UserService } from "../../services/user.service";
-import { ValidatorService } from '../../utils/validator.service';
 import { User } from "../../data/user";
 import { AuthenticationService } from "../../utils/authentication.service";
 
@@ -29,7 +28,6 @@ export class UserProfileComponent implements OnInit {
       this.user = user;
       this.form = this.formBuilder.group({
         'username': [user.username, [Validators.required, Validators.minLength(5)]],
-        'email': [user.email.split("@")[0], [Validators.required, ValidatorService.validateHsrUsername]],
         'password': ['', [Validators.required, Validators.minLength(6)]]
       });
     });
@@ -38,7 +36,6 @@ export class UserProfileComponent implements OnInit {
   onSubmit(value) {
     let user = this.user;
     user.username = value.username;
-    user.email = value.email + "@hsr.ch";
     user.passwordPlaintext = value.password;
     this.userService.update(user).subscribe(res => {
           this.authenticationService.setUser(res as User);

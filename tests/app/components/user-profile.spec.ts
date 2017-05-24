@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 import { Router } from "@angular/router";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
@@ -21,8 +20,6 @@ import { User } from "../../../src/app/data/user";
 describe('UserProfileComponent', () => {
   let comp: UserProfileComponent;
   let fixture: ComponentFixture<UserProfileComponent>;
-  let de: DebugElement;
-  let el: HTMLElement;
   let userService : UserServiceStub;
   let user: User;
   let authenticationService: AuthenticationService;
@@ -59,9 +56,8 @@ describe('UserProfileComponent', () => {
       .then(() => fixture.detectChanges());
   }));
 
-  function updateForm(username, email, password) {
+  function updateForm(username, password) {
     comp.form.controls['username'].setValue(username);
-    comp.form.controls['email'].setValue(email);
     comp.form.controls['password'].setValue(password);
   }
 
@@ -70,22 +66,19 @@ describe('UserProfileComponent', () => {
   });
 
   it('should show user credentials in form', () => {
-    let shortEmail = user.email.slice(0, -7);
-    expect(comp.form.value).toEqual({username: user.username, email: shortEmail, password: ''});
+    expect(comp.form.value).toEqual({username: user.username, password: ''});
   });
 
   it('should mark form and fields as invalid when input invalid', () => {
-    updateForm('a', 'a', 'a');
+    updateForm('a', 'a');
     expect(comp.form.valid).toBe(false);
-    expect(comp.form.controls['email'].valid).toBe(false);
     expect(comp.form.controls['username'].valid).toBe(false);
     expect(comp.form.controls['password'].valid).toBe(false);
   });
 
   it('should mark form as valid when input is valid', () => {
-    updateForm('amuster', 'amuster', '123muster');
+    updateForm('amuster', '123muster');
     expect(comp.form.valid).toBe(true);
-    expect(comp.form.controls['email'].valid).toBe(true);
     expect(comp.form.controls['username'].valid).toBe(true);
     expect(comp.form.controls['password'].valid).toBe(true);
   });
@@ -97,22 +90,5 @@ describe('UserProfileComponent', () => {
     expect(userService.update).toHaveBeenCalledWith(comp.user);
     expect(authenticationService.setUser).toHaveBeenCalledWith(comp.user);
     expect(comp.isSubmitted).toBe(true);
-  });
-
-  it('should display the email-help-text, when clicking on help', () => {
-    de = fixture.debugElement.query(By.css('.help'));
-    el = de.nativeElement;
-    expect(comp.emailHelpDisplay).toEqual('none');
-    el.click();
-    expect(comp.emailHelpDisplay).toEqual('inline-block')
-  });
-
-  it('should hide email-help-text, when clicking twice on help', () => {
-    de = fixture.debugElement.query(By.css('.help'));
-    el = de.nativeElement;
-    expect(comp.emailHelpDisplay).toEqual('none');
-    el.click();
-    el.click();
-    expect(comp.emailHelpDisplay).toEqual('none');
   });
 });
