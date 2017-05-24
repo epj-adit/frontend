@@ -6,7 +6,7 @@
 	</li>
 </ul>
 <div class="footer">
-	<input [(ngModel)]="currCat.name" name="name" [disabled]="currCat.name == ''">
+	<input [(ngModel)]="currCat.name" name="name" [disabled]="!currCatActive">
 	<button (click)="newCat()" class="newCat">
 		<fa [name]="'plus'"></fa>
 		{{ "MANAGECATEGORIES.newCat" | translate }}

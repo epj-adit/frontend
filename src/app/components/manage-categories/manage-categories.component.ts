@@ -12,6 +12,7 @@ export class ManageCategoriesComponent implements OnInit {
   currCat: Category = new Category("");
   isSubmitted = false;
   hasError = false;
+  currCatActive = false;
 
   constructor(private categoryService: CategoryService) {
   }
@@ -22,6 +23,7 @@ export class ManageCategoriesComponent implements OnInit {
 
   editCategory(cat: Category) {
     this.currCat = cat;
+    this.currCatActive = true;
     this.isSubmitted = false;
   }
 
@@ -33,6 +35,7 @@ export class ManageCategoriesComponent implements OnInit {
         this.categoryService.deleteCat(cat).subscribe(
           res => {
             this.currCat = new Category("");
+            this.currCatActive = false;
             console.log("was deleted");
             this.categories.splice(index, 1);
           },
@@ -42,6 +45,7 @@ export class ManageCategoriesComponent implements OnInit {
       } else {
         this.categories.splice(index, 1);
         this.currCat = new Category("");
+        this.currCatActive = false;
       }
     }
   }
@@ -50,6 +54,7 @@ export class ManageCategoriesComponent implements OnInit {
     this.isSubmitted = false;
     let newCat = new Category("new Category");
     this.currCat = newCat;
+    this.currCatActive = true;
     this.categories.push(newCat);
   }
 
@@ -59,6 +64,8 @@ export class ManageCategoriesComponent implements OnInit {
         res => {
           this.isSubmitted = true;
           this.categories = res;
+          this.currCat = new Category("");
+          this.currCatActive = false;
         },
         err => this.hasError = true);
   }
