@@ -6,7 +6,7 @@
 	</li>
 </ul>
 <div class="footer">
-	<input [(ngModel)]="currCat.name" name="name" [disabled]="currCat.name == ''">
+	<input [(ngModel)]="currCat.name" name="name" [disabled]="!currCatActive">
 	<button (click)="newCat()" class="newCat">
 		<fa [name]="'plus'"></fa>
 		{{ "MANAGECATEGORIES.newCat" | translate }}
@@ -16,4 +16,4 @@
 		{{ "MANAGECATEGORIES.submit" | translate }}
 	</button>
 </div>
-<span class="sucess-text" *ngIf="isSubmitted">{{"MANAGECATEGORIES.successMessage" | translate }}</span>
+<adit-status-message></adit-status-message>

@@ -2,7 +2,7 @@
   "APP": {
     "searchLink": "Search",
     "advertisementsLink": "Advertisements",
-    "advertisementLink": "create Advertisement",
+    "advertisementLink": "Create Advertisement",
     "userAdvertisementLink": "My Advertisements",
     "userLink": "Account",
     "userProfileLink":"Profile",
@@ -11,7 +11,7 @@
     "logoutLink": "Logout",
     "loginLink": "Login",
     "registerLink": "Registration",
-    "adminpanelLink": "Adminpanel"
+    "adminpanelLink": "Adminpanel",
     "manageAdvertisementsLink": "Manage Advertisements",
     "manageCategoriesLink": "Manage Categories",
     "manageRolesLink": "Manage Roles",
@@ -28,9 +28,9 @@
     "noResult": "0 Hits"
   },
   "ADINFO": {
-    "emailLink": "email",
-    "accept": "activate advertisement",
-    "decline": "decline advertisement"
+    "emailLink": "E-Mail",
+    "accept": "Activate Advertisement",
+    "decline": "Decline Advertisement"
   },
   "AD": {
     "title": "Create Advertisement",
@@ -42,7 +42,7 @@
     "price": "Price  [CHF]",
     "submit": "Submit",
     "taghelp": "Separate tags with ';'. Permitted special characters: - _",
-    "isSubmitted": "Your advertisement was submitted"
+    "isSubmitted": "Your advertisement was submitted."
   },
   "USERADVERTISEMENT": {
     "title": "My Advertisements",
@@ -58,13 +58,12 @@
   "REGISTER":{
     "title": "Register User",
     "usernameField": "Username",
-    "emailField": "Email",
+    "emailField": "E-Mail",
     "passwordField": "Password",
     "submit": "Submit",
     "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster",
-    "hasError": "An error occurred. Please try again later.",
-    "error409": "This user already exists.",
-    "error403": "You don't have permission to execute this action."
+    "success": "Your user has been created!",
+    "userExistsMessage": "This user already exists."
   },
   "LOGIN": {
     "title": "Login",
@@ -72,30 +71,39 @@
     "passwordField": "Password",
     "submit": "Login",
     "registrationLink": "Registration",
-    "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster"
+    "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster",
+    "wrongCredentials": "Please check your email and password (invalid credentials)",
+    "notActive": "The requested user is not active!"
   },
   "PROFILE": {
-    "title": "edit profile",
-    "usernameField": "username",
-    "emailField": "email",
-    "passwordField": "password",
-    "submit": "submit",
-    "emailHelp": "Please use the short form of your HSR email addresse. e.g.: amuster",
-    "isSubmitted": "User profile was updated",
-    "hasError": "An error occurred. Please try again later.",
-    "isPrivateCheckbox": "private profile",
-    "wantsNotificationsCheckbox": "Notifications"
+    "title": "Edit Profile",
+    "usernameField": "Username",
+    "emailField": "E-Mail",
+    "passwordField": "Password",
+    "submit": "Submit",
+    "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster",
+    "isPrivateCheckbox": "Private Profile",
+    "wantsNotificationsCheckbox": "Notifications",
+    "updateSuccess": "Your profile has been updated."
   },
   "MANAGECATEGORIES": {
     "newCat": "Create New Category",
     "submit": "Submit",
+    "successMessage": "Categories have been saved.",
+    "deleteConstraintError": "The category couldn't be deleted because there are still advertisements that belong to it."
+  },
+  "STATUS":{
+    "errorOccurred": "There was an error processing your request. Please try again later! (Details: {{details}})",
+    "success": "Your request was successful!",
+    "missingPermissions": "You don't have permission to execute this action.",
     "successMessage": "Categories have been saved."
   },
   "USERROLES": {
     "title": "User/Roles",
     "user": "User",
     "role": "Role",
-    "active": "Active"
+    "active": "Active",
+    "success": "User was successfully updated.",
+    "error": "There was an error updating the user."
   }
-
 }

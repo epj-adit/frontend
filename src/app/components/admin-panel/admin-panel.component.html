@@ -15,5 +15,6 @@
                 {{ "MANAGECATEGORIES.submit" | translate }}
             </button>
         </div>
+        <adit-status-message *ngIf="currentUser!=undefined && user.id===currentUser.id" id="statusmessage"></adit-status-message>
     </li>
 </ul>

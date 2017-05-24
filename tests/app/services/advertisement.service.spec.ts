@@ -103,6 +103,7 @@ describe('AdvertisementService', () => {
     spyOn(apiCallService, 'put').and.callFake(() => {
       return Observable.throw('error');
     });
+    spyOn(console, 'error').and.returnValue(true);
     service.deleteAd(ad).subscribe(
         res => {
           reveicedAd = res;
@@ -114,5 +115,6 @@ describe('AdvertisementService', () => {
     tick();
     expect(reveicedAd).toBeUndefined();
     expect(error).toEqual(error);
+    expect(console.error).toHaveBeenCalled();
   }));
 });

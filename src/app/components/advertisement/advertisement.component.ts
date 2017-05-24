@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from "@angular/router";
+import { Router, ActivatedRoute, Params } from "@angular/router";
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-
 import { Observable } from "rxjs/Observable";
 
 import { AdvertisementService } from '../../services/advertisement.service';
@@ -10,6 +9,7 @@ import { ValidatorService } from "../../utils/validator.service";
 import { Advertisement } from '../../data/advertisement';
 import { Tag } from '../../data/tag';
 import { Category } from "../../data/category";
+import { StatusMessageService } from "../../utils/status-message.service";
 
 @Component({
     selector: 'adit-advertisement',
@@ -17,27 +17,29 @@ import { Category } from "../../data/category";
     styleUrls: ['./advertisement.component.scss']
 })
 export class AdvertisementComponent implements OnInit {
-    form: FormGroup;
-    categories: Category[];
-    tags: Tag[] = [];
-    pricePattern = '[0-9]+(\\.[0-9][05])?';
-    isSubmitted = false;
-    taghelpDisplay = 'none';
+  form: FormGroup;
+  categories: Category[];
+  tags: Tag[] = [];
+  pricePattern = '[0-9]+(\\.[0-9][05])?';
+  isSubmitted = false;
+  taghelpDisplay = 'none';
 
-    constructor(private advertisementService: AdvertisementService,
-                private categoryService: CategoryService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private formBuilder: FormBuilder) {
-        this.form = this.formBuilder.group({
-            id: null,
-            title: '',
-            category: '',
-            description: '',
-            priceValue: "0.00",
-            tagValue: ['', ValidatorService.validateTags.bind(null, this.tags)],
-        });
-    }
+  constructor(private advertisementService: AdvertisementService,
+              private categoryService: CategoryService,
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
+              private router: Router,
+              private statusMessageService: StatusMessageService) {
+    this.form = this.formBuilder.group({
+      id: null,
+      title: '',
+      category: '',
+      description: '',
+      priceValue: "0.00",
+      tagValue: ['', ValidatorService.validateTags.bind(null, this.tags)],
+    });
+  }
+
 
     ngOnInit(): void {
         this.categoryService.getCategories().subscribe(res => this.categories = res);
@@ -63,24 +65,25 @@ export class AdvertisementComponent implements OnInit {
     }
 
 
-    onSubmit(value) {
-        let cat = this.categories.find(cat => cat.name == value.category);
-        let newAd = new Advertisement(
-            value.id,
-            value.title,
-            Math.round(parseFloat(value.priceValue) * 100),
-            value.description,
-            cat,
-            this.tags
-        );
-        this.advertisementService.createAdvertisementAndTags(newAd)
-            .subscribe(ad => {
-                this.isSubmitted = true;
-                let link = ['/account/advertisements'];
-                this.router.navigate(link);
-            },
-            err => console.log(err));
-    }
+        onSubmit(value) {
+    let cat = this.categories.find(cat => cat.name == value.category);
+    let newAd = new Advertisement(
+      value.id,
+      value.title,
+      Math.round(parseFloat(value.priceValue) * 100),
+      value.description,
+      cat,
+      this.tags
+    );
+    this.advertisementService.createAdvertisementAndTags(newAd)
+      .subscribe(ad => {
+            this.router.navigate( ['/account', 'advertisements'] );
+        },
+        err => {
+          this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
+          console.error(err);
+        });
+  }
 
     addTag(): void {
         let pattern = new RegExp('[a-zA-Z\\-_\\d]+;');
@@ -97,7 +100,7 @@ export class AdvertisementComponent implements OnInit {
         if (index > -1) {
             this.tags.splice(index, 1);
         }
-        this.form.controls.tagValue.setValue("");
+        this.form.controls['tagValue'].setValue("");
     }
 
     changeDisplay(): void {

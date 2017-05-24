@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { UserService } from "../../services/user.service";
 import { User } from "../../data/user";
 import { AuthenticationService } from "../../utils/authentication.service";
-
+import { StatusMessageService } from "../../utils/status-message.service";
 
 @Component({
   selector: 'adit-userprofil',
@@ -15,12 +13,11 @@ import { AuthenticationService } from "../../utils/authentication.service";
 export class UserProfileComponent implements OnInit {
   form: FormGroup;
   emailHelpDisplay = 'none';
-  isSubmitted = false;
-  hasError = false;
   user: User;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
+              private statusMessageService: StatusMessageService,
               private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
@@ -34,18 +31,19 @@ export class UserProfileComponent implements OnInit {
   }
 
   onSubmit(value) {
-    let user = this.user;
-    user.username = value.username;
-    user.passwordPlaintext = value.password;
-    this.userService.update(user).subscribe(res => {
-          this.authenticationService.setUser(res as User);
-          //TODO: Display success message.
-          console.log("User was upated.");
-          this.isSubmitted = true;
+    this.user.username = value.username;
+    this.user.email = value.email + "@hsr.ch";
+    this.user.passwordPlaintext = value.password;
+
+    this.userService.update(this.user)
+      .subscribe(
+        () => {
+          this.authenticationService.setUser(this.user).subscribe(() => {
+            this.statusMessageService.success("PROFILE.updateSuccess");
+          });
         },
         err => {
-          this.hasError = true;
-          // TODO: Proper error handling
+          this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
         });
   }
 

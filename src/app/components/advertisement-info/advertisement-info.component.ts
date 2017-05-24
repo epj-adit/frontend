@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-
 import { AdvertisementService } from '../../services/advertisement.service';
 import { Advertisement } from '../../data/advertisement';
 import { AdvertisementState } from "../../data/advertisement-state";
-
+import { StatusMessageService } from "../../utils/status-message.service";
 @Component({
   selector: 'adit-advertisementinfo',
   templateUrl: './advertisement-info.component.html',
@@ -17,7 +16,8 @@ export class AdvertisementInfoComponent implements OnInit {
 
   constructor(private advertisementService: AdvertisementService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private statusMessageService: StatusMessageService) {
     this.url = this.router.url;
   }
 
@@ -28,19 +28,24 @@ export class AdvertisementInfoComponent implements OnInit {
     } else {
       this.route.params
         .switchMap((params: Params) => this.advertisementService.getAdvertisement(+params['id']))
-        .subscribe(advertisement => this.advertisement = advertisement);
+        .subscribe(
+          advertisement => this.advertisement = advertisement,
+          err => {
+            this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
+            console.error(err);
+        });
     }
   }
 
   changeState(state: AdvertisementState){
     this.advertisementService.createOrUpdate(this.advertisement, this.advertisement.tags, state)
       .subscribe(
-        res => {
+        () => {
           this.router.navigate(["supervisorpanel", "manageAdvertisements"]);
         },
         err => {
-          // TODO: Proper error handling
-          console.log("error", err);
+          this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
+          console.error(err);
         }
       );
   }

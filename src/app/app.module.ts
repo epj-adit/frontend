@@ -33,66 +33,70 @@ import { SupervisorPanelComponent } from "./components/supervisor-panel/supervis
 import { ManageCategoriesComponent } from "./components/manage-categories/manage-categories.component";
 import { LoginComponent } from "./components/login/login.component";
 import { AditCurrencyPipe } from "./utils/adit-currency.pipe";
+import { StatusMessageComponent } from "./widgets/status-message/status-message.component";
+import { StatusMessageService } from "./utils/status-message.service";
 import { AdminPanelComponent } from "./components/admin-panel/admin-panel.component";
 import { RoleService } from "./services/role.service";
-import { SupervisorGuardService } from "./utils/supervisor-guard.service";
 import { AdminGuardService } from "./utils/admin-guard.service";
+import { SupervisorGuardService } from "./utils/supervisor-guard.service";
 
 
 export function HttpLoaderFactory(http: Http) {
-  return new TranslateHttpLoader(http);
+    return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpModule,
-    JsonpModule,
-    Angular2FontawesomeModule,
-    ModalModule.forRoot(),
-    BootstrapModalModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [Http]
-      }
-    }),
-    routing
-  ],
-  declarations: [
-    AppComponent,
-    AdvertisementSearchComponent,
-    AdvertisementComponent,
-    AdvertisementListComponent,
-    AdvertisementInfoComponent,
-    RegisterComponent,
-    UserProfileComponent,
-    UserAdvertisementsComponent,
-    AccountComponent,
-    SupervisorPanelComponent,
-    AdminPanelComponent,
-    ManageCategoriesComponent,
-    LoginComponent,
-    AditCurrencyPipe
-  ],
-  providers: [
-    appRoutingProviders,
-    AdvertisementService,
-    TagService,
-    CategoryService,
-    UserService,
-    RoleService,
-    AuthenticationService,
-    AuthenticationGuardService,
-    NotAuthenticatedGuardService,
-    SupervisorGuardService,
-    AdminGuardService,
-    ApiCallService
-  ],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpModule,
+        JsonpModule,
+        Angular2FontawesomeModule,
+        ModalModule.forRoot(),
+        BootstrapModalModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [Http]
+            }
+        }),
+        routing
+    ],
+    declarations: [
+        AppComponent,
+        AdvertisementSearchComponent,
+        AdvertisementComponent,
+        AdvertisementListComponent,
+        AdvertisementInfoComponent,
+        RegisterComponent,
+        UserProfileComponent,
+        UserAdvertisementsComponent,
+        AccountComponent,
+        SupervisorPanelComponent,
+        AdminPanelComponent,
+        ManageCategoriesComponent,
+        LoginComponent,
+        StatusMessageComponent,
+        AditCurrencyPipe
+    ],
+    providers: [
+        appRoutingProviders,
+        AdvertisementService,
+        TagService,
+        CategoryService,
+        UserService,
+        RoleService,
+        SupervisorGuardService,
+        AdminGuardService,
+        AuthenticationService,
+        AuthenticationGuardService,
+        NotAuthenticatedGuardService,
+        ApiCallService,
+        StatusMessageService
+    ],
+    bootstrap: [AppComponent]
 })
-  export class AppModule {
+export class AppModule {
 }

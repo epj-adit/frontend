@@ -43,4 +43,5 @@
 		<button type="submit" class="submit" [disabled]="!adForm.form.valid">{{ "AD.submit" | translate }}</button>
 		<span *ngIf="isSubmitted" class="isSubmitted">{{ "AD.isSubmitted" | translate }}</span>
 	</form>
+	<adit-status-message></adit-status-message>
 </div>

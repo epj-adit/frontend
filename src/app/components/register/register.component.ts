@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { UserService } from "../../services/user.service";
 import { ValidatorService } from '../../utils/validator.service';
 import { User } from "../../data/user";
-
+import { StatusMessageService } from "../../utils/status-message.service";
 
 @Component({
   selector: 'adit-register',
@@ -15,11 +14,11 @@ import { User } from "../../data/user";
 export class RegisterComponent {
   form: FormGroup;
   emailHelpDisplay = 'none';
-  errorStatus=0;
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
-              private userService: UserService) {
+              private userService: UserService,
+              private statusMessageService: StatusMessageService) {
     this.form = this.formBuilder.group({
       'username': ['', [Validators.required, Validators.minLength(5)]],
       'email': ['', [Validators.required, ValidatorService.validateHsrUsername]],
@@ -31,11 +30,22 @@ export class RegisterComponent {
     let newUser = new User(value.username, value.email + "@hsr.ch", value.password);
     this.userService.register(newUser)
       .subscribe(
-        res => {
-          let link = ['/login'];
-          this.router.navigate(link);
+        () => {
+          this.statusMessageService.success("REGISTER.success");
+          this.router.navigate(['/login']);
         },
-        err => this.errorStatus = err.status
+        err => {
+          switch(err.status) {
+            case 409:
+              this.statusMessageService.error("REGISTER.userExistsMessage");
+              break;
+
+            default:
+              this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
+              break;
+          }
+          console.error(err);
+        }
       );
   }
 

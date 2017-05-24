@@ -19,6 +19,9 @@ import { AuthenticationServiceStub } from "../_mocks/authentication-service-stub
 import { AuthenticationService } from "../../../src/app/utils/authentication.service";
 import { Credential } from "../../../src/app/data/credential";
 import { RouterTestingModule } from "@angular/router/testing";
+import { StatusMessageComponent } from "../../../src/app/widgets/status-message/status-message.component";
+import { StatusMessageService } from "../../../src/app/utils/status-message.service";
+import { StatusMessageServiceStub } from "../_mocks/status-message-service-stub";
 
 
 describe('LoginComponent', () => {
@@ -30,12 +33,14 @@ describe('LoginComponent', () => {
     let authenticationService: AuthenticationService;
     let de: DebugElement;
     let el: HTMLElement;
+    let statusMessageService: StatusMessageService;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [LoginComponent],
+            declarations: [LoginComponent, StatusMessageComponent],
             providers: [
-                {provide: AuthenticationService, useClass: AuthenticationServiceStub}
+                {provide: AuthenticationService, useClass: AuthenticationServiceStub},
+                {provide: StatusMessageService, useClass: StatusMessageServiceStub}
             ],
             imports: [
                 HttpModule,
@@ -54,6 +59,7 @@ describe('LoginComponent', () => {
         fixture = TestBed.createComponent(LoginComponent);
         comp = fixture.componentInstance;
         authenticationService = TestBed.get(AuthenticationService);
+        statusMessageService = TestBed.get(StatusMessageService);
     });
 
     function updateForm(email, password) {

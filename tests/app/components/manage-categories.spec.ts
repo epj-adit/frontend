@@ -13,20 +13,25 @@ import { ManageCategoriesComponent } from "../../../src/app/components/manage-ca
 import { CategoryService } from "../../../src/app/services/category.service";
 import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
 import { CategoryServiceStub } from "../_mocks/category-service-stub";
+import { StatusMessageService } from "../../../src/app/utils/status-message.service";
+import { StatusMessageServiceStub } from "../_mocks/status-message-service-stub";
+import { StatusMessageComponent } from "../../../src/app/widgets/status-message/status-message.component";
 
 
 describe('ManageCategoriesComponent', () => {
   let comp: ManageCategoriesComponent;
   let fixture: ComponentFixture<ManageCategoriesComponent>;
   let categoryService;
+  let statusMessageService;
   let de: DebugElement;
   let el: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ManageCategoriesComponent],
+      declarations: [ManageCategoriesComponent, StatusMessageComponent],
       providers: [
-        {provide: CategoryService, useClass: CategoryServiceStub}
+        {provide: CategoryService, useClass: CategoryServiceStub},
+        {provide: StatusMessageService, useClass: StatusMessageServiceStub},
       ],
       imports: [
         HttpModule,
@@ -40,7 +45,8 @@ describe('ManageCategoriesComponent', () => {
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(ManageCategoriesComponent);
       comp = fixture.componentInstance;
-      categoryService = TestBed.get(CategoryService);
+      categoryService = fixture.debugElement.injector.get(CategoryService);
+      statusMessageService = fixture.debugElement.injector.get(StatusMessageService);
     });
   }));
 
@@ -106,8 +112,9 @@ describe('ManageCategoriesComponent', () => {
     });
 
     it('should submit categories', () => {
+      spyOn(categoryService, 'createOrUpdate').and.callThrough();
       comp.onSubmit();
-      expect(comp.isSubmitted).toBe(true);
+      expect(categoryService.createOrUpdate).toHaveBeenCalledWith(getCategoriesMocks());
     });
   });
 });

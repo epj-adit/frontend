@@ -3,6 +3,7 @@ import { User } from "../../data/user";
 import { UserService } from "../../services/user.service";
 import { RoleService } from "../../services/role.service";
 import { Role } from "../../data/role";
+import { StatusMessageService } from "../../utils/status-message.service";
 
 @Component({
     selector: 'adit-admin-panel',
@@ -18,7 +19,8 @@ export class AdminPanelComponent implements OnInit {
 
 
     constructor(private userService: UserService,
-        private roleService: RoleService){
+        private roleService: RoleService,
+        private statusMessageService: StatusMessageService){
     }
 
     ngOnInit(): void{
@@ -48,9 +50,9 @@ export class AdminPanelComponent implements OnInit {
     onSubmit():void{
         this.userService.update(this.currentUser).subscribe(res=>
             {
-                console.log("Success");
-            },err=>{
-                console.log("ERROR:",err);
+                this.statusMessageService.success("USERROLES.success",null, 4000);
+            }, err=>{
+                this.statusMessageService.error("USERROLES.error", null, 6000);
             });
         this.editedUsers[this.currentUser.id] = false;
     }
