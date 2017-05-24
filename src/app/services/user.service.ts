@@ -29,7 +29,6 @@ export class UserService {
       .catch(err => this.handleError(err));
   }
 
-  // TODO: add advertiser, created, updated
   register(user: User): Observable<User> {
     let options : RequestOptionsArgs = { headers: new Headers({ "Content-Type" : "application/json" }) };
 
