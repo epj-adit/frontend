@@ -18,6 +18,7 @@ export class AuthenticationService implements OnInit {
 
     private user: User;
     private decodedToken: JwtToken;
+    private token: string;
 
     constructor(private http: Http) { }
 
@@ -39,17 +40,20 @@ export class AuthenticationService implements OnInit {
     }
 
     private setToken(token: string): void {
+        this.token = token;
         this.decodedToken = this.jwtHelper.decodeToken(token);
     }
 
     getToken(): string {
-        return this.user.jwtToken;
+        return this.token;
     }
 
     setUser(user: User): Observable<boolean> {
         localStorage.setItem(AuthenticationService.LS_AUTHENTICATED_USER, JSON.stringify(user));
         this.user = user;
-        this.setToken(user.jwtToken);
+        if(user.jwtToken){
+            this.setToken(user.jwtToken);
+        }
         return Observable.of(this.authenticationActive());
     }
 
@@ -84,8 +88,8 @@ export class AuthenticationService implements OnInit {
     }
 
     authenticationActive(): boolean {
-        if(this.user && this.user.jwtToken) {
-            return tokenNotExpired(null, this.user.jwtToken);
+        if(this.user && this.token) {
+            return tokenNotExpired(null, this.token);
         }
         return false;
     }
