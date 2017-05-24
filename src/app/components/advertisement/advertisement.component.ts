@@ -75,7 +75,7 @@ export class AdvertisementComponent implements OnInit {
     );
     this.advertisementService.createAdvertisementAndTags(newAd)
       .subscribe(ad => {
-          this.router.navigate( ['/account', 'advertisement'] );
+            this.router.navigate( ['/account', 'advertisements'] );
         },
         err => {
           this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
