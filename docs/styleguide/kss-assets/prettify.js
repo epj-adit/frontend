@@ -976,7 +976,7 @@ var REGEXP_PRECEDER_PATTERN = '(?:^^\\.?|[+-]|\\!|\\!=|\\!==|\\#|\\%|\\%=|&|&&|&
     function breakAfter(lineEndNode) {
       // If there's nothing to the right, then we can skip ending the line
       // here, and move root-wards since splitting just before an end-tag
-      // would require us to createOrUpdate a bunch of empty copies.
+      // would require us to create a bunch of empty copies.
       while (!lineEndNode.nextSibling) {
         lineEndNode = lineEndNode.parentNode;
         if (!lineEndNode) { return; }

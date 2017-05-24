@@ -1,0 +1,23 @@
+@import "../../variables";
+
+
+// An advertisement form
+//
+// .help-text      - Help Text
+// .isSubmitted    - Submitt Text
+//
+// Styleguide base
+
+.help-text {
+  @include helptext();
+  margin: 5px 0;
+  width: 100%;
+  font-size: smaller;
+}
+
+.isSubmitted{
+  @include oktext();
+  margin: 5px 0;
+  width: 100%;
+  font-size: smaller;
+}

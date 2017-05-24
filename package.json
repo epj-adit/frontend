@@ -1,6 +1,6 @@
 {
   "name": "adit",
-  "version": "3.0.1",
+  "version": "1.0.0",
   "description": "Inserate Platform für die HSR",
   "author": "adit-Team",
   "license": "",
@@ -87,7 +87,8 @@
     "webpack": "1.14.0",
     "webpack-dev-server": "1.16.2",
     "webpack-md5-hash": "0.0.5",
-    "zone.js": "0.7.6"
+    "zone.js": "0.7.6",
+    "angular2-jwt": "^0.2.2"
   },
   "dependencies": {}
 }

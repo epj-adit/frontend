@@ -1,0 +1,19 @@
+<ul class="categoryList">
+	<li class="category" *ngFor="let cat of categories" (click)="editCategory(cat)"
+		[ngClass]="{'currcat':currCat==cat}">
+		<span>{{cat.name}}</span>
+		<fa [name]="'trash'" class="deleteCat" (click)="deleteCat(cat)"></fa>
+	</li>
+</ul>
+<div class="footer">
+	<input [(ngModel)]="currCat.name" name="name" [disabled]="!currCatActive">
+	<button (click)="newCat()" class="newCat">
+		<fa [name]="'plus'"></fa>
+		{{ "MANAGECATEGORIES.newCat" | translate }}
+	</button>
+	<button (click)="onSubmit()" class="submit">
+		<fa [name]="'floppy-o'"></fa>
+		{{ "MANAGECATEGORIES.submit" | translate }}
+	</button>
+</div>
+<adit-status-message></adit-status-message>

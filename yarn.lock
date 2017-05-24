@@ -6,33 +6,65 @@
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.4.tgz#039520c6395476d7f35ca250973dfef946c62831"
 
+"@angular/common@^4.0.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-4.1.0.tgz#4370f569e51ddd99963b7f4aa58c1a5dcc5fea52"
+
 "@angular/compiler@2.4.4":
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.4.tgz#86b861685ebc4c7b19b1133bf8c5bf4d28c71475"
+
+"@angular/compiler@^4.0.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-4.1.0.tgz#be1ade5b6aec81f03c29d52bcb95925a28900dcb"
 
 "@angular/core@2.4.4":
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.4.tgz#eafef7bbdefea321fa5e79998bb2f6707c70729d"
 
+"@angular/core@^4.0.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-4.1.0.tgz#72ec173316879571880c9c483ed6dfc0caab94b0"
+
 "@angular/forms@2.4.4":
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.4.4.tgz#9679ca369d5bc2968ee1a67634ac221d75487364"
+
+"@angular/forms@^4.0.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-4.1.0.tgz#8eae2a45c4ba064b377f9280e59c012b5dac6b80"
 
 "@angular/http@2.4.4":
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.4.4.tgz#e41a9808eeec9cfdf3d5f9f92d0041b5c041fd60"
 
+"@angular/http@^4.0.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-4.1.0.tgz#7ba0c4d044dee964021b7cf19cb146a2c31577a5"
+
 "@angular/platform-browser-dynamic@2.4.4":
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.4.4.tgz#b5948cf2cac33c9634a400a7ece8fb5600f83107"
+
+"@angular/platform-browser-dynamic@^4.0.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.1.0.tgz#0250d82d4abd36be60bb31fc7448ac6e28036690"
 
 "@angular/platform-browser@2.4.4":
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.4.tgz#0bff3512d00b199211ff28df0aa5c6841718a19c"
 
+"@angular/platform-browser@^4.0.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-4.1.0.tgz#b981386be1a36f2af7f0679447fd97b7267b25de"
+
 "@angular/router@3.4.4":
   version "3.4.4"
   resolved "https://registry.yarnpkg.com/@angular/router/-/router-3.4.4.tgz#8564889d5bf322a1a4b679bd82c053df03eabb72"
+
+"@angular/router@^4.0.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-4.1.0.tgz#dd3563662f95ca3aa3dd9ff13c6ed4bea1d90b06"
 
 "@ngx-translate/core@^6.0.1":
   version "6.0.1"
@@ -142,9 +174,34 @@ angular-in-memory-web-api@0.2.4:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/angular-in-memory-web-api/-/angular-in-memory-web-api-0.2.4.tgz#313c92545c23dbd051178185602ee16313e94a58"
 
+angular-io-overlay@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/angular-io-overlay/-/angular-io-overlay-1.2.5.tgz#ecd9fb4200d69c3190ea65c10b5ec69d85642f8c"
+  dependencies:
+    "@angular/common" "^4.0.0"
+    "@angular/compiler" "^4.0.0"
+    "@angular/core" "^4.0.0"
+    "@angular/forms" "^4.0.0"
+    "@angular/http" "^4.0.0"
+    "@angular/platform-browser" "^4.0.0"
+    "@angular/platform-browser-dynamic" "^4.0.0"
+    "@angular/router" "^4.0.0"
+    core-js "^2.4.1"
+    moment "^2.14.1"
+    rxjs "^5.1.0"
+    zone.js "^0.8.4"
+
 angular2-fontawesome@^0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/angular2-fontawesome/-/angular2-fontawesome-0.8.0.tgz#e1c3452bb1e87278421521a9ddefa9ec11a9bdc9"
+
+angular2-jwt@^0.2.2:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/angular2-jwt/-/angular2-jwt-0.2.3.tgz#54efdda3ceedba85f6a37b165f22ac22b8adf021"
+
+angular2-modal@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/angular2-modal/-/angular2-modal-2.0.3.tgz#d5e19a799f517c51d729f4960057506176563e8f"
 
 angular2-template-loader@0.6.0:
   version "0.6.0"
@@ -771,7 +828,7 @@ copy-webpack-plugin@^4.0.1:
     minimatch "^3.0.0"
     node-dir "^0.1.10"
 
-core-js@2.4.1, core-js@^2.2.0:
+core-js@2.4.1, core-js@^2.2.0, core-js@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.4.1.tgz#4de911e667b0eae9124e34254b53aea6fc618d3e"
 
@@ -2785,6 +2842,10 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
   dependencies:
     minimist "0.0.8"
 
+moment@^2.14.1:
+  version "2.18.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
+
 ms@0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
@@ -3639,6 +3700,12 @@ rx-lite@^3.1.2:
 rxjs@5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.0.3.tgz#fc8bdf464ebf938812748e4196788f392fef9754"
+  dependencies:
+    symbol-observable "^1.0.1"
+
+rxjs@^5.1.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.3.0.tgz#d88ccbdd46af290cbdb97d5d8055e52453fabe2d"
   dependencies:
     symbol-observable "^1.0.1"
 
@@ -4661,3 +4728,7 @@ yeast@0.1.2:
 zone.js@0.7.6:
   version "0.7.6"
   resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.7.6.tgz#fbbc39d3e0261d0986f1ba06306eb3aeb0d22009"
+
+zone.js@^0.8.4:
+  version "0.8.9"
+  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.9.tgz#34aaa9a3ec6d0e4acebd1b761adafa590473638b"

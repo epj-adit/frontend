@@ -1,10 +1,9 @@
-
-import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from "@angular/router";
 
-import { Advertisement } from './data-classes/advertisement';
-import { AdvertisementService } from './_services/advertisement.service';
+import { Advertisement } from './data/advertisement';
+import { AuthenticationService } from './utils/authentication.service';
 
 /**
  * Styles required here are common for all components (SASS/SCSS versions of normalize.css and flexboxgrid),
@@ -15,25 +14,33 @@ import { AdvertisementService } from './_services/advertisement.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [],
-  //host: {'(input-blur)':'onInputBlur($event)'},
-
+  providers: []
 })
 export class AppComponent {
   advertisements: Advertisement[] = [];
-  @ViewChild('menuToggle') menuToggle;
 
-  constructor(private advertisementService: AdvertisementService, private translate: TranslateService, private router: Router) {
+  constructor(private translate: TranslateService,
+              private authenticationService: AuthenticationService, private router: Router) {
     translate.addLangs(['de', 'en']);
     translate.setDefaultLang('de');
     translate.use('de');
-    router.events.subscribe(()=>{
-      this.menuToggle.nativeElement.checked = false;
-    });
   }
 
   changeLang(lang: string) {
     this.translate.use(lang);
+  }
+
+  isAuthenticated(): boolean {
+    return this.authenticationService.authenticationActive();
+  }
+
+  hasPermission(permissionName: string): boolean{
+    return this.authenticationService.hasPermission(permissionName);
+  }
+
+  logout(): void {
+    this.authenticationService.logout();
+    this.router.navigate([ "login" ]);
   }
 
 }

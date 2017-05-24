@@ -1,0 +1,53 @@
+@import "../../variables";
+
+.categoryList {
+  li {
+    @include box();
+    padding: 0.5em;
+
+    &:hover {
+      background: #EEFBFF;
+      cursor: pointer;
+    }
+  }
+  li:hover, .currcat {
+  }
+  .currcat {
+    font-weight: bold;
+  }
+  .category {
+    @include flex(row, space-between)
+  }
+}
+
+.newCat, .submit{
+  @include buttonLink();
+}
+
+.footer {
+  margin-bottom: 1em;
+  @include flex(column);
+  button, input {
+    margin: 0.25em 0;
+  }
+}
+
+.sucess-text {
+  @include oktext();
+}
+
+input[disabled]:hover{
+  cursor: not-allowed;
+}
+
+@media (min-width: 700px) {
+  .footer {
+    @include flex(row, center, center);
+    button {
+      margin: 0 0.25em;
+    }
+    input {
+      margin-right: 0.25em;
+    }
+  }
+}

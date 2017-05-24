@@ -1,0 +1,18 @@
+<h2>{{"ADVERTISEMENT.title" | translate}}</h2>
+
+<ul class="advertisements">
+	<li *ngFor="let advertisement of advertisements">
+		<div (click)="gotoInfo(advertisement)" class="advertisement">
+			<h4>{{advertisement.title}}</h4>
+			<span>{{advertisement.description}}</span>
+			<ul class="tags">
+				<li *ngFor="let tag of advertisement.tags">
+					{{tag.name}}
+				</li>
+			</ul>
+		</div>
+	</li>
+</ul>
+<div *ngIf="advertisements.length == 0" class="noAds">
+	{{ "ADVERTISEMENT.noAds" | translate }}
+</div>
