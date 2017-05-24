@@ -94,7 +94,7 @@
     "deleteConstraintError": "Die Kategorie konnte nicht gelöscht werden, da es darin noch Inserate gibt."
   },
   "STATUS":{
-    "errorOccurred": "Beim Verarbeiten ist ein Fehler aufgetreten. Bitte versuche es später nochmals! (Details: {{details}})",
+    "errorOccurred": "Beim Verarbeiten ist ein Fehler aufgetreten. Bitte versuche es später nochmals!",
     "success": "Deine Abfrage war erfolgreich!",
     "missingPermissions": "Du hast keine Berechtigung für diese Aktion.",
     "successMessage": "Kategorien wurden gespeichert."

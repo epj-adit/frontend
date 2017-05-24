@@ -71,7 +71,11 @@ export class ManageCategoriesComponent implements OnInit {
                     this.categories = res;
                     this.currCat = new Category("");
                     this.currCatActive = false;
+                    this.statusMessageService.success("MANAGECATEGORIES.successMessage",null, 4000);
                 },
-                err => this.hasError = true);
+                err => {
+                    this.hasError = true;
+                    this.statusMessageService.error("STATUS.errorOccurred", null, 6000);
+                });
     }
 }

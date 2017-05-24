@@ -93,7 +93,7 @@
     "deleteConstraintError": "The category couldn't be deleted because there are still advertisements that belong to it."
   },
   "STATUS":{
-    "errorOccurred": "There was an error processing your request. Please try again later! (Details: {{details}})",
+    "errorOccurred": "There was an error processing your request. Please try again later!",
     "success": "Your request was successful!",
     "missingPermissions": "You don't have permission to execute this action.",
     "successMessage": "Categories have been saved."
