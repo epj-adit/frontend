@@ -14,6 +14,9 @@ import { LoginComponent } from "./components/login/login.component"
 
 import { AuthenticationGuardService } from "./utils/authentication-guard.service";
 import { NotAuthenticatedGuardService } from "./utils/not-authenticated-guard.service";
+import { AdminPanelComponent } from "./components/admin-panel/admin-panel.component";
+import { SupervisorGuardService } from "./utils/supervisor-guard.service"
+import { AdminGuardService } from "./utils/admin-guard.service";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'advertisements', pathMatch: 'full'},
@@ -28,13 +31,12 @@ const appRoutes: Routes = [
     {path: 'profile', component: UserProfileComponent, canActivate: [ AuthenticationGuardService ]},
     {path: 'advertisements', component: UserAdvertisementsComponent, canActivate: [ AuthenticationGuardService ]}
   ]},
+  {path: 'adminpanel', component: AdminPanelComponent, canActivate:[ AuthenticationGuardService, AdminGuardService ]},
   {path: 'supervisorpanel', component: SupervisorPanelComponent, children: [
-    {path: '', redirectTo: 'manageAdvertisements', pathMatch: 'full', canActivate: [ AuthenticationGuardService ]},
-    {path: 'manageAdvertisements', component: AdvertisementListComponent,
-      canActivate: [ AuthenticationGuardService ]},
-    {path: 'manageAdvertisements/:id', component: AdvertisementInfoComponent,
-      canActivate: [ AuthenticationGuardService ]},
-    {path: 'manageCategories', component: ManageCategoriesComponent, canActivate: [ AuthenticationGuardService ]}
+    {path: '', redirectTo: 'manageAdvertisements', pathMatch: 'full', canActivate: [ AuthenticationGuardService, SupervisorGuardService ]},
+    {path: 'manageAdvertisements', component: AdvertisementListComponent, canActivate: [ AuthenticationGuardService, SupervisorGuardService ]},
+    {path: 'manageAdvertisements/:id', component: AdvertisementInfoComponent, canActivate: [ AuthenticationGuardService, SupervisorGuardService ]},
+    {path: 'manageCategories', component: ManageCategoriesComponent, canActivate: [ AuthenticationGuardService, SupervisorGuardService ]}
   ]}
 ];
 

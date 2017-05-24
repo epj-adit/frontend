@@ -16,6 +16,8 @@ import { AdvertisementServiceStub } from "../_mocks/advertisement-service-stub";
 import { RouterStub } from "../_mocks/router-stub";
 import { UserAdvertisementsComponent } from "../../../src/app/components/user-advertisements/user-advertisements.component";
 import { OverlayStub } from "../_mocks/modal-stub";
+import { AuthenticationServiceStub } from "../_mocks/authentication-service-stub";
+import { AuthenticationService } from "../../../src/app/utils/authentication.service";
 
 
 let modal = {
@@ -33,6 +35,7 @@ describe('UserAdvertisementComponent', () => {
       declarations: [UserAdvertisementsComponent, AditCurrencyPipe],
       providers: [
         {provide: AdvertisementService, useClass: AdvertisementServiceStub},
+        {provide: AuthenticationService, useClass: AuthenticationServiceStub},
         {provide: Router, useClass: RouterStub},
         {provide: Overlay, useClass: OverlayStub},
         {provide: Modal, useValue: modal},

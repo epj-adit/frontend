@@ -11,8 +11,12 @@
     "logoutLink": "Logout",
     "loginLink": "Login",
     "registerLink": "Registration",
+    "adminpanelLink": "Adminpanel"
     "manageAdvertisementsLink": "Manage Advertisements",
-    "manageCategoriesLink": "Manage Categories"
+    "manageCategoriesLink": "Manage Categories",
+    "manageRolesLink": "Manage Roles",
+    "managePermissionsLink": "Manage Permissions"
+
   },
   "ADVERTISEMENT": {
     "title": "Advertisements",
@@ -68,7 +72,8 @@
     "submit": "Login",
     "registrationLink": "Registration",
     "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster",
-    "wrongCredentials": "Please check your email and password (invalid credentials)"
+    "wrongCredentials": "Please check your email and password (invalid credentials)",
+    "notActive": "Your user is not active!"
   },
   "PROFILE": {
     "title": "edit profile",
@@ -90,6 +95,16 @@
   "STATUS":{
     "errorOccurred": "There was an error processing your request. Please try again later! (Details: {{details}})",
     "success": "Your request was successful!",
-    "missingPermissions": "You don't have permission to execute this action."
+    "missingPermissions": "You don't have permission to execute this action.",
+    "successMessage": "Categories have been saved."
+  },
+  "USERROLES": {
+    "title": "User/Roles",
+    "user": "User",
+    "role": "Role",
+    "active": "Active",
+    "success": "User was successfully updated.",
+    "error": "There was an error updating the user."
   }
+
 }

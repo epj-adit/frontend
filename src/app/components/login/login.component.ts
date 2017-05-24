@@ -41,6 +41,8 @@ export class LoginComponent {
                 err => {
                     switch(err.status) {
                         case 401:
+                            this.statusMessageService.error("LOGIN.notActive");
+                            break;
                         case 404:
                             this.statusMessageService.error("LOGIN.wrongCredentials");
                             break;

@@ -52,7 +52,7 @@ main {
   .content {
     flex: 0 1 100%;
     padding: 3rem 0;
-    max-width: 1024px;
+    max-width: 1130px;
     margin: 0 1rem;
   }
 }
@@ -64,7 +64,7 @@ main {
 
 .inner {
   margin: 0 auto;
-  max-width: 1044px;
+  max-width: 1150px;
 }
 
 
@@ -110,7 +110,7 @@ header {
 
 #logo {
   height: 60px;
-  margin: 1rem 4rem 1.5rem 0;
+  margin: 1rem 3rem 1.5rem 0;
 }
 
 /* MOBILE NAVIGATION */
@@ -154,7 +154,7 @@ header {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1150px) {
 
   #mainnav {
     position: static;
@@ -197,7 +197,6 @@ label {
 select,
 input {
   width: 100%;
-  padding: 0.3rem;
   box-shadow: inset 0px 2px 3px 0px rgba(234,241,245,1);
   border: 1px solid #EAF1F5;
   border-radius: 0.3rem;
@@ -233,14 +232,20 @@ input {
   }
 }
 
+#email {
+  max-width: 20rem;
+  margin-right: 2rem;
+}
+
 .email {
-  @include flex(row, center, center);
+  @include flex(row, flex-start, center);
+  text-align: left;
   width: 100%;
 }
 
 @media (min-width: 1024px) {
   form > .form-group {
-    @include flex(row, center, center);
+    @include flex(row, flex-start, center);
   }
 }
 

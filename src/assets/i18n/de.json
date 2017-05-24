@@ -11,8 +11,11 @@
     "logoutLink": "Abmelden",
     "loginLink": "Anmelden",
     "registerLink": "Registrieren",
+    "adminpanelLink": "Adminpanel",
     "manageAdvertisementsLink": "Inserate verwalten",
-    "manageCategoriesLink": "Kategorien verwalten"
+    "manageCategoriesLink": "Kategorien verwalten",
+    "manageRolesLink": "Rollen verwalten",
+    "managePermissionsLink": "Rechte verwalten"
   },
   "ADVERTISEMENT": {
     "title": "Inserate",
@@ -68,7 +71,8 @@
     "submit": "Anmelden",
     "registrationLink": "Registrieren",
     "emailHelp": "Bitte verwende die Kurzform deiner HSR E-Mail Adresse. Bsp: amuster",
-    "wrongCredentials": "Bitte überprüfe deine E-Mail und Passwort (falsche Anmeldedaten)"
+    "wrongCredentials": "Bitte überprüfe deine E-Mail und Passwort (falsche Anmeldedaten)",
+    "notActive": "Dein User ist nicht aktiv!"
   },
   "PROFILE": {
     "title": "Profil bearbeiten",
@@ -92,6 +96,15 @@
   "STATUS":{
     "errorOccurred": "Beim Verarbeiten ist ein Fehler aufgetreten. Bitte versuche es später nochmals! (Details: {{details}})",
     "success": "Deine Abfrage war erfolgreich!",
-    "missingPermissions": "Du hast keine Berechtigung für diese Aktion."
+    "missingPermissions": "Du hast keine Berechtigung für diese Aktion.",
+    "successMessage": "Kategorien wurden gespeichert."
+  },
+  "USERROLES": {
+    "title": "Benutzer/Rollen",
+    "user": "Benutzer",
+    "role": "Rolle",
+    "active": "Aktiv",
+    "success": "Der Benutzer wurde erfolgreich aktualisiert.",
+    "error": "Beim Aktualisieren des Benutzers ist ein Fehler aufgetreten."
   }
 }

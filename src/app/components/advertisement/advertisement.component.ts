@@ -12,15 +12,16 @@ import { Category } from "../../data/category";
 import { StatusMessageService } from "../../utils/status-message.service";
 
 @Component({
-  selector: 'adit-advertisement',
-  templateUrl: './advertisement.component.html',
-  styleUrls: ['./advertisement.component.scss']
+    selector: 'adit-advertisement',
+    templateUrl: './advertisement.component.html',
+    styleUrls: ['./advertisement.component.scss']
 })
 export class AdvertisementComponent implements OnInit {
   form: FormGroup;
   categories: Category[];
   tags: Tag[] = [];
   pricePattern = '[0-9]+(\\.[0-9][05])?';
+  isSubmitted = false;
   taghelpDisplay = 'none';
 
   constructor(private advertisementService: AdvertisementService,
@@ -39,31 +40,32 @@ export class AdvertisementComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.categoryService.getCategories().subscribe(res => this.categories = res);
-    this.route.params
-      .switchMap((params: Params) => {
-        if (+params['id']) {
-          return this.advertisementService.getAdvertisement(+params['id']);
-        } else {
-          return Observable.of(new Advertisement(null, "", 0, "", null, this.tags));
-        }
-      })
-      .subscribe(advertisement => {
-        this.tags = advertisement.tags;
-        this.form = this.formBuilder.group({
-          id: advertisement.id,
-          title: advertisement.title,
-          category: advertisement.category ? advertisement.category.name : null,
-          description: advertisement.description,
-          priceValue: parseFloat(advertisement.price / 100 + "").toFixed(2),
-          tagValue: ['', ValidatorService.validateTags.bind(null, this.tags)],
-        });
-      });
-  }
+
+    ngOnInit(): void {
+        this.categoryService.getCategories().subscribe(res => this.categories = res);
+        this.route.params
+            .switchMap((params: Params) => {
+                if (+params['id']) {
+                    return this.advertisementService.getAdvertisement(+params['id']);
+                } else {
+                    return Observable.of(new Advertisement(null, "", 0, "", null, this.tags));
+                }
+            })
+            .subscribe(advertisement => {
+                this.tags = advertisement.tags;
+                this.form = this.formBuilder.group({
+                    id: advertisement.id,
+                    title: advertisement.title,
+                    category: advertisement.category ? advertisement.category.name : null,
+                    description: advertisement.description,
+                    priceValue: parseFloat(advertisement.price / 100 + "").toFixed(2),
+                    tagValue: ['', ValidatorService.validateTags.bind(null, this.tags)],
+                });
+            });
+    }
 
 
-  onSubmit(value) {
+        onSubmit(value) {
     let cat = this.categories.find(cat => cat.name == value.category);
     let newAd = new Advertisement(
       value.id,
@@ -83,25 +85,25 @@ export class AdvertisementComponent implements OnInit {
         });
   }
 
-  addTag(): void {
-    let pattern = new RegExp('[a-zA-Z\\-_\\d]+;');
-    let value = this.form.controls['tagValue'].value;
-    if (pattern.test(value)) {
-      this.tags.push(new Tag(value.substring(0, value.length - 1)));
-      this.form.controls['tagValue'].setValue('');
+    addTag(): void {
+        let pattern = new RegExp('[a-zA-Z\\-_\\d]+;');
+        let value = this.form.controls['tagValue'].value;
+        if (pattern.test(value)) {
+            this.tags.push(new Tag(value.substring(0, value.length - 1)));
+            this.form.controls['tagValue'].setValue('');
+        }
     }
-  }
 
-  removeTag(tag: Tag): void {
-    let index = this.tags.indexOf(tag);
-    let oldtag = this.tags[index];
-    if (index > -1) {
-      this.tags.splice(index, 1);
+    removeTag(tag: Tag): void {
+        let index = this.tags.indexOf(tag);
+        let oldtag = this.tags[index];
+        if (index > -1) {
+            this.tags.splice(index, 1);
+        }
+        this.form.controls['tagValue'].setValue("");
     }
-    this.form.controls.tagValue.setValue("");
-  }
 
-  changeDisplay(): void {
-    this.taghelpDisplay = this.taghelpDisplay == 'inline-block' ? 'none' : 'inline-block';
-  }
+    changeDisplay(): void {
+        this.taghelpDisplay = this.taghelpDisplay == 'inline-block' ? 'none' : 'inline-block';
+    }
 }

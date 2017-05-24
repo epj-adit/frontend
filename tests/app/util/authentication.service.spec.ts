@@ -78,14 +78,8 @@ describe('AuthenticationService', () => {
             expect(localStorage.getItem(this.service.LS_AUTHENTICATED_USER)).toBeNull();
         }));
 
-        it('should check permissions', fakeAsync(() => {
-
-            let hasPersmission: boolean;
-            this.service.hasPermission('basic_permission').subscribe(res => hasPersmission = res);
-            tick();
-            expect(hasPersmission).toBe(true);
-        }));
+        it('should check permissions', () => {
+            expect(this.service.hasPermission('basic_permission')).toBe(true);
+        });
     });
-
-
 });

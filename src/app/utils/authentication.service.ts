@@ -92,12 +92,12 @@ export class AuthenticationService implements OnInit {
         return false;
     }
 
-    hasPermission(permissionName: string): Observable<boolean> {
+    hasPermission(permissionName: string): boolean {
 
         if(!this.authenticationActive()) {
-            return Observable.of(false);
+            return false;
         }
 
-        return Observable.of(this.decodedToken.permissions.includes(permissionName));
+        return this.decodedToken.permissions.includes(permissionName);
     }
 }

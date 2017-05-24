@@ -18,9 +18,10 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
-              private authenticationService: AuthenticationService,
-              private statusMessageService: StatusMessageService) {
+              private statusMessageService: StatusMessageService,
+              private authenticationService: AuthenticationService) { }
 
+  ngOnInit(): void {
     this.authenticationService.getUser().subscribe(user => {
       this.user = user;
       this.form = this.formBuilder.group({
@@ -29,10 +30,6 @@ export class UserProfileComponent implements OnInit {
         'password': ['', [Validators.required, Validators.minLength(6)]]
       });
     });
-  }
-
-  ngOnInit(): void {
-    this.authenticationService.getUser().subscribe(user => this.user)
   }
 
   onSubmit(value) {
