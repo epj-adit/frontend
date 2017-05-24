@@ -12,11 +12,9 @@ export class RoleService{
 
     public getRoles(): Observable<Role[]>{
         let roles = this.apiCall.get("roles/").map(res=>{
-            console.log("RES: ", res as Role[]);
             return res as Role[];
         })
             .catch(this.handleError);
-        console.log(roles);
         return roles;
     }
 

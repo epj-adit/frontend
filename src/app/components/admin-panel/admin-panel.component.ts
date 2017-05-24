@@ -43,12 +43,9 @@ export class AdminPanelComponent implements OnInit {
         this.currentUser = user;
         this.currentUser.isActive = !this.currentUser.isActive;
         this.editedUsers[this.currentUser.id] = true;
-        console.log(`${this.currentUser.username} changed to ${this.currentUser.isActive}`);
     }
 
     onSubmit():void{
-        console.log("Sending put request with user ", this.currentUser.username);
-        console.log(`${this.currentUser.role.name}`);
         this.userService.update(this.currentUser).subscribe(res=>
             {
                 console.log("Success");
