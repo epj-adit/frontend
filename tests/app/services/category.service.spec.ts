@@ -58,6 +58,7 @@ describe('CategoryService', () => {
         spyOn(apiCallService, 'post').and.callFake(() => {
             return Observable.throw('error');
         });
+        spyOn(console, 'error').and.returnValue(true);
         service.create(category).subscribe(
             res => {
                 receivedCategory = res;
@@ -69,6 +70,7 @@ describe('CategoryService', () => {
         tick();
         expect(receivedCategory).toBeUndefined();
         expect(error).toEqual(error);
+        expect(console.error).toHaveBeenCalled();
     }));
 
     it('should get Categories from API Call Service', () => {

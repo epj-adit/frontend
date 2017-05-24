@@ -53,6 +53,7 @@ describe('UserService', () => {
         spyOn(apiCallService, 'get').and.callFake(() => {
             return Observable.throw('error');
         });
+        spyOn(console, 'error').and.returnValue(true);
         service.getUsers().subscribe(
             res => {
                 reveicedUsers = res;
@@ -64,6 +65,7 @@ describe('UserService', () => {
         tick();
         expect(reveicedUsers).toEqual([]);
         expect(error).toEqual(error);
+        expect(console.error).toHaveBeenCalled();
     }));
 
     it('should get user with id via ApiCallService', () => {

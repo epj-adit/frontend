@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { AuthenticationService } from "../../utils/authentication.service";
 import { ValidatorService } from '../../utils/validator.service';
+import { StatusMessageService } from '../../utils/status-message.service';
 import { Credential } from "../../data/credential";
 
 
@@ -18,7 +18,8 @@ export class LoginComponent {
 
     constructor(private router: Router,
                 private formBuilder: FormBuilder,
-                private authenticationService: AuthenticationService) {
+                private authenticationService: AuthenticationService,
+                private statusMessageService: StatusMessageService){
         this.form = this.formBuilder.group({
             'email': ['', [Validators.required, ValidatorService.validateHsrUsername]],
             'plaintextPassword': ['', [Validators.required, Validators.minLength(6)]]
@@ -27,19 +28,29 @@ export class LoginComponent {
 
     onSubmit(value) {
         value.email += "@hsr.ch";
+
         this.authenticationService.login(value as Credential)
             .subscribe(
                 authenticationSuccess => {
                     if(authenticationSuccess) {
                         this.router.navigate(['/']);
                     } else {
-                        // TODO: Display error message
-                        console.error("Invalid user login");
+                        this.statusMessageService.error("LOGIN.wrongCredentials");
                     }
                 },
                 err => {
-                    // TODO: error handling.
-                    console.error("Connection error")
+                    switch(err.status) {
+                        case 401:
+                            this.statusMessageService.error("LOGIN.notActive");
+                            break;
+                        case 404:
+                            this.statusMessageService.error("LOGIN.wrongCredentials");
+                            break;
+                        default:
+                            this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
+                            break;
+                    }
+                    console.error(err);
                 }
             );
     }

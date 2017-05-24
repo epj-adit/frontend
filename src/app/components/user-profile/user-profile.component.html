@@ -21,6 +21,5 @@
 	</div>
 
 	<button type="submit" class="submit" [disabled]="!form.valid">{{ "PROFILE.submit" | translate }}</button>
-	<span *ngIf="isSubmitted" class="isSubmitted">{{ "PROFILE.isSubmitted" | translate }}</span>
-	<span *ngIf="hasError" class="hasError">{{ "PROFILE.hasError" | translate }}</span>
 </form>
+<adit-status-message></adit-status-message>

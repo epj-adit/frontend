@@ -15,6 +15,9 @@ import { Tag } from "../../../src/app/data/tag";
 import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
 import { CategoryServiceStub } from "../_mocks/category-service-stub";
 import { AdvertisementServiceStub } from "../_mocks/advertisement-service-stub";
+import { StatusMessageComponent } from "../../../src/app/widgets/status-message/status-message.component";
+import { StatusMessageService } from "../../../src/app/utils/status-message.service";
+import { StatusMessageServiceStub } from "../_mocks/status-message-service-stub";
 
 
 describe('AdvertisementComponent', () => {
@@ -28,10 +31,11 @@ describe('AdvertisementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AdvertisementComponent],
+      declarations: [AdvertisementComponent, StatusMessageComponent],
       providers: [
-        {provide: AdvertisementService, useClass: AdvertisementServiceStub},
-        {provide: CategoryService, useClass: CategoryServiceStub}
+        {provide: AdvertisementService, useValue: AdvertisementServiceStub},
+        {provide: CategoryService, useValue: CategoryServiceStub},
+        {provide: StatusMessageService, useValue: StatusMessageServiceStub},
         ],
       imports: [
         HttpModule,

@@ -16,6 +16,9 @@ import { AuthenticationServiceStub } from "../_mocks/authentication-service-stub
 import { UserProfileComponent } from "../../../src/app/components/user-profile/user-profile.component";
 import { getUsersMocks } from "../data/mock-users";
 import { User } from "../../../src/app/data/user";
+import { StatusMessageComponent } from "../../../src/app/widgets/status-message/status-message.component";
+import { StatusMessageService } from "../../../src/app/utils/status-message.service";
+import { StatusMessageServiceStub } from "../_mocks/status-message-service-stub";
 
 
 describe('UserProfileComponent', () => {
@@ -26,14 +29,16 @@ describe('UserProfileComponent', () => {
   let userService : UserServiceStub;
   let user: User;
   let authenticationService: AuthenticationService;
+  let statusMessageService: StatusMessageService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UserProfileComponent],
+      declarations: [UserProfileComponent, StatusMessageComponent],
       providers: [
         {provide: UserService, useClass: UserServiceStub},
         {provide: AuthenticationService, useClass: AuthenticationServiceStub},
-        {provide: Router, useClass: RouterStub}
+        {provide: Router, useClass: RouterStub},
+        {provide: StatusMessageService, useClass: StatusMessageServiceStub},
       ],
       imports: [
         HttpModule,
@@ -47,8 +52,9 @@ describe('UserProfileComponent', () => {
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(UserProfileComponent);
       comp = fixture.componentInstance;
-      userService = TestBed.get(UserService);
-      authenticationService = TestBed.get(AuthenticationService);
+      userService = fixture.debugElement.injector.get(UserService);
+      authenticationService = fixture.debugElement.injector.get(AuthenticationService);
+      statusMessageService = fixture.debugElement.injector.get(StatusMessageService);
       user = getUsersMocks()[0];
     });
   }));
@@ -96,7 +102,6 @@ describe('UserProfileComponent', () => {
     comp.onSubmit(comp.form.value);
     expect(userService.update).toHaveBeenCalledWith(comp.user);
     expect(authenticationService.setUser).toHaveBeenCalledWith(comp.user);
-    expect(comp.isSubmitted).toBe(true);
   });
 
   it('should display the email-help-text, when clicking on help', () => {
