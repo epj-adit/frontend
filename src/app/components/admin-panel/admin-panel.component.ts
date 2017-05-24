@@ -50,8 +50,7 @@ export class AdminPanelComponent implements OnInit {
     onSubmit():void{
         this.userService.update(this.currentUser).subscribe(res=>
             {
-                this.statusMessageService.success("USERRROLES.success",1,50000);
-                console.log("Success");
+                this.statusMessageService.success("USERROLES.success",null, 4000);
             },err=>{
                 this.statusMessageService.error("USERROLES.error", null, 5000);
                 console.log("ERROR:",err);
