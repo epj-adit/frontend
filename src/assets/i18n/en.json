@@ -84,7 +84,8 @@
     "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster",
     "isPrivateCheckbox": "Private Profile",
     "wantsNotificationsCheckbox": "Notifications",
-    "updateSuccess": "Your profile has been updated."
+    "updateSuccess": "Your profile has been updated.",
+    "passwordPlaceholder" : "choose new password"
   },
   "MANAGECATEGORIES": {
     "newCat": "Create New Category",
