@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from "@angular/router";
+import { Router, Routes } from "@angular/router";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from "@angular/http";
 import { Angular2FontawesomeModule } from "angular2-fontawesome";
@@ -18,6 +18,7 @@ import { UserAdvertisementsComponent } from "../../../src/app/components/user-ad
 import { OverlayStub } from "../_mocks/modal-stub";
 import { AuthenticationServiceStub } from "../_mocks/authentication-service-stub";
 import { AuthenticationService } from "../../../src/app/utils/authentication.service";
+import { RouterTestingModule } from "@angular/router/testing";
 
 
 let modal = {
@@ -29,6 +30,10 @@ describe('UserAdvertisementComponent', () => {
   let comp: UserAdvertisementsComponent;
   let fixture: ComponentFixture<UserAdvertisementsComponent>;
   let advertisementService;
+
+  const appRoutes: Routes = [
+    {path: '', redirectTo: 'advertisements', pathMatch: 'full'}
+  ];
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -48,7 +53,8 @@ describe('UserAdvertisementComponent', () => {
         Angular2FontawesomeModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: FakeTranslationLoader}
-        })
+        }),
+        RouterTestingModule.withRoutes(appRoutes)
       ]
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(UserAdvertisementsComponent);
