@@ -32,7 +32,6 @@ export class UserProfileComponent implements OnInit {
 
   onSubmit(value) {
     this.user.username = value.username;
-    this.user.email = value.email + "@hsr.ch";
     this.user.passwordPlaintext = value.password;
 
     this.userService.update(this.user)
