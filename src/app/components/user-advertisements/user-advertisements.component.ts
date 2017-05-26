@@ -19,20 +19,18 @@ import { AdvertisementState } from "../../data/advertisement-state";
 export class UserAdvertisementsComponent implements OnInit {
     advertisements: Advertisement[];
     advertisementOrder = [AdvertisementState.active, AdvertisementState.to_review, AdvertisementState.declined, AdvertisementState.expired, AdvertisementState.closed];
-    userId: number;
 
     constructor(private router: Router,
                 private advertisementService: AdvertisementService,
                 overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,
                 private translate: TranslateService,
                 private authenticationService: AuthenticationService) {
-        authenticationService.getUser().subscribe(user => this.userId = user.id);
         overlay.defaultViewContainer = vcRef;
     }
 
-    getAdvertisements(): void {
+    getAdvertisements(userId: number): void {
         let outerScope = this;
-        this.advertisementService.getAdvertisementsQuery('/?userId=' + this.userId)
+        this.advertisementService.getAdvertisementsQuery('/?userId=' + userId)
             .subscribe(advertisements => this.advertisements = advertisements
                 .sort((a1: Advertisement, a2: Advertisement) => {
                 // parseInt(toString) nötig, da zu Laufzeit das advertisementState keine Zahl mehr ist sondern ein String -> JSON
@@ -70,7 +68,7 @@ export class UserAdvertisementsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAdvertisements();
+    this.authenticationService.getUser().subscribe(user => this.getAdvertisements(user.id));
   }
 
 }
