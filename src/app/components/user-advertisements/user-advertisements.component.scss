@@ -25,6 +25,17 @@
   }
 }
 
+.noAds {
+  margin-top: 2em;
+  margin-left:1em;
+  font-style: italic;
+  color: $maincolor
+}
+
+.redLink {
+  color: $highlightcolor;
+}
+
 //------ Legende -------------------
 $activecolor:#009933;
 $closedcolor:#999999;

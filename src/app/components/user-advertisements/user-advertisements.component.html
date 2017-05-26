@@ -1,25 +1,3 @@
-<!--<nav id="subnav">
-	<ul>
-		<li>
-			<a [routerLink]="['/user/profile']" routerLinkActive="active">
-				<fa [name]="'user'"></fa>
-				{{ "APP.userProfileLink" | translate }}
-			</a>
-		</li>
-		<li>
-			<a [routerLink]="['/user/advertisements']" routerLinkActive="active">
-				<fa [name]="'file'"></fa>
-				{{ "APP.userAdvertisementLink" | translate }}
-			</a>
-		</li>
-		<li>
-			<a [routerLink]="['/user/privatemessaging']" routerLinkActive="false">
-				<fa [name]="'comments'"></fa>
-				{{ "APP.privateMessagingLink" | translate }}
-			</a>
-		</li>
-	</ul>
-</nav>-->
 <h2>{{ "USERADVERTISEMENT.title" | translate }}</h2>
 <fieldset class="legende">
 	<legend>{{ "USERADVERTISEMENT.legend" | translate }}</legend>
@@ -53,3 +31,6 @@
 		</div>
 	</li>
 </ul>
+<div *ngIf="advertisements?.length == 0" class="noAds">
+	{{ "USERADVERTISEMENT.noAds" | translate }}<a class="redLink" [routerLink]="['/advertisement']" routerLinkActive="active">{{ "USERADVERTISEMENT.createAdLink" | translate }}</a>
+</div>
