@@ -8,7 +8,7 @@
 	<div class="form-group">
 		<label for="password">{{ "PROFILE.passwordField" | translate }}</label>
 		<input type="password" class="form-control" id="password"
-			   formControlName="password">
+			   formControlName="password" placeholder="{{ 'PROFILE.passwordPlaceholder' | translate }}">
 	</div>
 
 	<button type="submit" class="submit" [disabled]="!form.valid">{{ "PROFILE.submit" | translate }}</button>

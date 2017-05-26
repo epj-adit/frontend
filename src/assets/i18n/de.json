@@ -85,7 +85,8 @@
     "isSubmitted": "Benutzerprofil wurde aktualisiert.",
     "isPrivateCheckbox": "privates Profil",
     "wantsNotificationsCheckbox": "Benachrichtigungen",
-    "updateSuccess": "Dein Profil wurde erfolgreich aktualisiert."
+    "updateSuccess": "Dein Profil wurde erfolgreich aktualisiert.",
+    "passwordPlaceholder" : "neues Passwort wählen"
   },
   "MANAGECATEGORIES": {
     "newCat": "Neue Kategorie erstellen",
