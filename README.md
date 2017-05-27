@@ -1,4 +1,4 @@
-# Engineering Projekt Frontend Application (Client)
+# Engineering Project Frontend Application (Client)
 
 The frontend (client) application of the engineering project adit, 2017. See https://adit.github.io/ for more information.
 
