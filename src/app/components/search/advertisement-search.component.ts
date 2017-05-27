@@ -48,13 +48,13 @@ export class AdvertisementSearchComponent implements OnInit {
             this.searchBox.nativeElement.value = '';
             if (this.searchResults) {
                 for (let el of this.searchResults.nativeElement.children) {
+
                     el.style.display = 'none';
                 }
             }
         });
         this.searchProposals = this.searchTerms
             .debounceTime(300)       // wait 300ms after each keystroke before considering the term
-            .distinctUntilChanged()   // ignore if next search term is same as previous
             .switchMap(term =>
                 term ? this.advertisementSearchService.search(term) : Observable.of<SearchProposal[]>([]))
             .catch(error => {
@@ -70,16 +70,13 @@ export class AdvertisementSearchComponent implements OnInit {
         proposals = proposals.concat(this.addToProposals(advertisements, ProposalType.Advert));
         let tags: Tag[] = results[1];
         tags = this.unique(tags);
-
         proposals = proposals.concat(this.addToProposals(tags, ProposalType.Tag));
         let categories: Category[] = results[2];
         proposals = proposals.concat(this.addToProposals(categories, ProposalType.Category));
-
         proposals = proposals.filter(p => p != undefined);
         proposals.sort((p1, p2) => p2.type - p1.type);
 
         this.showNoResultsBox = proposals.length == 0;
-
         this.searchProposals = Observable.of<SearchProposal[]>(proposals);
       }
       private unique(value:Tag[]):Tag[]{
@@ -90,7 +87,6 @@ export class AdvertisementSearchComponent implements OnInit {
               flags[value[i].name] = true;
               distinct.push(value[i]);
           }
-          console.log(flags);
           return distinct;
       }
 
