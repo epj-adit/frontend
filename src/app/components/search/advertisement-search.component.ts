@@ -48,7 +48,6 @@ export class AdvertisementSearchComponent implements OnInit {
             this.searchBox.nativeElement.value = '';
             if (this.searchResults) {
                 for (let el of this.searchResults.nativeElement.children) {
-
                     el.style.display = 'none';
                 }
             }
