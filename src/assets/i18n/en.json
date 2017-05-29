@@ -53,7 +53,9 @@
     "active": "Active",
     "expired": "Expired",
     "declined": "Declined",
-    "deleted": "Deleted"
+    "deleted": "Deleted",
+    "noAds": "You don't yet have any advertisements. Create your own at ",
+    "createAdLink": "Create Advertisement"
   },
   "REGISTER":{
     "title": "Register User",

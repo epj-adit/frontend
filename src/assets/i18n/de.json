@@ -52,7 +52,9 @@
     "active": "Aktiv",
     "expired": "Abgelaufen",
     "declined": "Abgelehnt",
-    "deleted": "Gelöscht"
+    "deleted": "Gelöscht",
+    "noAds": "Du hast noch keine eigenen Inserate. Erstelle ein Inserat unter ",
+    "createAdLink": "Inserat erstellen"
   },
   "REGISTER":{
     "title": "Benutzer registrieren",
