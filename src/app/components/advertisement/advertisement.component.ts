@@ -17,28 +17,28 @@ import { StatusMessageService } from "../../utils/status-message.service";
     styleUrls: ['./advertisement.component.scss']
 })
 export class AdvertisementComponent implements OnInit {
-  form: FormGroup;
-  categories: Category[];
-  tags: Tag[] = [];
-  pricePattern = '[0-9]+(\\.[0-9][05])?';
-  isSubmitted = false;
-  taghelpDisplay = 'none';
+    form: FormGroup;
+    categories: Category[];
+    tags: Tag[] = [];
+    pricePattern = '[0-9]+(\\.[0-9][05])?';
+    isSubmitted = false;
+    taghelpDisplay = 'none';
 
-  constructor(private advertisementService: AdvertisementService,
-              private categoryService: CategoryService,
-              private route: ActivatedRoute,
-              private formBuilder: FormBuilder,
-              private router: Router,
-              private statusMessageService: StatusMessageService) {
-    this.form = this.formBuilder.group({
-      id: null,
-      title: '',
-      category: '',
-      description: '',
-      priceValue: "0.00",
-      tagValue: ['', ValidatorService.validateTags.bind(null, this.tags)],
-    });
-  }
+    constructor(private advertisementService: AdvertisementService,
+                private categoryService: CategoryService,
+                private route: ActivatedRoute,
+                private formBuilder: FormBuilder,
+                private router: Router,
+                private statusMessageService: StatusMessageService) {
+        this.form = this.formBuilder.group({
+            id: null,
+            title: '',
+            category: '',
+            description: '',
+            priceValue: "0.00",
+            tagValue: ['', ValidatorService.validateTags.bind(null, this.tags)],
+        });
+    }
 
 
     ngOnInit(): void {
@@ -65,25 +65,25 @@ export class AdvertisementComponent implements OnInit {
     }
 
 
-        onSubmit(value) {
-    let cat = this.categories.find(cat => cat.name == value.category);
-    let newAd = new Advertisement(
-      value.id,
-      value.title,
-      Math.round(parseFloat(value.priceValue) * 100),
-      value.description,
-      cat,
-      this.tags
-    );
-    this.advertisementService.createAdvertisementAndTags(newAd)
-      .subscribe(ad => {
-            this.router.navigate( ['/account', 'advertisements'] );
-        },
-        err => {
-          this.statusMessageService.error("STATUS.errorOccurred", { details: err.detailMessage });
-          console.error(err);
-        });
-  }
+    onSubmit(value) {
+        let cat = this.categories.find(cat => cat.name == value.category);
+        let newAd = new Advertisement(
+            value.id,
+            value.title,
+            Math.round(parseFloat(value.priceValue) * 100),
+            value.description,
+            cat,
+            this.tags
+        );
+        this.advertisementService.createAdvertisementAndTags(newAd)
+            .subscribe(ad => {
+                    this.router.navigate(['/account', 'advertisements']);
+                },
+                err => {
+                    this.statusMessageService.error("STATUS.errorOccurred", {details: err.detailMessage});
+                    console.error(err);
+                });
+    }
 
     addTag(): void {
         let pattern = new RegExp('[a-zA-Z\\-_\\d]+;');

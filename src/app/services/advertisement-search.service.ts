@@ -6,7 +6,6 @@ import { ApiCallService } from '../utils/api-call.service';
 import { Advertisement } from '../data/advertisement';
 import { Category } from "../data/category";
 import { Tag } from "../data/tag";
-import { SearchProposal } from "../data/search-proposal";
 
 @Injectable()
 export class AdvertisementSearchService {
