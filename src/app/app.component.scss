@@ -1,6 +1,8 @@
 @import "~normalize-scss/sass/normalize";
 @import "_variables.scss";
 
+
+/* GENERAL */
 * {
   margin: 0;
   padding: 0;
@@ -10,10 +12,49 @@
 
 html, body {
   height: 100vh;
+  background: #EAF1F5;
+}
+
+h1 {
+  color: $highlightcolor;
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 3rem 0 1.5rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
 }
 
 a {
+  text-decoration: none;
+  outline: none;
+  color: white;
   cursor: pointer;
+}
+
+ul > li {
+  list-style: none;
+}
+
+/* LAYOUT */
+main {
+  @include flex(row, space-around);
+  flex: 1;
+  padding-top: 8rem;
+  .content {
+    flex: 0 1 100%;
+    padding: 3rem 0;
+    max-width: 1130px;
+    margin: 0 1rem;
+  }
 }
 
 .container {
@@ -21,145 +62,206 @@ a {
   min-height: 100%;
 }
 
+.inner {
+  margin: 0 auto;
+  max-width: 1150px;
+}
+
+
+/* HEADER AND NAVIGATION */
 header {
-  @include flex(row, space-between, center);
-  flex: 0 0 10%;
-  @include gradient($maincolor, rgb(193, 193, 193), -45deg);
-  height: 50px;
-  padding: 5px;
+  width: 100%;
+  background: #364352;
   position: fixed;
   z-index: 2;
-  width: 100%;
-  @include shadow();
-  nav {
-    height: auto;
-    margin-right: 1em;
+  text-align: center;
+  > .inner {
+    @include flex(row, start, center);
+    flex: 0 0 10%;
+    padding: 0 1rem;
   }
+
 }
 
-#mainnav {
-  display: none;
-}
 
-input[type=checkbox] {
-  display: none;
-}
-
-input[type=checkbox] + label {
-  background: linear-gradient(to bottom, $menuiconcolor 0%, $menuiconcolor 20%, transparent 20%, transparent 40%, $menuiconcolor 40%, $menuiconcolor 60%, transparent 60%, transparent 80%, $menuiconcolor 80%, $menuiconcolor 100%); //Gradient Hamburger
-  cursor: pointer;
-  height: 16px;
-  width: 16px;
-  display: inline-block;
-}
-
-input[type=checkbox]:checked ~ #mainnav {
-  display: inline-block;
-  position: absolute;
-  top: 50px;
-  left: 0;
-  width: 100%;
-  @include gradient($maincolor, rgb(193, 193, 193), -45deg);
-}
-
-#mainnav > ul > li {
-  color: white;
-  display: list-item;
-  padding: 1em;
-  border-bottom: 1px solid black;
-  border-top: 1px solid black;
-}
-
-nav > ul > li {
-  list-style-type: none;
-  display: inline;
-  padding: 0 0.5em;
-  a {
-    color: white;
-    text-decoration: none;
-    &:visited {
-      color: black;
-    }
+#subnav {
+  @include box();
+  margin-bottom: 1em;
+  padding: 0;
+  ul > li {
+    display: inline-block;
+    line-height: 2rem;
+    padding: 1rem;
+    border-bottom: 0.3rem solid $highlightcolor;
+  }
+  ul > li > a {
+    margin-right: 0.5rem;
+    color: black;
     &:hover {
       color: $highlightcolor;
     }
-  }
-}
-
-main {
-  @include flex(row, space-around);
-  flex: 1;
-  padding-top: 50px;
-  .content {
-    flex: 0 1 100%;
-    background-color: white;
-    padding: 1rem;
-  }
-}
-
-h1 {
-  color: $highlightcolor;
-}
-
-footer {
-  flex: 0 1 5%;
-  height: 5em;
-  margin: 0;
-  padding: 1em;
-  background-color: $footercolor;
-  color: white;
-  font-size: small;
-  border-top: 1px solid $maincolor;
-}
-
-@media (min-width: 700px) {
-  header {
-    @include flex(row, space-between, center);
-    flex: 0 0 10%;
-    @include gradient($maincolor, rgb(193, 193, 193), -45deg);
-    height: 50px;
-    padding: 5px;
-    position: fixed;
-    z-index: 2;
-    width: 100%;
-    @include shadow();
-    nav {
-      height: auto;
-      margin-right: 1em;
+    &.is-active,
+    &.active {
+      font-weight: bold;
+      color: $highlightcolor
     }
   }
-  #mainnav {
-    display: inline-block;
-  }
+}
 
-  #label-toggle {
-    display: none;
-  }
+#logo {
+  height: 60px;
+  margin: 1rem 3rem 1.5rem 0;
+}
 
-  nav > ul > li, #mainnav > ul > li {
-    list-style-type: none;
-    display: inline;
-    padding: 0 0.5em;
-    border: none;
+/* MOBILE NAVIGATION */
+#mobile-menu {
+  cursor: pointer;
+  display: block;
+  font-size: 3rem;
+  color: $highlightcolor;
+  margin-left: auto;
+}
+
+
+#mainnav {
+  display: none;
+  position: absolute;
+  top: 8.5rem;
+  left: 0;
+  right: 0;
+  background: #323E4C;
+  line-height: 5.5rem;
+
+  ul > li {
+    padding: 1.5rem;
+    border-left: 0.3rem solid $highlightcolor;
+    text-align: left;
+    margin: 0.5rem;
+    background: #303C4A;
+
     a {
-      color: white;
       text-decoration: none;
-      &:visited {
-        color: black;
+      display: block;
+
+      &:visited,
+      &:focus {
+        color: white;
       }
       &:hover {
         color: $highlightcolor;
       }
     }
   }
-  main {
-    @include flex(row, space-around);
-    flex: 1 1 100%;
-    padding-top: 50px;
-    .content {
-      flex: 0 1 65%;
-      background-color: white;
-      padding: 1rem;
+}
+
+@media (min-width: 1150px) {
+
+  #mainnav {
+    position: static;
+    display: block;
+    margin-left: auto;
+
+    ul > li {
+      display: inline-block;
+      border-bottom: 0.3rem solid $highlightcolor;
+      border-left: none;
+      margin: 0;
+    }
+  }
+
+  #mobile-menu {
+    display: none;
+  }
+}
+
+/* FORM ELEMENTS */
+form {
+  @include box();
+
+  .form-group {
+    width: 100%;
+    margin: 0.5em 0;
+    @include flex(column, center, flex-start);
+  }
+
+  a {
+    margin-top: 2rem;
+    color: $highlightcolor;
+  }
+}
+
+label {
+  width: 20rem;
+}
+
+select,
+input {
+  width: 100%;
+  box-shadow: inset 0px 2px 3px 0px rgba(234,241,245,1);
+  border: 1px solid #EAF1F5;
+  border-radius: 0.3rem;
+  padding: 1rem;
+}
+
+
+
+.ng-valid[required], .ng-valid.required {
+  border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form), .notags {
+  border-left: 5px solid $highlightcolor;
+}
+
+.tags {
+  border-top: solid 0.1rem #EAF1F5;
+  width: 100%;
+  padding-top: 1rem;
+  margin-top: 1rem;
+  & span,
+  & li {
+    @include tag();
+  }
+}
+
+.submit {
+  @include buttonLink();
+  margin-top: 2rem;
+  &:disabled {
+    @include buttonDisabled();
+  }
+}
+
+#email {
+  max-width: 20rem;
+  margin-right: 2rem;
+}
+
+.email {
+  @include flex(row, flex-start, center);
+  text-align: left;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  form > .form-group {
+    @include flex(row, flex-start, center);
+  }
+}
+
+
+/* FOOTER */
+footer {
+  @include box();
+  margin-top: 2rem;
+  @include flex(row, space-between, center);
+  color: #364352;
+  font-size: small;
+  nav > ul > li {
+    display: inline-block;
+
+    a {
+      color: #364352;
     }
   }
 }

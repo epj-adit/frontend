@@ -1,8 +1,8 @@
 $maincolor: #A0A0A0;
 $secondarycolor: #f2f2f2;
-$highlightcolor: #d9534f;
+$highlightcolor: #FE4E4D;
 $footercolor: #263238;
-$menuiconcolor: $footercolor;
+$menuiconcolor: $highlightcolor;
 $font: "Segoe UI", sans-serif;
 $borderradius: 4px;
 
@@ -40,38 +40,68 @@ $borderradius: 4px;
   border-radius: $radius;
 }
 
+@mixin box {
+  @include flex(column);
+  @include shadow();
+  background: white;
+  border-radius: 0.2rem;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  & > h4 {
+    width: 100%;
+    color: #6B7E93;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+}
 
 @mixin tag() {
+  display: inline-block;
   background-color: $highlightcolor;
-  @include border(white, 0, 0.25em);
   color: white;
-  padding: 0.1em .5em;
-  margin: 0 0.5em 0 0;
-  font-weight: bold;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
   font-size: 75%;
+  border-radius: 2rem;
 }
 
-@mixin buttonLink() {
-  padding: 0.25em;
-  border: 1px solid $maincolor;
-  border-radius: 0.2em;
-  color: #333;
+@mixin buttonLink(){
+  padding: 0.75rem;
+  min-width: 20rem;
+  border-radius: 0.3rem;
+  background: #00B998;
+  color: white;
+  border: none;
   &:hover {
-    background-color: $secondarycolor;
     cursor: pointer;
-    @include shadow();
   }
 }
 
-@mixin buttonDisabled(){
-  color: grey;
-  background: lightgrey;
+@mixin buttonDisabled() {
+  padding: 0.75rem;
+  min-width: 20rem;
+  border-radius: 0.3em;
+  background-color: #CFD4D7;
+  color: white;
+  border: none;
   &:hover {
-    cursor: not-allowed;
-    color: grey;
-    background: lightgrey;
+    cursor: pointer;
   }
 }
+
+
+@mixin buttonCancle() {
+  padding: 0.75rem;
+  min-width: 20rem;
+  border-radius: 0.3em;
+  background-color: #FF6D6D;
+  color: white;
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 
 @mixin helptext(){
   color: #31708f;

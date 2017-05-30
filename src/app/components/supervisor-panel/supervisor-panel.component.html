@@ -1,0 +1,15 @@
+<nav id="subnav">
+	<ul>
+		<li>
+			<a [routerLink]="['manageAdvertisements']" [routerLinkActive]="['is-active']" routerLinkActive="active">
+				{{ "APP.manageAdvertisementsLink" | translate }}
+			</a>
+		</li>
+		<li>
+			<a [routerLink]="['manageCategories']" [routerLinkActive]="['is-active']" routerLinkActive="active">
+				{{ "APP.manageCategoriesLink" | translate }}
+			</a>
+		</li>
+	</ul>
+</nav>
+<router-outlet></router-outlet>

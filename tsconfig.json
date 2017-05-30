@@ -12,7 +12,8 @@
   },
   "include": [
     "src/**/*.ts",
-    "node_modules/@types/**/index.d.ts"
+    "node_modules/@types/**/index.d.ts",
+    "tests/**/*.ts"
   ],
   "compileOnSave": false,
   "buildOnSave": false

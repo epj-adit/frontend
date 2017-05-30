@@ -2,49 +2,111 @@
   "APP": {
     "searchLink": "Search",
     "advertisementsLink": "Advertisements",
-    "advertisementLink": "create Advertisement",
-    "userAdvertisementLink": "Useradvertisements",
-    "registrationLink":"Registration",
-    "welcome": "Welcome"
+    "advertisementLink": "Create Advertisement",
+    "userAdvertisementLink": "My Advertisements",
+    "userLink": "Account",
+    "userProfileLink":"Profile",
+    "welcome": "Welcome",
+    "supervisorLink": "Supervisorpanel",
+    "logoutLink": "Logout",
+    "loginLink": "Login",
+    "registerLink": "Registration",
+    "adminpanelLink": "Adminpanel",
+    "manageAdvertisementsLink": "Manage Advertisements",
+    "manageCategoriesLink": "Manage Categories",
+    "manageRolesLink": "Manage Roles",
+    "managePermissionsLink": "Manage Permissions"
+
   },
   "ADVERTISEMENT": {
-    "title": "Advertisements"
+    "title": "Advertisements",
+    "noAds": "There are currently no ads to display."
   },
   "ADVERTISEMENTSEARCH": {
     "title": "Advertisement Search",
-    "search": "Search.."
+    "search": "Search..",
+    "noResult": "0 Hits"
   },
   "ADINFO": {
-    "privateMessagingLink": "Private Message",
-    "emailLink": "e-Mail"
+    "emailLink": "E-Mail",
+    "accept": "Activate Advertisement",
+    "decline": "Decline Advertisement"
   },
   "AD": {
-    "title": "create Advertisement",
+    "title": "Create Advertisement",
     "titleField": "Title",
     "category": "Category",
-    "chooseCategory": "choose category...",
+    "chooseCategory": "Choose Category...",
     "tags": "Tags",
     "description": "Description",
     "price": "Price  [CHF]",
-    "submit": "submit",
-    "taghelp": "separate tags with ';'. Permitted special characters: - _",
-    "isSubmitted": "Your advertisement was submitted"
+    "submit": "Submit",
+    "taghelp": "Separate tags with ';'. Permitted special characters: - _",
+    "isSubmitted": "Your advertisement was submitted."
   },
   "USERADVERTISEMENT": {
     "title": "My Advertisements",
     "legend": "Legend",
     "deleteConfirmTitle": "Delete Advertisement",
-    "deleteConfirmDialog":"Deleting an ad cannot be undone<br>Do you want to proceed?"
+    "deleteConfirmDialog":"Deleting an ad cannot be undone<br>Do you want to proceed?",
+    "toReview": "To Review",
+    "active": "Active",
+    "expired": "Expired",
+    "declined": "Declined",
+    "deleted": "Deleted",
+    "noAds": "You don't yet have any advertisements. Create your own at ",
+    "createAdLink": "Create Advertisement"
   },
   "REGISTER":{
     "title": "Register User",
-    "usernameField": "username",
-    "emailField": "email",
-    "passwordField": "password",
-    "submit": "submit",
-    "emailHelp": "Please use the short form of your HSR email addresse. e.g.: amuster",
-    "hasError": "An error occurred. Please try again later.",
-    "error409": "This user exists already.",
-    "error403": "You don't have permission to execute this action."
+    "usernameField": "Username",
+    "emailField": "E-Mail",
+    "passwordField": "Password",
+    "submit": "Submit",
+    "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster",
+    "success": "Your user has been created!",
+    "userExistsMessage": "This user already exists."
+  },
+  "LOGIN": {
+    "title": "Login",
+    "emailField": "Email",
+    "passwordField": "Password",
+    "submit": "Login",
+    "registrationLink": "Registration",
+    "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster",
+    "wrongCredentials": "Please check your email and password (invalid credentials)",
+    "notActive": "The requested user is not active!"
+  },
+  "PROFILE": {
+    "title": "Edit Profile",
+    "usernameField": "Username",
+    "emailField": "E-Mail",
+    "passwordField": "Password",
+    "submit": "Submit",
+    "emailHelp": "Please use the short form of your HSR email address. e.g.: amuster",
+    "isPrivateCheckbox": "Private Profile",
+    "wantsNotificationsCheckbox": "Notifications",
+    "updateSuccess": "Your profile has been updated.",
+    "passwordPlaceholder" : "choose new password"
+  },
+  "MANAGECATEGORIES": {
+    "newCat": "Create New Category",
+    "submit": "Submit",
+    "successMessage": "Categories have been saved.",
+    "deleteConstraintError": "The category couldn't be deleted because there are still advertisements that belong to it."
+  },
+  "STATUS":{
+    "errorOccurred": "There was an error processing your request. Please try again later!",
+    "success": "Your request was successful!",
+    "missingPermissions": "You don't have permission to execute this action.",
+    "successMessage": "Categories have been saved."
+  },
+  "USERROLES": {
+    "title": "User/Roles",
+    "user": "User",
+    "role": "Role",
+    "active": "Active",
+    "success": "User was successfully updated.",
+    "error": "There was an error updating the user."
   }
 }

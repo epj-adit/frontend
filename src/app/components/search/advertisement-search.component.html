@@ -1,0 +1,12 @@
+<div id="search-component">
+	<input #searchBox id="search-box" (keyup)="search(searchBox.value)" placeholder='{{"ADVERTISEMENTSEARCH.search" | translate}}'/>
+	<div #searchResults>
+		<div *ngFor="let proposal of searchProposals | async"
+			class="search-result" (click)="gotoInfo(proposal)">
+			<span class="proposal-name">{{proposal.name}}</span>  <span class="proposal-{{proposal.displayName}}">{{proposal.displayName}}</span>
+		</div>
+		<div *ngIf="showNoResultsBox" class="search-result">
+			{{"ADVERTISEMENTSEARCH.noResult" | translate}}
+		</div>
+	</div>
+</div>

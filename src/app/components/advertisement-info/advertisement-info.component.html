@@ -1,0 +1,27 @@
+<div class="ad-info">
+	<div class="ad-title">
+		<h3>{{advertisement?.title}}</h3>
+		<span><fa [name]="'tags'"></fa>{{advertisement?.price/100 | aditCurrency:'CHF'}}</span>
+	</div>
+	<div class="ad-content">
+		<p>{{advertisement?.description}}</p>
+	</div>
+	<div class="ad-tags">
+		<fa [name]="'hashtag'"></fa>
+		<span *ngFor="let tag of advertisement?.tags">{{tag?.name}}</span>
+	</div>
+	<div class="buttons-user">
+		<p class="posted">posted by <span class="username">{{advertisement?.user?.username}}</span></p>
+		<div class="ad-buttons" *ngIf="url.includes('/advertisementinfo')">
+			<a href="mailto:{{advertisement?.user?.email}}">{{ "ADINFO.emailLink" | translate }}</a>
+		</div>
+	</div>
+</div>
+<div *ngIf="!url.includes('/advertisementinfo')" class="buttons-supervisor">
+	<div class="ad-buttons">
+		<button class="accept" (click)="changeState(2)"><fa [name]="'check'"></fa>{{ "ADINFO.accept" | translate }}</button>
+		<button class="decline" (click)="changeState(1)"><fa [name]="'ban'"></fa>{{ "ADINFO.decline" | translate }}</button>
+	</div>
+</div>
+<adit-status-message></adit-status-message>
+

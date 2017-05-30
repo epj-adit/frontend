@@ -1,0 +1,22 @@
+@import "../../variables";
+
+.advertisements {
+  cursor: pointer;
+}
+
+.advertisement {
+  @include box();
+  &:hover {
+    background: #EEFBFF;
+  }
+}
+
+.tags > li {
+  @include tag();
+}
+
+.noAds {
+  margin-top: 2em;
+  font-style: italic;
+  color: $maincolor
+}

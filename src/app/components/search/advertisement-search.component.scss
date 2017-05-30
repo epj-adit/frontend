@@ -1,0 +1,63 @@
+@import "../../variables";
+
+#search-component {
+  position: relative;
+}
+
+#search-box ~ div {
+  position: absolute;
+}
+
+.search-result{
+  border-bottom: 1px solid gray;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  width:200px;
+  height: 30px;
+  padding: 5px;
+  background-color: #EAF1F5;
+  cursor: pointer;
+  text-align: left;
+}
+.search-result:hover {
+  color: #eee;
+  background-color: $footercolor;
+}
+
+#search-box{
+  width: 200px;
+  height: 3rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: #EAF1F5;
+  display: block;
+}
+.proposal-name{
+  display: inline-block;
+  white-space: nowrap;
+  width: 6.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@mixin proposal($fa-value) {
+  &:before{
+
+    font-family: FontAwesome;
+    font-style: normal;
+    content: ($fa-value);
+  }
+  font-size: 0.8em;
+  font-style: italic;
+  color: grey;
+  float: right;
+}
+.proposal-Category{
+  @include proposal("\f00a");
+}
+.proposal-Advert {
+  @include proposal("\f0c5");
+}
+.proposal-Tag{
+  @include proposal('\f292');
+}

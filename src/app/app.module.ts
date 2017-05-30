@@ -10,53 +10,93 @@ import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
 import { routing, appRoutingProviders }  from './app.routing';
-import { AdvertisementService } from './_services/advertisement.service';
-import { TagService } from "./_services/tag.service";
-import { CategoryService } from "./_services/category.service";
-import { UserService } from "./_services/user.service";
+import { AdvertisementService } from './services/advertisement.service';
+import { TagService } from "./services/tag.service";
+import { CategoryService } from "./services/category.service";
+import { UserService } from "./services/user.service";
+import { AuthenticationService } from "./utils/authentication.service";
+import { AuthenticationGuardService } from "./utils/authentication-guard.service";
+import { NotAuthenticatedGuardService } from "./utils/not-authenticated-guard.service";
+
+import { ApiCallService } from "./utils/api-call.service";
 
 import { AppComponent } from './app.component';
-import { AdvertisementSearchComponent } from './search/advertisement-search.component';
-import { AdvertisementListComponent } from './advertisementlist/advertisementlist.component';
-import { AdvertisementInfoComponent } from './advertisementinfo/advertisement-info.component';
-import { AdvertisementComponent } from './advertisement/advertisement.component';
-import { RegisterComponent } from "./register/register.component";
-import { UserAdvertisementsComponent } from "./useradvertisements/user-advertisements.component";
+import { AdvertisementSearchComponent } from './components/search/advertisement-search.component';
+import { AdvertisementListComponent } from './components/advertisement-list/advertisement-list.component';
+import { AdvertisementInfoComponent } from './components/advertisement-info/advertisement-info.component';
+import { AdvertisementComponent } from './components/advertisement/advertisement.component';
+import { RegisterComponent } from "./components/register/register.component";
+import { UserAdvertisementsComponent } from "./components/user-advertisements/user-advertisements.component";
+import { UserProfileComponent } from "./components/user-profile/user-profile.component";
+import { AccountComponent } from "./components/account/account.component";
+import { SupervisorPanelComponent } from "./components/supervisor-panel/supervisor-panel.component";
+import { ManageCategoriesComponent } from "./components/manage-categories/manage-categories.component";
+import { LoginComponent } from "./components/login/login.component";
+import { AditCurrencyPipe } from "./utils/adit-currency.pipe";
+import { StatusMessageComponent } from "./widgets/status-message/status-message.component";
+import { StatusMessageService } from "./utils/status-message.service";
+import { AdminPanelComponent } from "./components/admin-panel/admin-panel.component";
+import { RoleService } from "./services/role.service";
+import { AdminGuardService } from "./utils/admin-guard.service";
+import { SupervisorGuardService } from "./utils/supervisor-guard.service";
+
 
 export function HttpLoaderFactory(http: Http) {
-  return new TranslateHttpLoader(http);
+    return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpModule,
-    JsonpModule,
-    Angular2FontawesomeModule,
-    ModalModule.forRoot(),
-    BootstrapModalModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [Http]
-      }
-    }),
-    routing
-  ],
-  declarations: [
-    AppComponent,
-    AdvertisementSearchComponent,
-    AdvertisementComponent,
-    AdvertisementListComponent,
-    AdvertisementInfoComponent,
-    RegisterComponent,
-    UserAdvertisementsComponent
-  ],
-  providers: [appRoutingProviders, AdvertisementService, TagService, CategoryService, UserService],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpModule,
+        JsonpModule,
+        Angular2FontawesomeModule,
+        ModalModule.forRoot(),
+        BootstrapModalModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [Http]
+            }
+        }),
+        routing
+    ],
+    declarations: [
+        AppComponent,
+        AdvertisementSearchComponent,
+        AdvertisementComponent,
+        AdvertisementListComponent,
+        AdvertisementInfoComponent,
+        RegisterComponent,
+        UserProfileComponent,
+        UserAdvertisementsComponent,
+        AccountComponent,
+        SupervisorPanelComponent,
+        AdminPanelComponent,
+        ManageCategoriesComponent,
+        LoginComponent,
+        StatusMessageComponent,
+        AditCurrencyPipe
+    ],
+    providers: [
+        appRoutingProviders,
+        AdvertisementService,
+        TagService,
+        CategoryService,
+        UserService,
+        RoleService,
+        SupervisorGuardService,
+        AdminGuardService,
+        AuthenticationService,
+        AuthenticationGuardService,
+        NotAuthenticatedGuardService,
+        ApiCallService,
+        StatusMessageService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

@@ -1,0 +1,56 @@
+@import "../../variables";
+
+.ad-info {
+  @include box();
+}
+
+.buttons-user{
+  width: 100%;
+  @include flex(row, space-between);
+}
+
+.posted {
+  font-style: italic;
+  color: $maincolor;
+  & > .username {
+    font-style: normal;
+    color: black;
+  }
+}
+
+.ad-buttons > a {
+  @include buttonLink;
+}
+
+.ad-title {
+  width: 100%;
+  @include flex(row, space-between);
+  padding-bottom: 1em;
+}
+
+.ad-tags {
+  border-top: solid 0.1rem #EAF1F5;
+  width: 100%;
+  padding-top: 1rem;
+  margin: 1rem;
+
+  & > span {
+    @include tag();
+  }
+}
+
+.accept{
+  @include buttonLink();
+}
+
+.decline{
+  @include buttonCancle();
+}
+
+.buttons-supervisor{
+  margin-top: 1em;
+  @include flex(row, space-around);
+  .ad-buttons button{
+    margin: 1em;
+  }
+}

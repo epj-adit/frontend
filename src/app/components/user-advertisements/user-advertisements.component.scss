@@ -1,0 +1,166 @@
+@import "../../variables";
+
+.legende {
+  @include box();
+  width: 100%;
+
+  span {
+    margin: 0 1rem;
+  }
+}
+
+.advertisement {
+  @include box();
+}
+
+
+.titleRow, .bottomRow {
+  width: 100%;
+  @include flex(row, space-between);
+  .buttons > span {
+    margin: 1px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.noAds {
+  margin-top: 2em;
+  margin-left:1em;
+  font-style: italic;
+  color: $maincolor
+}
+
+.redLink {
+  color: $highlightcolor;
+}
+
+//------ Legende -------------------
+$activecolor:#009933;
+$closedcolor:#999999;
+$reviewcolor:#00ccff;
+$declinedcolor:#cc0000;
+$expiredcolor:black;
+
+.active{
+  color: $activecolor;
+}
+.deleted{
+  color: $closedcolor;
+}
+.toReview{
+  color:$reviewcolor;
+}
+.declined{
+  color: $declinedcolor;
+}
+.expired{
+  color: $expiredcolor;
+}
+
+//------ AdvertisementState --------
+// to-Review
+.state-0{
+  border-color:$reviewcolor;
+  background-color: #e6faff;
+  position: relative;
+  &:after {
+    position: absolute;
+    font-family: FontAwesome;
+    content: "\f06e";
+    bottom: 0;
+    right: 1rem;
+    font-size: 3rem;
+    color: $reviewcolor;
+    opacity:0.4;
+  }
+
+  .tags {
+    border-top: none;
+  }
+}
+
+// declined
+.state-1{
+  border-color:$declinedcolor;
+  background-color: #ffe6e6;
+  position: relative;
+  &:after {
+    position: absolute;
+    font-family: FontAwesome;
+    content: "\f05e";
+    bottom: 0;
+    right: 1rem;
+    font-size: 3rem;
+    color: $declinedcolor;
+    opacity:0.4;
+  }
+
+  .tags {
+    border-top: none;
+  }
+}
+
+// active
+.state-2 {
+  border-color: $activecolor;
+  background-color: #e6ffe6;
+  position: relative;
+  &:after {
+    position: absolute;
+    font-family: FontAwesome;
+    content: "\f04b";
+    bottom: 0;
+    right: 1rem;
+    font-size: 3rem;
+    color: $activecolor;
+    opacity:0.4;
+  }
+
+  .tags {
+    border-top: none;
+  }
+}
+
+// expired
+.state-3 {
+  border-color: $expiredcolor;
+  background-color: white;
+  position: relative;
+  &:after {
+    position: absolute;
+    font-family: FontAwesome;
+    content: "\f253";
+    bottom: 0;
+    right: 1rem;
+    font-size: 3rem;
+    color: $expiredcolor;
+    opacity:0.4;
+  }
+
+  .tags {
+    border-top: none;
+  }
+}
+
+// closed
+.state-4 {
+  border-color: $closedcolor;
+  background-color: lightgray;
+  position: relative;
+  &:after {
+    position: absolute;
+    font-family: FontAwesome;
+    content: "\f1f8";
+    bottom: 0;
+    right: 1rem;
+    font-size: 3rem;
+    color: $closedcolor;
+    opacity:0.4;
+  }
+
+  .tags {
+    border-top: none;
+  }
+}
