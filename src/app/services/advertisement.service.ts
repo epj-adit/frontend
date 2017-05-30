@@ -9,6 +9,7 @@ import { AdvertisementState } from "../data/advertisement-state";
 import { TagService } from "./tag.service";
 
 import { AuthenticationService } from "../utils/authentication.service";
+import { User } from "../data/user";
 
 @Injectable()
 export class AdvertisementService {
@@ -40,30 +41,32 @@ export class AdvertisementService {
 
   // created set bei server -> don't send it!
   createOrUpdate(advertisement: Advertisement, tags: Tag[], state:AdvertisementState=AdvertisementState.to_review): Observable<Advertisement> {
-    let ad: any = {
-      title: advertisement.title,
-      user: {
-        id: this.userId
-      },
-      price: advertisement.price,
-      description: advertisement.description,
-      category: {
-        id: advertisement.category.id
-      },
-      tags: tags,
-      media: [],
-      advertisementState: state,
-    };
-
-    if (advertisement.id) {
-      ad.id = advertisement.id;
-      return this.apiCall.put("advertisement/" + advertisement.id, ad).map(res => res as Advertisement)
-        .catch(err => this.handleError(err));
-    } else {
-      return this.apiCall
-        .post("advertisement", ad).map(res => res as Advertisement)
-        .catch(err => this.handleError(err));
-    }
+      let ad: any = {
+          title: advertisement.title,
+          user: {
+              id: 0
+          },
+          price: advertisement.price,
+          description: advertisement.description,
+          category: {
+              id: advertisement.category.id
+          },
+          tags: tags,
+          media: [],
+          advertisementState: state,
+      };
+      return this.authenticationService.getUser().flatMap(data => {
+          ad.user.id = data.id;
+          if (advertisement.id) {
+              ad.id = advertisement.id;
+              return this.apiCall.put("advertisement/" + advertisement.id, ad).map(res => res as Advertisement)
+                  .catch(err => this.handleError(err));
+          } else {
+              return this.apiCall
+                  .post("advertisement", ad).map(res => res as Advertisement)
+                  .catch(err => this.handleError(err));
+          }
+      });
   }
 
   createAdvertisementAndTags(advertisement: Advertisement) {

@@ -1,10 +1,5 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import { HttpModule } from "@angular/http";
-import { Angular2FontawesomeModule } from "angular2-fontawesome";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
-import { FakeTranslationLoader } from "../_mocks/fake-translation-loader";
 import { AdvertisementService } from "../../../src/app/services/advertisement.service";
 import { ApiCallService } from "../../../src/app/utils/api-call.service";
 import { TagService } from "../../../src/app/services/tag.service";
@@ -65,13 +60,13 @@ describe('AdvertisementService', () => {
     spyOn(apiCallService, 'post').and.callThrough();
     let adWithoutId = ad;
     adWithoutId.id = null;
-    service.createOrUpdate(adWithoutId, adWithoutId.tags);
+    service.createOrUpdate(adWithoutId, adWithoutId.tags).subscribe();
     expect(apiCallService.post).toHaveBeenCalled();
   });
 
   it('should put advertisements with an id', () => {
     spyOn(apiCallService, 'put').and.callThrough();
-    service.createOrUpdate(ad, ad.tags);
+    service.createOrUpdate(ad, ad.tags).subscribe();
     expect(apiCallService.put).toHaveBeenCalled();
   });
 
